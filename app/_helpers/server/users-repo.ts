@@ -34,11 +34,11 @@ async function authenticate({ username, password }: { username: string, password
 }
 
 async function getAll() {
-    return await User.find({role:"ADMIN"});
+    return await User.find({role:"USER"});
 }
 
 async function getAllAdmin() {
-    return await User.find();
+    return await User.find({role:"USER"});
 }
 
 async function getAllCustomers() {

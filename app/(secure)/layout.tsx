@@ -2,7 +2,7 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { auth } from '_helpers/server';
-import { Alert, Nav } from '_components';
+import { Alert, NavB } from '_components';
 
 export default Layout;
 
@@ -12,10 +12,12 @@ function Layout({ children }: { children: React.ReactNode }) {
         const returnUrl = encodeURIComponent(headers().get('x-invoke-path') || '/');
         redirect(`/account/login?returnUrl=${returnUrl}`);
     }
+    const au:any=auth
 
     return (
         <div className="app-container bg-light">
-            <Nav />
+            <NavB />
+            
             <Alert />
             <div className="p-4">
                 <div className="container">

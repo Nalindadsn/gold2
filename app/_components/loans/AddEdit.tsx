@@ -96,19 +96,19 @@ function AddEdit({ title, loan }: { title: string; loan?: any }) {
   };
 
   const total_pounds = loan?.items.reduce(function (acc: any, obj: any) {
-    return (acc + parseFloat(obj.net_weight))/8;
+    return (acc?acc:0 + parseFloat(obj.net_weight)/8);
   }, 0);
 
-  const old_mkt_price = (loan.estimated_price_old / total_pounds).toFixed(2);
-  const old_cmp_price = (loan.loan_price_old / total_pounds).toFixed(2);
-  const old_exp_price = (loan.expected_price_old / total_pounds).toFixed(2);
+  const old_mkt_price = (loan?.estimated_price_old / total_pounds).toFixed(2);
+  const old_cmp_price = (loan?.loan_price_old / total_pounds).toFixed(2);
+  const old_exp_price = (loan?.expected_price_old / total_pounds).toFixed(2);
   const basic_estimate = (130000 * total_pounds).toFixed(2);
-  const basic_estimate_final =loan.expected_price_old
+  const basic_estimate_final =loan?.expected_price_old
     //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {JSON.stringify(loan.items)}
+      {JSON.stringify(loan?.items)}
       <br />
       ----total pound------{JSON.stringify(total_pounds)}----
       <br />
