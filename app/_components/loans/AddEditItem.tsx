@@ -3,6 +3,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAlertService, useLoanService } from "_services";
+import { useState,useCallback } from "react";
+import axios from "axios";
 export { AddEditItem };
 
 function AddEditItem({ title, loan }: { title: string; loan?: any }) {
@@ -107,7 +109,57 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   const basic_estimate_final =loan?.expected_price_old
     //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
+
+
+
+
+    const [reviews, setReviews] = useState([]);
+    const [estimated_price_old, setEstimated_price_old] = useState("4");
+    const [loan_price_old, setLoan_price_old] = useState("5");
+    const [interest_old, setInterest_old] = useState("6");
+    const [expected_price_old, setExpected_price_old] = useState("7");
+
+
+
+    const [loading, setLoading] = useState(false);
+    // --------------------------------------------------------
+    const submitHandler = async (e:any) => {
+      e.preventDefault();
+      setLoading(true);
+      try {
+        await axios.post(
+          `/api/loans`,
+          {
+            estimated_price_old,
+            loan_price_old,
+            interest_old,
+            expected_price_old
+          }
+          // {
+          //   headers: { authorization: `Bearer ${userInfo.token}` },
+          // }
+        );
+        setLoading(false);
+        //enqueueSnackbar('Review submitted successfully', { variant: 'success' });
+  
+        // toast.success('Review submitted successfully');
+        fetchReviews();
+      } catch (err) {
+        setLoading(false);
+  
+        // toast.success(err);
+      }
+    };
+    const fetchReviews = useCallback(async () => {
+      try {
+        const { data } = await axios.get(`/api/loans`);
+        setReviews(data);
+      } catch (err) {
+        //enqueueSnackbar(getError(err), { variant: 'error' });
+      }
+    }, []);
   return (
+    <>
     <form onSubmit={handleSubmit(onSubmit)}>
       {JSON.stringify(loan?.items)}
       <br />
@@ -225,5 +277,46 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
         </Link>
       </div>
     </form>
+            <form
+            onSubmit={submitHandler}
+            className="bg-white p-2 mt-4"
+            style={{ marginLeft: '5%', marginRight: '5%' }}
+          >
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">
+                Write a review
+              </h2>
+              <div className="w-full md:w-full px-3 mb-2 mt-2">
+                review
+              
+                <div></div>
+                <div>
+                  <input type="text"  onChange={(e) => setEstimated_price_old(e.target.value)}
+                  name="review"/>
+                  <input type="text"  onChange={(e) => setLoan_price_old(e.target.value)}
+                  name="review"/>
+                  <input type="text"  onChange={(e) => setInterest_old(e.target.value)}
+                  name="review"/>
+                  <input type="text"  onChange={(e) => setExpected_price_old(e.target.value)}
+                  name="review"/>
+                  <button type="submit">Submit</button>
+  
+                  {loading && '...'}
+                </div>
+              </div>
+              <div className="w-full md:w-full flex items-start md:w-full px-3">
+                <div className="-mr-1">
+                  <input
+                    type="submit"
+                    className="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
+                    value="Post Comment"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+          {JSON.stringify(reviews)}
+
+</>
   );
 }
