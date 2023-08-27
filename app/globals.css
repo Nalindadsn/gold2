@@ -4,3 +4,6 @@
 .app-container {
     min-height: 350px;
 }
+ .offcanvas-header > button{
+    background-color: #e20017;
+}

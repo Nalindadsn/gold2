@@ -30,18 +30,18 @@ function NavB() {
 
 
 <>
-<Navbar key="lg" expand="lg" className="bg-body-tertiary mb-3">
+<Navbar key="lg" expand="lg" className="bg-body-tertiary mb-3"  bg="primary" data-bs-theme="dark">
           <Container fluid>
-            <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
+            <Navbar.Brand href="#">Gold Loan</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-$"lg"`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-$"lg"`}
               aria-labelledby={`offcanvasNavbarLabel-expand-$"lg"`}
               placement="end"
             >
-              <Offcanvas.Header closeButton>
+              <Offcanvas.Header closeButton >
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-$"lg"`}>
-                  Offcanvas
+                  Gold Loan
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -68,22 +68,6 @@ function NavB() {
         </Navbar>
 
 
-        <nav className="navbar navbar-expand navbar-dark bg-dark px-3">
-            <div className="navbar-nav">
-                <NavLink href="/" exact className="nav-item nav-link">Home</NavLink>
-                {/* <a href="users" className="nav-item nav-link">user </a> */}
-                <NavLink href="/users" className="nav-item nav-link">Users</NavLink>
-                <NavLink href="/loans" className="nav-item nav-link" >
-                    {/* <span className="spinner-border spinner-border-sm"></span> */}
-                    <span>Loans</span></NavLink>
-                <button onClick={logout} className="btn btn-link nav-item nav-link" style={{ width: '67px' }} disabled={loggingOut}>
-                    {loggingOut
-                        ? <span className="spinner-border spinner-border-sm"></span>
-                        : <span>Logout</span>
-                    }
-                </button>
-            </div>
-        </nav>
         </>
     );
 }

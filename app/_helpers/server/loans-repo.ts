@@ -56,7 +56,8 @@ async function update(id: string, params: any) {
     }
     // copy params properties to loan
     Object.assign(loan, params);
-    await loan.save();
+    // await loan.save();
+    await getById(id)
 }
 async function updateItem(id: string, params: any) {
     const loan = await Loan.findById(id);

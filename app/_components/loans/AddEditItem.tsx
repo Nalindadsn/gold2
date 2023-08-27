@@ -3,9 +3,9 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAlertService, useLoanService } from "_services";
-export { AddEdit };
+export { AddEditItem };
 
-function AddEdit({ title, loan }: { title: string; loan?: any }) {
+function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   const router = useRouter();
   const alertService = useAlertService();
   const loanService = useLoanService();
@@ -94,8 +94,8 @@ function AddEdit({ title, loan }: { title: string; loan?: any }) {
     }
     return val.toFixed(2);
   };
-  
   const arr = (loan?.items)? loan?.items:[];
+
   const total_pounds = arr.reduce(function (acc: any, obj: any) {
     return (acc?acc:0 + parseFloat(obj.net_weight)/8);
   }, 0);

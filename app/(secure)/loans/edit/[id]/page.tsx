@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { AddEdit } from '_components/loans';
+import { AddEdit, AddEditItem } from '_components/loans';
 import { Spinner } from '_components';
 import { useLoanService } from '_services';
 
@@ -21,6 +21,8 @@ function Edit({ params: { id } }: any) {
 
     return loan
         ?<>
-        <AddEdit title="Edit Loan" loan={loan} /></> 
+        <AddEdit title="Edit Loan" loan={loan} />
+        <AddEditItem title="Edit Loan" loan={loan} />
+        </> 
         : <Spinner />;
 }
