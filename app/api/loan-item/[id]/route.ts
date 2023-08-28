@@ -9,7 +9,7 @@ module.exports = apiHandler({
     GET: getById,
     PUT: update,
     POST: addItem,
-    DELETE: _delete
+    DELETE: _deleteItem
 });
 async function update(req: Request, { params: { id } }: any) {
     const body = await req.json();
@@ -82,12 +82,12 @@ updateItem.schema = joi.object({
     pound: joi.string().allow(''),
 });
 
-async function _delete(req: Request, { params: { id } }: any) {
-    await loansRepo.deleteItem(id);
+async function _deleteItem(req: Request, { params: { id } }: any) {
+    await loansRepo._deleteItem(id);
 
     // auto logout if deleted self
-    if (id === req.headers.get('loanId')) {
-        cookies().delete('authorization');
-        return { deletedSelf: true };
-    }
+    // if (id === req.headers.get('loanId')) {
+    //     cookies().delete('authorization');
+    //     return { deletedSelf: true };
+    // }
 }
