@@ -130,12 +130,12 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
       setLoading(true);
       try {
         const data:any={
-            itmName:"223",
-            karat:"445",
-            net_weight:"555",
-            total_weight:"665",
-            pound:"7894567",
-            status:"NOT ISSUE"
+            itmName:itmName,
+            karat:karat,
+            net_weight:net_weight,
+            total_weight:total_weight,
+            pound:pound,
+            status:status?status:"NOT ISSUE"
         }
         await loanService.updateItem(loan.id, data);
         setLoading(false);
@@ -183,13 +183,18 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                   <input type="text"  onChange={(e) => setItmName(e.target.value)}
                   name="itmName" placeholder="Description"/>
                   <input type="text"  onChange={(e) => setKarat(e.target.value)}
-                  name="review" placeholder="Price"/>
+                  name="karat" placeholder="Karat"/>
                   <input type="text"  onChange={(e) => setNet_weight(e.target.value)}
-                  name="review"/>
+                  name="net_weight" placeholder="Net Weight"/>
+                  <input type="text"  onChange={(e) => setTotal_weight(e.target.value)}
+                  name="total_weight" placeholder="Total Weight"/>
                   <input type="text"  onChange={(e) => setPound(e.target.value)}
-                  name="review"/>
-                  <input type="text"  onChange={(e) => setStatus(e.target.value)}
-                  name="review"/>
+                  name="pound" placeholder="Pound"/>
+                  
+                  <select  onChange={(e) => setStatus(e.target.value)} name="status">
+                    <option>NOT ISSUE</option>
+                    <option>ISSUE</option>
+                  </select>
                   <button type="submit">Submit</button>
   
                   {loading && '...'}

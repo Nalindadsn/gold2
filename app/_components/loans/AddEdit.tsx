@@ -143,11 +143,13 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
       <br />
       <h1>{title}</h1>
       <div className="row">
+
       <div className="grid grid-cols-1 md:grid-cols-2">
 <div>a</div>
 <div>b</div>
+<div>a</div>
+<div>b</div>
 </div>
-
 
         <div className="mb-3 col">
           <label className="form-label">estimated_price_old</label>

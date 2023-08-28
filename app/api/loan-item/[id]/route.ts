@@ -19,10 +19,10 @@ async function update(req: Request, { params: { id } }: any) {
     const loan= await loansRepo.getById(id);
     const data:any={
         name:body.itmName,
-        karat:body.estimated_price_old,
-        net_weight: body.loan_price_old,
-        total_weight: body.expected_price_old,
-        pound: body.interest_old,
+        karat:body.karat,
+        net_weight: body.net_weight,
+        total_weight: body.total_weight,
+        pound: body.pound,
         status: body?.status || "ok", 
     }
 
@@ -44,7 +44,7 @@ async function addItem(req: Request, { params: { id } }: any) {
       net_weight: "3",
       total_weight: "4",
       pound: "5",
-      status: "ok",
+      status: "NOT ISSUE",
     };
      loan.items.push(items);
      return await loan.save();
