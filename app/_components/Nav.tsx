@@ -49,6 +49,13 @@ function NavB() {
                   
                 <Form className="d-flex">
                   <Form.Control
+                  name="type"
+                    type="search"
+                    placeholder="Search"
+                    className="me-2"
+                    aria-label="Search"
+                  />
+                  <Form.Control
                   name="search"
                     type="search"
                     placeholder="Search"

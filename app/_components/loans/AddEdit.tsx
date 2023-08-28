@@ -43,14 +43,16 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
 
   async function onSubmit(data: any) {
     alertService.clear();
+    const dataV=data;
+    dataV.user_id="64e5a42d5b71e33051b67ef6"
     try {
       // create or update loan based on loan prop
       let message;
       if (loan) {
-        await loanService.update(loan.id, data);
+        await loanService.update(loan.id, dataV);
         message = "Loan updated";
       } else {
-        await loanService.create(data);
+        await loanService.create(dataV);
         message = "Loan added";
       }
 

@@ -1,6 +1,6 @@
 import joi from 'joi';
 
-import { loansRepo } from '_helpers/server';
+import { loansRepo, usersRepo } from '_helpers/server';
 import { apiHandler } from '_helpers/server/api';
 
 module.exports = apiHandler({
@@ -13,7 +13,13 @@ async function getAll() {
 }
 
 async function create(req: Request) {
+    const cd= await usersRepo.getCurrent();
+    console.log(cd)
+
     const body = await req.json();
+    body.officer_id=cd._id
+    console.log(body)
+    
     await loansRepo.create(body);
 }
 
@@ -22,4 +28,6 @@ create.schema = joi.object({
     loan_price_old: joi.string().required(),
     interest_old: joi.string().required(),
     expected_price_old: joi.string().required(),
+    user_id: joi.required(),
+    // officer_id: joi.required(),
 });
