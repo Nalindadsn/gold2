@@ -110,7 +110,9 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
     //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} 
+    className="bg-white p-2 mt-4"
+    style={{ marginLeft: '5%', marginRight: '5%' }}>
       {/* {JSON.stringify(loan?.items)} */}
       <br />
       ----total pound------{JSON.stringify(total_pounds)}----

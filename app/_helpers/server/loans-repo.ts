@@ -17,7 +17,30 @@ export const loansRepo = {
 
 
 async function getAll() {
-    return await Loan.find();
+    return await Loan.aggregate(
+        [
+            {
+              $lookup: {
+                from: "users",
+                localField: "user_id",
+                foreignField: "_id",
+                as: "customer"
+              }
+            },
+            {
+              $lookup: {
+                from: "users",
+                localField: "officer_id",
+                foreignField: "_id",
+                as: "officer"
+              }
+            },
+            {
+            $addFields : {
+              "id": "$_id"
+            }
+          }
+          ]);
 }
 
 async function getById(id: string) {
