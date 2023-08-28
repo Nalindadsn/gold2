@@ -18,7 +18,6 @@ function Edit(props: any) {
     
     useEffect(() => {
         if (!props.params.id) return;
-        if (!props.searchParams.id) return;
         loanService.getById(props.params.id)
     }, [router]);
 
