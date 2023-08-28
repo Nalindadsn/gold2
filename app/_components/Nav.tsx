@@ -32,7 +32,7 @@ function NavB() {
 <>
 <Navbar key="lg" expand="lg" className="bg-body-tertiary mb-3"  bg="primary" data-bs-theme="dark">
           <Container fluid>
-            <Navbar.Brand href="#">Gold Loan</Navbar.Brand>
+            <Navbar.Brand href="/">Gold Loan</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-$"lg"`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-$"lg"`}
@@ -49,14 +49,15 @@ function NavB() {
                   
                 <Form className="d-flex">
                   <Form.Control
+                  name="search"
                     type="search"
                     placeholder="Search"
                     className="me-2"
                     aria-label="Search"
                   />
-                  <Button variant="primary" href="/" className='bg-blue-600'>Search</Button>
+                  <Button variant="primary" href="/search" className='bg-blue-600'>Search</Button>
                 </Form>
-                  <Nav.Link>HOME</Nav.Link>
+                  <Nav.Link href="/">HOME</Nav.Link>
                   <Nav.Link href="/users">USERS</Nav.Link>
                   <Nav.Link href="/loans">LOANS</Nav.Link>
                   <Button variant="danger" onClick={logout} className='bg-red-600'>LOGOUT</Button>

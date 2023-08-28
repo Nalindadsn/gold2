@@ -57,7 +57,6 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
       }
 
       // redirect to loan list with success message
-      router.push(`/loans/edit/${loan.id}`);
       // router.refresh()
       alertService.success(message, true);
     } catch (error: any) {
@@ -203,8 +202,9 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                 </div>
               </div>
             </div>
-          </form>
+            
           {JSON.stringify(reviews)}
+          </form>
 
 </>
   );

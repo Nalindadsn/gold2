@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useAlertService, useLoanService } from "_services";
 export { AddEdit };
 
-function AddEdit({ title, loan }: { title: string; loan?: any }) {
+function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) {
   const router = useRouter();
   const alertService = useAlertService();
   const loanService = useLoanService();
@@ -55,7 +55,7 @@ function AddEdit({ title, loan }: { title: string; loan?: any }) {
       }
 
       // redirect to loan list with success message
-      router.push(`/loans/edit/${loan.id}`);
+      router.push(`/loans`);
       // router.refresh()
       alertService.success(message, true);
     } catch (error: any) {
