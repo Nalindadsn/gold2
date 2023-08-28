@@ -19,9 +19,10 @@ function Users() {
     return (
         <>
             <h1>Customers</h1>
+            <Link href="/users/add" className="btn  btn-primary mb-2 float-right">Add Customer</Link>
           
           
-    <div style={{overflowX:"auto"}}>
+    <div style={{overflowX:"auto",width:"100%"}}>
             <table className="table table-striped">
                 <thead>
                     <tr>

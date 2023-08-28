@@ -55,13 +55,6 @@ function NavB() {
                     className="me-2"
                     aria-label="Search"
                   />
-                  <Form.Control
-                  name="search"
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
                   <Button variant="primary" href="/search" className='bg-blue-600'>Search</Button>
                 </Form>
                   <Nav.Link href="/">HOME</Nav.Link>

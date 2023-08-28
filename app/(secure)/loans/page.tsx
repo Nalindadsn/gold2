@@ -17,7 +17,7 @@ function Loans() {
     return (
         <>
             <h1>Loans</h1>
-            <Link href="/loans/add" className="btn btn-sm btn-success mb-2">Add Loan</Link>
+
             
     <div style={{overflowX:"auto"}}>
 <table className="table table-striped">
