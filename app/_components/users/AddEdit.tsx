@@ -48,36 +48,40 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1>{title}</h1>
-            <div className="row">
-                <div className="mb-3 col">
+
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2">
+<div className='p-2'>
                     <label className="form-label">First Name</label>
                     <input {...fields.firstName} type="text" className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.firstName?.message?.toString()}</div>
-                </div>
-                <div className="mb-3 col">
+                    <div className="invalid-feedback">{errors.firstName?.message?.toString()}</div></div>
+<div className='p-2'>
                     <label className="form-label">Last Name</label>
                     <input {...fields.lastName} type="text" className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
                     <div className="invalid-feedback">{errors.lastName?.message?.toString()}</div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="mb-3 col">
+<div className='p-2'>
                     <label className="form-label">Username</label>
                     <input {...fields.username} type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.username?.message?.toString()}</div>
                 </div>
-                <div className="mb-3 col">
+<div className='p-2'>
                     <label className="form-label">
                         Password
                         {user && <em className="ms-1">(Leave blank to keep the same password)</em>}
                     </label>
                     <input {...fields.password} type="password" className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.password?.message?.toString()}</div>
-                </div>
-            </div>
-            <div className="mb-3">
+                    <div className="invalid-feedback">{errors.password?.message?.toString()}</div></div>
+
+
+
+</div>
+
+
+            <div className="p-2">
                 <button type="submit" disabled={formState.isSubmitting} className="btn btn-primary me-2 bg-blue-700">
                     {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
                     Save
