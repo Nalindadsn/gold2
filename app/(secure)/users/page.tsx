@@ -18,6 +18,7 @@ function Users() {
 
     return (
         <>
+       
             <Link href="/users/add" className="btn  btn-primary mb-2 float-right">New Customer</Link>
           
           

@@ -42,7 +42,8 @@ async function addItem(req: Request, { params: { id } }: any) {
       name:"1",
       karat:"2",
       net_weight: "3",
-      pound: "4",
+      total_weight: "4",
+      pound: "5",
       status: "ok",
     };
      loan.items.push(items);

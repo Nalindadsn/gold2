@@ -114,10 +114,11 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
 
     const [reviews, setReviews] = useState([]);
     const [itmName, setItmName] = useState("");
-    const [estimated_price_old, setEstimated_price_old] = useState("");
-    const [loan_price_old, setLoan_price_old] = useState("");
-    const [interest_old, setInterest_old] = useState("");
-    const [expected_price_old, setExpected_price_old] = useState("");
+    const [karat, setKarat] = useState("");
+    const [net_weight, setNet_weight] = useState("");
+    const [total_weight, setTotal_weight] = useState("");
+    const [pound, setPound] = useState("");
+    const [status, setStatus] = useState("NOT ISSUE");
 
 
 
@@ -130,10 +131,11 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
       try {
         const data:any={
             itmName:"223",
-            estimated_price_old:"445",
-            loan_price_old:"555",
-            interest_old:"665",
-            expected_price_old:"7894567"
+            karat:"445",
+            net_weight:"555",
+            total_weight:"665",
+            pound:"7894567",
+            status:"NOT ISSUE"
         }
         await loanService.updateItem(loan.id, data);
         setLoading(false);
@@ -162,7 +164,8 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   }, [fetchReviews]);
   return (
     <>
-
+ {/* {console.log(loan)} */}
+ {JSON.stringify(loan)}
             <form
             onSubmit={submitHandler}
             className="bg-white p-2 mt-4"
@@ -178,14 +181,14 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                 <div></div>
                 <div>
                   <input type="text"  onChange={(e) => setItmName(e.target.value)}
-                  name="itmName"/>
-                  <input type="text"  onChange={(e) => setEstimated_price_old(e.target.value)}
+                  name="itmName" placeholder="Description"/>
+                  <input type="text"  onChange={(e) => setKarat(e.target.value)}
+                  name="review" placeholder="Price"/>
+                  <input type="text"  onChange={(e) => setNet_weight(e.target.value)}
                   name="review"/>
-                  <input type="text"  onChange={(e) => setLoan_price_old(e.target.value)}
+                  <input type="text"  onChange={(e) => setPound(e.target.value)}
                   name="review"/>
-                  <input type="text"  onChange={(e) => setInterest_old(e.target.value)}
-                  name="review"/>
-                  <input type="text"  onChange={(e) => setExpected_price_old(e.target.value)}
+                  <input type="text"  onChange={(e) => setStatus(e.target.value)}
                   name="review"/>
                   <button type="submit">Submit</button>
   

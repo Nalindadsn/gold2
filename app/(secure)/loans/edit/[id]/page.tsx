@@ -15,26 +15,19 @@ function Edit(props: any) {
     const loanService = useLoanService();
     const loan = loanService.loan;
 
-    const userService = useUserService();
-    const user:any = userService.user;
     
     useEffect(() => {
         if (!props.params.id) return;
-        loanService.getById(props.params.id)
         if (!props.searchParams.id) return;
-        userService.getById(props.searchParams.id)
+        loanService.getById(props.params.id)
     }, [router]);
 
     return loan
         ?(<>
-        <AddEditUser title="user Edit" user={user}/>
-        <AddEdit title="Edit Loan" loan={loan}/>
         <AddEditItem title="Edit Loan" loan={loan} />
+        <AddEdit title="Edit Loan" loan={loan}/>
         </> )
         : 
         <Spinner />
         ;
-    // return (
-    //     <></>
-    // )
 }
