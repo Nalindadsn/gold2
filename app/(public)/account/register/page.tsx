@@ -17,7 +17,7 @@ function Register() {
     const fields = {
         firstName: register('firstName', { required: 'First Name is required' }),
         lastName: register('lastName', { required: 'Last Name is required' }),
-        username: register('username', { required: 'Username is required' }),
+        username: register('username', { required: 'NIC is required' }),
         password: register('password', {
             required: 'Password is required',
             minLength: { value: 6, message: 'Password must be at least 6 characters' }

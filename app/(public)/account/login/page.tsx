@@ -15,7 +15,7 @@ function Login() {
     const { errors } = formState;
 
     const fields = {
-        username: register('username', { required: 'Username is required' }),
+        username: register('username', { required: 'NIC is required' }),
         password: register('password', { required: 'Password is required' })
     };
 
