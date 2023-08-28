@@ -27,7 +27,7 @@ function Edit(props:any) {
 
     return user
         ?<>
-        <AddUser title='Add User' user={user}/>
+        <AddUser title='Add Customer' user={user}/>
         <AddEdit title="Edit Loan" loan={loan}  />
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
         </> 
