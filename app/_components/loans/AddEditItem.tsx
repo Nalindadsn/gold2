@@ -131,11 +131,11 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
         status: status ? status : "NOT ISSUE",
       };
       await loanService.updateItem(loan.id, data);
+      fetchReviews();
       setLoading(false);
       //enqueueSnackbar('Review submitted successfully', { variant: 'success' });
 
       // toast.success('Review submitted successfully');
-      fetchReviews();
     } catch (err) {
       setLoading(false);
 
