@@ -36,6 +36,7 @@ async function create(params: any) {
     //     throw 'Loanname "' + params.loanname + '" is already taken';
     // }
 
+
     const loan = new Loan(params);
 
     // hash password
@@ -57,9 +58,9 @@ async function update(id: string, params: any) {
     // copy params properties to loan
     Object.assign(loan, params);
     await loan.save();
-    await getById(id)
 }
 async function updateItem(id: string, params: any) {
+    console.log("loans-repo")
     const loan = await Loan.findById(id);
     // validate
     if (!loan) throw 'Loan not found';

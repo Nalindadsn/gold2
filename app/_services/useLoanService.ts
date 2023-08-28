@@ -76,6 +76,8 @@ function useLoanService(): ILoanService {
       await fetch.post("/api/loans", loan);
     },
     update: async (id, params) => {
+      
+      console.log("update Service")
       loanStore.setState({ loan: undefined });
       try {
         console.log(params.estimated_price_old);
@@ -91,16 +93,21 @@ function useLoanService(): ILoanService {
       }
     },
     updateItem: async (id, params) => {
-      // console.log("sn")
-      // console.log(params)
-      // console.log("sn")
-      await fetch.put(`/api/loan-item/${id}`, params);
-      // router.push(`/loans/view-data/${id}`);
-      // update current loan if the loan updated their own record
-      if (id === currentLoan?.id) {
-        loanStore.setState({ currentLoan: { ...currentLoan, ...params } });
+      console.log("updateItem Service")
+      
+      // loanStore.setState({ loan: undefined });
+      try {
+        console.log(params.estimated_price_old);
+
+        await fetch.put(`/api/loan-item/${id}`, params);
+
+        
+        // loanStore.setState({ loan: await fetch.get(`/api/loan-item/${id}`) });
+      } catch (error: any) {
+        alertService.error(error);
       }
-    },
+    }
+    ,
     delete: async (id) => {
       // set isDeleting prop to true on loan
       loanStore.setState({
@@ -141,6 +148,7 @@ interface ILoanItem {
   name: string;
   karat: string;
   net_weight: string;
+  total_weight: string;
   pound: string;
   isDeleting?: boolean;
 }

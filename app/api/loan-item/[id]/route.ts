@@ -7,11 +7,28 @@ import { loansRepo } from '_helpers/server';
 
 module.exports = apiHandler({
     GET: getById,
-    PUT: updateItem,
+    PUT: update,
     POST: addItem,
     DELETE: _delete
 });
+async function update(req: Request, { params: { id } }: any) {
+    const body = await req.json();
+    console.log(body)
+    console.log("api user")
+    
+    const loan= await loansRepo.getById(id);
+    const data:any={
+        name:body.itmName,
+        karat:body.estimated_price_old,
+        net_weight: body.loan_price_old,
+        total_weight: body.expected_price_old,
+        pound: body.interest_old,
+        status: body?.status || "ok", 
+    }
 
+    loan.items.push(data);
+    return await loan.save();
+}
 async function getById(req: Request, { params: { id } }: any) {   
     return await loansRepo.getById(id);
 }

@@ -7,3 +7,6 @@
  .offcanvas-header > button{
     background-color: #e20017;
 }
+input{
+    border: 1px solid #ccc;
+}

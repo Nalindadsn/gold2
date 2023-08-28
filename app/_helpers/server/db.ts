@@ -84,6 +84,7 @@ function loanModel() {
 {
         name:{type:String},
         karat:{type:String},
+        total_weight:{type:String},
         net_weight:{type:String},
         pound:{type:String},
         status:{type:String,default:"ok"}

@@ -109,7 +109,7 @@ function AddEdit({ title, loan }: { title: string; loan?: any }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {JSON.stringify(loan?.items)}
+      {/* {JSON.stringify(loan?.items)} */}
       <br />
       ----total pound------{JSON.stringify(total_pounds)}----
       <br />
