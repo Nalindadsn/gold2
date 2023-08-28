@@ -130,15 +130,13 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
       setLoading(true);
       try {
         const data:any={
-            itmName:"22",
-            estimated_price_old:"44",
-            loan_price_old:"55",
-            interest_old:"66",
-            expected_price_old:"789456"
+            itmName:"223",
+            estimated_price_old:"445",
+            loan_price_old:"555",
+            interest_old:"665",
+            expected_price_old:"7894567"
         }
         await loanService.updateItem(loan.id, data);
-
-
         setLoading(false);
         //enqueueSnackbar('Review submitted successfully', { variant: 'success' });
 
@@ -152,7 +150,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
     };
     const fetchReviews = useCallback(async () => {
       try {
-        const { data } = await axios.get(`/api/loans`);
+        const { data } = await axios.get(`/api/loans/${loan.id}`);
         setReviews(data);
       } catch (err) {
         //enqueueSnackbar(getError(err), { variant: 'error' });
