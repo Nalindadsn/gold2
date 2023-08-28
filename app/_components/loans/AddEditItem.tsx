@@ -259,6 +259,11 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
         </div>
 
         {JSON.stringify(reviews)}
+        {/* {reviews?.map(review =>
+        <>
+        {review?.name}
+        </>
+        )} */}
       </form>
     </>
   );
