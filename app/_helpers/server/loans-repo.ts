@@ -17,60 +17,13 @@ export const loansRepo = {
 
 
 async function getAll() {
-    return await Loan.aggregate([
- 			 	{
- 			 		$lookup:
- 			 		{
-		 			 	from: 'users',
-		 			 	localField: 'user_id',
-		 			 	foreignField: '_id',
-		 			 	as : "customer"
-	 				},
-	 			},
-
-
-				 {
-
- 			 		$lookup:
- 			 		{
-		 			 	from: 'users',
-		 			 	localField: 'officer_id',
-		 			 	foreignField: '_id',
-		 			 	as : "officer"
-
-	 				},	 	
-	 			},
-]);
+    return await Loan.find();
 }
 
 async function getById(id: string) {
     try {
         // {console.log("test123")}
-        return await Loan.aggregate([
-            { $match: { _id: id } },
-                            {
-                                $lookup:
-                                {
-                                    from: 'users',
-                                    localField: 'user_id',
-                                    foreignField: '_id',
-                                    as : "customer"
-                               },
-                           },
-          
-          
-                           {
-          
-                                $lookup:
-                                {
-                                    from: 'users',
-                                    localField: 'officer_id',
-                                    foreignField: '_id',
-                                    as : "officer"
-          
-                               },	 	
-                           },
-          ]);
+        return await Loan.findById(id);
     } catch {
         throw 'Loan Not Found';
     }

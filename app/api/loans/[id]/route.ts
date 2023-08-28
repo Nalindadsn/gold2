@@ -12,6 +12,10 @@ module.exports = apiHandler({
 });
 
 async function getById(req: Request, { params: { id } }: any) {   
+
+
+
+    
     return await loansRepo.getById(id);
 }
 
