@@ -42,6 +42,7 @@ function Loans() {
         if (loans?.length) {
             return (loans.map(loan =>
                 <tr key={loan.id}>
+                    
                     <td>{loan.id}-{loan.estimated_price_old}</td>
                     <td>{loan.loan_price_old}
                     {JSON.stringify(loan.customer[0]?._id)}

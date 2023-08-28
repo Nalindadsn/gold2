@@ -18,8 +18,7 @@ function Users() {
 
     return (
         <>
-            <h1>Users</h1>
-            <Link href="/users/add" className="btn btn-sm btn-success mb-2">Add User</Link>
+            <h1>Customers</h1>
           
           
     <div style={{overflowX:"auto"}}>
