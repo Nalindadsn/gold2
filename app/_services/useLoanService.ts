@@ -138,10 +138,13 @@ function useLoanService(): ILoanService {
 interface ILoan {
   id: string;
   estimated_price_old: string;
+  user_id: any;
+  customer:any;
   loan_price_old: string;
   interest_old: string;
   expected_price_old: string;
   isDeleting?: boolean;
+
 }
 interface ILoanItem {
   id: string;
