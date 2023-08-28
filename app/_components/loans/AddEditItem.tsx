@@ -113,11 +113,11 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
 
 
     const [reviews, setReviews] = useState([]);
-    const [itmName, setItmName] = useState("");
-    const [karat, setKarat] = useState("");
-    const [net_weight, setNet_weight] = useState("");
-    const [total_weight, setTotal_weight] = useState("");
-    const [pound, setPound] = useState("");
+    const [itmName, setItmName] = useState("0");
+    const [karat, setKarat] = useState("0");
+    const [net_weight, setNet_weight] = useState("0");
+    const [total_weight, setTotal_weight] = useState("0");
+    const [pound, setPound] = useState("0");
     const [status, setStatus] = useState("NOT ISSUE");
 
 
@@ -157,10 +157,11 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
         //enqueueSnackbar(getError(err), { variant: 'error' });
       }
     }, []);
-    
+    const net_weight_cal:any=(parseFloat(net_weight)/8).toFixed(4)
   useEffect(() => {
     // async () => {
     fetchReviews();
+
   }, [fetchReviews]);
   return (
     <>
@@ -188,7 +189,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                   name="net_weight" placeholder="Net Weight"/>
                   <input type="text"  onChange={(e) => setTotal_weight(e.target.value)}
                   name="total_weight" placeholder="Total Weight"/>
-                  <input type="text"  onChange={(e) => setPound(e.target.value)}
+                  <input type="text"  onChange={(e) => setPound(e.target.value)} value={net_weight_cal}
                   name="pound" placeholder="Pound"/>
                   
                   <select  onChange={(e) => setStatus(e.target.value)} name="status">
