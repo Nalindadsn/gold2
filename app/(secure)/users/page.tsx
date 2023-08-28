@@ -18,10 +18,10 @@ function Users() {
 
     return (
         <>
+            <Link href="/users/add" className="btn  btn-primary mb-2 float-right">New Customer</Link>
+          
+          
             <h1>Customers</h1>
-            <Link href="/users/add" className="btn  btn-primary mb-2 float-right">Add Customer</Link>
-          
-          
     <div style={{overflowX:"auto",width:"100%"}}>
             <table className="table table-striped">
                 <thead>
