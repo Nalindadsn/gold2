@@ -25,11 +25,16 @@ function Edit(props: any) {
         userService.getById(props.searchParams.id)
     }, [router]);
 
-    return user
-        ?(<>
-        <AddEditUser title="user Edit" user={user}/>
-        <AddEdit title="Edit Loan" loan={loan}/>
-        <AddEditItem title="Edit Loan" loan={loan} />
-        </> )
-        : <Spinner />;
+    // return user
+    //     ?(<>
+    //     {/* <AddEditUser title="user Edit" user={user}/>
+    //     <AddEdit title="Edit Loan" loan={loan}/>
+    //     <AddEditItem title="Edit Loan" loan={loan} /> */}
+    //     </> )
+    //     : 
+    //     <Spinner />
+    //     ;
+    return (
+        <></>
+    )
 }
