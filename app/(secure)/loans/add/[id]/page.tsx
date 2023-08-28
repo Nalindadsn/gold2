@@ -20,15 +20,15 @@ function Edit(props:any) {
     const userService = useUserService();
     const user:any = userService.user;
     useEffect(() => {
-        if (!props.searchParams.id) return;
+        if (!props.params.id) return;
         // loanService.getById(props.params.id)
-        userService.getById(props.searchParams.id)
+        userService.getById(props.params.id)
     }, [router]);
 
     return user
         ?<>
         <AddUser title='Add User' user={user}/>
-        <AddEdit title="Edit Loan" loan={loan} user={user} />
+        <AddEdit title="Edit Loan" loan={loan}  />
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
         </> 
         : <Spinner />;

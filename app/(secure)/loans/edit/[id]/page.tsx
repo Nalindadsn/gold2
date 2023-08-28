@@ -17,13 +17,12 @@ function Edit(props: any) {
 
     const userService = useUserService();
     const user:any = userService.user;
+    
     useEffect(() => {
         if (!props.params.id) return;
         loanService.getById(props.params.id)
         if (!props.searchParams.id) return;
-        // loanService.getById(props.params.id)
         userService.getById(props.searchParams.id)
-{console.log(loan)}
     }, [router]);
 
     return user

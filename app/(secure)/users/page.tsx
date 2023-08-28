@@ -48,7 +48,7 @@ function Users() {
                     <td>{user.lastName}</td>
                     <td>{user.username}</td>
                     <td style={{ whiteSpace: 'nowrap' }}>
-                        <Link href={`/users/edit/${user.id}`} className="btn btn-sm btn-primary me-1">Edit</Link>
+                        <Link href={`/loans/add/${user.id}`} className="btn btn-sm btn-primary me-1">Add Loan</Link>
                         <button onClick={() => userService.delete(user.id)} className="btn btn-sm btn-danger btn-delete-user" style={{ width: '60px' }} disabled={user.isDeleting}>
                             {user.isDeleting
                                 ? <span className="spinner-border spinner-border-sm"></span>
