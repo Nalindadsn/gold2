@@ -83,7 +83,7 @@ updateItem.schema = joi.object({
 });
 
 async function _delete(req: Request, { params: { id } }: any) {
-    await loansRepo.delete(id);
+    await loansRepo.deleteItem(id);
 
     // auto logout if deleted self
     if (id === req.headers.get('loanId')) {

@@ -11,7 +11,8 @@ export const loansRepo = {
     create,
     update,
     updateItem,
-    delete: _delete
+    delete: _delete,
+    _deleteItem: _deleteItem
 };
 
 
@@ -96,6 +97,10 @@ async function updateItem(id: string, params: any) {
 }
 
 async function _delete(id: string) {
+    await Loan.findByIdAndRemove(id);
+}
+
+async function _deleteItem(id: string) {
     await Loan.findByIdAndRemove(id);
 }
 
