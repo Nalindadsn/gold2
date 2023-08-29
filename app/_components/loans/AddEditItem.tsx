@@ -165,7 +165,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
       <form 
         onSubmit={submitHandler}
         className="bg-white p-2 mt-4"
-        style={{ marginLeft: "5%", marginRight: "5%", overflow: "hidden" }}
+        style={{ overflow: "hidden" }}
       >
         <div className="flex flex-wrap -mx-3 mb-6">
           <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">items</h2>
