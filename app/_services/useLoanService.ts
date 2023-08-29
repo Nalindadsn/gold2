@@ -93,7 +93,7 @@ function useLoanService(): ILoanService {
       }
     },
     updateItem: async (id, params) => {
-      console.log("updateItem Service")
+      console.log(params)
             try {
         // console.log(params.estimated_price_old);
         await fetch.put(`/api/loan-item/${id}`, params);        
@@ -125,27 +125,12 @@ function useLoanService(): ILoanService {
         router.push("/account/login");
       }
     },
-    deleteItem: async (id:any,item_id:any) => {
-      // set isDeleting prop to true on loan
-      // loanStore.setState({
-      //   loans: loans!.map((x) => {
-      //     if (x.id === id) {
-      //       x.isDeleting = true;
-      //     }
-      //     return x;
-      //   }),
-      // });
-console.log(id,item_id)
-      // delete loan
-      const response = await fetch.delete(`/api/loan-item/${id}?id=${item_id}`);
+    deleteItem: async (id, params) => {
+      console.log("---")
+      console.log(params)
+      console.log("---")
+      const response = await fetch.put(`/api/loan-item-del/${id}?id=${params}`,params);
 
-      // // remove deleted loan from state
-      // loanStore.setState({ loans: loans!.filter((x) => x.id !== id) });
-
-      // // logout if the loan deleted their own record
-      // if (response.deletedSelf) {
-      //   router.push("/account/login");
-      // }
     },
   };
 }
@@ -164,6 +149,7 @@ interface ILoan {
 
 }
 interface ILoanItem {
+
   id: string;
   name: string;
   karat: string;
@@ -171,6 +157,7 @@ interface ILoanItem {
   total_weight: string;
   pound: string;
   isDeleting?: boolean;
+
 }
 
 interface ILoanStore {
@@ -190,5 +177,5 @@ interface ILoanService extends ILoanStore {
   update: (id: string, params: Partial<ILoan>) => Promise<void>;
   updateItem: (id: string, params: Partial<ILoanItem>) => Promise<void>;
   delete: (id: string) => Promise<void>;
-  deleteItem: (id: string,item_id:any) => Promise<void>;
+  deleteItem: (id: string, params: Partial<ILoanItem>) => Promise<void>;
 }

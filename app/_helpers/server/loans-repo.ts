@@ -13,6 +13,7 @@ export const loansRepo = {
   create,
   update,
   updateItem,
+  deleteItem,
   delete: _delete,
   _deleteItem: _deleteItem,
 };
@@ -129,12 +130,26 @@ async function updateItem(id: string, params: any) {
       { new: true }
     );
 }
+async function deleteItem(id: string, params: any) {
+
+
+
+    await Loan.findOneAndUpdate(
+      { _id: id },
+      { $pull: { items: { _id: params.name  } } },
+      { new: true }
+    );
+
+}
 
 async function _delete(id: string) {
   await Loan.findByIdAndRemove(id);
 }
 
-async function _deleteItem(id: string,item_id:String) {
+async function _deleteItem(id: any,params:any) {
+  console.log("-api2--")
+  console.log(id,params)
+  console.log("-api-ed-")
   await Loan.findOneAndUpdate(
     { _id: "64ec7c7537b6d70c352e5124" },
     { $pull: { items: { _id: "64eccc2bf590bcb257834cc9" } } },
