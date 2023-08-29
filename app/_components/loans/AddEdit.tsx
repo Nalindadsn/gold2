@@ -127,6 +127,7 @@ function AddEdit({
   const [status, setStatus] = useState("NOT ISSUE");
 
   const [loading, setLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   // --------------------------------------------------------
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -502,14 +503,19 @@ function AddEdit({
                   </a>
 
                   <button
-                    onClick={() => loanService.deleteItem(loan?.id, {name:i?._id})}
+                    onClick={() => {
+                      
+                         setIsDeleting(true);
+                        
+                      loanService.deleteItem(loan?.id, {name:i?._id});fetchReviews();
+                      setIsDeleting(false);}  }
                     className="btn btn-sm btn-danger btn-delete-loan"
                     style={{ width: "60px" }}
                     // disabled={true}
-                    disabled={loan?.isDeleting}
+                    disabled={isDeleting}
                   >
-                    {loan?.isDeleting ? (
-                      <span className="spinner-border spinner-border-sm"></span>
+                    {isDeleting ? (<></>
+                      // <span className="spinner-border spinner-border-sm"></span>
                     ) : (
                       <span>Delete</span>
                     )}
