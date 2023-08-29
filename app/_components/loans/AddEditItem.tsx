@@ -108,15 +108,8 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
 
-  interface Items{
-    name:String
-    items:Array<Items>
-  }
-  interface Item{
-    name:String
-    items:Array<Items>
-  }
-  const [reviews, setReviews] = useState<Array<Item>>([]);
+
+  const [reviews, setReviews] = useState([]);
   const [itmName, setItmName] = useState("0");
   const [karat, setKarat] = useState("0");
   const [net_weight, setNet_weight] = useState("0");
@@ -154,7 +147,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   const fetchReviews = useCallback(async () => {
     try {
       const { data } = await axios.get(`/api/loans/${loan.id}`);
-      setReviews(data);
+      setReviews(data.items);
     } catch (err) {
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
@@ -269,12 +262,20 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
         </div>
 
         {JSON.stringify(reviews)}
-        {/* {(reviews?.items).map((i:any) =>
-        <>
-        {i?.name}
-        </>
-        )} */}
+
+
       </form>
+        {(reviews).map((i:any) =>
+        <>
+        {i?.name}<br/>
+        <button onClick={() => loanService.deleteItem(loan.id,i._id)} className="btn btn-sm btn-danger btn-delete-loan" style={{ width: '60px' }} disabled={loan.isDeleting}>
+                            {loan.isDeleting
+                                ? <span className="spinner-border spinner-border-sm"></span>
+                                : <span>Delete</span>
+                            }
+                        </button>
+        </>
+        )}
     </>
   );
 }

@@ -130,19 +130,19 @@ function useLoanService(): ILoanService {
         router.push("/account/login");
       }
     },
-    deleteItem: async (id) => {
+    deleteItem: async (id:any,item_id:any) => {
       // set isDeleting prop to true on loan
-      loanStore.setState({
-        loans: loans!.map((x) => {
-          if (x.id === id) {
-            x.isDeleting = true;
-          }
-          return x;
-        }),
-      });
-
+      // loanStore.setState({
+      //   loans: loans!.map((x) => {
+      //     if (x.id === id) {
+      //       x.isDeleting = true;
+      //     }
+      //     return x;
+      //   }),
+      // });
+console.log(id,item_id)
       // delete loan
-      const response = await fetch.delete(`/api/loans/${id}`);
+      const response = await fetch.delete(`/api/loan-item/${id}?id=${item_id}`);
 
       // // remove deleted loan from state
       // loanStore.setState({ loans: loans!.filter((x) => x.id !== id) });
@@ -195,5 +195,5 @@ interface ILoanService extends ILoanStore {
   update: (id: string, params: Partial<ILoan>) => Promise<void>;
   updateItem: (id: string, params: Partial<ILoanItem>) => Promise<void>;
   delete: (id: string) => Promise<void>;
-  deleteItem: (id: string) => Promise<void>;
+  deleteItem: (id: string,item_id:any) => Promise<void>;
 }
