@@ -54,7 +54,7 @@ function AddEdit({
   async function onSubmit(data: any) {
     alertService.clear();
     const dataV = data;
-    dataV.user_id = "64e5a42d5b71e33051b67ef6";
+    dataV.user_id = user;
     try {
       // create or update loan based on loan prop
       let message;
@@ -108,7 +108,7 @@ function AddEdit({
 
   const arr = loan?.items ? loan?.items : [];
   const total_pounds = arr.reduce(function (acc: any, obj: any) {
-    return acc ? acc : 0 + parseFloat(obj.net_weight) / 8;
+    return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.net_weight):0) / 8;
   }, 0);
 
   const old_mkt_price = (loan?.estimated_price_old / total_pounds).toFixed(2);
@@ -168,7 +168,6 @@ function AddEdit({
     // async () => {
     fetchReviews();
   }, [fetchReviews]);
-  const dateString = "2020-05-14T04:00:00Z";
 
   const formatDate = (dateString: any) => {
     const options: any = {
