@@ -131,7 +131,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
           karat: karat,
           net_weight: net_weight,
           total_weight: total_weight,
-          pound: pound,
+          pound: parseFloat(net_weight)/8,
           status: status ? status : "NOT ISSUE",
         };
         await loanService.updateItem(loan.id, data);
@@ -296,7 +296,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
                       NET WEIGHT - {i?.net_weight}
                     </span>
                     <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      POUNDS - {i?.net_weight}
+                      POUNDS - {i?.pound}
                     </span>
                   </div>
                 </p>
