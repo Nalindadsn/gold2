@@ -112,7 +112,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
     //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
     const [reviews, setReviews] = useState([]);
-    const [itmName, setItmName] = useState("");
+    const [name, setItmName] = useState("");
     const [karat, setKarat] = useState("0");
     const [net_weight, setNet_weight] = useState("0");
     const [total_weight, setTotal_weight] = useState("0");
@@ -123,11 +123,11 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
     // --------------------------------------------------------
     const submitHandler = async (e: any) => {
       e.preventDefault();
-      // console.log(itmName)
+      // console.log(name)
       setLoading(true);
       try {
         const data: any = {
-          name: itmName,
+          name: name,
           karat: karat,
           net_weight: net_weight,
           total_weight: total_weight,
@@ -276,7 +276,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
                   <input
                     type="text"
                     onChange={(e) => setItmName(e.target.value)}
-                    name="itmName"
+                    name="name"
                     className="form-control"
                     placeholder="Description"
                   />

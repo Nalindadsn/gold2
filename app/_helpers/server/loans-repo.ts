@@ -112,7 +112,7 @@ async function update(id: string, params: any) {
 }
 async function updateItem(id: string, params: any) {
 
- console.log(params)
+//  console.log(params)
     const loanD= await loansRepo.getById(id);
     const data:any={
         name:params.name,
