@@ -160,12 +160,101 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
       // async () => {
       fetchReviews();
     }, [fetchReviews]);
-  
-  return (
+    const dateString = '2020-05-14T04:00:00Z'
+
+    const formatDate = (dateString:any) => {
+      const options:any = { year: "numeric", month: "long", day: "numeric", hour: '2-digit', minute: '2-digit', second: '2-digit'}
+      return new Date(dateString).toLocaleDateString(undefined, options)
+    }
+    
+
+    return (
     <>
     
     
     <>
+
+
+    <div className="flex justify-between">
+			<h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">Invoice</h2>
+			<div>
+				<div className="relative mr-4 inline-block">
+					<div className="text-gray-500 cursor-pointer w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center" >
+						<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+							<rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+							<path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
+							<path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
+							<rect x="7" y="13" width="10" height="8" rx="2" />
+						</svg>				  
+					</div>
+					
+				</div>
+				
+				<div className="relative inline-block">
+					<div className="text-gray-500 cursor-pointer w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+							<rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+							<path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -5v5h5" />
+							<path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 5v-5h-5" />
+						</svg>	  
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+    
+		<div className="flex mb-8 justify-between">
+			<div className="w-2/4">
+				<div className="mb-2 md:mb-1 md:flex items-center">
+					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Invoice No.</label>
+					<span className="mr-4 inline-block hidden md:block">:</span>
+					<div className="flex-1">
+      {loan._id}
+					</div>
+				</div>
+				<div className="mb-2 md:mb-1 md:flex items-center">
+					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide"> Created At</label>
+					<span className="mr-4 inline-block hidden md:block">:</span>
+					<div className="flex-1">
+{formatDate(loan.createdAt)}
+					</div>
+				</div>
+				<div className="mb-2 md:mb-1 md:flex items-center">
+					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide"> Updated At</label>
+					<span className="mr-4 inline-block hidden md:block">:</span>
+					<div className="flex-1">
+{formatDate(loan.updatedAt)}
+					</div>
+				</div>
+				<div className="mb-2 md:mb-1 md:flex items-center">
+					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Due date</label>
+					<span className="mr-4 inline-block hidden md:block">:</span>
+					<div className="flex-1">
+					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 js-datepicker-2" id="datepicker2" type="text" placeholder="eg. 17 Mar, 2020" x-model="invoiceDueDate"/>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div className="w-32 h-32 mb-1 border rounded-lg overflow-hidden relative bg-gray-100">
+					<img id="image" className="object-cover w-full h-32" src="https://placehold.co/300x300/e2e8f0/e2e8f0" />
+					
+					<div className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer flex items-center justify-center" >
+						{/* <button type="button" style={{backgroundColor: "rgba(255, 255, 255, 0.65")}} className="hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 text-sm border border-gray-300 rounded-lg shadow-sm">
+							<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-camera" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" >
+								<rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+								<path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+								<circle cx="12" cy="13" r="3" />
+							</svg>							  
+						</button> */}
+            <button className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer flex items-center justify-center"></button>
+					</div>
+				</div>
+				<input name="photo" id="fileInput" accept="image/*" className="hidden" type="file" />
+			</div>
+		</div>
+    
+
       {/* {console.log(loan)} */}
       <div style={{ overflow: "hidden" }}>{JSON.stringify(loan)}</div>
 
