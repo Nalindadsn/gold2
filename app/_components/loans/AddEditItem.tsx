@@ -185,7 +185,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                 </div>
                 <div className="px-1 w-20 text-right">
                   <input
-                    type="number"
+                    type="text"
                     onChange={(e) => setKarat(e.target.value)}
                     name="karat"
                     className="form-control"
