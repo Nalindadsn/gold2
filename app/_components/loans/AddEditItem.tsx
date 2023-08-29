@@ -161,11 +161,12 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   return (
     <>
       {/* {console.log(loan)} */}
-      {JSON.stringify(loan)}
+      <div style={{overflow:"hidden"}}>{JSON.stringify(loan)}</div>
+      
       <form
         onSubmit={submitHandler}
         className="bg-white p-2 mt-4"
-        style={{ marginLeft: "5%", marginRight: "5%" }}
+        style={{ marginLeft: "5%", marginRight: "5%",overflow:"hidden" }}
       >
         <div className="flex flex-wrap -mx-3 mb-6">
           <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">items</h2>
@@ -260,8 +261,10 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
           </div>
           
         </div>
+<div style={{overflow:"hidden"}}>
 
         {JSON.stringify(reviews)}
+</div>
 
 
       </form>
