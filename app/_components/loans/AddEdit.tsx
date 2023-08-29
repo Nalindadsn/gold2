@@ -152,7 +152,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
 </div>
 
         <div className="mb-3 col">
-          <label className="form-label">Estimated Price Old</label>
+          <label className="form-label">Estimated Price (Old)</label>
           <input
             {...fields.estimated_price_old}
             type="text"
@@ -165,7 +165,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
           </div>
         </div>
         <div className="mb-3 col">
-          <label className="form-label">Loan Price Old</label>
+          <label className="form-label">Loan Price (Old)</label>
           <input
             {...fields.loan_price_old}
             type="text"
@@ -180,7 +180,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
       </div>
       <div className="row">
         <div className="mb-3 col">
-          <label className="form-label">Interest Old</label>
+          <label className="form-label">Interest (Old)</label>
           <input
             {...fields.interest_old}
             type="text"
@@ -194,12 +194,8 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
         </div>
         <div className="mb-3 col">
           <label className="form-label">
-            Expected Price Old
-            {loan && (
-              <em className="ms-1">
-                (Leave blank to keep the same expected_price_old)
-              </em>
-            )}
+            Expected Price (Old)
+            
           </label>
           <input
             {...fields.expected_price_old}
