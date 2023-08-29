@@ -231,12 +231,10 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                   </select>
                 </div>
                 <div className="px-1 w-20 text-right">
-                  <a
-                    href="#"
-                    className="text-red-500 hover:text-red-600 text-sm font-semibold"
-                  >
-                    Delete
-                  </a>
+                  
+                  <button className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1" type="reset">
+                    RESET
+                  </button>
                 </div>
               </div>
               <button
