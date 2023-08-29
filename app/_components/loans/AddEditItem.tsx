@@ -107,7 +107,16 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   const basic_estimate_final = loan?.expected_price_old;
   //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
-  const [reviews, setReviews] = useState([]);
+
+  interface Items{
+    name:String
+    items:Array<Items>
+  }
+  interface Item{
+    name:String
+    items:Array<Items>
+  }
+  const [reviews, setReviews] = useState<Array<Item>>([]);
   const [itmName, setItmName] = useState("0");
   const [karat, setKarat] = useState("0");
   const [net_weight, setNet_weight] = useState("0");
@@ -155,6 +164,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
     // async () => {
     fetchReviews();
   }, [fetchReviews]);
+ 
   return (
     <>
       {/* {console.log(loan)} */}
@@ -259,9 +269,9 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
         </div>
 
         {JSON.stringify(reviews)}
-        {/* {reviews?.map(review =>
+        {/* {(reviews?.items).map((i:any) =>
         <>
-        {review?.name}
+        {i?.name}
         </>
         )} */}
       </form>
