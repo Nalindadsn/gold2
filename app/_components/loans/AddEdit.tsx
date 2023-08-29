@@ -65,7 +65,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
     }
   }
   const installment = (n: any,value:any) => {
-    
+
     switch (n) {
       case 60:
         var val = ((value*250 )/100 )/60;

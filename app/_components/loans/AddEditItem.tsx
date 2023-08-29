@@ -107,8 +107,6 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
   const basic_estimate_final = loan?.expected_price_old;
   //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
-
-
   const [reviews, setReviews] = useState([]);
   const [itmName, setItmName] = useState("0");
   const [karat, setKarat] = useState("0");
@@ -152,87 +150,85 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
   }, []);
+  let n:any=1;
   const net_weight_cal: any = (parseFloat(net_weight) / 8).toFixed(4);
   useEffect(() => {
     // async () => {
     fetchReviews();
   }, [fetchReviews]);
- 
+
   return (
     <>
       {/* {console.log(loan)} */}
-      <div style={{overflow:"hidden"}}>{JSON.stringify(loan)}</div>
-      
-      <form
+      <div style={{ overflow: "hidden" }}>{JSON.stringify(loan)}</div>
+
+      <form 
         onSubmit={submitHandler}
         className="bg-white p-2 mt-4"
-        style={{ marginLeft: "5%", marginRight: "5%",overflow:"hidden" }}
+        style={{ marginLeft: "5%", marginRight: "5%", overflow: "hidden" }}
       >
         <div className="flex flex-wrap -mx-3 mb-6">
           <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">items</h2>
           <div className="w-full md:w-full px-3 mb-2 mt-2">
             items
             <div></div>
-            <div>
-
-
+            <div  style={{overflowX:"auto"}}>
               <div className="flex -mx-1 py-2 border-b">
                 <div className="flex-1 px-1">
-                    
-              <input
-                type="text"
-                onChange={(e) => setItmName(e.target.value)}
-                name="itmName"
-                className="form-control"
-                placeholder="Description"
-              />
+                  <input
+                    type="text"
+                    onChange={(e) => setItmName(e.target.value)}
+                    name="itmName"
+                    className="form-control"
+                    placeholder="Description"
+                  />
                 </div>
                 <div className="px-1 w-20 text-right">
-                  
-              <input
-                type="text"
-                onChange={(e) => setKarat(e.target.value)}
-                name="karat"
-                className="form-control"
-                placeholder="Karat"
-              />
+                  <input
+                    type="text"
+                    onChange={(e) => setKarat(e.target.value)}
+                    name="karat"
+                    className="form-control"
+                    placeholder="Karat"
+                  />
                 </div>
                 <div className="px-1 w-20 text-right">
-              <input
-                type="text"
-                onChange={(e) => setNet_weight(e.target.value)}
-                name="net_weight"
-                className="form-control"
-                placeholder="Net Weight"
-              />
+                  <input
+                    type="text"
+                    onChange={(e) => setNet_weight(e.target.value)}
+                    name="net_weight"
+                    className="form-control"
+                    placeholder="Net Weight"
+                  />
                 </div>
                 <div className="px-1 w-20 text-right">
-              <input
-                type="text"
-                onChange={(e) => setTotal_weight(e.target.value)}
-                name="total_weight"
-                className="form-control"
-                placeholder="Total Weight"
-              />
+                  <input
+                    type="text"
+                    onChange={(e) => setTotal_weight(e.target.value)}
+                    name="total_weight"
+                    className="form-control"
+                    placeholder="Total Weight"
+                  />
                 </div>
                 <div className="px-1 w-32 text-right">
-                  
-              <input
-                type="text"
-                onChange={(e) => setPound(e.target.value)}
-                value={net_weight_cal}
-                name="pound"
-                className="form-control"
-                placeholder="Pound"
-              />
+                  <input
+                    type="text"
+                    onChange={(e) => setPound(e.target.value)}
+                    value={net_weight_cal}
+                    name="pound"
+                    className="form-control"
+                    placeholder="Pound"
+                  />
                 </div>
                 <div className="px-1 w-32 text-right">
-                 
-              <select onChange={(e) => setStatus(e.target.value)} name="status" 
-                className="form-control">
-                <option>NOT ISSUE</option>
-                <option>ISSUE</option>
-              </select>
+                  <select
+                    onChange={(e) => setStatus(e.target.value)}
+                    name="status"
+                    className="form-control"
+                  >
+                    <option>NOT ISSUE</option>
+                    <option>ISSUE</option>
+                  </select>
                 </div>
                 <div className="px-1 w-20 text-right">
                   <a
@@ -259,26 +255,65 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
               {loading && "..."}
             </div>
           </div>
-          
         </div>
-<div style={{overflow:"hidden"}}>
-
-        {JSON.stringify(reviews)}
-</div>
-
-
       </form>
-        {(reviews).map((i:any) =>
+
+      {reviews.map((i: any) => (
         <>
-        {i?.name}<br/>
-        <button onClick={() => loanService.deleteItem(loan.id,i._id)} className="btn btn-sm btn-danger btn-delete-loan" style={{ width: '60px' }} disabled={loan.isDeleting}>
-                            {loan.isDeleting
-                                ? <span className="spinner-border spinner-border-sm"></span>
-                                : <span>Delete</span>
-                            }
-                        </button>
+        
+          <article className="overflow-hidden rounded-lg shadow-lg bg-gray-800 mb-3">
+            <div className="flex items-center justify-between leading-none p-2 md:p-4">
+              <a
+                className="flex items-center no-underline  text-black"
+                href="#"
+              >
+                <span className="bg-orange-300 rounded-lg p-3 mr-3">{n++}</span>
+                <p className="ml-2 text-sm">
+                  <span className="text-white">{i?.name} &nbsp;
+                  {
+                    i?.status=="NOT ISSUE"?(
+                      <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">{i?.status}</span>
+
+                    ):(
+                      <span className="bg-red-600 text-blue-100 py-0 px-2 rounded-full text-sm ">{i?.status}</span>
+
+                    )
+                  }
+              </span>
+                  <br />
+                  <div>
+                    
+                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1 ">
+                      TOTAL WEIGHT - {i?.total_weight}
+                    </span>
+                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
+                      NET WEIGHT - {i?.net_weight}
+                    </span>
+                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
+                      POUNDS - {i?.net_weight}
+                    </span>
+                  </div>
+                </p>
+              </a>
+              
+          <button
+            onClick={() => loanService.deleteItem(loan.id, i._id)}
+            className="btn btn-sm btn-danger btn-delete-loan"
+            style={{ width: "60px" }}
+            disabled={true}
+            // disabled={loan.isDeleting}
+          >
+            {loan.isDeleting ? (
+              <span className="spinner-border spinner-border-sm"></span>
+            ) : (
+              <span>Delete</span>
+            )}
+          </button>
+            </div>
+          </article>
+
         </>
-        )}
+      ))}
     </>
   );
 }
