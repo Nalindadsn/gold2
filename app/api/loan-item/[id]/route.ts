@@ -13,21 +13,31 @@ module.exports = apiHandler({
 });
 async function update(req: Request, { params: { id } }: any) {
     const body = await req.json();
-    console.log(body)
-    console.log("api user")
-    
-    const loan= await loansRepo.getById(id);
-    const data:any={
-        name:body.itmName,
+        const data:any={
+        name:body.name,
         karat:body.karat,
         net_weight: body.net_weight,
         total_weight: body.total_weight,
         pound: body.pound,
         status: body?.status || "ok", 
     }
+    await loansRepo.updateItem(id, data);
+    // const body = await req.json();
+    // console.log(body)
+    // console.log("api user")
+    
+    // const loan= await loansRepo.getById(id);
+    // const data:any={
+    //     name:body.itmName,
+    //     karat:body.karat,
+    //     net_weight: body.net_weight,
+    //     total_weight: body.total_weight,
+    //     pound: body.pound,
+    //     status: body?.status || "ok", 
+    // }
 
-    loan.items.push(data);
-    return await loan.save();
+    // loan.items.push(data);
+    // return await loan.save();
 }
 async function getById(req: Request, { params: { id } }: any) {   
     return await loansRepo.getById(id);
@@ -55,11 +65,10 @@ async function addItem(req: Request, { params: { id } }: any) {
 async function updateItem(req: Request, { params: { id } }: any) {
     const body = await req.json();
     const loan= await loansRepo.getById(id);
-    console.log(body.name)
     // console.log(loan)
     //  const product = await loansRepo.findById(id);
     const items = {
-      name:body.name,
+      name:body.itmName,
       karat:body.karat,
       net_weight: body.net_weight,
       pound: body.pound,

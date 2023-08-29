@@ -111,16 +111,23 @@ async function update(id: string, params: any) {
   await loan.save();
 }
 async function updateItem(id: string, params: any) {
-  console.log("loans-repo");
-  const loan = await Loan.findById(id);
-  // validate
-  if (!loan) throw "Loan not found";
-  if (params.password) {
-    params.hash = bcrypt.hashSync(params.password, 10);
-  }
-  // copy params properties to loan
-  Object.assign(loan, params);
-  await loan.save();
+
+ console.log(params)
+    const loanD= await loansRepo.getById(id);
+    const data:any={
+        name:params.name,
+        karat:params.karat,
+        net_weight: params.net_weight,
+        total_weight: params.total_weight,
+        pound: params.pound,
+        status: params?.status || "ok", 
+    }
+
+    await Loan.findOneAndUpdate(
+      { _id: id },
+      { $push: { items: data } },
+      { new: true }
+    );
 }
 
 async function _delete(id: string) {

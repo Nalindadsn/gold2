@@ -112,7 +112,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
     //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
     const [reviews, setReviews] = useState([]);
-    const [itmName, setItmName] = useState("0");
+    const [itmName, setItmName] = useState("");
     const [karat, setKarat] = useState("0");
     const [net_weight, setNet_weight] = useState("0");
     const [total_weight, setTotal_weight] = useState("0");
@@ -127,7 +127,7 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
       setLoading(true);
       try {
         const data: any = {
-          itmName: itmName,
+          name: itmName,
           karat: karat,
           net_weight: net_weight,
           total_weight: total_weight,
@@ -227,17 +227,19 @@ function AddEdit({ title, loan,user }: { title: string; loan?: any ;user?:any}) 
 {formatDate(loan.updatedAt)}
 					</div>
 				</div>
-				<div className="mb-2 md:mb-1 md:flex items-center">
-					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Due date</label>
-					<span className="mr-4 inline-block hidden md:block">:</span>
-					<div className="flex-1">
-					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 js-datepicker-2" id="datepicker2" type="text" placeholder="eg. 17 Mar, 2020" x-model="invoiceDueDate"/>
-					</div>
-				</div>
+				
 			</div>
 			<div>
+        
+				<div className="mb-2 md:mb-1 md:flex items-center">
+					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide"> NIC</label>
+					<span className="mr-4 inline-block hidden md:block">:</span>
+					<div className="flex-1">
+{loan.customer[0].username}
+					</div>
+				</div>
 				<div className="w-32 h-32 mb-1 border rounded-lg overflow-hidden relative bg-gray-100">
-					<img id="image" className="object-cover w-full h-32" src="https://placehold.co/300x300/e2e8f0/e2e8f0" />
+
 					
 					<div className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer flex items-center justify-center" >
 						{/* <button type="button" style={{backgroundColor: "rgba(255, 255, 255, 0.65")}} className="hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 text-sm border border-gray-300 rounded-lg shadow-sm">

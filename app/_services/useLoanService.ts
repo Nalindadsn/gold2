@@ -94,14 +94,9 @@ function useLoanService(): ILoanService {
     },
     updateItem: async (id, params) => {
       console.log("updateItem Service")
-      
-      // loanStore.setState({ loan: undefined });
-      try {
+            try {
         // console.log(params.estimated_price_old);
-
-        await fetch.put(`/api/loan-item/${id}`, params);
-
-        
+        await fetch.put(`/api/loan-item/${id}`, params);        
         // loanStore.setState({ loan: await fetch.get(`/api/loan-item/${id}`) });
       } catch (error: any) {
         alertService.error(error);
