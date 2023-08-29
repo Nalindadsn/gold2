@@ -194,7 +194,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                 </div>
                 <div className="px-1 w-20 text-right">
                   <input
-                    type="number"
+                    type="text"
                     onChange={(e) => setNet_weight(e.target.value)}
                     name="net_weight"
                     className="form-control"
@@ -203,7 +203,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                 </div>
                 <div className="px-1 w-20 text-right">
                   <input
-                    type="number"
+                    type="text"
                     onChange={(e) => setTotal_weight(e.target.value)}
                     name="total_weight"
                     className="form-control"
@@ -212,7 +212,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                 </div>
                 <div className="px-1 w-32 text-right">
                   <input
-                    type="number"
+                    type="text"
                     onChange={(e) => setPound(e.target.value)}
                     value={net_weight_cal}
                     name="pound"
