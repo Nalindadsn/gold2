@@ -2,6 +2,8 @@
 import bcrypt from "bcryptjs";
 // import { headers } from 'next/headers';
 import { db } from "./db";
+import mongoose from "mongoose";
+
 
 const Loan = db.Loan;
 
@@ -17,6 +19,7 @@ export const loansRepo = {
 
 async function getAll() {
   return await Loan.aggregate([
+    
     {
       $lookup: {
         from: "users",
@@ -44,7 +47,36 @@ async function getAll() {
 async function getById(id: string) {
   try {
     // {console.log("test123")}
-    return await Loan.findById(id);
+    const loan= await Loan.aggregate([
+ 
+  {
+    "$match": {
+      "_id": new mongoose.Types.ObjectId("64ec7d7237b6d70c352e5138")
+    }
+  },
+        {
+          $lookup: {
+            from: "users",
+            localField: "user_id",
+            foreignField: "_id",
+            as: "customer",
+          },
+        },
+        {
+          $lookup: {
+            from: "users",
+            localField: "officer_id",
+            foreignField: "_id",
+            as: "officer",
+          },
+        },
+        {
+          $addFields: {
+            id: "$_id",
+          },
+        },
+      ]);
+      return loan[0]
   } catch {
     throw "Loan Not Found";
   }
