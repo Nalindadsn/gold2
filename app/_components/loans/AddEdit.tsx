@@ -106,7 +106,8 @@ function AddEdit({
     return val.toFixed(2);
   };
 
-  const arr = loan?.items ? loan?.items : [];
+  const [reviews, setReviews] = useState([]);
+  const arr = reviews ? reviews : [];
   const total_pounds = arr.reduce(function (acc: any, obj: any) {
     return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.net_weight):0) / 8;
   }, 0);
@@ -118,7 +119,6 @@ function AddEdit({
   const basic_estimate_final = loan?.expected_price_old;
   //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
-  const [reviews, setReviews] = useState([]);
   const [name, setItmName] = useState("");
   const [karat, setKarat] = useState("0");
   const [net_weight, setNet_weight] = useState("0");
@@ -337,18 +337,7 @@ function AddEdit({
               <span className="mr-4 inline-block hidden md:block">:</span>
               <div className="flex-1">{loan?.customer[0]?.username}</div>
             </div>
-            <div className="w-32 h-32 mb-1 border rounded-lg overflow-hidden relative bg-gray-100">
-              <div className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer flex items-center justify-center">
-                {/* <button type="button" style={{backgroundColor: "rgba(255, 255, 255, 0.65")}} className="hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 text-sm border border-gray-300 rounded-lg shadow-sm">
-							<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-camera" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" >
-								<rect x="0" y="0" width="24" height="24" stroke="none"></rect>
-								<path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
-								<circle cx="12" cy="13" r="3" />
-							</svg>							  
-						</button> */}
-                <button className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer flex items-center justify-center"></button>
-              </div>
-            </div>
+            
             <input
               name="photo"
               id="fileInput"
@@ -462,6 +451,10 @@ function AddEdit({
           </div>
         </form>
         <div className="bg-white p-2 mt-4">
+        {loading && (
+                                <span className="spinner-border spinner-border-sm"></span>
+
+        )}
           {reviews.map((i: any) => (
             <>
               <article className="overflow-hidden rounded-lg shadow-lg bg-gray-800 mb-3">
@@ -503,18 +496,18 @@ function AddEdit({
 
                   <button
                     onClick={() => {
+                       
                       
-                         setIsDeleting(true);
-                        
-                      loanService.deleteItem(loan?.id, {name:i?._id});fetchReviews();
-                      setIsDeleting(false);}  }
+                      loanService.deleteItem(loan?.id, {name:i?._id});
+                      fetchReviews();
+                    }  }
                     className="btn btn-sm btn-danger btn-delete-loan"
                     style={{ width: "60px" }}
-                    // disabled={true}
-                    disabled={isDeleting}
+                    //  disabled={true}
+                    // disabled={isDeleting}
                   >
-                    {isDeleting ? (<></>
-                      // <span className="spinner-border spinner-border-sm"></span>
+                    {isDeleting ? (
+                      <span className="spinner-border spinner-border-sm"></span>
                     ) : (
                       <span>Delete</span>
                     )}
