@@ -23,7 +23,7 @@ const EditUserForm = props => {
   };
 
   return (
-    <form
+<form
       onSubmit={event => {
 
         event.preventDefault();
@@ -34,47 +34,73 @@ const EditUserForm = props => {
         resetAddUser();
       }}
     >
-      <label>Name</label>
+      <div
+    className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
+    <div className="px-1  ">
+
+      <label className="ml-2">Name</label>
       <input
         type="text"
+        className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         name="name"
         value={task.name}
         onChange={handleInputChange}
       />
-      <label>Karat</label>
+    </div>
+      <div className="px-1  ">
+
+      <label className="ml-2">Karat</label>
       <input
         type="text"
+        className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         name="karat"
         value={task.karat}
         onChange={handleInputChange}
       />
-      <label>Net Weight</label>
+      </div>
+      <div className="px-1  ">
+
+      <label className="ml-2">Net Weight</label>
       <input
         type="text"
+        className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         name="net_weight"
         value={task.net_weight}
         onChange={handleInputChange}
       />
-      <label>Total Weight</label>
+      </div>
+      <div className="px-1  ">
+
+      <label className="ml-2">Total Weight</label>
       <input
         type="text"
+        className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         name="total_weight"
         value={task.total_weight}
         onChange={handleInputChange}
       />
-      <label>Pound</label>
+      </div>
+      <div className="px-1  ">
+
+      <label className="ml-2">Pound</label>
       <input
         type="text"
+        className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         name="pound"
         value={task.pound}
         onChange={handleInputChange}
       />
-      <button>{props.editing ? "Update task" : "Add task"}</button>
+      </div>
+      </div>
+      <div className="w-full">
+        
+      <button>{props.editing ? "Update Item" : "Add Item"}</button>
       {props.editing && (
         <button onClick={resetAddUser} className="button muted-button">
           Cancel
         </button>
       )}
+      </div>
     </form>
   );
 };

@@ -582,18 +582,19 @@ function AddEdit({
         <div className="bg-white p-2 mt-4">
           {reviews.map((i: any) => (
             <>
-              <article className="overflow-hidden rounded-lg shadow-lg bg-gray-800 mb-3">
-                <div className="flex items-center justify-between leading-none p-2 md:p-4">
-                  <a
-                    className="flex items-center no-underline  text-black"
-                    href="#"
-                  >
-                    <span className="bg-orange-300 rounded-lg p-3 mr-3">
+
+
+<div className="flex w-full flex-col md:flex-row  pb-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-3">
+    
+  
+  
+  <div className="flex-2 px-1 w-full">
+  <p className="ml-2 text-sm">
+                      <span className="text-white">
+                        <span className="  bg-orange-300 rounded-sm px-2 mr-3">
                       {n++}
                     </span>
-                    <p className="ml-2 text-sm">
-                      <span className="text-white">
-                        {i?.name} &nbsp;
+  {i?.name} &nbsp;
                         {i?.status == "NOT ISSUE" ? (
                           <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
                             {i?.status}
@@ -606,21 +607,16 @@ function AddEdit({
                       </span>
                       <br />
                       <div>
-                        <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1 ">
-                          TOTAL WEIGHT - {i?.total_weight}
-                        </span>
-                        <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                          NET WEIGHT - {i?.net_weight}
-                        </span>
-                        <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                          POUNDS - {i?.pound}
-                        </span>
+                        
+<div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
+  <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">TOTAL WEIGHT - {i?.total_weight}</div>
+  <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">NET WEIGHT - {i?.net_weight}</div>
+  <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">POUNDS - {i?.pound}</div>
+</div>
                       </div>
                     </p>
-                    {loan?.id}-{i?._id}
-                  </a>
-                  {/* <form onSubmit={submitHandlerDel} > */}
-
+  </div>
+  <div className="px-1 text-right">
                   <button
                     onClick={() => submitHandlerDel(loan?.id, { name: i?._id })}
                     // onClick={() => {
@@ -628,7 +624,7 @@ function AddEdit({
                     //   loanService.deleteItem(loan?.id, {name:i?._id});
                     //   fetchReviews();
                     // }  }
-                    className="btn btn-sm btn-danger btn-delete-loan"
+                    className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
                     style={{ width: "60px" }}
                     //  disabled={true}
                     // disabled={isDeleting}
@@ -638,10 +634,9 @@ function AddEdit({
                     ) : (
                       <span>Delete</span>
                     )}
-                  </button>
-                  {/* </form> */}
-                </div>
-              </article>
+                  </button></div>
+</div>
+
             </>
           ))}
         </div>
