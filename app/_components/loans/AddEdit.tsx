@@ -126,9 +126,9 @@ function AddEdit({
   //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
   const [name, setItmName] = useState("");
-  const [karat, setKarat] = useState("0");
-  const [net_weight, setNet_weight] = useState("0");
-  const [total_weight, setTotal_weight] = useState("0");
+  const [karat, setKarat] = useState("");
+  const [net_weight, setNet_weight] = useState("");
+  const [total_weight, setTotal_weight] = useState("");
   const [pound, setPound] = useState("0");
   const [status, setStatus] = useState("NOT ISSUE");
 
