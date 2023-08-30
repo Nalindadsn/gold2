@@ -51,6 +51,16 @@ function AddEdit({
       validate: (value) =>
         !loan && !value ? "expected_price_old is required" : undefined,
     }),
+    
+    expected_month: register("expected_month", {
+      required: "expected_month is required",
+    }),
+    decided_price: register("decided_price", {
+      required: "decided_price is required",
+    }),
+    no_of_month: register("no_of_month", {
+      required: "no_of_month is required",
+    }),
   };
 
   async function onSubmit(data: any) {
@@ -68,8 +78,7 @@ function AddEdit({
         message = "Loan added";
       }
 
-      // redirect to loan list with success message
-      router.push(`/loans`);
+      loan? router.push(`/loans/edit/${loan?.id}`):null;
       // router.refresh()
       alertService.success(message, true);
     } catch (error: any) {
@@ -166,11 +175,6 @@ function AddEdit({
   // --------------------------------------------------------
   const submitHandlerDel = async (e: any,b:any) => {
 
-    // e.preventDefault();
-    console.log("------ccccc-----------")
-    console.log(e,b)
-    console.log("-------dddddd----------")
-    // console.log(name)
     setLoading(true);
     try {
       await loanService.deleteItem(e, b);
@@ -667,6 +671,17 @@ CUSTOMER
               {errors.interest_old?.message?.toString()}
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+          
           <div className="mb-3 col">
             <label className="form-label">Expected Price (Old)</label>
             <input
@@ -680,6 +695,48 @@ CUSTOMER
               {errors.expected_price_old?.message?.toString()}
             </div>
           </div>
+
+          <div className="mb-3 col">
+            <label className="form-label">expected_month(Old)</label>
+            <input
+              {...fields.expected_month}
+              type="expected_month"
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.expected_month ? "is-invalid" : ""
+              }`}
+            />
+            <div className="invalid-feedback">
+              {errors.expected_month?.message?.toString()}
+            </div>
+          </div>
+          <div className="mb-3 col">
+            <label className="form-label">decided_price(Old)</label>
+            <input
+              {...fields.decided_price}
+              type="decided_price"
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.decided_price ? "is-invalid" : ""
+              }`}
+            />
+            <div className="invalid-feedback">
+              {errors.decided_price?.message?.toString()}
+            </div>
+          </div>
+          <div className="mb-3 col">
+            <label className="form-label">no_of_month(Old)</label>
+            <input
+              {...fields.no_of_month}
+              type="no_of_month"
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.no_of_month ? "is-invalid" : ""
+              }`}
+            />
+            <div className="invalid-feedback">
+              {errors.no_of_month?.message?.toString()}
+            </div>
+          </div>
+
+
         </div>
         <div className="mb-3">
           <button
