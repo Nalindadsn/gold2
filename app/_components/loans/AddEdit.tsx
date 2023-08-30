@@ -395,6 +395,7 @@ function AddEdit({
                       name="name"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Description"
+                      required
                     />
                   </div>
                   <div className="px-1  text-right">
@@ -413,6 +414,7 @@ function AddEdit({
                       name="net_weight"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Net Weight"
+                      required
                     />
                   </div>
                   <div className="px-1  text-right">
@@ -422,6 +424,7 @@ function AddEdit({
                       name="total_weight"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Total Weight"
+                      required
                     />
                   </div>
                   <div className="px-1 w-32 text-right">
@@ -432,6 +435,7 @@ function AddEdit({
                       name="pound"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Pound"
+                      required
                     />
                   </div>
                   <div className="px-1 w-32 text-right">
