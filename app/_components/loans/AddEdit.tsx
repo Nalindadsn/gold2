@@ -581,10 +581,10 @@ function AddEdit({
         </form>
         <div className="bg-white p-2 mt-4">
           {reviews.map((i: any) => (
-            <>
+            <div key ={n++}>
 
 
-<div className="flex w-full flex-col md:flex-row  pb-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-3">
+<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-3">
     
   
   
@@ -592,7 +592,7 @@ function AddEdit({
   <p className="ml-2 text-sm">
                       <span className="text-white">
                         <span className="  bg-orange-300 rounded-sm px-2 mr-3">
-                      {n++}
+                      {n}
                     </span>
   {i?.name} &nbsp;
                         {i?.status == "NOT ISSUE" ? (
@@ -637,7 +637,7 @@ function AddEdit({
                   </button></div>
 </div>
 
-            </>
+            </div>
           ))}
         </div>
   </>
