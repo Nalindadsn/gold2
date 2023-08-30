@@ -325,8 +325,10 @@ function AddEdit({
                 {" "}
                 NIC : {loan?.customer[0]?.username}
               </label>
-              <span className="mr-4 inline-block hidden md:block">:</span>
               <div className="flex-1"></div>
+            </div>
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo incidunt suscipit blanditiis voluptate eos. Incidunt obcaecati, laboriosam deserunt, eligendi doloribus animi, tempora accusantium architecto accusamus ullam ducimus in ad minima?
             </div>
             
             <input
@@ -368,7 +370,10 @@ function AddEdit({
 </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-full px-3 mb-2 mt-2">
-            <h2 className=" text-gray-800 text-lg">items</h2>
+            <h2 className=" text-gray-800 text-lg">items 
+                          <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                            NO OF ITEMS : {reviews.length}
+                          </span></h2>
               <div>
                 <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                   <div className="flex-1 px-1">
@@ -451,7 +456,6 @@ function AddEdit({
                   Add Item
                 </button>
 
-                <button type="submit">Submit</button>
 
               </div>
             </div>
