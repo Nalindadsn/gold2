@@ -303,7 +303,7 @@ function AddEdit({
               <div className="flex-1">{loan?formatDate(loan?.updatedAt):""}</div>
             </div>
             
-          <div>
+          <div className='bg-gray-200 p-2 mb-1'>
             <div className="flex items-center justify-between leading-none p-2 md:p-4">
               <a
                 className="flex items-center no-underline  text-black"
@@ -318,31 +318,29 @@ function AddEdit({
                   data-nimg="1"
                   className="block rounded-full"
                 />
-                <div className="ml-2 text-xl">
+                <div className="ml-2 text-xl -mt-8">
                   <div className="text-gray-800 mt-1 font-bold">
                     <span>{loan?.officer[0]?.firstName+" "+loan?.officer[0]?.lastName}</span> 
                   </div>                  
                 </div>
               </a>
             </div>
-            <div className="-mt-5">
+            <div className="-mt-8">
               <label className="pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
                 {" "}
                 NIC : {loan?.officer[0]?.username}
               </label>
               <div className="flex-1"></div>
             </div>
+            <div className='m-2'>
+
+            CREATED BY 
+            </div>
             
-            <input
-              name="photo"
-              id="fileInput"
-              accept="image/*"
-              className="hidden"
-              type="file"
-            />
           </div>
           </div>
           <div>
+            <div className=' bg-gray-200'>
             <div className="flex items-center justify-between leading-none p-2 md:p-4">
               <a
                 className="flex items-center no-underline  text-black"
@@ -357,22 +355,28 @@ function AddEdit({
                   data-nimg="1"
                   className="block rounded-full"
                 />
-                <div className="ml-2 text-xl">
+                <div className="ml-2 text-xl -mt-5">
                   <div className="text-gray-800 mt-1 font-bold">
                     <span>{loan?.customer[0]?.firstName+" "+loan?.customer[0]?.lastName}</span> 
                   </div>                  
                 </div>
               </a>
+              
             </div>
-            <div className="-mt-5">
-              <label className="pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
+            <div className="-mt-8">
+              <label className=" pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
                 {" "}
                 NIC : {loan?.customer[0]?.username}
               </label>
               <div className="flex-1"></div>
             </div>
+            <div className='m-2 text-bold'>
+
+CUSTOMER 
+</div>
+</div>
             <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo incidunt suscipit blanditiis voluptate eos. Incidunt obcaecati, laboriosam deserunt, eligendi doloribus animi, tempora accusantium architecto accusamus ullam ducimus in ad minima?
+
             </div>
             
             <input
