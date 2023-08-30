@@ -543,7 +543,7 @@ CUSTOMER
                       required
                     />
                   </div>
-                  <div className="px-1 w-32 text-right">
+                  <div className="px-1  text-right">
                     <input
                       type="text"
                       onChange={(e) => setPound(e.target.value)}
@@ -557,7 +557,7 @@ CUSTOMER
 
 
                   
-                  <div className="px-1 w-32 text-right">
+                  <div className="px-1  text-right">
                     <select
                       onChange={(e) => setStatus(e.target.value)}
                       name="status"
