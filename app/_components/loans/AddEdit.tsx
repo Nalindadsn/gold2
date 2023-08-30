@@ -592,7 +592,7 @@ function AddEdit({
   
   
   <div className="flex-2 px-1 w-full">
-  <p className="ml-2 text-sm">
+  <div className="ml-2 text-sm">
                       <span className="text-white">
                         <span className="  bg-orange-300 rounded-sm px-2 mr-3">
                       {n}
@@ -617,7 +617,7 @@ function AddEdit({
   <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">POUNDS - {i?.pound}</div>
 </div>
                       </div>
-                    </p>
+                    </div>
   </div>
   <div className="px-1 text-right">
                   <button
@@ -680,7 +680,7 @@ function AddEdit({
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-2 mt-4"
+        className="bg-white p-2 mt-2"
         // style={{ marginLeft: "5%", marginRight: "5%" }}
       >
         {/* {JSON.stringify(loan?.items)} */}
@@ -718,13 +718,13 @@ function AddEdit({
         ----installments-6-
         {JSON.stringify(installment(6, basic_estimate_final))}----
         <br />
-        <h1 className="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
+        <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
         <div className="flex flex-col md:flex-row -mx-1 py-2 border-b"><div className="px-1"></div><div className="px-1  text-right">Total Weight : 1.8750</div><div className="px-1  text-right">Net Weight : 123.0000</div><div className="px-1  text-right">total pound : 15.3750</div></div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           
 
-          <div className="p-2">
-            <label className="form-label">Estimated Price (Old)</label>
+          <div className="p-2 ml-1">
+            <label className="form-label ml-2 ">Estimated Price (Old)</label>
             <input
               {...fields.estimated_price_old}
               type="text"
@@ -737,7 +737,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">Loan Price (Old)</label>
+            <label className="form-label ml-2 ">Loan Price (Old)</label>
             <input
               {...fields.loan_price_old}
               type="text"
@@ -753,7 +753,7 @@ function AddEdit({
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="p-2">
-            <label className="form-label">Interest (Old)</label>
+            <label className="form-label ml-2 ">Interest (Old)</label>
             <input
               {...fields.interest_old}
               type="text"
@@ -767,7 +767,7 @@ function AddEdit({
           </div>
 
           <div className="p-2">
-            <label className="form-label">Expected Price (Old)</label>
+            <label className="form-label ml-2 ">Expected Price (Old)</label>
             <input
               {...fields.expected_price_old}
               type="expected_price_old"
@@ -781,7 +781,7 @@ function AddEdit({
           </div>
 
           <div className="p-2">
-            <label className="form-label">expected_month(Old)</label>
+            <label className="form-label ml-2 ">expected_month(Old)</label>
             <input
               {...fields.expected_month}
               type="expected_month"
@@ -794,7 +794,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">decided_price(Old)</label>
+            <label className="form-label ml-2 ">decided_price(Old)</label>
             <input
               {...fields.decided_price}
               type="decided_price"
@@ -809,7 +809,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">No of Month</label>
+            <label className="form-label ml-2 ">No of Month</label>
             <select
               {...fields.no_of_month}
               className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
@@ -836,7 +836,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">form_number</label>
+            <label className="form-label ml-2 ">form_number</label>
             <input
               {...fields.form_number}
               type="form_number"
