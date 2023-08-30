@@ -18,6 +18,7 @@ async function create(req: Request) {
 
     const body = await req.json();
     body.officer_id=cd._id
+
     console.log(body)
     
     await loansRepo.create(body);
@@ -29,5 +30,7 @@ create.schema = joi.object({
     interest_old: joi.string().required(),
     expected_price_old: joi.string().required(),
     user_id: joi.required(),
+    items:joi.array(),
+    form_number:joi.string()
     // officer_id: joi.required(),
 });

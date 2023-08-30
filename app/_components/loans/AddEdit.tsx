@@ -1,5 +1,4 @@
 "use client";
-import Image from 'next/image'
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -7,6 +6,9 @@ import { useForm } from "react-hook-form";
 import { useAlertService, useLoanService } from "_services";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+
+import UserTable from "./tables/UserTable";
+import EditUserForm from "./forms/EditUserForm";
 export { AddEdit };
 
 function AddEdit({
@@ -61,30 +63,11 @@ function AddEdit({
     no_of_month: register("no_of_month", {
       required: "no_of_month is required",
     }),
+    form_number: register("form_number", {
+      required: "form_number is required",
+    }),
   };
 
-  async function onSubmit(data: any) {
-    alertService.clear();
-    const dataV = data;
-    dataV.user_id = user;
-    try {
-      // create or update loan based on loan prop
-      let message;
-      if (loan) {
-        await loanService.update(loan?.id, dataV);
-        message = "Loan updated";
-      } else {
-        await loanService.create(dataV);
-        message = "Loan added";
-      }
-
-      loan? router.push(`/loans/edit/${loan?.id}`):null;
-      // router.refresh()
-      alertService.success(message, true);
-    } catch (error: any) {
-      alertService.error(error);
-    }
-  }
   const installment = (n: any, value: any) => {
     switch (n) {
       case 60:
@@ -220,6 +203,72 @@ function AddEdit({
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+
+
+
+  ///////////////task
+  
+  const tasksData:any = []
+    
+  const initialFormState = { id: null, name: "", karat: "",net_weight:"",total_weight:"",pound:"" };
+
+  const [tasks, setUsers] = useState(tasksData);
+  const [editing, setEditing] = useState(false);
+  const [currentUser, setCurrentUser] = useState(initialFormState);
+
+  const addUser = (user:any) => {
+    user.id = tasks.length + 1;
+
+    setUsers([...tasks, user]);
+  };
+
+  const deleteUser = (id:any) => {
+    setEditing(false);
+    setUsers(tasks.filter((user:any) => user.id !== id));
+  };
+
+  const editRow = (user:any) => {
+    setEditing(true);
+
+    setCurrentUser(user);
+  };
+
+  const updateUser = (id:any, updatedUser:any) => {
+    setEditing(false);
+    setUsers(tasks.map((user:any) => (user.id === id ? updatedUser : user)));
+  };
+const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
+  async function onSubmit(data: any) {
+    alertService.clear();
+    const dataV = data;
+    dataV.user_id = user;
+    if (loan) {
+      
+      dataV.items = [];
+    }else{
+
+    dataV.items = tasks;
+    }
+    // console.log(tasks)
+    dataV.items = tasks;
+    try {
+      // create or update loan based on loan prop
+      let message;
+      if (loan) {
+        await loanService.update(loan?.id, dataV);
+        message = "Loan updated";
+      } else {
+        await loanService.create(dataV);
+        message = "Loan added";
+      }
+
+      router.push(`/loans`);
+      // router.refresh()
+      alertService.success(message, true);
+    } catch (error: any) {
+      alertService.error(error);
+    }
+  }
   return (
     <>
       <>
@@ -399,6 +448,33 @@ CUSTOMER
 
         {/* {console.log(loan)} */}
         <div style={{ overflow: "hidden" }}>{JSON.stringify(loan)}</div>
+
+
+
+        <div className="container">
+      <div className="flex-row">
+        <div className="flex-large">
+          <div>
+            <h2>{editing ? "Edit user" : "Add user"}</h2>
+            <EditUserForm
+              editing={editing}
+              setEditing={setEditing}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+              updateUser={updateUser}
+              addUser={addUser}
+            />
+          
+          </div>
+        </div>
+        <div className="flex-large">
+          <h2>View tasks</h2>
+          <UserTable tasks={tasks} editRow={editRow} deleteUser={deleteUser} />
+        </div>
+      </div>
+    </div>
+
+
         <form
           onSubmit={submitHandler}
           className="bg-white p-2 mt-4"
@@ -736,6 +812,19 @@ CUSTOMER
             />
             <div className="invalid-feedback">
               {errors.no_of_month?.message?.toString()}
+            </div>
+          </div>
+          <div className="mb-3 col">
+            <label className="form-label">form_number(Old)</label>
+            <input
+              {...fields.form_number}
+              type="form_number"
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.form_number ? "is-invalid" : ""
+              }`}
+            />
+            <div className="invalid-feedback">
+              {errors.form_number?.message?.toString()}
             </div>
           </div>
 

@@ -88,6 +88,8 @@ function loanModel() {
       expected_month: { type: String },
       decided_price: { type: String },
       no_of_month: { type: String },
+      
+      form_number: { type: String },
       items:[
 {
         name:{type:String},
@@ -95,7 +97,7 @@ function loanModel() {
         total_weight:{type:String},
         net_weight:{type:String},
         pound:{type:String},
-        status:{type:String,default:"ok"}
+        status:{type:String,default:"NOT ISSUE"}
         
 }
       ]

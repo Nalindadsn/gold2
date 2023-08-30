@@ -29,6 +29,8 @@ update.schema = joi.object({
     expected_month: joi.string(),
     decided_price: joi.string(),
     no_of_month: joi.string(),
+    form_number: joi.string(),
+    items: joi.array(),
 });
 
 async function _delete(req: Request, { params: { id } }: any) {
