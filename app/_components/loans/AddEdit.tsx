@@ -108,8 +108,15 @@ function AddEdit({
 
   const [reviews, setReviews] = useState([]);
   const arr = reviews ? reviews : [];
+  
   const total_pounds = arr.reduce(function (acc: any, obj: any) {
     return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.net_weight):0) / 8;
+  }, 0);
+  const itm_total_net = arr.reduce(function (acc: any, obj: any) {
+    return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.net_weight):0) ;
+  }, 0);
+  const itm_total_weight = arr.reduce(function (acc: any, obj: any) {
+    return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.total_weight):0) / 8;
   }, 0);
 
   const old_mkt_price = (loan?.estimated_price_old / total_pounds).toFixed(2);
@@ -360,12 +367,23 @@ function AddEdit({
 
         {/* {console.log(loan)} */}
         <div style={{ overflow: "hidden" }}>{JSON.stringify(loan)}</div>
-
         <form
           onSubmit={submitHandler}
           className="bg-white p-2 mt-4"
           style={{ overflow: "hidden" }}
         >
+<div className="flex -mx-1 py-2 border-b">
+  <div className="flex-1 px-1">1</div>
+  <div className="px-1  text-right">
+  Total Weight : {itm_total_weight.toFixed(4)}
+  </div>
+  <div className="px-1  text-right">
+  Net Weight : {itm_total_net.toFixed(4)}
+  </div>
+  <div className="px-1  text-right">
+  total pound : {total_pounds.toFixed(4)}
+  </div>
+</div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">items</h2>
             <div className="w-full md:w-full px-3 mb-2 mt-2">
@@ -524,6 +542,7 @@ function AddEdit({
           ))}
         </div>
       </>
+      
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-2 mt-4"
