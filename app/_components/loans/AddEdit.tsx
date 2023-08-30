@@ -478,6 +478,9 @@ CUSTOMER
                       required
                     />
                   </div>
+
+
+                  
                   <div className="px-1 w-32 text-right">
                     <select
                       onChange={(e) => setStatus(e.target.value)}

@@ -24,6 +24,18 @@ update.schema = joi.object({
     firstName: joi.string(),
     lastName: joi.string(),
     username: joi.string(),
+
+
+
+    occupation: joi.string(),
+    nature_of_emp: joi.string(),
+    name_of_office: joi.string(),
+    income: joi.string(),
+    phone: joi.string(),
+    nic: joi.string(),
+    whatsapp: joi.string(),
+
+
     password: joi.string().min(6).allow(''),
 });
 

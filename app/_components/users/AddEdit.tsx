@@ -170,11 +170,71 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                     <input {...fields.lastName} type="text" className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
                     <div className="invalid-feedback">{errors.lastName?.message?.toString()}</div>
                 </div>
-<div className='p-2'>
+
+
+
+                
+                <div className='p-2'>
                     <label className="form-label">NIC</label>
                     <input {...fields.username} type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.username?.message?.toString()}</div>
                 </div>
+
+
+
+
+                
+                <div className='p-2'>
+                    <label className="form-label">occupation</label>
+                    <input {...fields.occupation} type="text" className={`form-control ${errors.occupation ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.occupation?.message?.toString()}</div>
+                </div>
+
+
+
+                
+                <div className='p-2'>
+                    <label className="form-label">nature_of_emp</label>
+                    <input {...fields.nature_of_emp} type="text" className={`form-control ${errors.nature_of_emp ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.nature_of_emp?.message?.toString()}</div>
+                </div>
+
+
+                
+                <div className='p-2'>
+                    <label className="form-label">name_of_office</label>
+                    <input {...fields.name_of_office} type="text" className={`form-control ${errors.name_of_office ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.name_of_office?.message?.toString()}</div>
+                </div>
+                
+                <div className='p-2'>
+                    <label className="form-label">income</label>
+                    <input {...fields.income} type="text" className={`form-control ${errors.income ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.income?.message?.toString()}</div>
+                </div>
+                <div className='p-2'>
+                    <label className="form-label">phone</label>
+                    <input {...fields.phone} type="text" className={`form-control ${errors.phone ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
+                </div>
+                <div className='p-2'>
+                    <label className="form-label">nic</label>
+                    <input {...fields.nic} type="text" className={`form-control ${errors.nic ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.nic?.message?.toString()}</div>
+                </div>
+                <div className='p-2'>
+                    <label className="form-label">whatsapp</label>
+                    <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
+                </div>
+
+
+
+
+
+
+
+
 <div className='p-2'>
                     <label className="form-label">
                         Password
