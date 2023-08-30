@@ -584,7 +584,7 @@ function AddEdit({
             <div key ={n++}>
 
 
-<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-3">
+<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-1">
     
   
   
