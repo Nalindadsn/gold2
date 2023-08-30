@@ -17,6 +17,7 @@ async function getById(req: Request, { params: { id } }: any) {
 
 async function update(req: Request, { params: { id } }: any) {
     const body = await req.json();
+    console.log(body)
     await loansRepo.update(id, body);
 }
 
@@ -24,7 +25,10 @@ update.schema = joi.object({
     estimated_price_old: joi.string(),
     loan_price_old: joi.string(),
     interest_old: joi.string(),
-    expected_price_old: joi.string().min(6).allow(''),
+    expected_price_old: joi.string(),
+    expected_month: joi.string(),
+    decided_price: joi.string(),
+    no_of_month: joi.string(),
 });
 
 async function _delete(req: Request, { params: { id } }: any) {

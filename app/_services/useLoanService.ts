@@ -80,7 +80,6 @@ function useLoanService(): ILoanService {
       console.log("update Service")
       loanStore.setState({ loan: undefined });
       try {
-        console.log(params.estimated_price_old);
 
         await fetch.put(`/api/loans/${id}`, params);
 
