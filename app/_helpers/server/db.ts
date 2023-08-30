@@ -108,7 +108,7 @@ function loanModel() {
         default: Date.now,
       },
       
-      status:{type:String,default:"processing"}
+      status:{type:String,default:"PROCESSING"}
     },
     {
       // add createdAt and updatedAt timestamps
