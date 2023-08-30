@@ -31,6 +31,8 @@ function userModel() {
         ds_office: { type: String },
         district: { type: String },
       },
+
+      
       occupation: { type: String },
       nature_of_emp: { type: String },
       name_of_office: { type: String },
@@ -38,6 +40,8 @@ function userModel() {
       phone: { type: String },
       nic:{type:String},
       whatsapp: { type: String },
+
+
       hash: {
         type: String,
         required: true,
@@ -77,7 +81,7 @@ function loanModel() {
       loan_price_old: { type: String },
       interest_old: { type: String },
       expected_price_old: { type: String },
-      
+
       expected_month: { type: String },
       decided_price: { type: String },
       no_of_month: { type: String },

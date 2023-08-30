@@ -17,7 +17,25 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
     const fields = {
         firstName: register('firstName', { required: 'First Name is required' }),
         lastName: register('lastName', { required: 'Last Name is required' }),
+
+
+
         username: register('username', { required: 'NIC is required' }),
+
+
+        
+        occupation: register('occupation', { required: 'Occupation is required' }),
+        nature_of_emp: register('nature_of_emp', { required: 'Nature of Emp is required' }),
+        name_of_office: register('name_of_office', { required: 'Office is required' }),
+        income: register('income', { required: 'Income is required' }),
+        phone: register('phone', { required: 'Phone is required' }),
+        nic: register('nic', { required: 'NIC is required' }),
+        whatsapp: register('whatsapp', { required: 'Whatsapp is required' }),
+
+
+
+
+
         password: register('password', {
             minLength: { value: 6, message: 'Password must be at least 6 characters' },
             // password only required in add mode
