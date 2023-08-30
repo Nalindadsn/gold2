@@ -162,7 +162,7 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                         Password
                         {user && <em className="ms-1">(Leave blank to keep the same password)</em>}
                     </label>
-                    <input {...fields.password} type="password" className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                    <input {...fields.password} type="password" value="123456" className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
                     <div className="invalid-feedback">{errors.password?.message?.toString()}</div></div>
 
 

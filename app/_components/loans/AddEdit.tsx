@@ -156,8 +156,14 @@ function AddEdit({
   };
   const fetchReviews = useCallback(async () => {
     try {
+      if (loan) {
+        
       const { data } = await axios.get(`/api/loans/${loan?.id}`);
       setReviews(data.items);
+      }else{
+        setReviews([]);
+
+      }
     } catch (err) {
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
@@ -186,7 +192,7 @@ function AddEdit({
       <>
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
-            Invoice
+           - Order
           </h2>
           <div>
             <div className="relative mr-4 inline-block">
@@ -239,7 +245,7 @@ function AddEdit({
         <div>
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                Invoice No.
+                Order No.
               </label>
               <span className="mr-4 inline-block hidden md:block">:</span>
               <div className="flex-1">{loan?._id}</div>
