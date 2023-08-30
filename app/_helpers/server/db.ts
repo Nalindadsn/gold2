@@ -90,6 +90,7 @@ function loanModel() {
       no_of_month: { type: String },
       
       form_number: { type: String },
+      extra_payment: { type: String },
       items:[
 {
         name:{type:String},

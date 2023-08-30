@@ -53,7 +53,7 @@ function AddEdit({
       validate: (value) =>
         !loan && !value ? "expected_price_old is required" : undefined,
     }),
-    
+
     expected_month: register("expected_month", {
       required: "expected_month is required",
     }),
@@ -100,17 +100,22 @@ function AddEdit({
     return val.toFixed(2);
   };
 
+  const [decided_price, setDecidedPrice] = useState("");
   const [reviews, setReviews] = useState([]);
   const arr = reviews ? reviews : [];
-  
+
   const total_pounds = arr.reduce(function (acc: any, obj: any) {
-    return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.net_weight):0) / 8;
+    return (
+      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+    );
   }, 0);
   const itm_total_net = arr.reduce(function (acc: any, obj: any) {
-    return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.net_weight):0) ;
+    return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
   }, 0);
   const itm_total_weight = arr.reduce(function (acc: any, obj: any) {
-    return acc  + (parseFloat(obj.net_weight)?parseFloat(obj.total_weight):0) / 8;
+    return (
+      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
+    );
   }, 0);
 
   const old_mkt_price = (loan?.estimated_price_old / total_pounds).toFixed(2);
@@ -146,12 +151,12 @@ function AddEdit({
       await loanService.updateItem(loan?.id, data);
       fetchReviews();
       setLoading(false);
-      
+
       //enqueueSnackbar('Review submitted successfully', { variant: 'success' });
-      setItmName("")
-      setKarat("")
-      setTotal_weight("")
-      setNet_weight("")
+      setItmName("");
+      setKarat("");
+      setTotal_weight("");
+      setNet_weight("");
       // toast.success('Review submitted successfully');
     } catch (err) {
       setLoading(false);
@@ -160,14 +165,12 @@ function AddEdit({
     }
   };
   // --------------------------------------------------------
-  const submitHandlerDel = async (e: any,b:any) => {
-
+  const submitHandlerDel = async (e: any, b: any) => {
     setLoading(true);
     try {
       await loanService.deleteItem(e, b);
       fetchReviews();
       setLoading(false);
-      
     } catch (err) {
       setLoading(false);
 
@@ -177,12 +180,10 @@ function AddEdit({
   const fetchReviews = useCallback(async () => {
     try {
       if (loan) {
-        
-      const { data } = await axios.get(`/api/loans/${loan?.id}`);
-      setReviews(data.items);
-      }else{
+        const { data } = await axios.get(`/api/loans/${loan?.id}`);
+        setReviews(data.items);
+      } else {
         setReviews([]);
-
       }
     } catch (err) {
       //enqueueSnackbar(getError(err), { variant: 'error' });
@@ -207,51 +208,55 @@ function AddEdit({
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-
-
-
   ///////////////task
-  
-  const tasksData:any = []
-    
-  const initialFormState = { id: null, name: "", karat: "",net_weight:"",total_weight:"",pound:"" };
+
+  const tasksData: any = [];
+
+  const initialFormState = {
+    id: null,
+    name: "",
+    karat: "",
+    net_weight: "",
+    total_weight: "",
+    pound: "",
+  };
 
   const [tasks, setUsers] = useState(tasksData);
   const [editing, setEditing] = useState(false);
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
-  const addUser = (user:any) => {
+  const addUser = (user: any) => {
     user.id = tasks.length + 1;
 
     setUsers([...tasks, user]);
   };
 
-  const deleteUser = (id:any) => {
+  const deleteUser = (id: any) => {
     setEditing(false);
-    setUsers(tasks.filter((user:any) => user.id !== id));
+    setUsers(tasks.filter((user: any) => user.id !== id));
   };
 
-  const editRow = (user:any) => {
+  const editRow = (user: any) => {
     setEditing(true);
 
     setCurrentUser(user);
   };
 
-  const updateUser = (id:any, updatedUser:any) => {
+  const updateUser = (id: any, updatedUser: any) => {
     setEditing(false);
-    setUsers(tasks.map((user:any) => (user.id === id ? updatedUser : user)));
+    setUsers(tasks.map((user: any) => (user.id === id ? updatedUser : user)));
   };
-const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
+  const taskArray: any = tasks.forEach(function (v: any) {
+    delete v.id;
+  });
   async function onSubmit(data: any) {
     alertService.clear();
     const dataV = data;
     dataV.user_id = user;
     if (loan) {
-      
       dataV.items = [];
-    }else{
-
-    dataV.items = tasks;
+    } else {
+      dataV.items = tasks;
     }
     // console.log(tasks)
     dataV.items = tasks;
@@ -272,14 +277,13 @@ const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
     } catch (error: any) {
       alertService.error(error);
     }
-    
   }
   return (
     <>
       <>
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
-           - Order
+            - Order
           </h2>
           <div>
             <div className="relative mr-4 inline-block">
@@ -328,8 +332,7 @@ const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
-          
-        <div>
+          <div>
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 Status
@@ -350,7 +353,9 @@ const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
                 Created At
               </label>
               <span className="mr-4 inline-block hidden md:block">:</span>
-              <div className="flex-1">{loan?formatDate(loan?.createdAt):""}</div>
+              <div className="flex-1">
+                {loan ? formatDate(loan?.createdAt) : ""}
+              </div>
             </div>
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
@@ -358,85 +363,85 @@ const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
                 Updated At
               </label>
               <span className="mr-4 inline-block hidden md:block">:</span>
-              <div className="flex-1">{loan?formatDate(loan?.updatedAt):""}</div>
+              <div className="flex-1">
+                {loan ? formatDate(loan?.updatedAt) : ""}
+              </div>
             </div>
-            
-          <div className='bg-gray-200 p-2 mb-1'>
-            <div className="flex items-center justify-between leading-none p-2 md:p-4">
-              <a
-                className="flex items-center no-underline  text-black"
-                href="#"
-              >
-                <img
-                src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
-                  loading="lazy"
-                  width="60"
-                  height="60"
-                  decoding="async"
-                  data-nimg="1"
-                  className="block rounded-full"
-                />
-                <div className="ml-2 text-xl -mt-8">
-                  <div className="text-gray-800 mt-1 font-bold">
-                    <span>{loan?.officer[0]?.firstName+" "+loan?.officer[0]?.lastName}</span> 
-                  </div>                  
-                </div>
-              </a>
-            </div>
-            <div className="-mt-8">
-              <label className="pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
-                {" "}
-                NIC : {loan?.officer[0]?.username}
-              </label>
-              <div className="flex-1"></div>
-            </div>
-            <div className='m-2'>
 
-            CREATED BY 
+            <div className="bg-gray-200 p-2 mb-1">
+              <div className="flex items-center justify-between leading-none p-2 md:p-4">
+                <a
+                  className="flex items-center no-underline  text-black"
+                  href="#"
+                >
+                  <img
+                    src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                    decoding="async"
+                    data-nimg="1"
+                    className="block rounded-full"
+                  />
+                  <div className="ml-2 text-xl -mt-8">
+                    <div className="text-gray-800 mt-1 font-bold">
+                      <span>
+                        {loan?.officer[0]?.firstName +
+                          " " +
+                          loan?.officer[0]?.lastName}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div className="-mt-8">
+                <label className="pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
+                  {" "}
+                  NIC : {loan?.officer[0]?.username}
+                </label>
+                <div className="flex-1"></div>
+              </div>
+              <div className="m-2">CREATED BY</div>
             </div>
-            
-          </div>
           </div>
           <div>
-            <div className=' bg-gray-200'>
-            <div className="flex items-center justify-between leading-none p-2 md:p-4">
-              <a
-                className="flex items-center no-underline  text-black"
-                href="#"
-              >
-                <img
-                src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
-                  loading="lazy"
-                  width="60"
-                  height="60"
-                  decoding="async"
-                  data-nimg="1"
-                  className="block rounded-full"
-                />
-                <div className="ml-2 text-xl -mt-5">
-                  <div className="text-gray-800 mt-1 font-bold">
-                    <span>{loan?.customer[0]?.firstName+" "+loan?.customer[0]?.lastName}</span> 
-                  </div>                  
-                </div>
-              </a>
-              
+            <div className=" bg-gray-200">
+              <div className="flex items-center justify-between leading-none p-2 md:p-4">
+                <a
+                  className="flex items-center no-underline  text-black"
+                  href="#"
+                >
+                  <img
+                    src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
+                    loading="lazy"
+                    width="60"
+                    height="60"
+                    decoding="async"
+                    data-nimg="1"
+                    className="block rounded-full"
+                  />
+                  <div className="ml-2 text-xl -mt-5">
+                    <div className="text-gray-800 mt-1 font-bold">
+                      <span>
+                        {loan?.customer[0]?.firstName +
+                          " " +
+                          loan?.customer[0]?.lastName}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div className="-mt-8">
+                <label className=" pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
+                  {" "}
+                  NIC : {loan?.customer[0]?.username}
+                </label>
+                <div className="flex-1"></div>
+              </div>
+              <div className="m-2 text-bold">CUSTOMER</div>
             </div>
-            <div className="-mt-8">
-              <label className=" pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
-                {" "}
-                NIC : {loan?.customer[0]?.username}
-              </label>
-              <div className="flex-1"></div>
-            </div>
-            <div className='m-2 text-bold'>
+            <div></div>
 
-CUSTOMER 
-</div>
-</div>
-            <div>
-
-            </div>
-            
             <input
               name="photo"
               id="fileInput"
@@ -447,66 +452,43 @@ CUSTOMER
           </div>
         </div>
 
-        <div className="flex mb-8 justify-between">
-
-        </div>
+        <div className="flex mb-8 justify-between"></div>
 
         {/* {console.log(loan)} */}
-        <div style={{ overflow: "hidden" }}>{JSON.stringify(loan)}</div>
 
 
-
-        <div className="container">
-      <div className="flex-row">
-        <div className="flex-large">
-          <div>
-            <h2>{editing ? "Edit user" : "Add user"}</h2>
-            <EditUserForm
-              editing={editing}
-              setEditing={setEditing}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-              updateUser={updateUser}
-              addUser={addUser}
-            />
-          
-          </div>
-        </div>
-        <div className="flex-large">
-          <h2>View tasks</h2>
-          <UserTable tasks={tasks} editRow={editRow} deleteUser={deleteUser} />
-        </div>
-      </div>
-    </div>
-
-
+{loan?(
+  <>
+  
         <form
           onSubmit={submitHandler}
           className="bg-white p-2 mt-4"
           style={{ overflow: "hidden" }}
         >
-<div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
-  <div className="px-1">
-        {loading && (
-                                <span className="spinner-border spinner-border-sm"></span>
-
-        )}</div>
-  <div className="px-1  text-right">
-  Total Weight : {itm_total_weight.toFixed(4)}
-  </div>
-  <div className="px-1  text-right">
-  Net Weight : {itm_total_net.toFixed(4)}
-  </div>
-  <div className="px-1  text-right">
-  total pound : {total_pounds.toFixed(4)}
-  </div>
-</div>
+          <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
+            <div className="px-1">
+              {loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+            </div>
+            <div className="px-1  text-right">
+              Total Weight : {itm_total_weight.toFixed(4)}
+            </div>
+            <div className="px-1  text-right">
+              Net Weight : {itm_total_net.toFixed(4)}
+            </div>
+            <div className="px-1  text-right">
+              total pound : {total_pounds.toFixed(4)}
+            </div>
+          </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-full px-3 mb-2 mt-2">
-            <h2 className=" text-gray-800 text-lg">items 
-                          <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm ">
-                            NO OF ITEMS : {reviews.length}
-                          </span></h2>
+              <h2 className=" text-gray-800 text-lg">
+                items
+                <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                  NO OF ITEMS : {reviews.length}
+                </span>
+              </h2>
               <div>
                 <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                   <div className="flex-1 px-1">
@@ -564,8 +546,6 @@ CUSTOMER
                     />
                   </div>
 
-
-                  
                   <div className="px-1  text-right">
                     <select
                       onChange={(e) => setStatus(e.target.value)}
@@ -595,8 +575,6 @@ CUSTOMER
                   )}
                   Add Item
                 </button>
-
-
               </div>
             </div>
           </div>
@@ -638,15 +616,15 @@ CUSTOMER
                           POUNDS - {i?.pound}
                         </span>
                       </div>
-                    </p>{loan?.id}-{i?._id}
+                    </p>
+                    {loan?.id}-{i?._id}
                   </a>
-{/* <form onSubmit={submitHandlerDel} > */}
+                  {/* <form onSubmit={submitHandlerDel} > */}
 
                   <button
-                  onClick={ ()=>submitHandlerDel(loan?.id, {name:i?._id})}
+                    onClick={() => submitHandlerDel(loan?.id, { name: i?._id })}
                     // onClick={() => {
-                       
-                      
+
                     //   loanService.deleteItem(loan?.id, {name:i?._id});
                     //   fetchReviews();
                     // }  }
@@ -661,14 +639,47 @@ CUSTOMER
                       <span>Delete</span>
                     )}
                   </button>
-{/* </form> */}
+                  {/* </form> */}
                 </div>
               </article>
             </>
           ))}
         </div>
+  </>
+):(
+  <>
+
+<div className="container">
+          <div className="flex-row">
+            <div className="flex-large">
+              <div>
+                <h2>{editing ? "Edit user" : "Add user"}</h2>
+                <EditUserForm
+                  editing={editing}
+                  setEditing={setEditing}
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                  updateUser={updateUser}
+                  addUser={addUser}
+                />
+              </div>
+            </div>
+            <div className="flex-large">
+              <h2>View tasks</h2>
+              <UserTable
+                tasks={tasks}
+                editRow={editRow}
+                deleteUser={deleteUser}
+              />
+            </div>
+          </div>
+        </div>
+  </>
+)}
+
+
       </>
-      
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-2 mt-4"
@@ -709,16 +720,12 @@ CUSTOMER
         ----installments-6-
         {JSON.stringify(installment(6, basic_estimate_final))}----
         <br />
-        <h1>{title}</h1>
-        <div className="row">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div>a</div>
-            <div>b</div>
-            <div>a</div>
-            <div>b</div>
-          </div>
+        <h1 className="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
+        <div className="flex flex-col md:flex-row -mx-1 py-2 border-b"><div className="px-1"></div><div className="px-1  text-right">Total Weight : 1.8750</div><div className="px-1  text-right">Net Weight : 123.0000</div><div className="px-1  text-right">total pound : 15.3750</div></div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          
 
-          <div className="mb-3 col">
+          <div className="p-2">
             <label className="form-label">Estimated Price (Old)</label>
             <input
               {...fields.estimated_price_old}
@@ -731,7 +738,7 @@ CUSTOMER
               {errors.estimated_price_old?.message?.toString()}
             </div>
           </div>
-          <div className="mb-3 col">
+          <div className="p-2">
             <label className="form-label">Loan Price (Old)</label>
             <input
               {...fields.loan_price_old}
@@ -744,9 +751,10 @@ CUSTOMER
               {errors.loan_price_old?.message?.toString()}
             </div>
           </div>
+
         </div>
-        <div className="row">
-          <div className="mb-3 col">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="p-2">
             <label className="form-label">Interest (Old)</label>
             <input
               {...fields.interest_old}
@@ -760,17 +768,7 @@ CUSTOMER
             </div>
           </div>
 
-
-
-
-
-
-
-
-
-
-          
-          <div className="mb-3 col">
+          <div className="p-2">
             <label className="form-label">Expected Price (Old)</label>
             <input
               {...fields.expected_price_old}
@@ -784,7 +782,7 @@ CUSTOMER
             </div>
           </div>
 
-          <div className="mb-3 col">
+          <div className="p-2">
             <label className="form-label">expected_month(Old)</label>
             <input
               {...fields.expected_month}
@@ -797,7 +795,7 @@ CUSTOMER
               {errors.expected_month?.message?.toString()}
             </div>
           </div>
-          <div className="mb-3 col">
+          <div className="p-2">
             <label className="form-label">decided_price(Old)</label>
             <input
               {...fields.decided_price}
@@ -805,26 +803,42 @@ CUSTOMER
               className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.decided_price ? "is-invalid" : ""
               }`}
+              onChange={(e) => setDecidedPrice(e.target.value)}
             />
+            {decided_price}
             <div className="invalid-feedback">
               {errors.decided_price?.message?.toString()}
             </div>
           </div>
-          <div className="mb-3 col">
-            <label className="form-label">no_of_month(Old)</label>
-            <input
+          <div className="p-2">
+            <label className="form-label">No of Month</label>
+            <select
+              {...fields.no_of_month}
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.no_of_month ? "is-invalid" : ""
+              }`}
+            >
+              <option value="60">60</option>
+              <option value="48">48</option>
+              <option value="36">36</option>
+              <option value="24">24</option>
+              <option value="18">18</option>
+              <option value="12">12</option>
+              <option value="6">6</option>
+            </select>
+            {/* <input
               {...fields.no_of_month}
               type="no_of_month"
               className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.no_of_month ? "is-invalid" : ""
               }`}
-            />
+            /> */}
             <div className="invalid-feedback">
               {errors.no_of_month?.message?.toString()}
             </div>
           </div>
-          <div className="mb-3 col">
-            <label className="form-label">form_number(Old)</label>
+          <div className="p-2">
+            <label className="form-label">form_number</label>
             <input
               {...fields.form_number}
               type="form_number"
@@ -836,8 +850,6 @@ CUSTOMER
               {errors.form_number?.message?.toString()}
             </div>
           </div>
-
-
         </div>
         <div className="mb-3">
           <button
