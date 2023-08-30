@@ -32,7 +32,7 @@ function userModel() {
         district: { type: String },
       },
 
-      
+
       occupation: { type: String },
       nature_of_emp: { type: String },
       name_of_office: { type: String },
@@ -50,7 +50,10 @@ function userModel() {
       firstName: { type: String, required: true },
       lastName: { type: String, required: true },
       role: { type: String, default: "USER" },
+      
+      status:{type:String,default:"PROSPECTED"}
     },
+    
     {
       // add createdAt and updatedAt timestamps
       timestamps: true,

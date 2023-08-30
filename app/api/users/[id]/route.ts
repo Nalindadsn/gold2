@@ -24,9 +24,6 @@ update.schema = joi.object({
     firstName: joi.string(),
     lastName: joi.string(),
     username: joi.string(),
-
-
-
     occupation: joi.string(),
     nature_of_emp: joi.string(),
     name_of_office: joi.string(),
