@@ -161,6 +161,26 @@ function AddEdit({
       // toast.success(err);
     }
   };
+  // --------------------------------------------------------
+  const submitHandlerDel = async (e: any,b:any) => {
+
+    // e.preventDefault();
+    console.log("------ccccc-----------")
+    console.log(e,b)
+    console.log("-------dddddd----------")
+    // console.log(name)
+    setLoading(true);
+    try {
+      await loanService.deleteItem(e, b);
+      fetchReviews();
+      setLoading(false);
+      
+    } catch (err) {
+      setLoading(false);
+
+      // toast.success(err);
+    }
+  };
   const fetchReviews = useCallback(async () => {
     try {
       if (loan) {
@@ -373,6 +393,11 @@ function AddEdit({
           style={{ overflow: "hidden" }}
         >
 <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
+  <div className="px-1">
+        {loading && (
+                                <span className="spinner-border spinner-border-sm"></span>
+
+        )}</div>
   <div className="px-1  text-right">
   Total Weight : {itm_total_weight.toFixed(4)}
   </div>
@@ -448,7 +473,7 @@ function AddEdit({
                       <option>ISSUE</option>
                     </select>
                   </div>
-                  <div className="px-1  text-right">
+                  <div className="px-1 pt-1  text-right">
                     <button
                       className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
                       type="reset"
@@ -470,16 +495,11 @@ function AddEdit({
 
                 <button type="submit">Submit</button>
 
-                {loading && "..."}
               </div>
             </div>
           </div>
         </form>
         <div className="bg-white p-2 mt-4">
-        {loading && (
-                                <span className="spinner-border spinner-border-sm"></span>
-
-        )}
           {reviews.map((i: any) => (
             <>
               <article className="overflow-hidden rounded-lg shadow-lg bg-gray-800 mb-3">
@@ -518,14 +538,16 @@ function AddEdit({
                       </div>
                     </p>{loan?.id}-{i?._id}
                   </a>
+{/* <form onSubmit={submitHandlerDel} > */}
 
                   <button
-                    onClick={() => {
+                  onClick={ ()=>submitHandlerDel(loan?.id, {name:i?._id})}
+                    // onClick={() => {
                        
                       
-                      loanService.deleteItem(loan?.id, {name:i?._id});
-                      fetchReviews();
-                    }  }
+                    //   loanService.deleteItem(loan?.id, {name:i?._id});
+                    //   fetchReviews();
+                    // }  }
                     className="btn btn-sm btn-danger btn-delete-loan"
                     style={{ width: "60px" }}
                     //  disabled={true}
@@ -537,6 +559,7 @@ function AddEdit({
                       <span>Delete</span>
                     )}
                   </button>
+{/* </form> */}
                 </div>
               </article>
             </>
