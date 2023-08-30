@@ -481,7 +481,7 @@ function AddEdit({
               total pound : {total_pounds.toFixed(4)}
             </div>
           </div>
-          <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="flex flex-wrap -mx-3 ">
             <div className="w-full md:w-full px-3 mb-2 mt-2">
               <h2 className=" text-gray-800 text-lg">
                 items
@@ -568,7 +568,7 @@ function AddEdit({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn btn-primary me-2 bg-blue-700"
+                  className="btn btn-primary me-2 mt-1 bg-blue-700"
                 >
                   {loading && (
                     <span className="spinner-border spinner-border-sm me-1"></span>
