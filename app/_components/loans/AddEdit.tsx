@@ -146,8 +146,12 @@ function AddEdit({
       await loanService.updateItem(loan?.id, data);
       fetchReviews();
       setLoading(false);
+      
       //enqueueSnackbar('Review submitted successfully', { variant: 'success' });
-
+      setItmName("")
+      setKarat("")
+      setTotal_weight("")
+      setNet_weight("")
       // toast.success('Review submitted successfully');
     } catch (err) {
       setLoading(false);
@@ -268,6 +272,7 @@ const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
     } catch (error: any) {
       alertService.error(error);
     }
+    
   }
   return (
     <>
@@ -326,21 +331,21 @@ const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
           
         <div>
             <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
+              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 Status
               </label>
               <span className="mr-4 inline-block  md:block">:</span>
               <div className="flex-1">{loan?.status}</div>
             </div>
             <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
+              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 Order No
               </label>
               <span className="mr-4 inline-block  md:block">:</span>
               <div className="flex-1">{loan?._id}</div>
             </div>
             <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
+              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 {" "}
                 Created At
               </label>
@@ -348,7 +353,7 @@ const taskArray:any=tasks.forEach(function(v:any){ delete v.id });;
               <div className="flex-1">{loan?formatDate(loan?.createdAt):""}</div>
             </div>
             <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
+              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 {" "}
                 Updated At
               </label>
@@ -508,6 +513,7 @@ CUSTOMER
                     <input
                       type="text"
                       onChange={(e) => setItmName(e.target.value)}
+                      value={name}
                       name="name"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Description"
@@ -518,6 +524,7 @@ CUSTOMER
                     <input
                       type="text"
                       onChange={(e) => setKarat(e.target.value)}
+                      value={karat}
                       name="karat"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Karat"
@@ -527,6 +534,7 @@ CUSTOMER
                     <input
                       type="text"
                       onChange={(e) => setNet_weight(e.target.value)}
+                      value={net_weight}
                       name="net_weight"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Net Weight"
@@ -537,6 +545,7 @@ CUSTOMER
                     <input
                       type="text"
                       onChange={(e) => setTotal_weight(e.target.value)}
+                      value={total_weight}
                       name="total_weight"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Total Weight"
