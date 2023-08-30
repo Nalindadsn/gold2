@@ -45,13 +45,13 @@ function Loans() {
                     
                     <td>{loan.id}-{loan.estimated_price_old}</td>
                     <td>{loan.loan_price_old}
-                    {JSON.stringify(loan.customer[0]?._id)}
+                    {JSON.stringify(loan?.customer[0]?._id)}
 
                     </td>
                     <td>{loan.interest_old}</td>
                     <td style={{ whiteSpace: 'nowrap' }}>
                     {/* <Link href={`/loans/view/${loan.id}`} className="btn btn-sm btn-primary me-1">View</Link> */}
-                    <Link href={`/loans/edit/${loan.id}?id=${loan.customer[0]?._id}`} className="btn btn-sm btn-primary me-1">Edit</Link>
+                    <Link href={`/loans/edit/${loan.id}?id=${loan?.customer[0]?._id}`} className="btn btn-sm btn-primary me-1">Edit</Link>
                         <button onClick={() => loanService.delete(loan.id)} className="btn btn-sm btn-danger btn-delete-loan" style={{ width: '60px' }} disabled={loan.isDeleting}>
                             {loan.isDeleting
                                 ? <span className="spinner-border spinner-border-sm"></span>

@@ -52,7 +52,7 @@ async function getById(id: string) {
  
   {
     "$match": {
-      "_id": new mongoose.Types.ObjectId("64ec7d7237b6d70c352e5138")
+      "_id": new mongoose.Types.ObjectId(id)
     }
   },
         {

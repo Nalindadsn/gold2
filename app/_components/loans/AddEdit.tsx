@@ -274,9 +274,16 @@ function AddEdit({
         <div>
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                Order No.
+                Status
               </label>
-              <span className="mr-4 inline-block hidden md:block">:</span>
+              <span className="mr-4 inline-block  md:block">:</span>
+              <div className="flex-1">{loan?.status}</div>
+            </div>
+            <div className="mb-2 md:mb-1 md:flex items-center">
+              <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                Order No
+              </label>
+              <span className="mr-4 inline-block  md:block">:</span>
               <div className="flex-1">{loan?._id}</div>
             </div>
             <div className="mb-2 md:mb-1 md:flex items-center">
@@ -295,15 +302,13 @@ function AddEdit({
               <span className="mr-4 inline-block hidden md:block">:</span>
               <div className="flex-1">{loan?formatDate(loan?.updatedAt):""}</div>
             </div>
-          </div>
+            
           <div>
             <div className="flex items-center justify-between leading-none p-2 md:p-4">
               <a
                 className="flex items-center no-underline  text-black"
                 href="#"
               >
-                
-  
                 <img
                 src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
                   loading="lazy"
@@ -315,7 +320,46 @@ function AddEdit({
                 />
                 <div className="ml-2 text-xl">
                   <div className="text-gray-800 mt-1 font-bold">
-                    <span>{loan.customer[0].firstName+" "+loan.customer[0].lastName}</span> 
+                    <span>{loan?.officer[0]?.firstName+" "+loan?.officer[0]?.lastName}</span> 
+                  </div>                  
+                </div>
+              </a>
+            </div>
+            <div className="-mt-5">
+              <label className="pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
+                {" "}
+                NIC : {loan?.officer[0]?.username}
+              </label>
+              <div className="flex-1"></div>
+            </div>
+            
+            <input
+              name="photo"
+              id="fileInput"
+              accept="image/*"
+              className="hidden"
+              type="file"
+            />
+          </div>
+          </div>
+          <div>
+            <div className="flex items-center justify-between leading-none p-2 md:p-4">
+              <a
+                className="flex items-center no-underline  text-black"
+                href="#"
+              >
+                <img
+                src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
+                  loading="lazy"
+                  width="60"
+                  height="60"
+                  decoding="async"
+                  data-nimg="1"
+                  className="block rounded-full"
+                />
+                <div className="ml-2 text-xl">
+                  <div className="text-gray-800 mt-1 font-bold">
+                    <span>{loan?.customer[0]?.firstName+" "+loan?.customer[0]?.lastName}</span> 
                   </div>                  
                 </div>
               </a>
