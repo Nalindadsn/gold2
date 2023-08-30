@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@react-icons/all-files": "^4.1.0",
         "@react-pdf/renderer": "^3.1.12",
         "@types/bcryptjs": "^2.4.2",
         "@types/jsonwebtoken": "^9.0.2",
@@ -33,6 +34,7 @@
         "react-bootstrap": "^2.8.0",
         "react-dom": "18.2.0",
         "react-hook-form": "^7.45.2",
+        "react-icons": "^4.10.1",
         "typescript": "5.1.6",
         "zustand": "^4.3.9"
     },

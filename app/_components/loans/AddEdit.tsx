@@ -683,7 +683,7 @@ function AddEdit({
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-2 mt-4"
-        style={{ marginLeft: "5%", marginRight: "5%" }}
+        // style={{ marginLeft: "5%", marginRight: "5%" }}
       >
         {/* {JSON.stringify(loan?.items)} */}
         <br />

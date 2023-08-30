@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { Spinner } from '_components';
 import { useLoanService } from '_services';
+// import { FaUserCircle} from 'react-icons/fa';
+import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 export default Loans;
 
 function Loans() {
@@ -43,9 +45,26 @@ function Loans() {
             return (loans.map(loan =>
                 <tr key={loan.id}>
                     
-                    <td>{loan.id}-{loan.estimated_price_old}</td>
-                    <td>{loan.loan_price_old}
-                    {JSON.stringify(loan?.customer[0]?._id)}
+                    <td>
+                    Form ID - {loan.form_number}<br/>
+                        Order ID - {loan.id}<br/>
+                    <div className='bg-white border p-1'>
+
+                        <FaUserCircle className='float-left mr-2 text-5xl' /> {loan?.customer[0]?.firstName} {loan?.customer[0]?.lastName}<br/>
+                        {loan?.customer[0]?.nic}
+                    </div>
+                        
+                    
+                    </td>
+                    <td>
+
+                    
+                    <div className='bg-white border p-1'>
+
+                        <FaUserCircle className='float-left mr-2 text-5xl' /> {loan?.officer[0]?.firstName} {loan?.officer[0]?.lastName}<br/>
+                        {loan?.officer[0]?.nic}
+                    </div>
+                    {/* {JSON.stringify(loan?.customer[0]?._id)} */}
 
                     </td>
                     <td>{loan.interest_old}</td>

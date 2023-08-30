@@ -141,9 +141,11 @@ interface ILoan {
   estimated_price_old: string;
   user_id: any;
   customer:any;
+  officer:any;
   loan_price_old: string;
   interest_old: string;
   expected_price_old: string;
+  form_number: string;
   isDeleting?: boolean;
 
 }
