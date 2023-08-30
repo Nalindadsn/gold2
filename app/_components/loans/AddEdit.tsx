@@ -352,7 +352,7 @@ function AddEdit({
                 {" "}
                 Created At
               </label>
-              <span className="mr-4 inline-block hidden md:block">:</span>
+              <span className="mr-4  md:block">:</span>
               <div className="flex-1">
                 {loan ? formatDate(loan?.createdAt) : ""}
               </div>
@@ -362,7 +362,7 @@ function AddEdit({
                 {" "}
                 Updated At
               </label>
-              <span className="mr-4 inline-block hidden md:block">:</span>
+              <span className="mr-4  md:block">:</span>
               <div className="flex-1">
                 {loan ? formatDate(loan?.updatedAt) : ""}
               </div>
