@@ -331,8 +331,10 @@ function AddEdit({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 space-x-1  md:grid-cols-2">
           <div>
+            <div className="bg-white mb-2 m-1 p-3">
+
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 Status
@@ -367,9 +369,11 @@ function AddEdit({
                 {loan ? formatDate(loan?.updatedAt) : ""}
               </div>
             </div>
+            </div>
 
-            <div className="bg-gray-200 p-2 mb-1">
-              <div className="flex items-center justify-between leading-none p-2 md:p-4">
+          </div>
+            <div className="bg-white p-2 m-1">
+              <div className=" flex items-center justify-between leading-none  md:p-4 ">
                 <a
                   className="flex items-center no-underline  text-black"
                   href="#"
@@ -403,10 +407,9 @@ function AddEdit({
               </div>
               <div className="m-2">CREATED BY</div>
             </div>
-          </div>
           <div>
-            <div className=" bg-gray-200">
-              <div className="flex items-center justify-between leading-none p-2 md:p-4">
+            <div className=" bg-white">
+              <div className="flex items-center justify-between leading-none  md:p-4">
                 <a
                   className="flex items-center no-underline  text-black"
                   href="#"
