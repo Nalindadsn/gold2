@@ -372,8 +372,7 @@ function AddEdit({
           className="bg-white p-2 mt-4"
           style={{ overflow: "hidden" }}
         >
-<div className="flex -mx-1 py-2 border-b">
-  <div className="flex-1 px-1">1</div>
+<div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
   <div className="px-1  text-right">
   Total Weight : {itm_total_weight.toFixed(4)}
   </div>
@@ -385,45 +384,43 @@ function AddEdit({
   </div>
 </div>
           <div className="flex flex-wrap -mx-3 mb-6">
-            <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">items</h2>
             <div className="w-full md:w-full px-3 mb-2 mt-2">
-              items
-              <div></div>
-              <div style={{ overflowX: "auto" }}>
-                <div className="flex -mx-1 py-2 border-b">
+            <h2 className=" text-gray-800 text-lg">items</h2>
+              <div>
+                <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                   <div className="flex-1 px-1">
                     <input
                       type="text"
                       onChange={(e) => setItmName(e.target.value)}
                       name="name"
-                      className="form-control"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Description"
                     />
                   </div>
-                  <div className="px-1 w-20 text-right">
+                  <div className="px-1  text-right">
                     <input
                       type="text"
                       onChange={(e) => setKarat(e.target.value)}
                       name="karat"
-                      className="form-control"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Karat"
                     />
                   </div>
-                  <div className="px-1 w-20 text-right">
+                  <div className="px-1  text-right">
                     <input
                       type="text"
                       onChange={(e) => setNet_weight(e.target.value)}
                       name="net_weight"
-                      className="form-control"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Net Weight"
                     />
                   </div>
-                  <div className="px-1 w-20 text-right">
+                  <div className="px-1  text-right">
                     <input
                       type="text"
                       onChange={(e) => setTotal_weight(e.target.value)}
                       name="total_weight"
-                      className="form-control"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Total Weight"
                     />
                   </div>
@@ -433,7 +430,7 @@ function AddEdit({
                       onChange={(e) => setPound(e.target.value)}
                       value={net_weight_cal}
                       name="pound"
-                      className="form-control"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       placeholder="Pound"
                     />
                   </div>
@@ -441,13 +438,13 @@ function AddEdit({
                     <select
                       onChange={(e) => setStatus(e.target.value)}
                       name="status"
-                      className="form-control"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                     >
                       <option>NOT ISSUE</option>
                       <option>ISSUE</option>
                     </select>
                   </div>
-                  <div className="px-1 w-20 text-right">
+                  <div className="px-1  text-right">
                     <button
                       className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
                       type="reset"
@@ -597,7 +594,7 @@ function AddEdit({
             <input
               {...fields.estimated_price_old}
               type="text"
-              className={`form-control ${
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.estimated_price_old ? "is-invalid" : ""
               }`}
             />
@@ -610,7 +607,7 @@ function AddEdit({
             <input
               {...fields.loan_price_old}
               type="text"
-              className={`form-control ${
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.loan_price_old ? "is-invalid" : ""
               }`}
             />
@@ -625,7 +622,7 @@ function AddEdit({
             <input
               {...fields.interest_old}
               type="text"
-              className={`form-control ${
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.interest_old ? "is-invalid" : ""
               }`}
             />
@@ -638,7 +635,7 @@ function AddEdit({
             <input
               {...fields.expected_price_old}
               type="expected_price_old"
-              className={`form-control ${
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.expected_price_old ? "is-invalid" : ""
               }`}
             />
