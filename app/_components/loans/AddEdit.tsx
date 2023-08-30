@@ -1,4 +1,6 @@
 "use client";
+import Image from 'next/image'
+
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -300,7 +302,10 @@ function AddEdit({
                 className="flex items-center no-underline  text-black"
                 href="#"
               >
+                
+  
                 <img
+                src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
                   loading="lazy"
                   width="60"
                   height="60"
@@ -308,43 +313,20 @@ function AddEdit({
                   data-nimg="1"
                   className="block rounded-full"
                 />
-                <div className="ml-2 text-sm">
-                  <span className="text-white">ac s</span>
-                  <span className="text-blue-400">
-                    <span>Team :</span> cd
-                  </span>
-                  <br />
-                  
+                <div className="ml-2 text-xl">
+                  <div className="text-gray-800 mt-1 font-bold">
+                    <span>{loan.customer[0].firstName+" "+loan.customer[0].lastName}</span> 
+                  </div>                  
                 </div>
               </a>
-              <a
-                className="text-orange-300  no-underline text-grey-darker hover:text-red-dark text-right"
-                href="#"
-              >
-                <span className=" font-bold text-xl ">257 </span>
-                <i className="fa fa-trophy"></i>
-                <br />
-                <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                  40
-                </span>
-                <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                  10
-                </span>
-                <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                  -2
-                </span>
-                <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                  0
-                </span>
-              </a>
             </div>
-            <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">
+            <div className="-mt-5">
+              <label className="pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
                 {" "}
-                NIC
+                NIC : {loan?.customer[0]?.username}
               </label>
               <span className="mr-4 inline-block hidden md:block">:</span>
-              <div className="flex-1">{loan?.customer[0]?.username}</div>
+              <div className="flex-1"></div>
             </div>
             
             <input
