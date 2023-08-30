@@ -300,7 +300,6 @@ function AddEdit({
                 className="flex items-center no-underline  text-black"
                 href="#"
               >
-                <span className="bg-orange-300 rounded-lg p-3 mr-3">1</span>
                 <img
                   loading="lazy"
                   width="60"
@@ -309,37 +308,14 @@ function AddEdit({
                   data-nimg="1"
                   className="block rounded-full"
                 />
-                <p className="ml-2 text-sm">
+                <div className="ml-2 text-sm">
                   <span className="text-white">ac s</span>
-                  <br />
                   <span className="text-blue-400">
                     <span>Team :</span> cd
                   </span>
                   <br />
-                  <span className="text-blue-400">
-                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      Test-1
-                    </span>
-                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      normal-115
-                    </span>
-                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      tt-18
-                    </span>
-                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      1-1
-                    </span>
-                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      bonus-8
-                    </span>
-                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      N-4
-                    </span>
-                    <span className="bg-white text-gray-800 px-1 text-xs rounded-sm mt-20 mr-1">
-                      test-110
-                    </span>
-                  </span>
-                </p>
+                  
+                </div>
               </a>
               <a
                 className="text-orange-300  no-underline text-grey-darker hover:text-red-dark text-right"
