@@ -1,24 +1,5 @@
 import React from "react";
 
-const total_pounds_add = (arr: any) => {
-  arr.reduce(function (acc: any, obj: any) {
-    return (
-      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
-    );
-  }, 0);
-};
-const itm_total_net_add = (arr: any) => {
-  arr.reduce(function (acc: any, obj: any) {
-    return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
-  }, 0);
-};
-const itm_total_weight_add = (arr: any) => {
-  arr.reduce(function (acc: any, obj: any) {
-    return (
-      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
-    );
-  }, 0);
-};
 
 const UserTable = (props: any) => (
   <>
