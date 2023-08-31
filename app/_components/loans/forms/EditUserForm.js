@@ -28,7 +28,8 @@ const EditUserForm = props => {
 
         event.preventDefault();
         console.log(task.name,task.karat,task.net_weight,task.total_weight,task.pound)
-        if (!task.name || !task.karat || !task.net_weight || !task.total_weight || !task.pound) return;
+        task.pound=task.net_weight/8
+        if (!task.name || !task.karat || !task.net_weight || !task.total_weight ) return;
 
         props.editing ? props.updateUser(task.id, task) : props.addUser(task);
         resetAddUser();
@@ -87,14 +88,14 @@ const EditUserForm = props => {
         type="text"
         className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         name="pound"
-        value={task.pound}
+        value={task.net_weight/8}
         onChange={handleInputChange}
       />
       </div>
       </div>
       <div className="w-full">
         
-      <button>{props.editing ? "Update Item" : "Add Item"}</button>
+      <button className="btn btn-primary me-2 mt-1 bg-blue-700">{props.editing ? "Update Item" : "Add Item"}</button>
       {props.editing && (
         <button onClick={resetAddUser} className="button muted-button">
           Cancel

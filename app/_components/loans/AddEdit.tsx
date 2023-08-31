@@ -278,6 +278,27 @@ function AddEdit({
       alertService.error(error);
     }
   }
+  
+const total_pounds_add = 
+  tasks.reduce(function (acc: any, obj: any) {
+    return (
+      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+    );
+  }, 0);
+;
+const itm_total_net_add = 
+  tasks.reduce(function (acc: any, obj: any) {
+    return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
+  }, 0);
+
+const itm_total_weight_add =
+  tasks.reduce(function (acc: any, obj: any) {
+    return (
+      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
+    );
+  }, 0);
+
+
   return (
     <>
       <>
@@ -647,11 +668,31 @@ function AddEdit({
 ):(
   <>
 
-<div className="container">
+<div className="container bg-white">
           <div className="flex-row">
             <div className="flex-large">
               <div>
-                <h2>{editing ? "Edit user" : "Add user"}</h2>
+
+
+                
+                <h2>{editing ? "Update Item" : "Add Item"}</h2>
+                
+          <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
+            <div className="px-1">
+              {loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+              )}
+            </div>
+            <div className="px-1  text-right">
+              Total Weight : {total_pounds_add.toFixed(4)}
+            </div>
+            <div className="px-1  text-right">
+              Net Weight : {itm_total_net_add.toFixed(4)}
+            </div>
+            <div className="px-1  text-right">
+              total pound : {total_pounds_add.toFixed(4)}
+            </div>
+          </div>
                 <EditUserForm
                   editing={editing}
                   setEditing={setEditing}
@@ -663,7 +704,8 @@ function AddEdit({
               </div>
             </div>
             <div className="flex-large">
-              <h2>View tasks</h2>
+
+
               <UserTable
                 tasks={tasks}
                 editRow={editRow}
