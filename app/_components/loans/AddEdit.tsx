@@ -9,6 +9,8 @@ import axios from "axios";
 
 import UserTable from "./tables/UserTable";
 import EditUserForm from "./forms/EditUserForm";
+import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
+
 export { AddEdit };
 
 function AddEdit({
@@ -99,8 +101,10 @@ function AddEdit({
     }
     return val.toFixed(2);
   };
-
-  const [decided_price, setDecidedPrice] = useState("");
+  // expected_price
+  const [expected_price, setExpected_price_old] = useState("0");
+  const [no_of_month, setNo_of_month] = useState("0");
+  const [decided_price, setDecidedPrice] = useState("0");
   const [reviews, setReviews] = useState([]);
   const arr = reviews ? reviews : [];
 
@@ -228,6 +232,7 @@ function AddEdit({
   const addUser = (user: any) => {
     user.id = tasks.length + 1;
 
+    // console.log(user)
     setUsers([...tasks, user]);
   };
 
@@ -393,22 +398,15 @@ const itm_total_weight_add =
             </div>
 
           </div>
-            <div className="bg-white p-2 m-1">
-              <div className=" flex items-center justify-between leading-none  md:p-4 ">
+            <div className="bg-white p-2 m-1 border">
+              <div className=" flex items-center justify-between leading-none  ">
                 <a
                   className="flex items-center no-underline  text-black"
                   href="#"
                 >
-                  <img
-                    src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                    decoding="async"
-                    data-nimg="1"
-                    className="block rounded-full"
-                  />
-                  <div className="ml-2 text-xl -mt-8">
+                  <FaUserCircle className='float-left  text-5xl' /> 
+
+                  <div className="text-xl -mt-3">
                     <div className="text-gray-800 mt-1 font-bold">
                       <span>
                         {loan?.officer[0]?.firstName +
@@ -419,32 +417,22 @@ const itm_total_weight_add =
                   </div>
                 </a>
               </div>
-              <div className="-mt-8">
-                <label className="pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
-                  {" "}
-                  NIC : {loan?.officer[0]?.username}
-                </label>
-                <div className="flex-1"></div>
-              </div>
-              <div className="m-2">CREATED BY</div>
+              <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">CREATED BY</div>
+          
             </div>
           <div>
-            <div className=" bg-white">
-              <div className="flex items-center justify-between leading-none  md:p-4">
+            
+
+            
+          <div className="bg-white p-2 m-1 border">
+              <div className=" flex items-center justify-between leading-none  ">
                 <a
                   className="flex items-center no-underline  text-black"
                   href="#"
                 >
-                  <img
-                    src="https://res.cloudinary.com/masterdevs/image/upload/v1627421291/avatars/gbhzxcjtftv0okqhuw5z.png"
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                    decoding="async"
-                    data-nimg="1"
-                    className="block rounded-full"
-                  />
-                  <div className="ml-2 text-xl -mt-5">
+                  <FaUserCircle className='float-left  text-5xl' /> 
+
+                  <div className="text-xl -mt-3">
                     <div className="text-gray-800 mt-1 font-bold">
                       <span>
                         {loan?.customer[0]?.firstName +
@@ -455,24 +443,10 @@ const itm_total_weight_add =
                   </div>
                 </a>
               </div>
-              <div className="-mt-8">
-                <label className=" pl-20 text-gray-800 block  text-sm uppercase tracking-wide">
-                  {" "}
-                  NIC : {loan?.customer[0]?.username}
-                </label>
-                <div className="flex-1"></div>
-              </div>
-              <div className="m-2 text-bold">CUSTOMER</div>
+              <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">CUSTOMER</div>
+          
             </div>
-            <div></div>
-
-            <input
-              name="photo"
-              id="fileInput"
-              accept="image/*"
-              className="hidden"
-              type="file"
-            />
+            
           </div>
         </div>
 
@@ -480,7 +454,7 @@ const itm_total_weight_add =
 
         {/* {console.log(loan)} */}
 
-
+{console.log(tasks)}
 {loan?(
   <>
   
@@ -536,6 +510,7 @@ const itm_total_weight_add =
                       placeholder="Karat"
                     />
                   </div>
+
                   <div className="px-1  text-right">
                     <input
                       type="text"
@@ -809,13 +784,15 @@ const itm_total_weight_add =
           </div>
 
           <div className="p-2">
-            <label className="form-label ml-2 ">Expected Price (Old)</label>
+            <label className="form-label ml-2 ">Expected Price </label>
             <input
               {...fields.expected_price_old}
               type="expected_price_old"
               className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.expected_price_old ? "is-invalid" : ""
               }`}
+              
+               onChange={(e) => setExpected_price_old(e.target.value)}
             />
             <div className="invalid-feedback">
               {errors.expected_price_old?.message?.toString()}
@@ -836,7 +813,7 @@ const itm_total_weight_add =
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label ml-2 ">decided_price(Old)</label>
+            <label className="form-label ml-2 ">Decided Price</label>
             <input
               {...fields.decided_price}
               type="decided_price"
@@ -846,6 +823,7 @@ const itm_total_weight_add =
               onChange={(e) => setDecidedPrice(e.target.value)}
             />
             {decided_price}
+            -{no_of_month}-{expected_price}
             <div className="invalid-feedback">
               {errors.decided_price?.message?.toString()}
             </div>
@@ -857,7 +835,9 @@ const itm_total_weight_add =
               className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.no_of_month ? "is-invalid" : ""
               }`}
+              onChange={(e) => setNo_of_month(e.target.value)}
             >
+            <option value="0">-SELECT MONTH-</option>
               <option value="60">60</option>
               <option value="48">48</option>
               <option value="36">36</option>
@@ -878,7 +858,7 @@ const itm_total_weight_add =
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label ml-2 ">form_number</label>
+            <label className="form-label ml-2 ">Form Number</label>
             <input
               {...fields.form_number}
               type="form_number"

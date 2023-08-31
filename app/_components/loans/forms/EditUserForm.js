@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 
 const EditUserForm = props => {
   const initialFormState = { id: null, name: "", karat: "",net_weight:"",total_weight:"",pound:"" };
+  
   const [task, setUser] = useState(
     props.editing ? props.currentUser : initialFormState
   );
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-
+// console.log(task)
     setUser({ ...task, [name]: value });
   };
 
@@ -18,6 +19,7 @@ const EditUserForm = props => {
 
   const resetAddUser = () => {
     props.setEditing(false);
+    // console.log(initialFormState)
     setUser(initialFormState);
     props.setCurrentUser(initialFormState);
   };
@@ -27,7 +29,8 @@ const EditUserForm = props => {
       onSubmit={event => {
 
         event.preventDefault();
-        console.log(task.name,task.karat,task.net_weight,task.total_weight,task.pound)
+        
+
         task.pound=task.net_weight/8
         if (!task.name || !task.karat || !task.net_weight || !task.total_weight ) return;
 

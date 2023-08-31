@@ -77,7 +77,7 @@ function useLoanService(): ILoanService {
     },
     update: async (id, params) => {
       
-      console.log("update Service")
+      // console.log("update Service")
       loanStore.setState({ loan: undefined });
       try {
 
@@ -92,7 +92,7 @@ function useLoanService(): ILoanService {
       }
     },
     updateItem: async (id, params) => {
-      console.log(params)
+      // console.log(params)
             try {
         // console.log(params.estimated_price_old);
         await fetch.put(`/api/loan-item/${id}`, params);        
@@ -125,9 +125,9 @@ function useLoanService(): ILoanService {
       }
     },
     deleteItem: async (id, params) => {
-      console.log("---")
-      console.log(params)
-      console.log("---")
+      // console.log("---")
+      // console.log(params)
+      // console.log("---")
       const response = await fetch.put(`/api/loan-item-del/${id}?id=${params}`,params);
 
     },

@@ -14,12 +14,12 @@ async function getAll() {
 
 async function create(req: Request) {
     const cd= await usersRepo.getCurrent();
-    console.log(cd)
+    // console.log(cd)
 
     const body = await req.json();
     body.officer_id=cd._id
 
-    console.log(body)
+    // console.log(body)
     
     await loansRepo.create(body);
 }

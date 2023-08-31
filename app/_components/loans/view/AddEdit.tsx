@@ -42,7 +42,8 @@ function View({ title, loan }: { title: string; loan?: any }) {
       let message;
       if (loan) {
         await loanService.updateItem(loan.id, data);
-console.log
+// console.log
+
         message = "Loan updated";
       } else {
         await loanService.create(data);

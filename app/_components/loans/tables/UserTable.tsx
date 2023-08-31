@@ -6,13 +6,13 @@ const UserTable = (props: any) => (
         <div className="bg-white p-2 mt-4">
     {props.tasks.length > 0 ? (
       props.tasks.map((task: any) => (
-          <div key={task.karat}>
+          <div key={task.id}>
             <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-1">
               <div className="flex-2 px-1 w-full">
                 <div className="ml-2 text-sm">
                   <span className="text-white">
                     <span className="  bg-orange-300 rounded-sm px-2 mr-3">
-                    {task.karat}
+                    {task.id}
                     </span>
                     {task.name} &nbsp;
                     <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
@@ -68,7 +68,7 @@ const UserTable = (props: any) => (
         {props.tasks.length > 0 ? (
           props.tasks.map((task: any) => (
             <tr key={task.id}>
-              <td>{task.name}</td>
+              <td>{task.name}-{task.id?"a":"b"}</td>
               <td>{task.karat}</td>
               <td>{task.net_weight}</td>
               <td>{task.total_weight}</td>
@@ -88,6 +88,8 @@ const UserTable = (props: any) => (
                 >
                   Delete
                 </button>
+               --- {task.id}---
+                
               </td>
             </tr>
           ))

@@ -24,7 +24,7 @@ function Edit({ params: { id } }: any) {
     return user
         ? 
         <>
-        {console.log(user)}
+        {/* {console.log(user)} */}
         
         <AddEdit title="Edit User" user={user} />
         

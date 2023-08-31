@@ -147,9 +147,9 @@ async function _delete(id: string) {
 }
 
 async function _deleteItem(id: any,params:any) {
-  console.log("-api2--")
-  console.log(id,params)
-  console.log("-api-ed-")
+  // console.log("-api2--")
+  // console.log(id,params)
+  // console.log("-api-ed-")
   await Loan.findOneAndUpdate(
     { _id: "64ec7c7537b6d70c352e5124" },
     { $pull: { items: { _id: "64eccc2bf590bcb257834cc9" } } },
