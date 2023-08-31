@@ -6,7 +6,7 @@ const UserTable = (props: any) => (
         <div className="bg-white p-2 mt-4">
     {props.tasks.length > 0 ? (
       props.tasks.map((task: any) => (
-          <div>
+          <div key={task.karat}>
             <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-1">
               <div className="flex-2 px-1 w-full">
                 <div className="ml-2 text-sm">
