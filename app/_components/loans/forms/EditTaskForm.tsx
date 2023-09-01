@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const EditTaskForm = (props:any) => {
-  const initialFormState = { id: null, name: "", karat: "",net_weight:"",total_weight:"",pound:"" };
+  const initialFormState = { id: null, name: "", karat: "",net_weight:"",total_weight:"",pound:"",status:"" };
   const [task, setTask] = useState(
     props.editing ? props.currentTask : initialFormState
   );
@@ -27,7 +27,6 @@ const EditTaskForm = (props:any) => {
       onSubmit={event => {
         event.preventDefault();
         if (!task.name || !task.karat) return;
-
         props.editing ? props.updateTask(task.id, task) : props.addTask(task);
         resetAddTask();
       }}
@@ -65,6 +64,13 @@ const EditTaskForm = (props:any) => {
         type="text"
         name="pound"
         value={task.pound}
+        onChange={handleInputChange}
+      />
+      <label>status</label>
+      <input
+        type="text"
+        name="status"
+        value={task.status}
         onChange={handleInputChange}
       />
       <button>{props.editing ? "Update task" : "Add task"}</button>

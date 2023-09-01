@@ -9,6 +9,7 @@ const TaskTable = (props:any) => (
         <th>net_weight</th>
         <th>total_weight</th>
         <th>pound</th>
+        <th>status</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@ const TaskTable = (props:any) => (
             <td>{task.net_weight}</td>
             <td>{task.total_weight}</td>
             <td>{task.pound}</td>
+            <td>{task.status}</td>
             <td>
               <button
                 className="button muted-button"
