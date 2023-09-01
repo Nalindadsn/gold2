@@ -31,6 +31,10 @@ create.schema = joi.object({
     expected_price_old: joi.string().required(),
     user_id: joi.required(),
     items:joi.array(),
-    form_number:joi.string()
+    form_number:joi.string(),
+    
+    expected_month: joi.string(),
+    decided_price: joi.string(),
+    no_of_month: joi.string(),
     // officer_id: joi.required(),
 });

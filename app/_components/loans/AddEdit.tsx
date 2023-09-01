@@ -7,8 +7,8 @@ import { useAlertService, useLoanService } from "_services";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
-import UserTable from "./tables/UserTable";
-import EditUserForm from "./forms/EditUserForm";
+import TaskTable from "./tables/TaskTable";
+import EditTaskForm from "./forms/EditTaskForm";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
 export { AddEdit };
@@ -213,58 +213,96 @@ function AddEdit({
   };
 
   ///////////////task
+  const tasksData:any[] = [];
+  const initialFormState = { id: null, name: "", karat: "", net_weight: "", total_weight: "", pound: "" };
 
-  const tasksData: any = [];
-
-  const initialFormState = {
-    id: null,
-    name: "",
-    karat: "",
-    net_weight: "",
-    total_weight: "",
-    pound: "",
-  };
-
-  const [tasks, setUsers] = useState(tasksData);
+  const [tasks, setTasks] = useState(tasksData);
   const [editing, setEditing] = useState(false);
-  const [currentUser, setCurrentUser] = useState(initialFormState);
+  const [currentTask, setCurrentTask] = useState(initialFormState);
 
-  const addUser = (user: any) => {
-    user.id = tasks.length + 1;
-
-    // console.log(user)
-    setUsers([...tasks, user]);
+  const addTask = (task:any) => {
+    task.id = tasks.length + 1;
+    setTasks([...tasks, task]);
+      // console.log(task)
   };
 
-  const deleteUser = (id: any) => {
+  const deleteTask = (id:any) => {
     setEditing(false);
-    setUsers(tasks.filter((user: any) => user.id !== id));
+    setTasks(tasks.filter(task => task.id !== id));
   };
 
-  const editRow = (user: any) => {
+  const editRow = (task:any) => {
     setEditing(true);
 
-    setCurrentUser(user);
+    setCurrentTask(task);
   };
 
-  const updateUser = (id: any, updatedUser: any) => {
+  const updateTask = (id:any, updatedTask:any) => {
     setEditing(false);
-    setUsers(tasks.map((user: any) => (user.id === id ? updatedUser : user)));
+    setTasks(tasks.map(task => (task.id === id ? updatedTask : task)));
   };
-  const taskArray: any = tasks.forEach(function (v: any) {
-    delete v.id;
-  });
+
+
+  // const tasksData: any = [];
+
+  // const initialFormState = {
+  //   id: null,
+  //   name: "",
+  //   karat: "",
+  //   net_weight: "",
+  //   total_weight: "",
+  //   pound: "",
+  // };
+
+  // const [tasks, setUsers] = useState(tasksData);
+  // const [editing, setEditing] = useState(false);
+  // const [currentUser, setCurrentUser] = useState(initialFormState);
+
+  // const addUser = (user: any) => {
+  //   user.id = tasks.length + 1;
+
+  //   // console.log(user)
+  //   setUsers([...tasks, user]);
+  // };
+
+  // const deleteUser = (id: any) => {
+  //   setEditing(false);
+  //   setUsers(tasks.filter((user: any) => user.id !== id));
+  // };
+
+  // const editRow = (user: any) => {
+  //   setEditing(true);
+
+  //   setCurrentUser(user);
+  // };
+
+  // const updateUser = (id: any, updatedUser: any) => {
+  //   setEditing(false);
+  //   setUsers(tasks.map((user: any) => (user.id === id ? updatedUser : user)));
+  // };
+  // const taskArray: any = tasks.forEach(function (v: any) {
+  //   delete v.id;
+  // });
+  // const myArray = tasks.filter(function( obj:any ) {
+  //   return obj.id !== id;
+  // });
   async function onSubmit(data: any) {
     alertService.clear();
-    const dataV = data;
+    var result = tasks.map(function(obj:any) {
+      return { name: obj.name, karat: obj.karat, net_weight: obj.net_weight, total_weight: obj.total_weight, pound: obj.pound};
+  });
+
+  
+    const dataV:any = data;
     dataV.user_id = user;
+
     if (loan) {
       dataV.items = [];
     } else {
-      dataV.items = tasks;
+      dataV.items = result;
     }
-    // console.log(tasks)
-    dataV.items = tasks;
+    // console.log(result)
+    dataV.items = result;
     try {
       // create or update loan based on loan prop
       let message;
@@ -284,24 +322,24 @@ function AddEdit({
     }
   }
   
-const total_pounds_add = 
-  tasks.reduce(function (acc: any, obj: any) {
-    return (
-      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
-    );
-  }, 0);
-;
-const itm_total_net_add = 
-  tasks.reduce(function (acc: any, obj: any) {
-    return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
-  }, 0);
+// const total_pounds_add = 
+//   tasks.reduce(function (acc: any, obj: any) {
+//     return (
+//       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+//     );
+//   }, 0);
+// ;
+// const itm_total_net_add = 
+//   tasks.reduce(function (acc: any, obj: any) {
+//     return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
+//   }, 0);
 
-const itm_total_weight_add =
-  tasks.reduce(function (acc: any, obj: any) {
-    return (
-      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
-    );
-  }, 0);
+// const itm_total_weight_add =
+//   tasks.reduce(function (acc: any, obj: any) {
+//     return (
+//       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
+//     );
+//   }, 0);
 
 
   return (
@@ -395,10 +433,22 @@ const itm_total_weight_add =
                 {loan ? formatDate(loan?.updatedAt) : ""}
               </div>
             </div>
+            <div className="mb-2 md:mb-1 md:flex items-center">
+              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                {" "}
+                cREATED BY 
+              </label>
+              <span className="mr-4  md:block">:</span>
+              <div className="flex-1">
+              {loan?.officer[0]?.firstName +
+                          " " +
+                          loan?.officer[0]?.lastName}
+              </div>
+            </div>
             </div>
 
           </div>
-            <div className="bg-white p-2 m-1 border">
+            {/* <div className="bg-white p-2 m-1 border">
               <div className=" flex items-center justify-between leading-none  ">
                 <a
                   className="flex items-center no-underline  text-black"
@@ -419,7 +469,7 @@ const itm_total_weight_add =
               </div>
               <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">CREATED BY</div>
           
-            </div>
+            </div> */}
           <div>
             
 
@@ -454,7 +504,7 @@ const itm_total_weight_add =
 
         {/* {console.log(loan)} */}
 
-{console.log(tasks)}
+{/* {console.log(tasks)} */}
 {loan?(
   <>
   
@@ -643,52 +693,30 @@ const itm_total_weight_add =
 ):(
   <>
 
-<div className="container bg-white">
-          <div className="flex-row">
-            <div className="flex-large">
-              <div>
-
-
-                
-                <h2>{editing ? "Update Item" : "Add Item"}</h2>
-                
-          <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
-            <div className="px-1">
-              {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-            </div>
-            <div className="px-1  text-right">
-              Total Weight : {total_pounds_add.toFixed(4)}
-            </div>
-            <div className="px-1  text-right">
-              Net Weight : {itm_total_net_add.toFixed(4)}
-            </div>
-            <div className="px-1  text-right">
-              total pound : {total_pounds_add.toFixed(4)}
-            </div>
-          </div>
-                <EditUserForm
-                  editing={editing}
-                  setEditing={setEditing}
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                  updateUser={updateUser}
-                  addUser={addUser}
-                />
-              </div>
-            </div>
-            <div className="flex-large">
-
-
-              <UserTable
-                tasks={tasks}
-                editRow={editRow}
-                deleteUser={deleteUser}
-              />
-            </div>
+<div className="container">
+      <h1>CRUD App with Hooks</h1>
+      <div className="flex-row">
+        <div className="flex-large">
+          <div>
+            <h2>{editing ? "Edit task" : "Add task"}</h2>
+            <EditTaskForm
+              editing={editing}
+              setEditing={setEditing}
+              currentTask={currentTask}
+              setCurrentTask={setCurrentTask}
+              updateTask={updateTask}
+              addTask={addTask}
+            />
           </div>
         </div>
+        <div className="flex-large">
+          <h2>View tasks</h2>
+          <TaskTable tasks={tasks} editRow={editRow} deleteTask={deleteTask} />
+        </div>
+      </div>
+    </div>
+
+
   </>
 )}
 
