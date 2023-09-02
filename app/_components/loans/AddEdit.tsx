@@ -360,14 +360,20 @@ return (
   <span>
     {a<=max_price? (
       <>
-      
+      <br/>
+      Maximum Amount:
+      <span className="mx-1 bg-green-500 text-white py-0 px-2 rounded-full text-sm ">
+  {max_price}
+      </span>
       </>
     ):(
       <><br/>Amount payable in hand  
-      <span className="ml-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
+      <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
 
-      {a-max_price}
+      LKR {a-max_price}
+
       </span>
+      Maximum Amount:  LKR {max_price}
       </>
     )}
   </span>
@@ -668,17 +674,17 @@ return (
             <div key ={n++}>
 
 
-<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-1">
+<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg  mb-1">
     
   
   
   <div className="flex-2 px-1 w-full">
   <div className="ml-2 text-sm">
-                      <span className="text-white">
+                      <span >
+ <span className="font-bold">{i?.name}</span>  &nbsp;
                         <span className="  bg-orange-300 rounded-sm px-2 mr-3">
-                      {n}
+                      {i?.karat}
                     </span>
-  {i?.name} &nbsp;
                         {i?.status == "NOT ISSUE" ? (
                           <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
                             {i?.status}

@@ -8,17 +8,17 @@ const TaskTable = (props:any) => (
           <div key ={n++}>
 
 
-          <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-1">
+          <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg  mb-1">
               
             
             
             <div className="flex-2 px-1 w-full">
             <div className="ml-2 text-sm">
-                                <span className="text-white">
+                                <span >
+            <span className="font-bold">{task?.name}</span> &nbsp;
                                   <span className="  bg-orange-300 rounded-sm px-2 mr-3">
                                 KARAT : {task.karat}
                               </span>
-            {task?.name} &nbsp;
                                   {task?.status == "NOT ISSUE" ? (
                                     <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
                                       {task?.status}
