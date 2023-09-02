@@ -384,7 +384,7 @@ return (
       <>
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
-            - Order
+            -{loan?"UPDATE ":"NEW"} Order 
           </h2>
           <div>
             <div className="relative mr-4 inline-block">
@@ -435,7 +435,8 @@ return (
         <div className="grid grid-cols-1 space-x-1  md:grid-cols-2">
           <div>
             <div className="bg-white mb-2 m-1 p-3">
-
+{loan?(
+  <>
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 Status
@@ -473,7 +474,7 @@ return (
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 {" "}
-                cREATED BY 
+                CREATED BY 
               </label>
               <span className="mr-4  md:block">:</span>
               <div className="flex-1">
@@ -482,6 +483,24 @@ return (
                           loan?.officer[0]?.lastName}
               </div>
             </div>
+  </>
+  
+):<>
+
+
+            <div className="mb-2 md:mb-1 md:flex items-center">
+              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                {" "}
+                CREATE BY 
+              </label>
+              <span className="mr-4  md:block">:</span>
+              <div className="flex-1">
+              {loan?.officer[0]?.firstName +
+                          " " +
+                          loan?.officer[0]?.lastName}
+              </div>
+            </div>
+</>}
             </div>
 
           </div>
