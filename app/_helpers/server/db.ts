@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
+
+
 mongoose.connect(process.env.MONGODB_URI!);
 mongoose.Promise = global.Promise;
 

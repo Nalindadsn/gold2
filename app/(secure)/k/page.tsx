@@ -51,7 +51,6 @@ const App = () => {
           </div>
         </div>
         <div className="flex-large">
-          <h2>View tasks</h2>
           <TaskTable tasks={tasks} editRow={editRow} deleteTask={deleteTask} />
         </div>
       </div>

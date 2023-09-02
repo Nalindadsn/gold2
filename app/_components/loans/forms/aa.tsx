@@ -1,4 +1,4 @@
-{/* <form className="bg-white p-2 mt-4" >
+<form className="bg-white p-2 mt-4" >
 <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
   <div className="px-1"></div>
   <div className="px-1  text-right">Total Weight : 2.4975</div>
@@ -27,4 +27,4 @@
 </div>
 </div>
 </div>
-</form> */}
+</form>

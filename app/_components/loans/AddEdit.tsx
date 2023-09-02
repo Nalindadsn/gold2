@@ -197,6 +197,7 @@ function AddEdit({
   const net_weight_cal: any = (parseFloat(net_weight) / 8).toFixed(4);
   useEffect(() => {
     // async () => {
+      
     fetchReviews();
   }, [fetchReviews]);
 
@@ -341,7 +342,31 @@ function AddEdit({
 //     );
 //   }, 0);
 
+const payment_values=(a:any,b:any,c:any)=>{
+  
+  const basic=a-b;
+return (
+  <div>
+    ----{a+"-"+b}={a-b}--------------
+    {a>=b? (
+      <>
+      <div className="bg-green-600 p-2 text-white">
 
+      ok
+      </div>
+      </>
+    ):(
+      <>
+      <div className="bg-yellow-500 p-2 text-white">
+
+      not
+      </div>
+      </>
+    )}
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente totam eum corrupti, odit ullam necessitatibus est culpa reprehenderit fuga voluptate, ab ex magni laudantium, rerum dicta assumenda aut cupiditate ipsam.
+  </div>
+)
+}
   return (
     <>
       <>
@@ -510,7 +535,7 @@ function AddEdit({
   
         <form
           onSubmit={submitHandler}
-          className="bg-white p-2 mt-4"
+          className=" p-2"
           style={{ overflow: "hidden" }}
         >
           <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
@@ -693,12 +718,11 @@ function AddEdit({
 ):(
   <>
 
-<div className="container">
-      <h1>CRUD App with Hooks</h1>
+<div className="container bg-white">
       <div className="flex-row">
         <div className="flex-large">
           <div>
-            <h2>{editing ? "Edit task" : "Add task"}</h2>
+            <h2>{editing ? "Edit Item" : "Add Item"}</h2>
             <EditTaskForm
               editing={editing}
               setEditing={setEditing}
@@ -706,11 +730,11 @@ function AddEdit({
               setCurrentTask={setCurrentTask}
               updateTask={updateTask}
               addTask={addTask}
+              tasks={tasks}
             />
           </div>
         </div>
         <div className="flex-large">
-          <h2>View tasks</h2>
           <TaskTable tasks={tasks} editRow={editRow} deleteTask={deleteTask} />
         </div>
       </div>
@@ -768,6 +792,35 @@ function AddEdit({
         <div className="grid grid-cols-1 md:grid-cols-2">
           
 
+        <div className="p-2">
+            <label className="form-label ml-2 ">Form Number</label>
+            <input
+              {...fields.form_number}
+              type="form_number"
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.form_number ? "is-invalid" : ""
+              }`}
+            />
+            <div className="invalid-feedback">
+              {errors.form_number?.message?.toString()}
+            </div>
+          </div>
+          
+          <div className="p-2">
+            <label className="form-label ml-2 ">Expected Price </label>
+            <input
+              {...fields.expected_price_old}
+              type="expected_price_old"
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.expected_price_old ? "is-invalid" : ""
+              }`}
+              
+               onChange={(e) => setExpected_price_old(e.target.value)}
+            />
+            <div className="invalid-feedback">
+              {errors.expected_price_old?.message?.toString()}
+            </div>
+          </div>
           <div className="p-2 ml-1">
             <label className="form-label ml-2 ">Estimated Price (Old)</label>
             <input
@@ -811,21 +864,6 @@ function AddEdit({
             </div>
           </div>
 
-          <div className="p-2">
-            <label className="form-label ml-2 ">Expected Price </label>
-            <input
-              {...fields.expected_price_old}
-              type="expected_price_old"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.expected_price_old ? "is-invalid" : ""
-              }`}
-              
-               onChange={(e) => setExpected_price_old(e.target.value)}
-            />
-            <div className="invalid-feedback">
-              {errors.expected_price_old?.message?.toString()}
-            </div>
-          </div>
 
           <div className="p-2">
             <label className="form-label ml-2 ">expected_month(Old)</label>
@@ -850,8 +888,16 @@ function AddEdit({
               }`}
               onChange={(e) => setDecidedPrice(e.target.value)}
             />
+            
+
+{payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))}
+
             {decided_price}
             -{no_of_month}-{expected_price}
+
+
+
+
             <div className="invalid-feedback">
               {errors.decided_price?.message?.toString()}
             </div>
@@ -883,19 +929,6 @@ function AddEdit({
             /> */}
             <div className="invalid-feedback">
               {errors.no_of_month?.message?.toString()}
-            </div>
-          </div>
-          <div className="p-2">
-            <label className="form-label ml-2 ">Form Number</label>
-            <input
-              {...fields.form_number}
-              type="form_number"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.form_number ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              {errors.form_number?.message?.toString()}
             </div>
           </div>
         </div>

@@ -1,54 +1,74 @@
 import React from "react";
-
+let n=1;
 const TaskTable = (props:any) => (
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>karat</th>
-        <th>net_weight</th>
-        <th>total_weight</th>
-        <th>pound</th>
-        <th>status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {props.tasks.length > 0 ? (
+  <>
+
+{props.tasks.length > 0 ? (
         props.tasks.map((task:any) => (
-          <tr key={task.id}>
-            <td>{task.name}-{task.id}
-            </td>
-            <td>{task.karat}</td>
-            <td>{task.net_weight}</td>
-            <td>{task.total_weight}</td>
-            <td>{task.pound}</td>
-            <td>{task.status}</td>
-            <td>
-              <button
-                className="button muted-button"
+          <div key ={n++}>
+
+
+          <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg bg-gray-800 mb-1">
+              
+            
+            
+            <div className="flex-2 px-1 w-full">
+            <div className="ml-2 text-sm">
+                                <span className="text-white">
+                                  <span className="  bg-orange-300 rounded-sm px-2 mr-3">
+                                {n}
+                              </span>
+            {task?.name} &nbsp;
+                                  {task?.status == "NOT ISSUE" ? (
+                                    <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                                      {task?.status}
+                                    </span>
+                                  ) : (
+                                    <span className="bg-red-600 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                                      {task?.status}
+                                    </span>
+                                  )}
+                                </span>
+                                <br />
+                                <div>
+                                  
+          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
+            <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">TOTAL WEIGHT - {task?.total_weight}</div>
+            <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">NET WEIGHT - {task?.net_weight}</div>
+            <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">POUNDS - {task?.pound}</div>
+          </div>
+                                </div>
+                              </div>
+            </div>
+            <div className="px-1 text-right">
+            <button
+                className="btn btn-sm btn-warning  mr-2 mt-1"
                 onClick={() => {
                   props.editRow(task);
                 }}
               >
                 Edit
-              </button>
+              </button></div>
+            <div className="px-1 text-right">
               <button
-                className="button muted-button"
+                className="btn btn-sm btn-danger  mr-2 mt-1"
                 onClick={() => props.deleteTask(task.id)}
               >
                 Delete
-              </button>
-            </td>
-          </tr>
-        ))
-      ) : (
-        <tr>
-          <td colSpan={3}>No tasks</td>
-        </tr>
-      )}
-    </tbody>
-  </table>
+              </button></div>
+          </div>
+          
+                      </div>
+  
+  ))
+  ) : (
+    <div>
+      <div className="text-center" >No tasks</div>
+    </div>
+  )}
+
+ 
+  </>
 );
 
 export default TaskTable;
