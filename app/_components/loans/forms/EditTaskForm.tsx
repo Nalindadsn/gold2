@@ -79,7 +79,7 @@ console.log(name,"-",value)
   return (
     <>
     {JSON.stringify(props.tasks)}
-      <form className="bg-white p-2 mt-4"
+      <form className="bg-white"
         onSubmit={(event) => {
           event.preventDefault();
           if (!task.name || !task.karat) return;
