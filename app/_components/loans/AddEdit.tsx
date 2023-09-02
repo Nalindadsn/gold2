@@ -355,7 +355,7 @@ console.log(task)
 const payment_values=(a:any,b:any,c:any)=>{
   const basic=a-b;
 
-const max_price:any=total_pounds_add*130000
+const max_price:any=loan? total_pounds*130000 :total_pounds_add*130000
 return (
   <span>
     {a<=max_price? (
