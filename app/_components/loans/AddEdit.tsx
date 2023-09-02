@@ -197,7 +197,6 @@ function AddEdit({
   const net_weight_cal: any = (parseFloat(net_weight) / 8).toFixed(4);
   useEffect(() => {
     // async () => {
-      
     fetchReviews();
   }, [fetchReviews]);
 
@@ -343,7 +342,6 @@ function AddEdit({
 //   }, 0);
 
 const payment_values=(a:any,b:any,c:any)=>{
-  
   const basic=a-b;
 return (
   <div>
@@ -722,9 +720,6 @@ return (
       <div className="flex-row">
         <div className="flex-large">
           <div>
-
-
-            
             <h2>{editing ? "Edit Item" : "Add Item"}</h2>
             <EditTaskForm
               editing={editing}

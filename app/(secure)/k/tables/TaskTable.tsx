@@ -1,28 +1,19 @@
 import React from "react";
 
 const TaskTable = (props:any) => (
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>karat</th>
-        <th>net_weight</th>
-        <th>total_weight</th>
-        <th>pound</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div>
+  
+    <div>
       {props.tasks.length > 0 ? (
         props.tasks.map((task:any) => (
-          <tr key={task.id}>
-            <td>{task.name}-{task.id}
-            </td>
-            <td>{task.karat}</td>
-            <td>{task.net_weight}</td>
-            <td>{task.total_weight}</td>
-            <td>{task.pound}</td>
-            <td>
+          <div key={task.id}>
+            <div>{task.name}-{task.id}
+            </div>
+            <div>{task.karat}</div>
+            <div>{task.net_weight}</div>
+            <div>{task.total_weight}</div>
+            <div>{task.pound}</div>
+            <div>
               <button
                 className="button muted-button"
                 onClick={() => {
@@ -37,16 +28,16 @@ const TaskTable = (props:any) => (
               >
                 Delete
               </button>
-            </td>
-          </tr>
+            </div>
+          </div>
         ))
       ) : (
-        <tr>
+        <div>
           <td colSpan={3}>No tasks</td>
-        </tr>
+        </div>
       )}
-    </tbody>
-  </table>
+    </div>
+  </div>
 );
 
 export default TaskTable;
