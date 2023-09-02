@@ -818,7 +818,6 @@ return (
         {JSON.stringify(installment(6, basic_estimate_final))}----
         <br /> */}
         <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
-        <div className="flex flex-col md:flex-row -mx-1 py-2 border-b"><div className="px-1"></div><div className="px-1  text-right">Total Weight : 1.8750</div><div className="px-1  text-right">Net Weight : 123.0000</div><div className="px-1  text-right">total pound : 15.3750</div></div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           
 
