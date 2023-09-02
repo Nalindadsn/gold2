@@ -130,7 +130,7 @@ console.log(name,"-",value)
               </span>
             </h2> */}
             <div>
-              <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
+              <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b overflow-hidden">
                 <div className="flex-1 px-1">
                   
 <div className="relative mb-1">
