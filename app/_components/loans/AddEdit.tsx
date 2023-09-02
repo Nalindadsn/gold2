@@ -571,60 +571,84 @@ return (
               <div>
                 <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                   <div className="flex-1 px-1">
-                    <input
-                      type="text"
-                      onChange={(e) => setItmName(e.target.value)}
-                      value={name}
-                      name="name"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Description"
-                      required
-                    />
+
+                           
+<div className="relative">
+    <input type="text" id="floating_outlined" 
+    className="block px-3 pb-0.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " 
+    
+    onChange={(e) => setItmName(e.target.value)}
+    value={name}
+    name="name"/>
+    <label htmlFor="floating_outlined" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+      Description</label>
+</div>
+
+
                  
                   </div>
                   <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setKarat(e.target.value)}
-                      value={karat}
-                      name="karat"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Karat"
-                    />
+                  
+                      
+                      <div className="relative">
+    <input type="text" id="floating_outlined" 
+    className="block px-3 pb-0.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " 
+    
+    onChange={(e) => setKarat(e.target.value)}
+    value={karat}
+    name="karat"/>
+    <label htmlFor="floating_outlined" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+      Karat</label>
+</div>
+
+
+
+
+
+                    
                   </div>
 
                   <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setNet_weight(e.target.value)}
-                      value={net_weight}
-                      name="net_weight"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Net Weight"
-                      required
-                    />
+                    
+                      
+                    <div className="relative">
+    <input type="text" id="floating_outlined" 
+    className="block px-3 pb-0.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " 
+    
+    onChange={(e) => setNet_weight(e.target.value)}
+    value={net_weight}
+    name="net_weight"/>
+    <label htmlFor="floating_outlined" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+      Net Weight</label>
+</div>
+
                   </div>
                   <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setTotal_weight(e.target.value)}
-                      value={total_weight}
-                      name="total_weight"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Total Weight"
-                      required
-                    />
+          
+                     
+<div className="relative">
+    <input type="text" id="floating_outlined" 
+    className="block px-3 pb-0.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " 
+    
+    onChange={(e) => setTotal_weight(e.target.value)}
+    value={total_weight}
+    name="total_weight"/>
+    <label htmlFor="floating_outlined" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+      Total Weight</label>
+</div>
                   </div>
                   <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setPound(e.target.value)}
-                      value={net_weight_cal}
-                      name="pound"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Pound"
-                      required
-                    />
+                                  
+<div className="relative">
+    <input type="text" id="floating_outlined" 
+    className="block px-3 pb-0.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " 
+    
+    onChange={(e) => setPound(e.target.value)}
+    value={net_weight_cal}
+    name="pound"/>
+    <label htmlFor="floating_outlined" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+      Total Weight</label>
+</div>
                   </div>
 
                   <div className="px-1  text-right">
