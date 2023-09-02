@@ -103,14 +103,17 @@ console.log(name,"-",value)
             <div>
               <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                 <div className="flex-1 px-1">
-                  <input
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                    placeholder="Description"
-                    type="text"
-                    name="name"
-                    value={task.name}
-                    onChange={handleInputChange}
-                  />
+                  
+<div className="relative">
+    <input type="text" id="floating_outlined" 
+    className="block px-3 pb-0.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " 
+    name="name"
+    value={task.name}
+    onChange={handleInputChange}/>
+    <label htmlFor="floating_outlined" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Description</label>
+</div>
+
+
                 </div>
                 <div className="flex-1 px-1">
                   <input
