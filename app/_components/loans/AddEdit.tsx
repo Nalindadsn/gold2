@@ -118,7 +118,7 @@ function AddEdit({
   }, 0);
   const itm_total_weight = arr.reduce(function (acc: any, obj: any) {
     return (
-      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
+      acc + (parseFloat(obj.total_weight) ? parseFloat(obj.total_weight) : 0) 
     );
   }, 0);
 
@@ -759,7 +759,7 @@ return (
         // style={{ marginLeft: "5%", marginRight: "5%" }}
       >
         {/* {JSON.stringify(loan?.items)} */}
-        <br />
+        {/* <br />
         ----total pound------{JSON.stringify(total_pounds)}----
         <br />
         ----old_mkt_price------{JSON.stringify(old_mkt_price)}----
@@ -792,7 +792,7 @@ return (
         <br />
         ----installments-6-
         {JSON.stringify(installment(6, basic_estimate_final))}----
-        <br />
+        <br /> */}
         <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
         <div className="flex flex-col md:flex-row -mx-1 py-2 border-b"><div className="px-1"></div><div className="px-1  text-right">Total Weight : 1.8750</div><div className="px-1  text-right">Net Weight : 123.0000</div><div className="px-1  text-right">total pound : 15.3750</div></div>
         <div className="grid grid-cols-1 md:grid-cols-2">

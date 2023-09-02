@@ -76,9 +76,38 @@ console.log(name,"-",value)
   setNet_weight2("0")
   };
 
+
+  const total_pounds = props.tasks.reduce(function (acc: any, obj: any) {
+    return (
+      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+    );
+  }, 0);
+  const itm_total_net = props.tasks.reduce(function (acc: any, obj: any) {
+    return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
+  }, 0);
+  const itm_total_weight = props.tasks.reduce(function (acc: any, obj: any) {
+    return (
+      acc + (parseFloat(obj.total_weight) ? parseFloat(obj.total_weight) : 0) 
+    );
+  }, 0);
+
   return (
     <>
-    {JSON.stringify(props.tasks)}
+    
+    <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
+            <div className="px-1">
+             
+            </div>
+            <div className="px-1  text-right">
+              Total Weight : {itm_total_weight.toFixed(4)}
+            </div>
+            <div className="px-1  text-right">
+              Net Weight : {itm_total_net.toFixed(4)}
+            </div>
+            <div className="px-1  text-right">
+              total pound : {total_pounds.toFixed(4)}
+            </div>
+          </div>
       <form className="bg-white"
         onSubmit={(event) => {
           event.preventDefault();
