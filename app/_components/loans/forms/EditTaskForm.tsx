@@ -12,15 +12,26 @@ const EditTaskForm = (props: any) => {
   };
   const [poundVal,setPoundVal]=useState("")
   const [task, setTask] = useState(
-    props.editing ? props.currentTask : initialFormState
+    props.editing ? props.currentTask : {
+      id: null,
+      name: "",
+      karat: "",
+      net_weight: "",
+      total_weight: "",
+      pound: "",
+      status: "",
+    }
   );
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
 
+console.log(name,"-",value)
+    
     setTask({ ...task, [name]: value });
     console.log(task)
     
+console.log(name,"-",value)
   };
 
   useEffect(() => {
@@ -29,8 +40,24 @@ const EditTaskForm = (props: any) => {
 
   const resetAddTask = () => {
     props.setEditing(false);
-    setTask(initialFormState);
-    props.setCurrentTask(initialFormState);
+    setTask({
+      id: null,
+      name: "",
+      karat: "",
+      net_weight: "",
+      total_weight: "",
+      pound: "",
+      status: "",
+    });
+    props.setCurrentTask({
+      id: null,
+      name: "",
+      karat: "",
+      net_weight: "",
+      total_weight: "",
+      pound: "",
+      status: "",
+    });
   };
 
   return (

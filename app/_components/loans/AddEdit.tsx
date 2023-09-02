@@ -361,7 +361,6 @@ return (
       </div>
       </>
     )}
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente totam eum corrupti, odit ullam necessitatibus est culpa reprehenderit fuga voluptate, ab ex magni laudantium, rerum dicta assumenda aut cupiditate ipsam.
   </div>
 )
 }
