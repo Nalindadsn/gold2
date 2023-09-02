@@ -16,7 +16,7 @@ const TaskTable = (props:any) => (
             <div className="ml-2 text-sm">
                                 <span className="text-white">
                                   <span className="  bg-orange-300 rounded-sm px-2 mr-3">
-                                {n}
+                                KARAT : {task.karat}
                               </span>
             {task?.name} &nbsp;
                                   {task?.status == "NOT ISSUE" ? (

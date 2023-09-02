@@ -221,8 +221,10 @@ function AddEdit({
   const [currentTask, setCurrentTask] = useState(initialFormState);
 
   const addTask = (task:any) => {
+    task.pound=task.net_weight/8
     task.id = tasks.length + 1;
     setTasks([...tasks, task]);
+    
       // console.log(task)
   };
 
@@ -232,13 +234,16 @@ function AddEdit({
   };
 
   const editRow = (task:any) => {
+    task.pound=task.net_weight/8
     setEditing(true);
-
+console.log(task)
     setCurrentTask(task);
   };
 
   const updateTask = (id:any, updatedTask:any) => {
     setEditing(false);
+    
+    updatedTask.pound=updatedTask.net_weight/8
     setTasks(tasks.map(task => (task.id === id ? updatedTask : task)));
   };
 
@@ -341,12 +346,20 @@ function AddEdit({
 //     );
 //   }, 0);
 
+
+  const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
+    return (
+      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+    );
+  }, 0);
 const payment_values=(a:any,b:any,c:any)=>{
   const basic=a-b;
+
+const max_price:any=total_pounds_add*130000
 return (
   <div>
-    ----{a+"-"+b}={a-b}--------------
-    {a>=b? (
+    ----*{max_price}*--------------
+    {a<=max_price? (
       <>
       <div className="bg-green-600 p-2 text-white">
 
@@ -805,10 +818,24 @@ return (
           
           <div className="p-2">
             <label className="form-label ml-2 ">Expected Price </label>
+            
+{payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))}
+
+{decided_price}
+-{no_of_month}-{expected_price}
             <input
               {...fields.expected_price_old}
               type="expected_price_old"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+              className={`w-full rounded-md border 
+              
+              
+              
+              bg-red
+              
+              
+              
+              
+              m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                 errors.expected_price_old ? "is-invalid" : ""
               }`}
               
@@ -887,10 +914,6 @@ return (
             />
             
 
-{payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))}
-
-            {decided_price}
-            -{no_of_month}-{expected_price}
 
 
 

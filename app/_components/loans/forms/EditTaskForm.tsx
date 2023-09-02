@@ -10,6 +10,15 @@ const EditTaskForm = (props: any) => {
     pound: "",
     status: "",
   };
+  const [id, setID] = useState(null);
+  const [name, setItmName] = useState("");
+  const [karat, setKarat] = useState("");
+  const [net_weight2, setNet_weight2] = useState("");
+  const [total_weight, setTotal_weight] = useState("");
+  const [pound, setPound] = useState("0");
+  const [status, setStatus] = useState("NOT ISSUE");
+
+
   const [poundVal,setPoundVal]=useState("")
   const [task, setTask] = useState(
     props.editing ? props.currentTask : {
@@ -24,12 +33,17 @@ const EditTaskForm = (props: any) => {
   );
 
   const handleInputChange = (event: any) => {
-    const { name, value } = event.target;
-
+    let { name, value } = event.target;
+let a:any=(value/8).toFixed(4)
+if(name=="net_weight"){
+  setNet_weight2(a)
+  
+}
 console.log(name,"-",value)
-    
+    // setNet_weight2(net_weight)
     setTask({ ...task, [name]: value });
     console.log(task)
+    
     
 console.log(name,"-",value)
   };
@@ -58,6 +72,8 @@ console.log(name,"-",value)
       pound: "",
       status: "",
     });
+    
+  setNet_weight2("0")
   };
 
   return (
@@ -115,6 +131,7 @@ console.log(name,"-",value)
                     value={task.net_weight}
                     onChange={handleInputChange}
                   />
+                  
                 </div>
                 <div className="flex-1 px-1">
                   <input
@@ -132,7 +149,7 @@ console.log(name,"-",value)
                     placeholder="Pounds"
                     type="text"
                     name="pound"
-                    value={task.pound}
+                    value={net_weight2}
                     onChange={handleInputChange}
                   />
                 </div>
