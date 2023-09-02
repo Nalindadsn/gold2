@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const EditTaskForm = async(props: any) => {
+const EditTaskForm = (props: any) => {
   const initialFormState = {
     id: null,
     name: "",
@@ -15,14 +15,11 @@ const EditTaskForm = async(props: any) => {
     props.editing ? props.currentTask : initialFormState
   );
 
-  const handleInputChange = async(event: any) => {
+  const handleInputChange = (event: any) => {
     const { name, value } = event.target;
 
-    await setTask({ ...task, [name]: value });
+    setTask({ ...task, [name]: value });
     console.log(task)
-    const pV=parseFloat(task.net_weight)/8
-    
-
     
   };
 
@@ -69,7 +66,7 @@ const EditTaskForm = async(props: any) => {
                     type="text"
                     name="name"
                     value={task.name}
-                    onChange={(e) => handleInputChange(e.target.value)}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="flex-1 px-1">
@@ -79,7 +76,7 @@ const EditTaskForm = async(props: any) => {
                     type="text"
                     name="karat"
                     value={task.karat}
-                    onChange={(e) => handleInputChange(e.target.value)}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="flex-1 px-1">
@@ -89,7 +86,7 @@ const EditTaskForm = async(props: any) => {
                     type="text"
                     name="net_weight"
                     value={task.net_weight}
-                    onChange={(e) => handleInputChange(e.target.value)}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="flex-1 px-1">
@@ -99,7 +96,7 @@ const EditTaskForm = async(props: any) => {
                     type="text"
                     name="total_weight"
                     value={task.total_weight}
-                    onChange={(e) => handleInputChange(e.target.value)}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="flex-1 px-1">
@@ -109,15 +106,14 @@ const EditTaskForm = async(props: any) => {
                     type="text"
                     name="pound"
                     value={task.pound}
-                    onChange={(e) => setPoundVal(e.target.value)}
+                    onChange={handleInputChange}
                   />
                 </div>
-                
                 <div className="flex-1 px-1">
                   <select
                     name="status"
                     value={task.status}
-                    onChange={(e) => handleInputChange(e.target.value)}
+                    onChange={handleInputChange}
                     className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   required>
                     <option value="">-CHOOSE-</option>
