@@ -363,17 +363,17 @@ return (
       <br/>
       Maximum Amount:
       <span className="mx-1 bg-green-500 text-white py-0 px-2 rounded-full text-sm ">
-  {max_price}
+  {max_price.toFixed(2)}
       </span>
       </>
     ):(
       <><br/>Amount payable in hand  
       <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
 
-      LKR {a-max_price}
+      LKR {(a-max_price).toFixed(2)}
 
       </span>
-      Maximum Amount:  LKR {max_price}
+      Maximum Amount:  LKR {max_price.toFixed(2)}
       </>
     )}
   </span>
