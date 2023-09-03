@@ -892,7 +892,6 @@ return (
         </>
       ):(
 <>
-
        Instalment : 
       {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}
      
