@@ -18,7 +18,7 @@ function Loans() {
 
     return (
         <>
-            <h1>Loans</h1>
+            <h1 className='text-2xl font-bold  pt-2 tracking-wider uppercase  '>- Loans</h1>
 
             
     <div>

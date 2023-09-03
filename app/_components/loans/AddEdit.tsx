@@ -307,12 +307,13 @@ console.log(task)
     }
 
     if (loan) {
-      dataV.items = [];
+      // dataV.items = [];
+      dataV.items = reviews;
     } else {
       dataV.items = result;
     }
     // console.log(result)
-    dataV.items = result;
+    // dataV.items = result;
     try {
       // create or update loan based on loan prop
       let message;
@@ -324,7 +325,7 @@ console.log(task)
         message = "Loan added";
       }
 
-      router.push(`/loans`);
+      // router.push(`/loans`);
       // router.refresh()
       alertService.success(message, true);
     } catch (error: any) {
@@ -880,11 +881,25 @@ return (
       <div>
         
       <label className="form-label ml-2 ">No of Month</label><br/>
-      Instalment : 
+
+      {loan?(
+        <>
+       
+       Instalment : 
+      {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}<br/>
+      {/* {loan.expected_price<=max_price? installment(parseFloat(loan.no_of_month),parseFloat(loan.expected_price)):installment(parseFloat(loan.no_of_month),parseFloat(max_price))} */}
+   
+        </>
+      ):(
+<>
+
+       Instalment : 
       {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}
      
-      {no_of_month}
-     
+</>
+      )}
+      
+      {loan.no_of_month}-{loan.expected_price_old}
      
      
       <select
