@@ -361,9 +361,9 @@ return (
     {a<=max_price? (
       <>
       <br/>
-      <span className="border border-green-500">
+      <span className="">
 
-      <span className="mx-1 bg-green-500 text-white py-0 px-2  text-sm ">
+      <span className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm ">
   {max_price.toFixed(2)}
       </span> is Our
       Maximum Amount.
@@ -562,7 +562,7 @@ return (
                   </div>
                 </a>
               </div>
-              <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">{loan?"CUSTOMER":"OFFICER"} </div>
+              <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">CUSTOMER </div>
           
             </div>
             
@@ -871,8 +871,8 @@ return (
 
             <div>
               
-            <label className="form-label ml-2 ">No of Month</label>
-            {installment(no_of_month, max_price)}-{max_price}
+            <label className="form-label ml-2 ">No of Month</label><br/>Instalment : 
+            {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}-{max_price}
             <select
               {...fields.no_of_month}
               className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
