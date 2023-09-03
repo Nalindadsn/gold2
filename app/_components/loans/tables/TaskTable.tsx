@@ -63,7 +63,7 @@ const TaskTable = (props:any) => (
   ))
   ) : (
     <div>
-      <div className="text-center" >No tasks</div>
+      <div className="text-center" >No Items Found</div>
     </div>
   )}
 

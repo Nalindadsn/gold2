@@ -299,7 +299,7 @@ console.log(task)
 
   
     const dataV:any = data;
-    dataV.user_id = user;
+    dataV.user_id = user.id;
 
     if (loan) {
       dataV.items = [];
@@ -434,9 +434,10 @@ return (
 
         <div className="grid grid-cols-1 space-x-1  md:grid-cols-2">
           <div>
-            <div className="bg-white mb-2 m-1 p-3 shadow-sm">
 {loan?(
   <>
+              <div className="bg-white mb-2 m-1 p-3 shadow-sm">
+
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 Status
@@ -483,25 +484,25 @@ return (
                           loan?.officer[0]?.lastName}
               </div>
             </div>
-  </>
-  
-):<>
-
 
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 {" "}
-                CREATE BY 
+                CREATING BY 
               </label>
               <span className="mr-4  md:block">:</span>
               <div className="flex-1">
-              {loan?.officer[0]?.firstName +
+              {user?.firstName +
                           " " +
-                          loan?.officer[0]?.lastName}
+                          user?.lastName}
               </div>
             </div>
-</>}
             </div>
+  </>
+  
+):<>
+
+</>}
 
           </div>
             {/* <div className="bg-white p-2 m-1 border">
@@ -541,9 +542,18 @@ return (
                   <div className="text-xl -mt-3">
                     <div className="text-gray-800 mt-1 font-bold">
                       <span>
-                        {loan?.customer[0]?.firstName +
+                        {loan?(
+
+                        loan?.customer[0]?.firstName +
                           " " +
-                          loan?.customer[0]?.lastName}
+                          loan?.customer[0]?.lastName
+                        ):(
+                          
+
+                        user?.firstName +
+                        " " +
+                        user?.lastName
+                        )}
                       </span>
                     </div>
                   </div>
@@ -559,7 +569,6 @@ return (
         <div className="flex mb-8 justify-between"></div>
 
         {/* {console.log(loan)} */}
-
 {/* {console.log(tasks)} */}
 {loan?(
   <>
@@ -752,11 +761,11 @@ return (
   </>
 ):(
   <>
-<div className="container bg-white">
+<div className="container bg-white shadow-sm">
       <div className="flex-row">
         <div className="flex-large">
           <div>
-            <h2>{editing ? "Edit Item" : "Add Item"}</h2>
+            <h2 className="text-xl font-bold ml-2">{editing ? "Edit Item" : "Add Item"}</h2>
             <EditTaskForm
               editing={editing}
               setEditing={setEditing}

@@ -201,7 +201,7 @@ console.log(name,"-",value)
                 
               </div>
               
-        <button className="btn btn-primary me-2 mt-1 bg-blue-700">{props.editing ? "Update task" : "Add task"}</button>
+        <button className="btn btn-primary me-2 mt-1 bg-blue-700">{props.editing ? "Update task" : "Add Item"}</button>
         {props.editing && (
           <button onClick={resetAddTask} className="button muted-button">
             Cancel

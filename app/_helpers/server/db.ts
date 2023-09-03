@@ -40,7 +40,7 @@ function userModel() {
       name_of_office: { type: String },
       income: { type: String },
       phone: { type: String },
-      nic:{type:String},
+      nic:{ type: String, unique: true, required: true},
       whatsapp: { type: String },
 
 
