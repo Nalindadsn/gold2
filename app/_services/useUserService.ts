@@ -109,6 +109,7 @@ interface IUser {
     lastName: string,
     username: string,
     password: string,
+    nic: any,
     isDeleting?: boolean
 }
 

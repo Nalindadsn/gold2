@@ -18,37 +18,31 @@ function Users() {
 
     return (
         <>
-       
-            <Link href="/users/add" className="btn  btn-primary mb-2 float-right">New Customer</Link>
+                       <div  className='p-1 flex w-full clear-both flex-col md:flex-row -mx-1 py-2  mb-1'>
+
+            <h1 className='w-full text-xl font-bold'>Customers</h1>
+            <Link href="/users/add" className="text-right btn btn-primary"  style={{ whiteSpace: 'nowrap' }}>New Customer</Link>
           
           
-            <h1>Customers</h1>
-    <div style={{overflowX:"auto",width:"100%"}}>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th style={{ width: '30%' }}>First Name</th>
-                        <th style={{ width: '30%' }}>Last Name</th>
-                        <th style={{ width: '30%' }}>Username</th>
-                        <th style={{ width: '10%' }}></th>
-                    </tr>
-                </thead>
-                <tbody>
+    </div>
+                
                     <TableBody />
-                </tbody>
-            </table>
-            </div>
+            
         </>
     );
 
     function TableBody() {
         if (users?.length) {
             return (users.map(user =>
-                <tr key={user.id}>
-                    <td>{user.firstName}</td>
-                    <td>{user.lastName}</td>
-                    <td>{user.username}</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>
+                <div key={user.id}  className='p-1 flex w-full clear-both flex-col md:flex-row -mx-1 py-2 border-b bg-white shadow-sm mb-1'>
+                    
+                    <div className='w-full'>
+                    <div>ID : {user.id}</div>
+                    <div>First Name : {user.firstName}</div>
+                    <div>Last Name : {user.lastName}</div>
+                    <div>NIC : {user.nic}</div>
+                    </div>
+                    <div style={{ whiteSpace: 'nowrap' }} className=''>
                     <Link href={`/loans/add/${user.id}`} className="btn btn-sm btn-primary me-1">Add Loan</Link>
                     <Link href={`/users/edit/${user.id}`} className="btn btn-sm btn-warning me-1">Edit</Link>
                         <button onClick={() => userService.delete(user.id)} className="btn btn-sm btn-danger btn-delete-user" style={{ width: '60px' }} disabled={user.isDeleting}>
@@ -57,28 +51,28 @@ function Users() {
                                 : <span>Delete</span>
                             }
                         </button>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             ));
         }
 
         if (!users) {
             return (
-                <tr>
-                    <td colSpan={4}>
+                <div>
+                    <div >
                         <Spinner />
-                    </td>
-                </tr>
+                    </div>
+                </div>
             );
         }
 
         if (users?.length === 0) {
             return (
-                <tr>
-                    <td colSpan={4} className="text-center">
+                <div>
+                    <div  className="text-center">
                         <div className="p-2">No Users To Display</div>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             );
         }
     }
