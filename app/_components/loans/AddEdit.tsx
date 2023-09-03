@@ -793,230 +793,230 @@ return (
   </>
 )}
 
-
+{}
       </>
-{loan?.items.length>0 || tasks?.length>0 && (
+{reviews.length>0 || tasks.length>0 ? (
+  
+  <form
+  onSubmit={handleSubmit(onSubmit)}
+  className="bg-white p-2 mt-2"
+  // style={{ marginLeft: "5%", marginRight: "5%" }}
+>
+  {/* {JSON.stringify(loan?.items)} */}
+  {/* <br />
+  ----total pound------{JSON.stringify(total_pounds)}----
+  <br />
+  ----old_mkt_price------{JSON.stringify(old_mkt_price)}----
+  <br />
+  ----old_cmp_price------{JSON.stringify(old_cmp_price)}----
+  <br />
+  ----old_exp_price------{JSON.stringify(old_exp_price)}----
+  <hr />
+  ----basic - estimate---{JSON.stringify(basic_estimate)}----
+  <br />
+  ----basic - estimate-f--{JSON.stringify(basic_estimate_final)}----
+  <hr />
+  ----installments-60-
+  {JSON.stringify(installment(60, basic_estimate_final))}----
+  <br />
+  ----installments-48-
+  {JSON.stringify(installment(48, basic_estimate_final))}----
+  <br />
+  ----installments-36-
+  {JSON.stringify(installment(36, basic_estimate_final))}----
+  <br />
+  ----installments-24-
+  {JSON.stringify(installment(24, basic_estimate_final))}----
+  <br />
+  ----installments-18-
+  {JSON.stringify(installment(18, basic_estimate_final))}----
+  <br />
+  ----installments-12-
+  {JSON.stringify(installment(12, basic_estimate_final))}----
+  <br />
+  ----installments-6-
+  {JSON.stringify(installment(6, basic_estimate_final))}----
+  <br /> */}
+  <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
+  <div className="grid grid-cols-1 md:grid-cols-2">
+    
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-2 mt-2"
-        // style={{ marginLeft: "5%", marginRight: "5%" }}
+  <div className="p-2">
+      <label className="form-label ml-2 ">Form Number</label>
+      <input
+        {...fields.form_number}
+        type="form_number"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.form_number ? "is-invalid" : ""
+        }`}
+      />
+      <div className="invalid-feedback">
+        {errors.form_number?.message?.toString()}
+      </div>
+    </div>
+    
+    <div className="p-2">
+      
+      <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+      <div className="px-1 w-full">
+      <label className="form-label ml-2 ">Expected Price {payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))} </label>
+
+      <input
+        {...fields.expected_price_old}
+        type="expected_price_old"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.expected_price_old ? "is-invalid" : ""
+        }`}
+        
+         onChange={(e) => setExpected_price_old(e.target.value)}
+      />
+      </div>
+      <div className="px-1 ">
+
+      <div>
+        
+      <label className="form-label ml-2 ">No of Month</label><br/>Instalment : 
+      {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}-{max_price}
+      <select
+        {...fields.no_of_month}
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.no_of_month ? "is-invalid" : ""
+        }`}
+        onChange={(e) => setNo_of_month(e.target.value)}
       >
-        {/* {JSON.stringify(loan?.items)} */}
-        {/* <br />
-        ----total pound------{JSON.stringify(total_pounds)}----
-        <br />
-        ----old_mkt_price------{JSON.stringify(old_mkt_price)}----
-        <br />
-        ----old_cmp_price------{JSON.stringify(old_cmp_price)}----
-        <br />
-        ----old_exp_price------{JSON.stringify(old_exp_price)}----
-        <hr />
-        ----basic - estimate---{JSON.stringify(basic_estimate)}----
-        <br />
-        ----basic - estimate-f--{JSON.stringify(basic_estimate_final)}----
-        <hr />
-        ----installments-60-
-        {JSON.stringify(installment(60, basic_estimate_final))}----
-        <br />
-        ----installments-48-
-        {JSON.stringify(installment(48, basic_estimate_final))}----
-        <br />
-        ----installments-36-
-        {JSON.stringify(installment(36, basic_estimate_final))}----
-        <br />
-        ----installments-24-
-        {JSON.stringify(installment(24, basic_estimate_final))}----
-        <br />
-        ----installments-18-
-        {JSON.stringify(installment(18, basic_estimate_final))}----
-        <br />
-        ----installments-12-
-        {JSON.stringify(installment(12, basic_estimate_final))}----
-        <br />
-        ----installments-6-
-        {JSON.stringify(installment(6, basic_estimate_final))}----
-        <br /> */}
-        <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          
+      <option value="0">-SELECT MONTH-</option>
+        <option value="60">60</option>
+        <option value="48">48</option>
+        <option value="36">36</option>
+        <option value="24">24</option>
+        <option value="18">18</option>
+        <option value="12">12</option>
+        <option value="6">6</option>
+      </select>
+      {/* <input
+        {...fields.no_of_month}
+        type="no_of_month"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.no_of_month ? "is-invalid" : ""
+        }`}
+      /> */}
+      <div className="invalid-feedback">
+        {errors.no_of_month?.message?.toString()}
+      </div>
+    </div>
+      </div>
 
-        <div className="p-2">
-            <label className="form-label ml-2 ">Form Number</label>
-            <input
-              {...fields.form_number}
-              type="form_number"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.form_number ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              {errors.form_number?.message?.toString()}
-            </div>
-          </div>
-          
-          <div className="p-2">
-            
-            <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-            <div className="px-1 w-full">
-            <label className="form-label ml-2 ">Expected Price {payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))} </label>
+      </div>
 
-            <input
-              {...fields.expected_price_old}
-              type="expected_price_old"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.expected_price_old ? "is-invalid" : ""
-              }`}
-              
-               onChange={(e) => setExpected_price_old(e.target.value)}
-            />
-            </div>
-            <div className="px-1 ">
+      <div className="invalid-feedback">
+        {errors.expected_price_old?.message?.toString()}
+      </div>
+    </div>
+    
+    <div className="p-2 ml-1">
+      <label className="form-label ml-2 ">Estimated Price (Old)</label>
+      <input
+        {...fields.estimated_price_old}
+        type="text"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.estimated_price_old ? "is-invalid" : ""
+        }`}
+      />
+      <div className="invalid-feedback">
+        {errors.estimated_price_old?.message?.toString()}
+      </div>
+    </div>
+    <div className="p-2">
+      <label className="form-label ml-2 ">Loan Price (Old)</label>
+      <input
+        {...fields.loan_price_old}
+        type="text"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.loan_price_old ? "is-invalid" : ""
+        }`}
+      />
+      <div className="invalid-feedback">
+        {errors.loan_price_old?.message?.toString()}
+      </div>
+    </div>
 
-            <div>
-              
-            <label className="form-label ml-2 ">No of Month</label><br/>Instalment : 
-            {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}-{max_price}
-            <select
-              {...fields.no_of_month}
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.no_of_month ? "is-invalid" : ""
-              }`}
-              onChange={(e) => setNo_of_month(e.target.value)}
-            >
-            <option value="0">-SELECT MONTH-</option>
-              <option value="60">60</option>
-              <option value="48">48</option>
-              <option value="36">36</option>
-              <option value="24">24</option>
-              <option value="18">18</option>
-              <option value="12">12</option>
-              <option value="6">6</option>
-            </select>
-            {/* <input
-              {...fields.no_of_month}
-              type="no_of_month"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.no_of_month ? "is-invalid" : ""
-              }`}
-            /> */}
-            <div className="invalid-feedback">
-              {errors.no_of_month?.message?.toString()}
-            </div>
-          </div>
-            </div>
-
-            </div>
-
-            <div className="invalid-feedback">
-              {errors.expected_price_old?.message?.toString()}
-            </div>
-          </div>
-          
-          <div className="p-2 ml-1">
-            <label className="form-label ml-2 ">Estimated Price (Old)</label>
-            <input
-              {...fields.estimated_price_old}
-              type="text"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.estimated_price_old ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              {errors.estimated_price_old?.message?.toString()}
-            </div>
-          </div>
-          <div className="p-2">
-            <label className="form-label ml-2 ">Loan Price (Old)</label>
-            <input
-              {...fields.loan_price_old}
-              type="text"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.loan_price_old ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              {errors.loan_price_old?.message?.toString()}
-            </div>
-          </div>
-
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="p-2">
-            <label className="form-label ml-2 ">Interest (Old)</label>
-            <input
-              {...fields.interest_old}
-              type="text"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.interest_old ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              {errors.interest_old?.message?.toString()}
-            </div>
-          </div>
+  </div>
+  <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="p-2">
+      <label className="form-label ml-2 ">Interest (Old)</label>
+      <input
+        {...fields.interest_old}
+        type="text"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.interest_old ? "is-invalid" : ""
+        }`}
+      />
+      <div className="invalid-feedback">
+        {errors.interest_old?.message?.toString()}
+      </div>
+    </div>
 
 
-          <div className="p-2">
-            <label className="form-label ml-2 ">expected_month(Old)</label>
-            <input
-              {...fields.expected_month}
-              type="expected_month"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.expected_month ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              {errors.expected_month?.message?.toString()}
-            </div>
-          </div>
-          <div className="p-2">
-            <label className="form-label ml-2 ">Decided Price</label>
-            <input
-              {...fields.decided_price}
-              type="decided_price"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.decided_price ? "is-invalid" : ""
-              }`}
-              onChange={(e) => setDecidedPrice(e.target.value)}
-            />
-            
+    <div className="p-2">
+      <label className="form-label ml-2 ">expected_month(Old)</label>
+      <input
+        {...fields.expected_month}
+        type="expected_month"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.expected_month ? "is-invalid" : ""
+        }`}
+      />
+      <div className="invalid-feedback">
+        {errors.expected_month?.message?.toString()}
+      </div>
+    </div>
+    <div className="p-2">
+      <label className="form-label ml-2 ">Decided Price</label>
+      <input
+        {...fields.decided_price}
+        type="decided_price"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.decided_price ? "is-invalid" : ""
+        }`}
+        onChange={(e) => setDecidedPrice(e.target.value)}
+      />
+      
 
 
 
 
 
-            <div className="invalid-feedback">
-              {errors.decided_price?.message?.toString()}
-            </div>
-          </div>
-        </div>
-        <div className="mb-3">
-          <button
-            type="submit"
-            disabled={formState.isSubmitting}
-            className="btn btn-primary me-2 bg-blue-700"
-          >
-            {formState.isSubmitting && (
-              <span className="spinner-border spinner-border-sm me-1"></span>
-            )}
-            Save
-          </button>
-          <button
-            onClick={() => reset()}
-            type="button"
-            disabled={formState.isSubmitting}
-            className="btn btn-secondary bg-gray-800"
-          >
-            Reset
-          </button>
-          <Link href="/loans" className="btn btn-link">
-            Cancel
-          </Link>
-        </div>
-      </form>
-)}
+      <div className="invalid-feedback">
+        {errors.decided_price?.message?.toString()}
+      </div>
+    </div>
+  </div>
+  <div className="mb-3">
+    <button
+      type="submit"
+      disabled={formState.isSubmitting}
+      className="btn btn-primary me-2 bg-blue-700"
+    >
+      {formState.isSubmitting && (
+        <span className="spinner-border spinner-border-sm me-1"></span>
+      )}
+      Save
+    </button>
+    <button
+      onClick={() => reset()}
+      type="button"
+      disabled={formState.isSubmitting}
+      className="btn btn-secondary bg-gray-800"
+    >
+      Reset
+    </button>
+    <Link href="/loans" className="btn btn-link">
+      Cancel
+    </Link>
+  </div>
+</form>
 
+):""}
 
       <div className="fixed bottom-0 right-0 text-red-600">
         {loading && (<>
