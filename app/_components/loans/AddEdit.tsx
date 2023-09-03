@@ -899,7 +899,6 @@ return (
 </>
       )}
       
-      {loan.no_of_month}-{loan.expected_price_old}
      
      
       <select
