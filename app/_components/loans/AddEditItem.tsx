@@ -260,7 +260,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
       {reviews.map((i: any) => (
         <>
         
-          <article className="overflow-hidden rounded-lg shadow-lg bg-gray-800 mb-3">
+          <article className="overflow-hidden rounded-lg shadow-sm bg-gray-800 mb-3">
             <div className="flex items-center justify-between leading-none p-2 md:p-4">
               <a
                 className="flex items-center no-underline  text-black"

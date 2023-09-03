@@ -352,10 +352,10 @@ console.log(task)
       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
     );
   }, 0);
+const max_price:any=loan? total_pounds*130000 :total_pounds_add*130000
 const payment_values=(a:any,b:any,c:any)=>{
   const basic=a-b;
 
-const max_price:any=loan? total_pounds*130000 :total_pounds_add*130000
 return (
   <span>
     {a<=max_price? (
@@ -434,7 +434,7 @@ return (
 
         <div className="grid grid-cols-1 space-x-1  md:grid-cols-2">
           <div>
-            <div className="bg-white mb-2 m-1 p-3">
+            <div className="bg-white mb-2 m-1 p-3 shadow-sm">
 {loan?(
   <>
             <div className="mb-2 md:mb-1 md:flex items-center">
@@ -530,7 +530,7 @@ return (
             
 
             
-          <div className="bg-white p-2 m-1 border">
+          <div className="bg-white p-2 m-1 shadow-sm">
               <div className=" flex items-center justify-between leading-none  ">
                 <a
                   className="flex items-center no-underline  text-black"
@@ -566,7 +566,7 @@ return (
   
         <form
           onSubmit={submitHandler}
-          className=" p-2"
+          className=" p-2 shadow-sm bg-white"
           style={{ overflow: "hidden" }}
         >
           <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
@@ -693,7 +693,7 @@ return (
             <div key ={n++}>
 
 
-<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg  mb-1">
+<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-sm  mb-1">
     
   
   
@@ -840,8 +840,10 @@ return (
           </div>
           
           <div className="p-2">
-            <label className="form-label ml-2 ">Expected Price {payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))} </label>
             
+            <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+            <div className="px-1 w-full">
+            <label className="form-label ml-2 ">Expected Price {payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))} </label>
 
             <input
               {...fields.expected_price_old}
@@ -852,10 +854,49 @@ return (
               
                onChange={(e) => setExpected_price_old(e.target.value)}
             />
+            </div>
+            <div className="px-1 ">
+
+            <div>
+              
+            <label className="form-label ml-2 ">No of Month</label>
+            {installment(no_of_month, max_price)}{max_price}
+            <select
+              {...fields.no_of_month}
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.no_of_month ? "is-invalid" : ""
+              }`}
+              onChange={(e) => setNo_of_month(e.target.value)}
+            >
+            <option value="0">-SELECT MONTH-</option>
+              <option value="60">60</option>
+              <option value="48">48</option>
+              <option value="36">36</option>
+              <option value="24">24</option>
+              <option value="18">18</option>
+              <option value="12">12</option>
+              <option value="6">6</option>
+            </select>
+            {/* <input
+              {...fields.no_of_month}
+              type="no_of_month"
+              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                errors.no_of_month ? "is-invalid" : ""
+              }`}
+            /> */}
+            <div className="invalid-feedback">
+              {errors.no_of_month?.message?.toString()}
+            </div>
+          </div>
+            </div>
+
+            </div>
+
             <div className="invalid-feedback">
               {errors.expected_price_old?.message?.toString()}
             </div>
           </div>
+          
           <div className="p-2 ml-1">
             <label className="form-label ml-2 ">Estimated Price (Old)</label>
             <input
@@ -931,35 +972,6 @@ return (
 
             <div className="invalid-feedback">
               {errors.decided_price?.message?.toString()}
-            </div>
-          </div>
-          <div className="p-2">
-            <label className="form-label ml-2 ">No of Month</label>
-            <select
-              {...fields.no_of_month}
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.no_of_month ? "is-invalid" : ""
-              }`}
-              onChange={(e) => setNo_of_month(e.target.value)}
-            >
-            <option value="0">-SELECT MONTH-</option>
-              <option value="60">60</option>
-              <option value="48">48</option>
-              <option value="36">36</option>
-              <option value="24">24</option>
-              <option value="18">18</option>
-              <option value="12">12</option>
-              <option value="6">6</option>
-            </select>
-            {/* <input
-              {...fields.no_of_month}
-              type="no_of_month"
-              className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                errors.no_of_month ? "is-invalid" : ""
-              }`}
-            /> */}
-            <div className="invalid-feedback">
-              {errors.no_of_month?.message?.toString()}
             </div>
           </div>
         </div>

@@ -146,6 +146,7 @@ interface ILoan {
   interest_old: string;
   expected_price_old: string;
   form_number: string;
+  createdAt:any,
   isDeleting?: boolean;
 
 }

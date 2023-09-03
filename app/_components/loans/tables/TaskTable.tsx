@@ -8,7 +8,7 @@ const TaskTable = (props:any) => (
           <div key ={n++}>
 
 
-          <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-lg  mb-1">
+          <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-sm  mb-1">
               
             
             
@@ -48,14 +48,14 @@ const TaskTable = (props:any) => (
                 }}
               >
                 Edit
-              </button></div>
-            <div className="px-1 text-right">
+              </button>
               <button
                 className="btn btn-sm btn-danger  mr-2 mt-1"
                 onClick={() => props.deleteTask(task.id)}
               >
                 Delete
-              </button></div>
+              </button>
+              </div>
           </div>
           
                       </div>
