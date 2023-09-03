@@ -301,7 +301,6 @@ console.log(task)
     const dataV:any = data;
     if (loan) {
       
-      dataV.user_id = user.id;
     }else{
       dataV.user_id = user.id;
 
@@ -883,6 +882,11 @@ return (
       <label className="form-label ml-2 ">No of Month</label><br/>
       Instalment : 
       {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}
+     
+      {no_of_month}
+     
+     
+     
       <select
         {...fields.no_of_month}
         className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
