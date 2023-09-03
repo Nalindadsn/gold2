@@ -89,7 +89,7 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
 
                 
                 <div className='p-2'>
-                    <label className="form-label">NIC</label>
+                    <label className="form-label">Username</label>
                     <input {...fields.username} type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.username?.message?.toString()}</div>
                 </div>

@@ -299,7 +299,12 @@ console.log(task)
 
   
     const dataV:any = data;
-    dataV.user_id = user.id;
+    if (loan) {
+      
+    }else{
+      dataV.user_id = user.id;
+
+    }
 
     if (loan) {
       dataV.items = [];
@@ -573,7 +578,8 @@ return (
         </div>
 
         <div className="flex mb-8 justify-between"></div>
-
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus facere minus maxime, ipsam aliquam ullam officia optio dolorem, eveniet vitae perferendis accusantium excepturi. Dolore, minus vitae. Perspiciatis rerum harum ratione.
+{JSON.stringify(user)}
         {/* {console.log(loan)} */}
 {/* {console.log(tasks)} */}
 {loan?(
@@ -838,11 +844,12 @@ return (
   {JSON.stringify(installment(6, basic_estimate_final))}----
   <br /> */}
   <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
-  <div className="grid grid-cols-1 md:grid-cols-2">
-    
+  <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+    <div className="w-full hidden md:block"></div>
+    <div className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0" style={{whiteSpace:"nowrap"}}>
 
-  <div className="p-2">
-      <label className="form-label ml-2 ">Form Number</label>
+
+      <label className="form-label mt-2">Form Number</label>
       <input
         {...fields.form_number}
         type="form_number"
@@ -850,11 +857,11 @@ return (
           errors.form_number ? "is-invalid" : ""
         }`}
       />
+    </div>
       <div className="invalid-feedback">
         {errors.form_number?.message?.toString()}
       </div>
     </div>
-    
     <div className="p-2">
       
       <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
@@ -875,8 +882,9 @@ return (
 
       <div>
         
-      <label className="form-label ml-2 ">No of Month</label><br/>Instalment : 
-      {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}-{max_price}
+      <label className="form-label ml-2 ">No of Month</label><br/>
+      Instalment : 
+      {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}
       <select
         {...fields.no_of_month}
         className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
@@ -912,6 +920,8 @@ return (
         {errors.expected_price_old?.message?.toString()}
       </div>
     </div>
+  <div className="grid grid-cols-1 md:grid-cols-2">
+    
     
     <div className="p-2 ml-1">
       <label className="form-label ml-2 ">Estimated Price (Old)</label>
