@@ -795,6 +795,7 @@ return (
 
 
       </>
+{loan?.items.length>0 || tasks?.length>0 && (
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -1014,6 +1015,9 @@ return (
           </Link>
         </div>
       </form>
+)}
+
+
       <div className="fixed bottom-0 right-0 text-red-600">
         {loading && (<>
                 <span className="spinner-border spinner-border-sm text-red-600"></span> Loading</> )}
