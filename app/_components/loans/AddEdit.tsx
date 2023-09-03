@@ -1018,7 +1018,7 @@ return (
         {loading && (<>
                 <span className="spinner-border spinner-border-sm text-red-600"></span> Loading</> )}
         </div>
-        <div className={`fixed left-0 bottom-0 h-1 ${loan?"bg-yellow-500":"bg-blue-500"}  w-full`}></div>
+        <div className={`fixed left-0 bottom-0 h-1 ${loan?loan.items.length>0? "bg-yellow-500":"bg-red-600":tasks.length>0?"bg-blue-500":"bg-red-600"}  w-full`}></div>
     </>
   );
 }
