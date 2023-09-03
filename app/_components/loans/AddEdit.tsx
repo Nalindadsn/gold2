@@ -301,6 +301,7 @@ console.log(task)
     const dataV:any = data;
     if (loan) {
       
+      dataV.user_id = user.id;
     }else{
       dataV.user_id = user.id;
 
@@ -578,10 +579,7 @@ return (
         </div>
 
         <div className="flex mb-8 justify-between"></div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus facere minus maxime, ipsam aliquam ullam officia optio dolorem, eveniet vitae perferendis accusantium excepturi. Dolore, minus vitae. Perspiciatis rerum harum ratione.
-{JSON.stringify(user)}
-        {/* {console.log(loan)} */}
-{/* {console.log(tasks)} */}
+        
 {loan?(
   <>
   
