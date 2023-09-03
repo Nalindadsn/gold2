@@ -475,6 +475,8 @@ return (
                 {loan ? formatDate(loan?.updatedAt) : ""}
               </div>
             </div>
+            {loan?(
+
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 {" "}
@@ -487,7 +489,7 @@ return (
                           loan?.officer[0]?.lastName}
               </div>
             </div>
-
+            ):(
             <div className="mb-2 md:mb-1 md:flex items-center">
               <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                 {" "}
@@ -499,7 +501,8 @@ return (
                           " " +
                           user?.lastName}
               </div>
-            </div>
+            </div>)}
+
             </div>
   </>
   
@@ -1011,6 +1014,11 @@ return (
           </Link>
         </div>
       </form>
+      <div className="fixed bottom-0 right-0 text-red-600">
+        {loading && (<>
+                <span className="spinner-border spinner-border-sm text-red-600"></span> Loading</> )}
+        </div>
+        <div className={`fixed left-0 bottom-0 h-1 ${loan?"bg-yellow-500":"bg-blue-500"}  w-full`}></div>
     </>
   );
 }
