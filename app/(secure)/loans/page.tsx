@@ -51,7 +51,7 @@ function Loans() {
                     <div>
 
                     
-                    <div className='bg-white  p-1' style={{ whiteSpace: 'nowrap' }}>
+                    <div className='bg-white  p-1 border-t md:border-0' style={{ whiteSpace: 'nowrap' }}>
 
                         CREATED BY : {loan?.officer[0]?.firstName} {loan?.officer[0]?.lastName}
                         {loan?.officer[0]?.nic}<br/>CREATED AT :{loan?.createdAt}
