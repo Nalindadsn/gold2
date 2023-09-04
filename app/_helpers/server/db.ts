@@ -126,6 +126,15 @@ function loanModel() {
         status:{type:String,default:"NOT ISSUE"}
         
 }
+      ],
+      guarantor:[
+{        
+      user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+        
+}
       ]
 
 

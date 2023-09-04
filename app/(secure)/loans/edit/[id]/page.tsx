@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { AddEdit } from '_components/loans';
-import { AddEdit as AddEditUser } from '_components/users';
+import { AddEdit as AddEditGuarantor } from '_components/guarantor';
 import { Spinner } from '_components';
 import { useLoanService, useUserService } from '_services';
 
@@ -25,6 +25,8 @@ function Edit(props: any) {
         ?(<>
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
         <AddEdit title="EDIT LOAN DETAILS" loan={loan}/>
+        <AddEditGuarantor title="EDIT Guarantor" loan={loan}/>
+        
         </> )
         : 
         <Spinner />

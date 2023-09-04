@@ -2,13 +2,13 @@
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import { useAlertService, useUserService } from '_services';
+import { useAlertService, useGuarantorService } from '_services';
 export { AddEdit };
 
-function AddEdit({ title, user }: { title: string, user?: any }) {
+function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) {
     const router = useRouter();
     const alertService = useAlertService();
-    const userService = useUserService();
+    const userService = useGuarantorService();
 
     // get functions to build form with useForm() hook
     const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user });
@@ -44,6 +44,8 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
             validate:  value => !user && !value ? 'Password is required' : undefined
         })
     };
+
+
     async function onSubmit(data: any) {
         alertService.clear();
         try {
@@ -56,6 +58,7 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                 await userService.create(data);
                 message = 'User added';
             }
+
             // redirect to user list with success message
             router.push('/users');
             alertService.success(message, true);
