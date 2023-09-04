@@ -1321,11 +1321,11 @@ function AddEdit({
                   <FaUserCircle className="float-left  text-5xl" />
 
                   <div className="text-xl -mt-3">
-                    <div className="text-gray-800 mt-1 font-bold">
+                    <div className="text-gray-800 mt-1 p-1 font-bold">
                       <span>
-                        { loan?.guarantor[0]?.firstName +
+                        { i?.firstName +
                             " " +
-                            loan?.guarantor[0]?.lastName
+                            i?.lastName
                           }
                       </span>
                     </div>
@@ -1338,7 +1338,7 @@ function AddEdit({
                       nic
                     </label>
                     <span className="mr-4 inline-block  md:block">:</span>
-                    <div className="flex-1">abcd</div>
+                    <div className="flex-1">{i?.nic}</div>
                   </div>
                  
                 </div>
