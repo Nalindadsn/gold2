@@ -57,7 +57,7 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
             } else {
                 data.loan_id=loan._id
                 await userService.create(data);
-                // reset()
+                 reset()
                 message = 'User added';
             }
 

@@ -1299,6 +1299,62 @@ function AddEdit({
       {loan &&(
 
       <>
+
+<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">EDIT LOAN DETAILS</h1>
+<div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2">
+{loan?.guarantor?.map((i: any) => (
+  <>
+  
+          <div>
+            {loan ? (
+              <div>
+
+
+                <div className={`bg-white mb-2 m-1 p-3 shadow-sm border-1 border-gray-900`}>
+                  
+            <div className="bg-white ">
+              <div className=" flex items-center justify-between leading-none  ">
+                <a
+                  className="flex items-center no-underline  text-black"
+                  href="#"
+                >
+                  <FaUserCircle className="float-left  text-5xl" />
+
+                  <div className="text-xl -mt-3">
+                    <div className="text-gray-800 mt-1 font-bold">
+                      <span>
+                        { loan?.guarantor[0]?.firstName +
+                            " " +
+                            loan?.guarantor[0]?.lastName
+                          }
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+                  <div className="mb-2 md:mb-1 md:flex items-center">
+                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                      nic
+                    </label>
+                    <span className="mr-4 inline-block  md:block">:</span>
+                    <div className="flex-1">abcd</div>
+                  </div>
+                 
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+  </>
+))}
+         
+
+
+
+        </div>
+
       <div className="text-center">
 
       <button className="btn btn-primary me-2 bg-blue-700" onClick={()=>setAddGuarantorSec(!addGuarantorSec)}>

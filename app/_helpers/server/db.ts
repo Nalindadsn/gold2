@@ -129,6 +129,7 @@ function loanModel() {
       ],
       guarantor:[
 {        
+  relationship:{type:String,default:"GUARANTOR"},
       user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
