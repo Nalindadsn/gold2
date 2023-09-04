@@ -27,6 +27,17 @@ update.schema = joi.object({
     interest_old: joi.string(),
     expected_price_old: joi.string(),
     mortgage_cmp: joi.string(),
+    
+    mortgage_branch: joi.string(),
+    mortgager_name: joi.string(),
+    mortgage_start_date: joi.string(),
+    mortgage_end_date: joi.string(),
+    mortgager_phone: joi.string(),
+    mortgage_interest_rate_month: joi.string(),
+    mortgage_interest_rate_year: joi.string(),
+    mortgage_invoice_number: joi.string(),
+    mortgage_estimate: joi.string(),
+
     decided_price: joi.string(),
     no_of_month: joi.string(),
     
