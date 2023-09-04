@@ -1301,7 +1301,7 @@ function AddEdit({
       <>
 
 <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">GUARANTOR DETAILS</h1>
-<div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2">
+<div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1">
 {loan?.guarantor?.map((i: any) => (
   <>
   
