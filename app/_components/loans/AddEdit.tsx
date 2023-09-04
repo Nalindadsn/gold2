@@ -1310,7 +1310,7 @@ function AddEdit({
               <div>
 
 
-                <div className={`bg-white mb-2 m-1 p-3 shadow-sm border-1 shadow-md`}>
+                <div className={`bg-white mb-2 m-1 p-3  border-1 shadow-md`}>
                   
             <div className="bg-white ">
               <div className=" flex items-center justify-between leading-none  ">
