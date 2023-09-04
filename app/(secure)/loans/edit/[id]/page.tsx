@@ -24,7 +24,7 @@ function Edit(props: any) {
     return loan
         ?(<>
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
-        <AddEdit title="Edit Loan" loan={loan}/>
+        <AddEdit title="EDIT LOAN DETAILS" loan={loan}/>
         </> )
         : 
         <Spinner />

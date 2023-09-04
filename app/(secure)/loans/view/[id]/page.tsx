@@ -22,6 +22,6 @@ function Edit({ params: { id } }: any) {
     return loan
         ?<>
         {/* {console.log(loan)} */}
-        <View title="Edit Loan" loan={loan} /></> 
+        <View title="EDIT LOAN DETAILS" loan={loan} /></> 
         : <Spinner />;
 }

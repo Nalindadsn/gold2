@@ -245,7 +245,7 @@ function AddEditItem({ title, loan }: { title: string; loan?: any }) {
                 {loading && (
                   <span className="spinner-border spinner-border-sm me-1"></span>
                 )}
-                Add Item
+                ADD ITEM
               </button>
 
               <button type="submit">Submit</button>

@@ -701,7 +701,7 @@ return (
                   {loading && (
                     <span className="spinner-border spinner-border-sm me-1"></span>
                   )}
-                  Add Item
+                  ADD ITEMS
                 </button>
               </div>
             </div>
@@ -775,7 +775,7 @@ return (
       <div className="flex-row">
         <div className="flex-large">
           <div>
-            <h2 className="text-xl font-bold ml-2">{editing ? "Edit Item" : "Add Item"}</h2>
+            <h2 className="text-xl font-bold ml-2">{editing ? "Edit Item" : "ADD ITEM"}</h2>
             <EditTaskForm
               editing={editing}
               setEditing={setEditing}
@@ -842,6 +842,8 @@ return (
   {JSON.stringify(installment(6, basic_estimate_final))}----
   <br /> */}
   <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl ">{title}</h1>
+  <div className="border shadow-sm mb-3">
+
   <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
     <div className="w-full hidden md:block"></div>
     <div className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0" style={{whiteSpace:"nowrap"}}>
@@ -935,6 +937,7 @@ return (
         {errors.expected_price_old?.message?.toString()}
       </div>
     </div>
+  </div>
   <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
     
   <div className="p-2">
