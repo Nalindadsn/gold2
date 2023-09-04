@@ -1300,7 +1300,7 @@ function AddEdit({
 
       <>
 
-<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">EDIT LOAN DETAILS</h1>
+<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">GUARANTOR DETAILS</h1>
 <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2">
 {loan?.guarantor?.map((i: any) => (
   <>
@@ -1310,7 +1310,7 @@ function AddEdit({
               <div>
 
 
-                <div className={`bg-white mb-2 m-1 p-3 shadow-sm border-1 border-gray-900`}>
+                <div className={`bg-white mb-2 m-1 p-3 shadow-sm border-1 shadow-md`}>
                   
             <div className="bg-white ">
               <div className=" flex items-center justify-between leading-none  ">
