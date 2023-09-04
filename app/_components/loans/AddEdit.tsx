@@ -880,14 +880,14 @@ return (
 
       <div>
         
-      <label className="form-label ml-2 ">No of Month</label><br/>
+      <label className="form-label ml-2 ">No of Month  -    {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}<br/>
+</label><br/>
 
       {loan?(
         <>
        
        Instalment : 
-      {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}<br/>
-      {/* {loan.expected_price<=max_price? installment(parseFloat(loan.no_of_month),parseFloat(loan.expected_price)):installment(parseFloat(loan.no_of_month),parseFloat(max_price))} */}
+      {loan.expected_price<=max_price? installment(parseFloat(loan.no_of_month),parseFloat(loan.expected_price)):installment(parseFloat(loan.no_of_month),parseFloat(max_price))}
    
         </>
       ):(
