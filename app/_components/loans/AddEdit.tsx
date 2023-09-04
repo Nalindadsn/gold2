@@ -841,7 +841,7 @@ return (
   ----installments-6-
   {JSON.stringify(installment(6, basic_estimate_final))}----
   <br /> */}
-  <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl">{title}</h1>
+  <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl ">{title}</h1>
   <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
     <div className="w-full hidden md:block"></div>
     <div className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0" style={{whiteSpace:"nowrap"}}>
@@ -935,7 +935,7 @@ return (
         {errors.expected_price_old?.message?.toString()}
       </div>
     </div>
-  <div className="grid grid-cols-1 md:grid-cols-2">
+  <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
     
   <div className="p-2">
       <label className="form-label ml-2 ">mortgage_cmp(Old)</label>
