@@ -376,7 +376,7 @@ return (
       </span>
       </>
     ):(
-      <><br/>
+      <>
       <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
 
       LKR {(a-max_price).toFixed(2)}
@@ -907,10 +907,11 @@ return (
       </div>
     </div>
   </div>
+  <h3 className=" font-bold">MORTGAGE DETAILS</h3>
   <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
     
   <div className="p-2">
-      <label className="form-label ml-2 ">mortgage_cmp(Old)</label>
+      <label className="form-label ml-2 ">Mortgager</label>
       <input
         {...fields.mortgage_cmp}
         type="mortgage_cmp"
