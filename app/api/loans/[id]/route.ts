@@ -38,7 +38,7 @@ update.schema = joi.object({
     mortgage_invoice_number: joi.string(),
     mortgage_estimate: joi.string(),
 
-    decided_price: joi.string(),
+    status: joi.string(),
     no_of_month: joi.string(),
     
     form_number: joi.string(),

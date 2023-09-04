@@ -93,8 +93,8 @@ function AddEdit({
     }),
 
 
-    decided_price: register("decided_price", {
-      required: "decided_price is required",
+    status: register("status", {
+      required: "status is required",
     }),
     no_of_month: register("no_of_month", {
       required: "no_of_month is required",
@@ -138,7 +138,6 @@ function AddEdit({
   // expected_price
   const [expected_price, setExpected_price_old] = useState("0");
   const [no_of_month, setNo_of_month] = useState("0");
-  const [decided_price, setDecidedPrice] = useState("0");
   const [reviews, setReviews] = useState([]);
   const arr = reviews ? reviews : [];
 
@@ -488,9 +487,19 @@ function AddEdit({
           <div>
             {loan ? (
               <>
-                <div className="bg-white mb-2 m-1 p-3 shadow-sm">
+                <div className={`bg-white mb-2 m-1 p-3 shadow-sm border-t-4 
+                ${loan?.status=="PENDING"? "border-yellow-500":""}
+                ${loan?.status=="SUCCESS"? "border-green-500":""}
+                ${loan?.status=="REJECTED"? "border-red-600":""}
+                ${loan?.status=="PROCESS"? "border-blue-500":""}
+                `}>
                   <div className="mb-2 md:mb-1 md:flex items-center">
                     <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                      {loan?.status=="PENDING"?(<span  className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm ">
+                        {loan?.status}
+                      </span>):(<></>)}
+                      
+                      
                       Status
                     </label>
                     <span className="mr-4 inline-block  md:block">:</span>
@@ -866,7 +875,7 @@ function AddEdit({
                       Expected Price{" "}
                       {payment_values(
                         parseFloat(expected_price),
-                        parseFloat(decided_price),
+                        parseFloat(status),
                         parseFloat(no_of_month)
                       )}{" "}
                     </label>
@@ -1014,7 +1023,7 @@ function AddEdit({
                 <label className="form-label ml-2 ">mortgage_start_date</label>
                 <input
                   {...fields.mortgage_start_date}
-                  type="date"
+                  type="text"
                   className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                     errors.mortgage_start_date ? "is-invalid" : ""
                   }`}
@@ -1028,7 +1037,7 @@ function AddEdit({
                 <label className="form-label ml-2 ">mortgage_end_date</label>
                 <input
                   {...fields.mortgage_end_date}
-                  type="date"
+                  type="text"
                   className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                     errors.mortgage_end_date ? "is-invalid" : ""
                   }`}
@@ -1153,6 +1162,7 @@ function AddEdit({
                   {errors.loan_price_old?.message?.toString()}
                 </div>
               </div>
+              
               <div className="p-2">
                 <label className="form-label ml-2 ">Interest </label>
                 <input
@@ -1166,23 +1176,27 @@ function AddEdit({
                   {errors.interest_old?.message?.toString()}
                 </div>
               </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-2">
-                <label className="form-label ml-2 ">Decided Price</label>
-                <input
-                  {...fields.decided_price}
-                  type="decided_price"
+                <label className="form-label ml-2 ">Status</label>
+               
+                <select
+                  {...fields.status}
                   className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                    errors.decided_price ? "is-invalid" : ""
-                  }`}
-                  onChange={(e) => setDecidedPrice(e.target.value)}
-                />
+                    errors.status ? "is-invalid" : ""
+                  }`}>
+                  <option value="">-select option</option>
+                  <option className="PENDING">PENDING</option>
+                  <option className="PROCESS">PROCESS</option>
+                  <option className="SUCCESS">SUCCESS</option>
+                  <option className="REJECTED">REJECTED</option>
+                </select>
 
                 <div className="invalid-feedback">
-                  {errors.decided_price?.message?.toString()}
+                  {errors.status?.message?.toString()}
                 </div>
               </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2">
             </div>
             <div className="mb-3">
               <button

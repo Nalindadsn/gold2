@@ -87,7 +87,6 @@ function loanModel() {
       interest_old: { type: String },
       expected_price_old: { type: String },
 
-      decided_price: { type: String },
       no_of_month: { type: String },
       
       form_number: { type: String },
@@ -143,8 +142,8 @@ function loanModel() {
         default: Date.now,
       },
       
-      status:{type:String,default:"PROCESSING"},
-      
+
+      status:{type:String,default:"PROSPECTED"},      
       isDelete:{type:Boolean,default:false}
     },
     {

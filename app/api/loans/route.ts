@@ -47,7 +47,7 @@ create.schema = joi.object({
 
 
 
-    decided_price: joi.string(),
+    status: joi.string(),
     no_of_month: joi.string(),
     // officer_id: joi.required(),
 });
