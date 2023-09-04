@@ -59,6 +59,40 @@ function AddEdit({
     mortgage_cmp: register("mortgage_cmp", {
       required: "mortgage_cmp is required",
     }),
+
+
+    mortgage_branch: register("mortgage_branch", {
+      required: "mortgage_branch is required",
+    }),
+
+
+    
+    mortgager_name: register("mortgager_name", {
+      required: "mortgager_name is required",
+    }),
+    mortgage_start_date: register("mortgage_start_date", {
+      required: "mortgage_start_date is required",
+    }),
+    mortgage_end_date: register("mortgage_end_date", {
+      required: "mortgage_end_date is required",
+    }),
+    mortgager_phone: register("mortgager_phone", {
+      required: "mortgager_phone is required",
+    }),
+    mortgage_interest_rate_month: register("mortgage_interest_rate_month", {
+      required: "mortgage_interest_rate_month is required",
+    }),
+    mortgage_interest_rate_year: register("mortgage_interest_rate_year", {
+      required: "mortgage_interest_rate_year is required",
+    }),
+    mortgage_invoice_number: register("mortgage_invoice_number", {
+      required: "mortgage_invoice_number is required",
+    }),
+    mortgage_estimate: register("mortgage_estimate", {
+      required: "mortgage_estimate is required",
+    }),
+
+
     decided_price: register("decided_price", {
       required: "decided_price is required",
     }),
@@ -118,7 +152,7 @@ function AddEdit({
   }, 0);
   const itm_total_weight = arr.reduce(function (acc: any, obj: any) {
     return (
-      acc + (parseFloat(obj.total_weight) ? parseFloat(obj.total_weight) : 0) 
+      acc + (parseFloat(obj.total_weight) ? parseFloat(obj.total_weight) : 0)
     );
   }, 0);
 
@@ -213,40 +247,46 @@ function AddEdit({
   };
 
   ///////////////task
-  const tasksData:any[] = [];
-  const initialFormState = { id: null, name: "", karat: "", net_weight: "", total_weight: "", pound: "" };
+  const tasksData: any[] = [];
+  const initialFormState = {
+    id: null,
+    name: "",
+    karat: "",
+    net_weight: "",
+    total_weight: "",
+    pound: "",
+  };
 
   const [tasks, setTasks] = useState(tasksData);
   const [editing, setEditing] = useState(false);
   const [currentTask, setCurrentTask] = useState(initialFormState);
 
-  const addTask = (task:any) => {
-    task.pound=task.net_weight/8
+  const addTask = (task: any) => {
+    task.pound = task.net_weight / 8;
     task.id = tasks.length + 1;
     setTasks([...tasks, task]);
-    
-      // console.log(task)
+
+    // console.log(task)
   };
 
-  const deleteTask = (id:any) => {
+  const deleteTask = (id: any) => {
     setEditing(false);
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const editRow = (task:any) => {
-    task.pound=task.net_weight/8
+  const editRow = (task: any) => {
+    task.pound = task.net_weight / 8;
     setEditing(true);
-console.log(task)
+    console.log(task);
     setCurrentTask(task);
   };
 
-  const updateTask = (id:any, updatedTask:any) => {
+  const updateTask = (id: any, updatedTask: any) => {
     setEditing(false);
-    
-    updatedTask.pound=updatedTask.net_weight/8
-    setTasks(tasks.map(task => (task.id === id ? updatedTask : task)));
-  };
 
+    updatedTask.pound = updatedTask.net_weight / 8;
+    setTasks(tasks.map((task) => (task.id === id ? updatedTask : task)));
+  };
 
   // const tasksData: any = [];
 
@@ -293,17 +333,20 @@ console.log(task)
   // });
   async function onSubmit(data: any) {
     alertService.clear();
-    var result = tasks.map(function(obj:any) {
-      return { name: obj.name, karat: obj.karat, net_weight: obj.net_weight, total_weight: obj.total_weight, pound: obj.pound};
-  });
+    var result = tasks.map(function (obj: any) {
+      return {
+        name: obj.name,
+        karat: obj.karat,
+        net_weight: obj.net_weight,
+        total_weight: obj.total_weight,
+        pound: obj.pound,
+      };
+    });
 
-  
-    const dataV:any = data;
+    const dataV: any = data;
     if (loan) {
-      
-    }else{
+    } else {
       dataV.user_id = user.id;
-
     }
 
     if (loan) {
@@ -332,69 +375,68 @@ console.log(task)
       alertService.error(error);
     }
   }
-  
-// const total_pounds_add = 
-//   tasks.reduce(function (acc: any, obj: any) {
-//     return (
-//       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
-//     );
-//   }, 0);
-// ;
-// const itm_total_net_add = 
-//   tasks.reduce(function (acc: any, obj: any) {
-//     return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
-//   }, 0);
 
-// const itm_total_weight_add =
-//   tasks.reduce(function (acc: any, obj: any) {
-//     return (
-//       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
-//     );
-//   }, 0);
+  // const total_pounds_add =
+  //   tasks.reduce(function (acc: any, obj: any) {
+  //     return (
+  //       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+  //     );
+  //   }, 0);
+  // ;
+  // const itm_total_net_add =
+  //   tasks.reduce(function (acc: any, obj: any) {
+  //     return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
+  //   }, 0);
 
+  // const itm_total_weight_add =
+  //   tasks.reduce(function (acc: any, obj: any) {
+  //     return (
+  //       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
+  //     );
+  //   }, 0);
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
     return (
       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
     );
   }, 0);
-const max_price:any=loan? total_pounds*130000 :total_pounds_add*130000
-const payment_values=(a:any,b:any,c:any)=>{
-  const basic=a-b;
+  const max_price: any = loan
+    ? total_pounds * 130000
+    : total_pounds_add * 130000;
+  const payment_values = (a: any, b: any, c: any) => {
+    const basic = a - b;
 
-return (
-  <span>
-    {a<=max_price? (
-      <>
-      <br/>
-      <span className="">
-
-      <span className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm ">
-  {max_price.toFixed(2)}
-      </span> is Our
-      Maximum Amount.
+    return (
+      <span>
+        {a <= max_price ? (
+          <>
+            <br />
+            <span className="">
+              <span className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm ">
+                {max_price.toFixed(2)}
+              </span>{" "}
+              is Our Maximum Amount.
+            </span>
+          </>
+        ) : (
+          <>
+            <br />
+            <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
+              LKR {(a - max_price).toFixed(2)}
+            </span>
+            Amount payable in hand <br />
+            Maximum Amount: LKR {max_price.toFixed(2)}
+          </>
+        )}
       </span>
-      </>
-    ):(
-      <>
-      <br/>
-      <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
-
-      LKR {(a-max_price).toFixed(2)}
-
-      </span>Amount payable in hand  <br/>
-      Maximum Amount:  LKR {max_price.toFixed(2)}
-      </>
-    )}
-  </span>
-)
-}
+    );
+  };
   return (
     <>
       <>
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
-            -{loan?"UPDATE ":"NEW"} Order 
+            -{loan ? "UPDATE " : "NEW"} Order
           </h2>
           <div>
             <div className="relative mr-4 inline-block">
@@ -444,81 +486,75 @@ return (
 
         <div className="grid grid-cols-1 space-x-1  md:grid-cols-2">
           <div>
-{loan?(
-  <>
-              <div className="bg-white mb-2 m-1 p-3 shadow-sm">
-
-            <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                Status
-              </label>
-              <span className="mr-4 inline-block  md:block">:</span>
-              <div className="flex-1">{loan?.status}</div>
-            </div>
-            <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                Order No
-              </label>
-              <span className="mr-4 inline-block  md:block">:</span>
-              <div className="flex-1">{loan?._id}</div>
-            </div>
-            <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                {" "}
-                Created At
-              </label>
-              <span className="mr-4  md:block">:</span>
-              <div className="flex-1">
-                {loan ? formatDate(loan?.createdAt) : ""}
-              </div>
-            </div>
-            <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                {" "}
-                Updated At
-              </label>
-              <span className="mr-4  md:block">:</span>
-              <div className="flex-1">
-                {loan ? formatDate(loan?.updatedAt) : ""}
-              </div>
-            </div>
-            {loan?(
-
-            <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                {" "}
-                CREATED BY 
-              </label>
-              <span className="mr-4  md:block">:</span>
-              <div className="flex-1">
-              {loan?.officer[0]?.firstName +
+            {loan ? (
+              <>
+                <div className="bg-white mb-2 m-1 p-3 shadow-sm">
+                  <div className="mb-2 md:mb-1 md:flex items-center">
+                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                      Status
+                    </label>
+                    <span className="mr-4 inline-block  md:block">:</span>
+                    <div className="flex-1">{loan?.status}</div>
+                  </div>
+                  <div className="mb-2 md:mb-1 md:flex items-center">
+                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                      Order No
+                    </label>
+                    <span className="mr-4 inline-block  md:block">:</span>
+                    <div className="flex-1">{loan?._id}</div>
+                  </div>
+                  <div className="mb-2 md:mb-1 md:flex items-center">
+                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                      {" "}
+                      Created At
+                    </label>
+                    <span className="mr-4  md:block">:</span>
+                    <div className="flex-1">
+                      {loan ? formatDate(loan?.createdAt) : ""}
+                    </div>
+                  </div>
+                  <div className="mb-2 md:mb-1 md:flex items-center">
+                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                      {" "}
+                      Updated At
+                    </label>
+                    <span className="mr-4  md:block">:</span>
+                    <div className="flex-1">
+                      {loan ? formatDate(loan?.updatedAt) : ""}
+                    </div>
+                  </div>
+                  {loan ? (
+                    <div className="mb-2 md:mb-1 md:flex items-center">
+                      <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                        {" "}
+                        CREATED BY
+                      </label>
+                      <span className="mr-4  md:block">:</span>
+                      <div className="flex-1">
+                        {loan?.officer[0]?.firstName +
                           " " +
                           loan?.officer[0]?.lastName}
-              </div>
-            </div>
-            ):(
-            <div className="mb-2 md:mb-1 md:flex items-center">
-              <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                {" "}
-                CREATING BY 
-              </label>
-              <span className="mr-4  md:block">:</span>
-              <div className="flex-1">
-              {user?.firstName +
-                          " " +
-                          user?.lastName}
-              </div>
-            </div>)}
-
-            </div>
-  </>
-  
-):<>
-
-</>}
-
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mb-2 md:mb-1 md:flex items-center">
+                      <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                        {" "}
+                        CREATING BY
+                      </label>
+                      <span className="mr-4  md:block">:</span>
+                      <div className="flex-1">
+                        {user?.firstName + " " + user?.lastName}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
-            {/* <div className="bg-white p-2 m-1 border">
+          {/* <div className="bg-white p-2 m-1 border">
               <div className=" flex items-center justify-between leading-none  ">
                 <a
                   className="flex items-center no-underline  text-black"
@@ -541,489 +577,662 @@ return (
           
             </div> */}
           <div>
-            
-
-            
-          <div className="bg-white p-2 m-1 shadow-sm">
+            <div className="bg-white p-2 m-1 shadow-sm">
               <div className=" flex items-center justify-between leading-none  ">
                 <a
                   className="flex items-center no-underline  text-black"
                   href="#"
                 >
-                  <FaUserCircle className='float-left  text-5xl' /> 
+                  <FaUserCircle className="float-left  text-5xl" />
 
                   <div className="text-xl -mt-3">
                     <div className="text-gray-800 mt-1 font-bold">
                       <span>
-                        {loan?(
-
-                        loan?.customer[0]?.firstName +
-                          " " +
-                          loan?.customer[0]?.lastName
-                        ):(
-                          
-
-                        user?.firstName +
-                        " " +
-                        user?.lastName
-                        )}
+                        {loan
+                          ? loan?.customer[0]?.firstName +
+                            " " +
+                            loan?.customer[0]?.lastName
+                          : user?.firstName + " " + user?.lastName}
                       </span>
                     </div>
                   </div>
                 </a>
               </div>
-              <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">CUSTOMER </div>
-          
+              <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">
+                CUSTOMER{" "}
+              </div>
             </div>
-            
           </div>
         </div>
 
         <div className="flex mb-8 justify-between"></div>
-        
-{loan?(
-  <>
-  
-        <form
-          onSubmit={submitHandler}
-          className=" p-2 shadow-sm bg-white"
-          style={{ overflow: "hidden" }}
-        >
-          <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
-            <div className="px-1">
-              {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-            </div>
-            <div className="px-1  text-right">
-              Total Weight : {itm_total_weight.toFixed(4)}
-            </div>
-            <div className="px-1  text-right">
-              Net Weight : {itm_total_net.toFixed(4)}
-            </div>
-            <div className="px-1  text-right">
-              total pound : {total_pounds.toFixed(4)}
-            </div>
-          </div>
-          <div className="flex flex-wrap -mx-3 ">
-            <div className="w-full md:w-full px-3 mb-2 mt-2">
-              <h2 className=" text-gray-800 text-lg">
-                items
-                <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm ">
-                  NO OF ITEMS : {reviews.length}
-                </span>
-              </h2>
-              <div>
-                <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
-                  <div className="flex-1 px-1">
 
+        {loan ? (
+          <>
+            <form
+              onSubmit={submitHandler}
+              className=" p-2 shadow-sm bg-white"
+              style={{ overflow: "hidden" }}
+            >
+              <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
+                <div className="px-1">
+                  {loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                </div>
+                <div className="px-1  text-right">
+                  Total Weight : {itm_total_weight.toFixed(4)}
+                </div>
+                <div className="px-1  text-right">
+                  Net Weight : {itm_total_net.toFixed(4)}
+                </div>
+                <div className="px-1  text-right">
+                  total pound : {total_pounds.toFixed(4)}
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 ">
+                <div className="w-full md:w-full px-3 mb-2 mt-2">
+                  <h2 className=" text-gray-800 text-lg">
+                    items
+                    <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                      NO OF ITEMS : {reviews.length}
+                    </span>
+                  </h2>
+                  <div>
+                    <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
+                      <div className="flex-1 px-1">
+                        <input
+                          type="text"
+                          onChange={(e) => setItmName(e.target.value)}
+                          value={name}
+                          name="name"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          placeholder="Description"
+                          required
+                        />
+                      </div>
+                      <div className="px-1  text-right">
+                        <input
+                          type="text"
+                          onChange={(e) => setKarat(e.target.value)}
+                          value={karat}
+                          name="karat"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          placeholder="Karat"
+                        />
+                      </div>
 
-                    
-                    <input
-                      type="text"
-                      onChange={(e) => setItmName(e.target.value)}
-                      value={name}
-                      name="name"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Description"
-                      required
-                    />
-                 
-                  </div>
-                  <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setKarat(e.target.value)}
-                      value={karat}
-                      name="karat"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Karat"
-                    />
-                  </div>
+                      <div className="px-1  text-right">
+                        <input
+                          type="text"
+                          onChange={(e) => setNet_weight(e.target.value)}
+                          value={net_weight}
+                          name="net_weight"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          placeholder="Net Weight"
+                          required
+                        />
+                      </div>
+                      <div className="px-1  text-right">
+                        <input
+                          type="text"
+                          onChange={(e) => setTotal_weight(e.target.value)}
+                          value={total_weight}
+                          name="total_weight"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          placeholder="Total Weight"
+                          required
+                        />
+                      </div>
+                      <div className="px-1  text-right">
+                        <input
+                          type="text"
+                          onChange={(e) => setPound(e.target.value)}
+                          value={net_weight_cal}
+                          name="pound"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          placeholder="Pound"
+                          required
+                        />
+                      </div>
 
-                  <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setNet_weight(e.target.value)}
-                      value={net_weight}
-                      name="net_weight"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Net Weight"
-                      required
-                    />
-                  </div>
-                  <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setTotal_weight(e.target.value)}
-                      value={total_weight}
-                      name="total_weight"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Total Weight"
-                      required
-                    />
-                  </div>
-                  <div className="px-1  text-right">
-                    <input
-                      type="text"
-                      onChange={(e) => setPound(e.target.value)}
-                      value={net_weight_cal}
-                      name="pound"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                      placeholder="Pound"
-                      required
-                    />
-                  </div>
-
-                  <div className="px-1  text-right">
-                    <select
-                      onChange={(e) => setStatus(e.target.value)}
-                      name="status"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                    >
-                      <option>NOT ISSUE</option>
-                      <option>ISSUE</option>
-                    </select>
-                  </div>
-                  <div className="px-1 pt-1  text-right">
+                      <div className="px-1  text-right">
+                        <select
+                          onChange={(e) => setStatus(e.target.value)}
+                          name="status"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        >
+                          <option>NOT ISSUE</option>
+                          <option>ISSUE</option>
+                        </select>
+                      </div>
+                      <div className="px-1 pt-1  text-right">
+                        <button
+                          className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
+                          type="reset"
+                        >
+                          RESET
+                        </button>
+                      </div>
+                    </div>
                     <button
-                      className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
-                      type="reset"
+                      type="submit"
+                      disabled={loading}
+                      className="btn btn-primary me-2 mt-1 bg-blue-700"
                     >
-                      RESET
+                      {loading && (
+                        <span className="spinner-border spinner-border-sm me-1"></span>
+                      )}
+                      ADD ITEMS
                     </button>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn btn-primary me-2 mt-1 bg-blue-700"
-                >
-                  {loading && (
-                    <span className="spinner-border spinner-border-sm me-1"></span>
-                  )}
-                  ADD ITEMS
-                </button>
               </div>
-            </div>
-          </div>
-        </form>
-        <div className="bg-white p-2 mt-4">
-          {reviews.map((i: any) => (
-            <div key ={n++}>
-
-
-<div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-sm  mb-1">
-    
-  
-  
-  <div className="flex-2 px-1 w-full">
-  <div className="ml-2 text-sm">
-                      <span >
- <span className="font-bold">{i?.name}</span>  &nbsp;
-                        <span className="  bg-orange-300 rounded-sm px-2 mr-3">
-                      {i?.karat}
-                    </span>
-                        {i?.status == "NOT ISSUE" ? (
-                          <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
-                            {i?.status}
+            </form>
+            <div className="bg-white p-2 mt-4">
+              {reviews.map((i: any) => (
+                <div key={n++}>
+                  <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-sm  mb-1">
+                    <div className="flex-2 px-1 w-full">
+                      <div className="ml-2 text-sm">
+                        <span>
+                          <span className="font-bold">{i?.name}</span> &nbsp;
+                          <span className="  bg-orange-300 rounded-sm px-2 mr-3">
+                            {i?.karat}
                           </span>
-                        ) : (
-                          <span className="bg-red-600 text-blue-100 py-0 px-2 rounded-full text-sm ">
-                            {i?.status}
-                          </span>
-                        )}
-                      </span>
-                      <br />
-                      <div>
-                        
-<div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
-  <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">TOTAL WEIGHT - {i?.total_weight}</div>
-  <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">NET WEIGHT - {i?.net_weight}</div>
-  <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">POUNDS - {i?.pound}</div>
-</div>
+                          {i?.status == "NOT ISSUE" ? (
+                            <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                              {i?.status}
+                            </span>
+                          ) : (
+                            <span className="bg-red-600 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                              {i?.status}
+                            </span>
+                          )}
+                        </span>
+                        <br />
+                        <div>
+                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
+                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                              TOTAL WEIGHT - {i?.total_weight}
+                            </div>
+                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                              NET WEIGHT - {i?.net_weight}
+                            </div>
+                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                              POUNDS - {i?.pound}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-  </div>
-  <div className="px-1 text-right">
-                  <button
-                    onClick={() => submitHandlerDel(loan?.id, { name: i?._id })}
-                    // onClick={() => {
+                    <div className="px-1 text-right">
+                      <button
+                        onClick={() =>
+                          submitHandlerDel(loan?.id, { name: i?._id })
+                        }
+                        // onClick={() => {
 
-                    //   loanService.deleteItem(loan?.id, {name:i?._id});
-                    //   fetchReviews();
-                    // }  }
-                    className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
-                    style={{ width: "60px" }}
-                    //  disabled={true}
-                    // disabled={isDeleting}
-                  >
-                    {isDeleting ? (
-                      <span className="spinner-border spinner-border-sm"></span>
-                    ) : (
-                      <span>Delete</span>
-                    )}
-                  </button></div>
-</div>
-
+                        //   loanService.deleteItem(loan?.id, {name:i?._id});
+                        //   fetchReviews();
+                        // }  }
+                        className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
+                        style={{ width: "60px" }}
+                        //  disabled={true}
+                        // disabled={isDeleting}
+                      >
+                        {isDeleting ? (
+                          <span className="spinner-border spinner-border-sm"></span>
+                        ) : (
+                          <span>Delete</span>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-  </>
-):(
-  <>
-<div className="container bg-white shadow-sm">
-      <div className="flex-row">
-        <div className="flex-large">
-          <div>
-            <h2 className="text-xl font-bold ml-2">{editing ? "Edit Item" : "ADD ITEM"}</h2>
-            <EditTaskForm
-              editing={editing}
-              setEditing={setEditing}
-              currentTask={currentTask}
-              setCurrentTask={setCurrentTask}
-              updateTask={updateTask}
-              addTask={addTask}
-              tasks={tasks}
-            />
-          </div>
-        </div>
-        <div className="flex-large">
-          <TaskTable tasks={tasks} editRow={editRow} deleteTask={deleteTask} />
-        </div>
-      </div>
-    </div>
+          </>
+        ) : (
+          <>
+            <div className="container bg-white shadow-sm">
+              <div className="flex-row">
+                <div className="flex-large">
+                  <div>
+                    <h2 className="text-xl font-bold ml-2">
+                      {editing ? "Edit Item" : "ADD ITEM"}
+                    </h2>
+                    <EditTaskForm
+                      editing={editing}
+                      setEditing={setEditing}
+                      currentTask={currentTask}
+                      setCurrentTask={setCurrentTask}
+                      updateTask={updateTask}
+                      addTask={addTask}
+                      tasks={tasks}
+                    />
+                  </div>
+                </div>
+                <div className="flex-large">
+                  <TaskTable
+                    tasks={tasks}
+                    editRow={editRow}
+                    deleteTask={deleteTask}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
 
-
-  </>
-)}
-
-{}
+        {}
       </>
 
-
-{reviews.length>0 || tasks.length>0 ? (
-  <>
-        <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">{title}</h1>
-
-  <form
-  onSubmit={handleSubmit(onSubmit)}
-  className="bg-white p-2 shadow-sm"
-  // style={{ marginLeft: "5%", marginRight: "5%" }}
->
-
-  <div className="border shadow-sm mb-3">
-
-  <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-    <div className="w-full hidden md:block"></div>
-    <div className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0" style={{whiteSpace:"nowrap"}}>
-
-
-      <label className="form-label mt-2">Form Number</label>
-      <input
-        {...fields.form_number}
-        type="form_number"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.form_number ? "is-invalid" : ""
-        }`}
-      />
-    </div>
-      <div className="invalid-feedback">
-        {errors.form_number?.message?.toString()}
-      </div>
-    </div>
-    <div className="p-2">
-      
-      <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-      <div className="px-1 w-full">
-      <label className="form-label ml-2 ">Expected Price {payment_values(parseFloat(expected_price) ,parseFloat(decided_price),parseFloat(no_of_month))} </label>
-
-      <input
-        {...fields.expected_price_old}
-        type="expected_price_old"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.expected_price_old ? "is-invalid" : ""
-        }`}
-        
-         onChange={(e) => setExpected_price_old(e.target.value)}
-      />
-      </div>
-      <div className="px-1 ">
-
-      <div>
-        
-      <label className="form-label  ">No of Month  -    {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}<br/>
-
-</label>
-
-      {loan?(
+      {reviews.length > 0 || tasks.length > 0 ? (
         <>
-       
-       <br/>Monthly Instalment : 
-      {loan.expected_price_old<=max_price? installment(parseFloat(loan.no_of_month),parseFloat(loan.expected_price_old)):installment(parseFloat(loan.no_of_month),parseFloat(max_price))}
-   
-        </>
-      ):(
-<>
-       <br/>Monthly Instalment : 
-      {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}
-     
-</>
-      )}
-      
-     
-     
-      <select
-        {...fields.no_of_month}
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.no_of_month ? "is-invalid" : ""
-        }`}
-        onChange={(e) => setNo_of_month(e.target.value)}
-      >
-      <option value="0">-SELECT MONTH-</option>
-        <option value="60">60</option>
-        <option value="48">48</option>
-        <option value="36">36</option>
-        <option value="24">24</option>
-        <option value="18">18</option>
-        <option value="12">12</option>
-        <option value="6">6</option>
-      </select>
-      {/* <input
+          <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">
+            {title}
+          </h1>
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="bg-white p-2 shadow-sm"
+            // style={{ marginLeft: "5%", marginRight: "5%" }}
+          >
+            <div className="border shadow-sm mb-3">
+              <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+                <div className="w-full hidden md:block"></div>
+                <div
+                  className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
+                  style={{ whiteSpace: "nowrap" }}
+                >
+                  <label className="form-label mt-2">Form Number</label>
+                  <input
+                    {...fields.form_number}
+                    type="form_number"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                      errors.form_number ? "is-invalid" : ""
+                    }`}
+                  />
+                </div>
+                <div className="invalid-feedback">
+                  {errors.form_number?.message?.toString()}
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+                  <div className="px-1 w-full">
+                    <label className="form-label ml-2 ">
+                      Expected Price{" "}
+                      {payment_values(
+                        parseFloat(expected_price),
+                        parseFloat(decided_price),
+                        parseFloat(no_of_month)
+                      )}{" "}
+                    </label>
+
+                    <input
+                      {...fields.expected_price_old}
+                      type="expected_price_old"
+                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                        errors.expected_price_old ? "is-invalid" : ""
+                      }`}
+                      onChange={(e) => setExpected_price_old(e.target.value)}
+                    />
+                  </div>
+                  <div className="px-1 ">
+                    <div>
+                      <label className="form-label  ">
+                        No of Month -{" "}
+                        {expected_price <= max_price
+                          ? installment(
+                              parseFloat(no_of_month),
+                              parseFloat(expected_price)
+                            )
+                          : installment(
+                              parseFloat(no_of_month),
+                              parseFloat(max_price)
+                            )}
+                        <br />
+                      </label>
+
+                      {loan ? (
+                        <>
+                          <br />
+                          Monthly Instalment :
+                          {loan.expected_price_old <= max_price
+                            ? installment(
+                                parseFloat(loan.no_of_month),
+                                parseFloat(loan.expected_price_old)
+                              )
+                            : installment(
+                                parseFloat(loan.no_of_month),
+                                parseFloat(max_price)
+                              )}
+                        </>
+                      ) : (
+                        <>
+                          <br />
+                          Monthly Instalment :
+                          {expected_price <= max_price
+                            ? installment(
+                                parseFloat(no_of_month),
+                                parseFloat(expected_price)
+                              )
+                            : installment(
+                                parseFloat(no_of_month),
+                                parseFloat(max_price)
+                              )}
+                        </>
+                      )}
+
+                      <select
+                        {...fields.no_of_month}
+                        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                          errors.no_of_month ? "is-invalid" : ""
+                        }`}
+                        onChange={(e) => setNo_of_month(e.target.value)}
+                      >
+                        <option value="0">-SELECT MONTH-</option>
+                        <option value="60">60</option>
+                        <option value="48">48</option>
+                        <option value="36">36</option>
+                        <option value="24">24</option>
+                        <option value="18">18</option>
+                        <option value="12">12</option>
+                        <option value="6">6</option>
+                      </select>
+                      {/* <input
         {...fields.no_of_month}
         type="no_of_month"
         className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
           errors.no_of_month ? "is-invalid" : ""
         }`}
       /> */}
-      <div className="invalid-feedback">
-        {errors.no_of_month?.message?.toString()}
-      </div>
-    </div>
-      </div>
+                      <div className="invalid-feedback">
+                        {errors.no_of_month?.message?.toString()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-      </div>
+                <div className="invalid-feedback">
+                  {errors.expected_price_old?.message?.toString()}
+                </div>
+              </div>
+            </div>
+            <h3 className=" font-bold">MORTGAGE DETAILS</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
+              <div className="p-2">
+                <label className="form-label ml-2 ">Mortgager</label>
+                <input
+                  {...fields.mortgage_cmp}
+                  type="mortgage_cmp"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_cmp ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_cmp?.message?.toString()}
+                </div>
+              </div>
+              /////////////////////////////////////////////////////
 
-      <div className="invalid-feedback">
-        {errors.expected_price_old?.message?.toString()}
-      </div>
-    </div>
+
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">mortgage_branch</label>
+                <input
+                  {...fields.mortgage_branch}
+                  type="mortgage_branch"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_branch ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_branch?.message?.toString()}
+                </div>
+              </div>
+
+
+<div className="p-2">
+  <label className="form-label ml-2 ">mortgager_name</label>
+  <input
+    {...fields.mortgager_name}
+    type="mortgager_name"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.mortgager_name ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.mortgager_name?.message?.toString()}
   </div>
-  <h3 className=" font-bold">MORTGAGE DETAILS</h3>
-  <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
-    
-  <div className="p-2">
-      <label className="form-label ml-2 ">Mortgager</label>
-      <input
-        {...fields.mortgage_cmp}
-        type="mortgage_cmp"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.mortgage_cmp ? "is-invalid" : ""
-        }`}
-      />
-      <div className="invalid-feedback">
-        {errors.mortgage_cmp?.message?.toString()}
-      </div>
-    </div>
-    
-    <div className="p-2 ml-1">
-      <label className="form-label ml-2 ">Estimated Price </label>
-      <input
-        {...fields.estimated_price_old}
-        type="text"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.estimated_price_old ? "is-invalid" : ""
-        }`}
-      />
-      <div className="invalid-feedback">
-        {errors.estimated_price_old?.message?.toString()}
-      </div>
-    </div>
-    <div className="p-2">
-      <label className="form-label ml-2 ">Loan Price </label>
-      <input
-        {...fields.loan_price_old}
-        type="text"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.loan_price_old ? "is-invalid" : ""
-        }`}
-      />
-      <div className="invalid-feedback">
-        {errors.loan_price_old?.message?.toString()}
-      </div>
-    </div>
+</div>
 
-    <div className="p-2">
-      <label className="form-label ml-2 ">Interest </label>
-      <input
-        {...fields.interest_old}
-        type="text"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.interest_old ? "is-invalid" : ""
-        }`}
-      />
-      <div className="invalid-feedback">
-        {errors.interest_old?.message?.toString()}
-      </div>
-    </div>
+
+
+<div className="p-2">
+                <label className="form-label ml-2 ">mortgage_start_date</label>
+                <input
+                  {...fields.mortgage_start_date}
+                  type="mortgage_start_date"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_start_date ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_start_date?.message?.toString()}
+                </div>
+              </div>
+
+<div className="p-2">
+                <label className="form-label ml-2 ">mortgage_end_date</label>
+                <input
+                  {...fields.mortgage_end_date}
+                  type="mortgage_end_date"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_end_date ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_end_date?.message?.toString()}
+                </div>
+              </div>
+
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">mortgager_phone</label>
+                <input
+                  {...fields.mortgager_phone}
+                  type="mortgager_phone"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgager_phone ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgager_phone?.message?.toString()}
+                </div>
+              </div>
+
+<div className="p-2">
+  <label className="form-label ml-2 ">mortgage_interest_rate_month</label>
+  <input
+    {...fields.mortgage_interest_rate_month}
+    type="mortgage_interest_rate_month"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.mortgage_interest_rate_month ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.mortgage_interest_rate_month?.message?.toString()}
   </div>
-  <div className="grid grid-cols-1 md:grid-cols-2">
+</div>
 
-
-    <div className="p-2">
-      <label className="form-label ml-2 ">Decided Price</label>
-      <input
-        {...fields.decided_price}
-        type="decided_price"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.decided_price ? "is-invalid" : ""
-        }`}
-        onChange={(e) => setDecidedPrice(e.target.value)}
-      />
-      
-
-
-
-
-
-      <div className="invalid-feedback">
-        {errors.decided_price?.message?.toString()}
-      </div>
-    </div>
+<div className="p-2">
+  <label className="form-label ml-2 ">mortgage_interest_rate_year</label>
+  <input
+    {...fields.mortgage_interest_rate_year}
+    type="mortgage_interest_rate_year"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.mortgage_interest_rate_year ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.mortgage_interest_rate_year?.message?.toString()}
   </div>
-  <div className="mb-3">
-    <button
-      type="submit"
-      disabled={formState.isSubmitting}
-      className="btn btn-primary me-2 bg-blue-700"
-    >
-      {formState.isSubmitting && (
-        <span className="spinner-border spinner-border-sm me-1"></span>
+</div>
+
+
+
+<div className="p-2">
+  <label className="form-label ml-2 ">mortgage_invoice_number</label>
+  <input
+    {...fields.mortgage_invoice_number}
+    type="mortgage_invoice_number"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.mortgage_invoice_number ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.mortgage_invoice_number?.message?.toString()}
+  </div>
+</div>
+
+
+<div className="p-2">
+  <label className="form-label ml-2 ">mortgage_estimate</label>
+  <input
+    {...fields.mortgage_estimate}
+    type="mortgage_estimate"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.mortgage_estimate ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.mortgage_estimate?.message?.toString()}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div className="p-2 ml-1">
+                <label className="form-label ml-2 ">Estimated Price </label>
+                <input
+                  {...fields.estimated_price_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.estimated_price_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.estimated_price_old?.message?.toString()}
+                </div>
+              </div>
+              <div className="p-2">
+                <label className="form-label ml-2 ">Loan Price </label>
+                <input
+                  {...fields.loan_price_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.loan_price_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.loan_price_old?.message?.toString()}
+                </div>
+              </div>
+              <div className="p-2">
+                <label className="form-label ml-2 ">Interest </label>
+                <input
+                  {...fields.interest_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.interest_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.interest_old?.message?.toString()}
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="p-2">
+                <label className="form-label ml-2 ">Decided Price</label>
+                <input
+                  {...fields.decided_price}
+                  type="decided_price"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.decided_price ? "is-invalid" : ""
+                  }`}
+                  onChange={(e) => setDecidedPrice(e.target.value)}
+                />
+
+                <div className="invalid-feedback">
+                  {errors.decided_price?.message?.toString()}
+                </div>
+              </div>
+            </div>
+            <div className="mb-3">
+              <button
+                type="submit"
+                disabled={formState.isSubmitting}
+                className="btn btn-primary me-2 bg-blue-700"
+              >
+                {formState.isSubmitting && (
+                  <span className="spinner-border spinner-border-sm me-1"></span>
+                )}
+                Save
+              </button>
+              <button
+                onClick={() => reset()}
+                type="button"
+                disabled={formState.isSubmitting}
+                className="btn btn-secondary bg-gray-800"
+              >
+                Reset
+              </button>
+              <Link href="/loans" className="btn btn-link">
+                Cancel
+              </Link>
+            </div>
+          </form>
+        </>
+      ) : (
+        ""
       )}
-      Save
-    </button>
-    <button
-      onClick={() => reset()}
-      type="button"
-      disabled={formState.isSubmitting}
-      className="btn btn-secondary bg-gray-800"
-    >
-      Reset
-    </button>
-    <Link href="/loans" className="btn btn-link">
-      Cancel
-    </Link>
-  </div>
-</form>
-  </>
-
-):""}
 
       <div className="fixed bottom-0 right-0 text-red-600">
-        {loading && (<>
-                <span className="spinner-border spinner-border-sm text-red-600"></span> Loading</> )}
-        </div>
-        <div className={`fixed left-0 bottom-0 h-1 ${loan?loan.items.length>0? "bg-yellow-500":"bg-red-600":tasks.length>0?"bg-blue-500":"bg-red-600"}  w-full`}></div>
+        {loading && (
+          <>
+            <span className="spinner-border spinner-border-sm text-red-600"></span>{" "}
+            Loading
+          </>
+        )}
+      </div>
+      <div
+        className={`fixed left-0 bottom-0 h-1 ${
+          loan
+            ? loan.items.length > 0
+              ? "bg-yellow-500"
+              : "bg-red-600"
+            : tasks.length > 0
+            ? "bg-blue-500"
+            : "bg-red-600"
+        }  w-full`}
+      ></div>
     </>
   );
 }
