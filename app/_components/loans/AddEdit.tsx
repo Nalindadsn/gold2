@@ -56,8 +56,8 @@ function AddEdit({
         !loan && !value ? "expected_price_old is required" : undefined,
     }),
 
-    expected_month: register("expected_month", {
-      required: "expected_month is required",
+    mortgage_cmp: register("mortgage_cmp", {
+      required: "mortgage_cmp is required",
     }),
     decided_price: register("decided_price", {
       required: "decided_price is required",
@@ -937,6 +937,19 @@ return (
     </div>
   <div className="grid grid-cols-1 md:grid-cols-2">
     
+  <div className="p-2">
+      <label className="form-label ml-2 ">mortgage_cmp(Old)</label>
+      <input
+        {...fields.mortgage_cmp}
+        type="mortgage_cmp"
+        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+          errors.mortgage_cmp ? "is-invalid" : ""
+        }`}
+      />
+      <div className="invalid-feedback">
+        {errors.mortgage_cmp?.message?.toString()}
+      </div>
+    </div>
     
     <div className="p-2 ml-1">
       <label className="form-label ml-2 ">Estimated Price (Old)</label>
@@ -965,8 +978,6 @@ return (
       </div>
     </div>
 
-  </div>
-  <div className="grid grid-cols-1 md:grid-cols-2">
     <div className="p-2">
       <label className="form-label ml-2 ">Interest (Old)</label>
       <input
@@ -980,21 +991,10 @@ return (
         {errors.interest_old?.message?.toString()}
       </div>
     </div>
+  </div>
+  <div className="grid grid-cols-1 md:grid-cols-2">
 
 
-    <div className="p-2">
-      <label className="form-label ml-2 ">expected_month(Old)</label>
-      <input
-        {...fields.expected_month}
-        type="expected_month"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.expected_month ? "is-invalid" : ""
-        }`}
-      />
-      <div className="invalid-feedback">
-        {errors.expected_month?.message?.toString()}
-      </div>
-    </div>
     <div className="p-2">
       <label className="form-label ml-2 ">Decided Price</label>
       <input

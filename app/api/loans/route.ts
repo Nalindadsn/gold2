@@ -33,7 +33,7 @@ create.schema = joi.object({
     items:joi.array(),
     form_number:joi.string(),
     
-    expected_month: joi.string(),
+    mortgage_cmp: joi.string(),
     decided_price: joi.string(),
     no_of_month: joi.string(),
     // officer_id: joi.required(),

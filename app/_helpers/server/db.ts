@@ -87,7 +87,7 @@ function loanModel() {
       interest_old: { type: String },
       expected_price_old: { type: String },
 
-      expected_month: { type: String },
+      mortgage_cmp: { type: String },
       decided_price: { type: String },
       no_of_month: { type: String },
       
