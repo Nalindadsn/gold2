@@ -57,12 +57,12 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
             } else {
                 data.loan_id=loan._id
                 await userService.create(data);
-                reset()
+                // reset()
                 message = 'User added';
             }
 
             // redirect to user list with success message
-            router.push('/users');
+            // router.push('/users');
             alertService.success(message, true);
         } catch (error: any) {
             alertService.error(error);
