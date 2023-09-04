@@ -29,6 +29,7 @@ update.schema = joi.object({
     mortgage_cmp: joi.string(),
     decided_price: joi.string(),
     no_of_month: joi.string(),
+    
     form_number: joi.string(),
     items: joi.array(),
 });

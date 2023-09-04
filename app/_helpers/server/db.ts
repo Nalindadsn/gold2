@@ -96,6 +96,7 @@ function loanModel() {
 
 
       mortgage_cmp: { type: String },
+      mortgage_branch: { type: String },
       mortgager_name: { type: String },
       mortgage_start_date: {
         type: Date,
