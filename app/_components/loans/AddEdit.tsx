@@ -799,49 +799,18 @@ return (
 
 {}
       </>
+
+
 {reviews.length>0 || tasks.length>0 ? (
-  
+  <>
+        <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">{title}</h1>
+
   <form
   onSubmit={handleSubmit(onSubmit)}
-  className="bg-white p-2 mt-2"
+  className="bg-white p-2 shadow-sm"
   // style={{ marginLeft: "5%", marginRight: "5%" }}
 >
-  {/* {JSON.stringify(loan?.items)} */}
-  {/* <br />
-  ----total pound------{JSON.stringify(total_pounds)}----
-  <br />
-  ----old_mkt_price------{JSON.stringify(old_mkt_price)}----
-  <br />
-  ----old_cmp_price------{JSON.stringify(old_cmp_price)}----
-  <br />
-  ----old_exp_price------{JSON.stringify(old_exp_price)}----
-  <hr />
-  ----basic - estimate---{JSON.stringify(basic_estimate)}----
-  <br />
-  ----basic - estimate-f--{JSON.stringify(basic_estimate_final)}----
-  <hr />
-  ----installments-60-
-  {JSON.stringify(installment(60, basic_estimate_final))}----
-  <br />
-  ----installments-48-
-  {JSON.stringify(installment(48, basic_estimate_final))}----
-  <br />
-  ----installments-36-
-  {JSON.stringify(installment(36, basic_estimate_final))}----
-  <br />
-  ----installments-24-
-  {JSON.stringify(installment(24, basic_estimate_final))}----
-  <br />
-  ----installments-18-
-  {JSON.stringify(installment(18, basic_estimate_final))}----
-  <br />
-  ----installments-12-
-  {JSON.stringify(installment(12, basic_estimate_final))}----
-  <br />
-  ----installments-6-
-  {JSON.stringify(installment(6, basic_estimate_final))}----
-  <br /> */}
-  <h1 className="ml-3 block text-base font-semibold text-[#07074D] sm:text-xl ">{title}</h1>
+
   <div className="border shadow-sm mb-3">
 
   <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
@@ -1043,6 +1012,7 @@ return (
     </Link>
   </div>
 </form>
+  </>
 
 ):""}
 
