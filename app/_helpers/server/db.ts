@@ -87,11 +87,32 @@ function loanModel() {
       interest_old: { type: String },
       expected_price_old: { type: String },
 
-      mortgage_cmp: { type: String },
       decided_price: { type: String },
       no_of_month: { type: String },
       
       form_number: { type: String },
+
+
+
+
+      mortgage_cmp: { type: String },
+      mortgager_name: { type: String },
+      mortgage_start_date: {
+        type: Date,
+        default: Date.now,
+      },
+      mortgage_end_date: {
+        type: Date,
+        default: Date.now,
+      },
+      mortgager_phone: { type: String },
+      mortgage_interest_rate_month: { type: String },
+      mortgage_interest_rate_year: { type: String },
+      mortgage_invoice_number: { type: String },
+      mortgage_estimate: { type: String },
+
+
+
       extra_payment: { type: String },
       items:[
 {
