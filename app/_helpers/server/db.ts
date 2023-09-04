@@ -110,6 +110,8 @@ function loanModel() {
       mortgage_interest_rate_year: { type: String },
       mortgage_invoice_number: { type: String },
       mortgage_estimate: { type: String },
+      first_installment: { type: String },
+      last_installment: { type: String },
 
 
 

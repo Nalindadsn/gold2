@@ -92,6 +92,14 @@ function AddEdit({
       required: "mortgage_estimate is required",
     }),
 
+    first_installment: register("first_installment", {
+      required: "first_installment is required",
+    }),
+
+    last_installment: register("last_installment", {
+      required: "last_installment is required",
+    }),
+
 
     status: register("status", {
       required: "status is required",
@@ -241,6 +249,14 @@ function AddEdit({
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+  const formatDate2 = (dateString: any) => {
+    const options: any = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
@@ -491,7 +507,8 @@ function AddEdit({
                 ${loan?.status=="PENDING"? "border-yellow-500":""}
                 ${loan?.status=="SUCCESS"? "border-green-500":""}
                 ${loan?.status=="REJECTED"? "border-red-600":""}
-                ${loan?.status=="PROCESS"? "border-blue-500":""}
+                ${loan?.status=="PROCESSING"? "border-blue-500":""}
+                ${loan?.status=="PROSPECTED"? "border-gray-900":""}
                 `}>
                   <div className="mb-2 md:mb-1 md:flex items-center">
                     <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
@@ -1023,7 +1040,7 @@ function AddEdit({
                 <label className="form-label ml-2 ">mortgage_start_date</label>
                 <input
                   {...fields.mortgage_start_date}
-                  type="text"
+                  type="datetime-local"
                   className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                     errors.mortgage_start_date ? "is-invalid" : ""
                   }`}
@@ -1122,6 +1139,37 @@ function AddEdit({
 </div>
 
 
+<div className="p-2">
+  <label className="form-label ml-2 ">first_installment</label>
+  <input
+    {...fields.first_installment}
+    type="first_installment"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.first_installment ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.first_installment?.message?.toString()}
+  </div>
+</div>
+
+
+
+<div className="p-2">
+  <label className="form-label ml-2 ">last_installment</label>
+  <input
+    {...fields.last_installment}
+    type="last_installment"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.last_installment ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.last_installment?.message?.toString()}
+  </div>
+</div>
+
+
 
 
 
@@ -1186,7 +1234,7 @@ function AddEdit({
                   }`}>
                   <option value="">-select option</option>
                   <option className="PENDING">PENDING</option>
-                  <option className="PROCESS">PROCESS</option>
+                  <option className="PROCESSING">PROCESSING</option>
                   <option className="SUCCESS">SUCCESS</option>
                   <option className="REJECTED">REJECTED</option>
                 </select>

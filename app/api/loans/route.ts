@@ -44,6 +44,8 @@ create.schema = joi.object({
     mortgage_interest_rate_year: joi.string(),
     mortgage_invoice_number: joi.string(),
     mortgage_estimate: joi.string(),
+    first_installment: joi.string(),
+    last_installment: joi.string(),
 
 
 
