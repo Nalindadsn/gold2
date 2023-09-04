@@ -284,8 +284,6 @@ function AddEdit({
     task.pound = task.net_weight / 8;
     task.id = tasks.length + 1;
     setTasks([...tasks, task]);
-
-    // console.log(task)
   };
 
   const deleteTask = (id: any) => {
@@ -1298,6 +1296,8 @@ function AddEdit({
             : "bg-red-600"
         }  w-full`}
       ></div>
+      {loan &&(
+
       <>
       <div className="text-center">
 
@@ -1317,6 +1317,8 @@ function AddEdit({
       }
       
       </>
+
+      )}
     </>
   );
 }
