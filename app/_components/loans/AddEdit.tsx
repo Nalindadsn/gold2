@@ -961,7 +961,7 @@ function AddEdit({
                 </div>
               </div>
             </div>
-            <h3 className=" font-bold">MORTGAGE DETAILS</h3>
+            <h3 className="text-xl font-bold">MORTGAGE DETAILS</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
               <div className="p-2">
                 <label className="form-label ml-2 ">Mortgager</label>

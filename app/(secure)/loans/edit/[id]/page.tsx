@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { AddEdit, AddEditItem } from '_components/loans';
+import { AddEdit } from '_components/loans';
 import { AddEdit as AddEditUser } from '_components/users';
 import { Spinner } from '_components';
 import { useLoanService, useUserService } from '_services';
