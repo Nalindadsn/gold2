@@ -53,7 +53,7 @@ function userModel() {
       lastName: { type: String, required: true },
       role: { type: String, default: "USER" },
       
-      status:{type:String,default:"PROSPECTED"}
+      status:{type:String,default:"ACTIVE"}
     },
     
     {

@@ -18,7 +18,7 @@ export const usersRepo = {
 };
 
 async function authenticate({ username, password }: { username: string, password: string }) {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username:username ,role:"ADMIN"});
 
     if (!(user && bcrypt.compareSync(password, user.hash))) {
         throw 'Username or password is incorrect';

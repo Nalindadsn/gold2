@@ -31,6 +31,8 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
         phone: register('phone', { required: 'Phone is required' }),
         nic: register('nic', { required: 'NIC is required' }),
         whatsapp: register('whatsapp', { required: 'Whatsapp is required' }),
+        role: register('role', { required: 'role is required' }),
+        status: register('status', { required: 'status is required' }),
 
 
 
@@ -140,6 +142,17 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                     <label className="form-label">whatsapp</label>
                     <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
+                </div>
+                <div className='p-2'>
+                    <label className="form-label">role</label>
+                    <input {...fields.role} type="text" className={`form-control ${errors.role ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.role?.message?.toString()}</div>
+                </div>
+
+                <div className='p-2'>
+                    <label className="form-label">status</label>
+                    <input {...fields.status} type="text" className={`form-control ${errors.status ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.status?.message?.toString()}</div>
                 </div>
 
 
