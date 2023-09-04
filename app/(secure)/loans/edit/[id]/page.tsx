@@ -25,7 +25,6 @@ function Edit(props: any) {
         ?(<>
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
         <AddEdit title="EDIT LOAN DETAILS" loan={loan}/>
-        <AddEditGuarantor title="EDIT Guarantor" loan={loan}/>
         
         </> )
         : 

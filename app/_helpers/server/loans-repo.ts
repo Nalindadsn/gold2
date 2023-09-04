@@ -37,6 +37,15 @@ async function getAll() {
         as: "officer",
       },
     },
+    
+  {
+    $lookup: {
+      from: "users",
+      localField: "guarantor.user_id",
+      foreignField: "_id",
+      as: "guarantor"
+    }
+  },
     {
       $addFields: {
         id: "$_id",
@@ -71,6 +80,15 @@ async function getById(id: string) {
             as: "officer",
           },
         },
+
+  {
+    $lookup: {
+      from: "users",
+      localField: "guarantor.user_id",
+      foreignField: "_id",
+      as: "guarantor"
+    }
+  },
         {
           $addFields: {
             id: "$_id",

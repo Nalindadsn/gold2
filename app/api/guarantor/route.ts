@@ -1,6 +1,6 @@
 import joi from 'joi';
 
-import { usersRepo } from '_helpers/server';
+import { guarantorRepo } from '_helpers/server';
 import { apiHandler } from '_helpers/server/api';
 
 module.exports = apiHandler({
@@ -9,13 +9,12 @@ module.exports = apiHandler({
 });
 
 async function getAll() {
-    return await usersRepo.getAll();
+    return await guarantorRepo.getAll();
 }
 
 async function create(req: Request) {
     const body = await req.json();
-    console.log(body)
-    await usersRepo.create(body);
+    await guarantorRepo.create(body);
 }
 
 create.schema = joi.object({
@@ -23,5 +22,6 @@ create.schema = joi.object({
     lastName: joi.string().required(),
     username: joi.string().required(),
     nic: joi.string(),
+    loan_id: joi.string(),
     password: joi.string().min(6).required(),
 });

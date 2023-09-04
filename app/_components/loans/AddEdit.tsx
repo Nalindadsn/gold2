@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAlertService, useLoanService } from "_services";
 import { useCallback, useEffect, useState } from "react";
+import { AddEdit as AddEditGuarantor } from '_components/guarantor';
+
 import axios from "axios";
 
 
@@ -145,6 +147,7 @@ function AddEdit({
     return val.toFixed(2);
   };
   // expected_price
+  const [addGuarantorSec, setAddGuarantorSec] = useState(false);
   const [expected_price, setExpected_price_old] = useState("0");
   const [no_of_month, setNo_of_month] = useState("0");
   const [reviews, setReviews] = useState([]);
@@ -1295,6 +1298,25 @@ function AddEdit({
             : "bg-red-600"
         }  w-full`}
       ></div>
+      <>
+      <div className="text-center">
+
+      <button className="btn btn-primary me-2 bg-blue-700" onClick={()=>setAddGuarantorSec(!addGuarantorSec)}>
+        
+        {addGuarantorSec?"HIDE Add Guarantor Section":"SHOW Add Guarantor Section"}</button>
+      </div>
+
+      {
+        addGuarantorSec && (
+          <>
+          
+          
+      <AddEditGuarantor title="EDIT Guarantor" loan={loan}/>
+          </>
+        )
+      }
+      
+      </>
     </>
   );
 }
