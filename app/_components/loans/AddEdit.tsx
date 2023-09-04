@@ -377,6 +377,7 @@ return (
       </>
     ):(
       <>
+      <br/>
       <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
 
       LKR {(a-max_price).toFixed(2)}
@@ -850,15 +851,17 @@ return (
       <div className="px-1 ">
 
       <div>
-        
+        <br/>
       <label className="form-label ml-2 ">No of Month  -    {expected_price<=max_price? installment(parseFloat(no_of_month),parseFloat(expected_price)):installment(parseFloat(no_of_month),parseFloat(max_price))}<br/>
-</label><br/>
+<br/>
+
+</label>
 
       {loan?(
         <>
        
        Instalment : 
-      {loan.expected_price<=max_price? installment(parseFloat(loan.no_of_month),parseFloat(loan.expected_price)):installment(parseFloat(loan.no_of_month),parseFloat(max_price))}
+      {loan.expected_price_old<=max_price? installment(parseFloat(loan.no_of_month),parseFloat(loan.expected_price_old)):installment(parseFloat(loan.no_of_month),parseFloat(max_price))}
    
         </>
       ):(
@@ -925,7 +928,7 @@ return (
     </div>
     
     <div className="p-2 ml-1">
-      <label className="form-label ml-2 ">Estimated Price (Old)</label>
+      <label className="form-label ml-2 ">Estimated Price </label>
       <input
         {...fields.estimated_price_old}
         type="text"
@@ -938,7 +941,7 @@ return (
       </div>
     </div>
     <div className="p-2">
-      <label className="form-label ml-2 ">Loan Price (Old)</label>
+      <label className="form-label ml-2 ">Loan Price </label>
       <input
         {...fields.loan_price_old}
         type="text"
@@ -952,7 +955,7 @@ return (
     </div>
 
     <div className="p-2">
-      <label className="form-label ml-2 ">Interest (Old)</label>
+      <label className="form-label ml-2 ">Interest </label>
       <input
         {...fields.interest_old}
         type="text"
