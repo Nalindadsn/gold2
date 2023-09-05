@@ -989,13 +989,7 @@ function AddEdit({
                         <option value="12">12</option>
                         <option value="6">6</option>
                       </select>
-                      {/* <input
-        {...fields.no_of_month}
-        type="no_of_month"
-        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-          errors.no_of_month ? "is-invalid" : ""
-        }`}
-      /> */}
+
                       <div className="invalid-feedback">
                         {errors.no_of_month?.message?.toString()}
                       </div>
@@ -1007,22 +1001,64 @@ function AddEdit({
                   {errors.expected_price_old?.message?.toString()}
                 </div>
               </div>
-            </div>
-            <h3 className="text-xl font-bold">MORTGAGE DETAILS</h3>
 
-            <div className="p-2">
-              <label className="form-label ml-2 ">
-                mortgage_invoice_number
-              </label>
-              <input
-                {...fields.mortgage_invoice_number}
-                type="mortgage_invoice_number"
-                className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                  errors.mortgage_invoice_number ? "is-invalid" : ""
-                }`}
-              />
-              <div className="invalid-feedback">
-                {errors.mortgage_invoice_number?.message?.toString()}
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    First Installment Date
+                  </label>
+                  <input
+                    {...fields.first_installment}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                      errors.first_installment ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.first_installment?.message?.toString()}
+                  </div>
+                </div>
+
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    Last Installment Date
+                  </label>
+                  <input
+                    {...fields.last_installment}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                      errors.last_installment ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.last_installment?.message?.toString()}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 className="text-xl font-bold">MORTGAGE DETAILS</h3>
+            <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+              <div className="w-full hidden md:block"></div>
+              <div
+                className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                
+                <label className="form-label ml-2 mt-2">
+                  Invoice Number
+                </label>
+                <input
+                  {...fields.mortgage_invoice_number}
+                  type="mortgage_invoice_number"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_invoice_number ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_invoice_number?.message?.toString()}
+                </div>
+
               </div>
             </div>
 
@@ -1084,34 +1120,6 @@ function AddEdit({
               </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">mortgage_start_date</label>
-                <input
-                  {...fields.mortgage_start_date}
-                  type="date"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                    errors.mortgage_start_date ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_start_date?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">mortgage_end_date</label>
-                <input
-                  {...fields.mortgage_end_date}
-                  type="date"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                    errors.mortgage_end_date ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_end_date?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
                 <label className="form-label ml-2 ">
                   mortgage_interest_rate_month
                 </label>
@@ -1143,25 +1151,38 @@ function AddEdit({
                 </div>
               </div>
 
-</div>
-
-<div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <div className="p-2">
+                <label className="form-label ml-2 ">mortgage_start_date</label>
+                <input
+                  {...fields.mortgage_start_date}
+                  type="date"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_start_date ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_start_date?.message?.toString()}
+                </div>
+              </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">mortgage_estimate</label>
+                <label className="form-label ml-2 ">mortgage_end_date</label>
+                <input
+                  {...fields.mortgage_end_date}
+                  type="date"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_end_date ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_end_date?.message?.toString()}
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
+              <div className="p-2">
+                <label className="form-label ml-2 ">Mortgage Estimate</label>
                 <input
                   {...fields.mortgage_estimate}
                   type="mortgage_estimate"
@@ -1202,7 +1223,7 @@ function AddEdit({
               </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">Interest </label>
+                <label className="form-label ml-2 ">Interest Amount </label>
                 <input
                   {...fields.interest_old}
                   type="text"
@@ -1232,40 +1253,6 @@ function AddEdit({
 
                 <div className="invalid-feedback">
                   {errors.status?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    First Installment Date
-                  </label>
-                  <input
-                    {...fields.first_installment}
-                    type="date"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                      errors.first_installment ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.first_installment?.message?.toString()}
-                  </div>
-                </div>
-
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    Last Installment Date
-                  </label>
-                  <input
-                    {...fields.last_installment}
-                    type="date"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                      errors.last_installment ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.last_installment?.message?.toString()}
-                  </div>
                 </div>
               </div>
             </div>
