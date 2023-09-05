@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-
-
 mongoose.connect(process.env.MONGODB_URI!);
 mongoose.Promise = global.Promise;
 
@@ -34,7 +32,6 @@ function userModel() {
         district: { type: String },
       },
 
-
       occupation: { type: String },
       nature_of_emp: { type: String },
       name_of_office: { type: String },
@@ -42,7 +39,6 @@ function userModel() {
       phone: { type: String },
       nic:{ type: String, unique: true},
       whatsapp: { type: String },
-
 
       hash: {
         type: String,
