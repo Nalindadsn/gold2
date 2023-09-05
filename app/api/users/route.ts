@@ -18,8 +18,16 @@ async function create(req: Request) {
 }
 
 create.schema = joi.object({
-    firstName: joi.string().required(),
-    lastName: joi.string().required(),
-    username: joi.string().required(),
-    password: joi.string().min(6).required(),
+    firstName: joi.string(),
+    lastName: joi.string(),
+    username: joi.string(),
+    occupation: joi.string(),
+    nature_of_emp: joi.string(),
+    name_of_office: joi.string(),
+    income: joi.string(),
+    phone: joi.string(),
+    nic: joi.string(),
+    whatsapp: joi.string(),
+    role: joi.string(),
+    status: joi.string(),
 });
