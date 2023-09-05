@@ -702,6 +702,7 @@ function AddEdit({
                           name="karat"
                           className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                           placeholder="Karat"
+                          required
                         />
                       </div>
 
@@ -1006,6 +1007,22 @@ function AddEdit({
               </div>
             </div>
             <h3 className="text-xl font-bold">MORTGAGE DETAILS</h3>
+            
+
+<div className="p-2">
+  <label className="form-label ml-2 ">mortgage_invoice_number</label>
+  <input
+    {...fields.mortgage_invoice_number}
+    type="mortgage_invoice_number"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.mortgage_invoice_number ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.mortgage_invoice_number?.message?.toString()}
+  </div>
+</div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
               <div className="p-2">
                 <label className="form-label ml-2 ">Mortgager</label>
@@ -1128,21 +1145,6 @@ function AddEdit({
 
 
 <div className="p-2">
-  <label className="form-label ml-2 ">mortgage_invoice_number</label>
-  <input
-    {...fields.mortgage_invoice_number}
-    type="mortgage_invoice_number"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.mortgage_invoice_number ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.mortgage_invoice_number?.message?.toString()}
-  </div>
-</div>
-
-
-<div className="p-2">
   <label className="form-label ml-2 ">mortgage_estimate</label>
   <input
     {...fields.mortgage_estimate}
@@ -1155,38 +1157,6 @@ function AddEdit({
     {errors.mortgage_estimate?.message?.toString()}
   </div>
 </div>
-
-
-<div className="p-2">
-  <label className="form-label ml-2 ">First Installment Date</label>
-  <input
-    {...fields.first_installment}
-    type="date"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.first_installment ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.first_installment?.message?.toString()}
-  </div>
-</div>
-
-
-
-<div className="p-2">
-  <label className="form-label ml-2 ">Last Installment Date</label>
-  <input
-    {...fields.last_installment}
-    type="date"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.last_installment ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.last_installment?.message?.toString()}
-  </div>
-</div>
-
 
 
 
@@ -1261,10 +1231,47 @@ function AddEdit({
                   {errors.status?.message?.toString()}
                 </div>
               </div>
+
+
+
+
+
+
+              <div className="p-2">
+  <label className="form-label ml-2 ">First Installment Date</label>
+  <input
+    {...fields.first_installment}
+    type="date"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.first_installment ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.first_installment?.message?.toString()}
+  </div>
+</div>
+
+
+
+<div className="p-2">
+  <label className="form-label ml-2 ">Last Installment Date</label>
+  <input
+    {...fields.last_installment}
+    type="date"
+    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+      errors.last_installment ? "is-invalid" : ""
+    }`}
+  />
+  <div className="invalid-feedback">
+    {errors.last_installment?.message?.toString()}
+  </div>
+</div>
+
+
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2">
             </div>
-            <div className="mb-3">
+            <div className="my-3">
               <button
                 type="submit"
                 disabled={formState.isSubmitting}
