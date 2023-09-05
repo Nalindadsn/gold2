@@ -153,8 +153,7 @@ value={username}                    />
                     <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
                 </div>
                 <div className='p-2'>
-                    <label className="form-label">role</label>
-                    <label className="form-label">status</label>
+                    <label className="form-label">Role</label>
                     <select {...fields.role}  className={`form-control ${errors.role ? 'is-invalid' : ''}`} >
                         <option value="GUARANTOR">GUARANTOR</option>
                     </select>

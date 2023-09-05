@@ -66,10 +66,10 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
 
     return (
         <>
+            <h1 className='text-2xl font-bold  pt-2 tracking-wider uppercase  '>{title}</h1>
 
 
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
-            <h1>{title}</h1>
 
 
 
@@ -142,13 +142,21 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                 </div>
                 <div className='p-2'>
                     <label className="form-label">role</label>
-                    <input {...fields.role} type="text" className={`form-control ${errors.role ? 'is-invalid' : ''}`}  />
+
+                    <select {...fields.role}  className={`form-control ${errors.role ? 'is-invalid' : ''}`} >
+                        <option value="USER">CUSTOMER</option>
+                    </select>
+
                     <div className="invalid-feedback">{errors.role?.message?.toString()}</div>
                 </div>
 
                 <div className='p-2'>
                     <label className="form-label">status</label>
-                    <input {...fields.status} type="text" className={`form-control ${errors.status ? 'is-invalid' : ''}`}  />
+
+
+                    <select {...fields.status}  className={`form-control ${errors.status ? 'is-invalid' : ''}`} >
+                        <option value="ACTIVE">ACTIVE</option>
+                    </select>
                     <div className="invalid-feedback">{errors.status?.message?.toString()}</div>
                 </div>
 
