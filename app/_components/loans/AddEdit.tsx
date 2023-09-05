@@ -1059,7 +1059,7 @@ function AddEdit({
 
               <div className="p-2">
                 <label className="form-label ml-2 ">
-                 Interest Rate (Monthly)
+                 Interest Rate % (Monthly)
                 </label>
                 <input
                   {...fields.mortgage_interest_rate_month}

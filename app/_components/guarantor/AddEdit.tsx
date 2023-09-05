@@ -133,7 +133,7 @@ value={username}                    />
                 </div>
                 
                 <div className='p-2'>
-                    <label className="form-label">Job Type</label>
+                    <label className="form-label">Company Type</label>
                     <input {...fields.nature_of_emp} type="text" className={`form-control ${errors.nature_of_emp ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.nature_of_emp?.message?.toString()}</div>
                 </div>

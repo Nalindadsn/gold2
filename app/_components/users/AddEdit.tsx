@@ -76,7 +76,12 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
 
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
+
+
+
+
+                
 <div className='p-2'>
                     <label className="form-label">First Name</label>
                     <input {...fields.firstName} type="text" className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} />
@@ -103,6 +108,38 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                     <input {...fields.username} type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`} value={username}    />
                     <div className="invalid-feedback">{errors.username?.message?.toString()}</div>
                 </div>
+
+                <div className='p-2'>
+                    <label className="form-label">phone</label>
+                    <input {...fields.phone} type="text" className={`form-control ${errors.phone ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
+                </div>
+                <div className='p-2'>
+                    <label className="form-label">whatsapp</label>
+                    <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
+                </div>
+
+
+
+</div>
+
+<h1 className="font-bold m-1">Employment Details
+</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2" >
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,16 +173,13 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                     <input {...fields.income} type="text" className={`form-control ${errors.income ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.income?.message?.toString()}</div>
                 </div>
-                <div className='p-2'>
-                    <label className="form-label">phone</label>
-                    <input {...fields.phone} type="text" className={`form-control ${errors.phone ? 'is-invalid' : ''}`}  />
-                    <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
-                </div>
-                <div className='p-2'>
-                    <label className="form-label">whatsapp</label>
-                    <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
-                    <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
-                </div>
+</div>
+<h1 className="font-bold m-1">Other</h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
+
+
+
                 <div className='p-2'>
                     <label className="form-label">role</label>
 
