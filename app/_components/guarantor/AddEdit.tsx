@@ -154,8 +154,11 @@ value={username}                    />
                 </div>
                 <div className='p-2'>
                     <label className="form-label">role</label>
-                    <input {...fields.role} type="text" className={`form-control ${errors.role ? 'is-invalid' : ''}`}  />
-                    <div className="invalid-feedback">{errors.role?.message?.toString()}</div>
+                    <label className="form-label">status</label>
+                    <select {...fields.role}  className={`form-control ${errors.role ? 'is-invalid' : ''}`} >
+                        <option value="GUARANTOR">GUARANTOR</option>
+                    </select>
+                     <div className="invalid-feedback">{errors.role?.message?.toString()}</div>
                 </div>
 
                 <div className='p-2'>
