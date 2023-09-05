@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useAlertService, useGuarantorService } from '_services';
 export { AddEdit };
+import {  useState } from "react";
 
 function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) {
     const router = useRouter();
     const alertService = useAlertService();
     const userService = useGuarantorService();
+    const [username, setUsername] = useState("");
 
     // get functions to build form with useForm() hook
     const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user });
@@ -90,12 +92,21 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
                     <div className="invalid-feedback">{errors.lastName?.message?.toString()}</div>
                 </div>
 
+                <div className='p-2'>
+                    <label className="form-label">nic</label>
+                    <input  {...fields.nic} type="text" className={`form-control ${errors.nic ? 'is-invalid' : ''}`} 
+                    
+                    onChange={(e)=>setUsername(e.target.value)}
+                    />
+                    <div className="invalid-feedback">{errors.nic?.message?.toString()}</div>
+                </div>
 
 
                 
-                <div className='p-2'>
+                <div className='p-2 hidden'>
                     <label className="form-label">Username</label>
-                    <input {...fields.username} type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`}  />
+                    <input {...fields.username} type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`} 
+value={username}                    />
                     <div className="invalid-feedback">{errors.username?.message?.toString()}</div>
                 </div>
 
@@ -137,11 +148,6 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
                     <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
                 </div>
                 <div className='p-2'>
-                    <label className="form-label">nic</label>
-                    <input {...fields.nic} type="text" className={`form-control ${errors.nic ? 'is-invalid' : ''}`}  />
-                    <div className="invalid-feedback">{errors.nic?.message?.toString()}</div>
-                </div>
-                <div className='p-2'>
                     <label className="form-label">whatsapp</label>
                     <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
@@ -154,7 +160,10 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
 
                 <div className='p-2'>
                     <label className="form-label">status</label>
-                    <input {...fields.status} type="text" className={`form-control ${errors.status ? 'is-invalid' : ''}`}  />
+                    <select {...fields.status}  className={`form-control ${errors.status ? 'is-invalid' : ''}`} >
+                        <option value="GUARANTOR">GUARANTOR</option>
+                    </select>
+
                     <div className="invalid-feedback">{errors.status?.message?.toString()}</div>
                 </div>
 

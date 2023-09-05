@@ -13,7 +13,6 @@ async function login(req: Request) {
     const { user, token } = await usersRepo.authenticate(body);
     cookies().set('authorization', token, { httpOnly: true });
     user.token=token ? token :null;
-    user.MONGODB_URI=process.env.MONGODB_URI ? process.env.MONGODB_URI :null;
     return user;
 }
 

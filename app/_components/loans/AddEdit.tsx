@@ -1389,9 +1389,13 @@ function AddEdit({
 
         </div>
 
-      <div className="text-center">
+      <div className="text-center mt-3">
 
-      <button className="btn btn-primary me-2 bg-blue-700" onClick={()=>setAddGuarantorSec(!addGuarantorSec)}>
+      <button className={`btn btn-primary me-2 bg-blue-700
+      
+      ${addGuarantorSec?`bg-red-600 hover:border-red-600 border-red-600 hover:bg-red-700 `:`bg-blue-700`}
+      `} 
+      onClick={()=>setAddGuarantorSec(!addGuarantorSec)}>
         
         {addGuarantorSec?"HIDE Add Guarantor Section":"SHOW Add Guarantor Section"}</button>
       </div>
