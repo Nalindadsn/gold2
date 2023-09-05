@@ -3,12 +3,15 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { useAlertService, useGuarantorService, useLoanService } from "_services";
+import {
+  useAlertService,
+  useGuarantorService,
+  useLoanService,
+} from "_services";
 import { useCallback, useEffect, useState } from "react";
-import { AddEdit as AddEditGuarantor } from '_components/guarantor';
+import { AddEdit as AddEditGuarantor } from "_components/guarantor";
 
 import axios from "axios";
-
 
 import TaskTable from "./tables/TaskTable";
 import EditTaskForm from "./forms/EditTaskForm";
@@ -64,13 +67,10 @@ function AddEdit({
       required: "mortgage_cmp is required",
     }),
 
-
     mortgage_branch: register("mortgage_branch", {
       required: "mortgage_branch is required",
     }),
 
-
-    
     mortgager_name: register("mortgager_name", {
       required: "mortgager_name is required",
     }),
@@ -103,7 +103,6 @@ function AddEdit({
     last_installment: register("last_installment", {
       required: "last_installment is required",
     }),
-
 
     status: register("status", {
       required: "status is required",
@@ -231,9 +230,9 @@ function AddEdit({
     setLoading(true);
     try {
       await guarantorService.delete(e, b);
-      
+
       setLoading(false);
-      router.push('/loans')
+      router.push("/loans");
     } catch (err) {
       setLoading(false);
 
@@ -520,20 +519,24 @@ function AddEdit({
           <div>
             {loan ? (
               <>
-                <div className={`bg-white mb-2 m-1 p-3 shadow-sm border-t-4 
-                ${loan?.status=="PENDING"? "border-yellow-500":""}
-                ${loan?.status=="SUCCESS"? "border-green-500":""}
-                ${loan?.status=="REJECTED"? "border-red-600":""}
-                ${loan?.status=="PROCESSING"? "border-blue-500":""}
-                ${loan?.status=="PROSPECTED"? "border-gray-900":""}
-                `}>
+                <div
+                  className={`bg-white mb-2 m-1 p-3 shadow-sm border-t-4 
+                ${loan?.status == "PENDING" ? "border-yellow-500" : ""}
+                ${loan?.status == "SUCCESS" ? "border-green-500" : ""}
+                ${loan?.status == "REJECTED" ? "border-red-600" : ""}
+                ${loan?.status == "PROCESSING" ? "border-blue-500" : ""}
+                ${loan?.status == "PROSPECTED" ? "border-gray-900" : ""}
+                `}
+                >
                   <div className="mb-2 md:mb-1 md:flex items-center">
                     <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                      {loan?.status=="PENDING"?(<span  className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm ">
-                        {loan?.status}
-                      </span>):(<></>)}
-                      
-                      
+                      {loan?.status == "PENDING" ? (
+                        <span className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm ">
+                          {loan?.status}
+                        </span>
+                      ) : (
+                        <></>
+                      )}
                       Status
                     </label>
                     <span className="mr-4 inline-block  md:block">:</span>
@@ -883,7 +886,6 @@ function AddEdit({
             className="bg-white p-2 shadow-sm"
             // style={{ marginLeft: "5%", marginRight: "5%" }}
           >
-
             <div className="border shadow-sm mb-3">
               <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                 <div className="w-full hidden md:block"></div>
@@ -1007,21 +1009,22 @@ function AddEdit({
               </div>
             </div>
             <h3 className="text-xl font-bold">MORTGAGE DETAILS</h3>
-            
 
-<div className="p-2">
-  <label className="form-label ml-2 ">mortgage_invoice_number</label>
-  <input
-    {...fields.mortgage_invoice_number}
-    type="mortgage_invoice_number"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.mortgage_invoice_number ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.mortgage_invoice_number?.message?.toString()}
-  </div>
-</div>
+            <div className="p-2">
+              <label className="form-label ml-2 ">
+                mortgage_invoice_number
+              </label>
+              <input
+                {...fields.mortgage_invoice_number}
+                type="mortgage_invoice_number"
+                className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  errors.mortgage_invoice_number ? "is-invalid" : ""
+                }`}
+              />
+              <div className="invalid-feedback">
+                {errors.mortgage_invoice_number?.message?.toString()}
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border">
               <div className="p-2">
@@ -1038,8 +1041,6 @@ function AddEdit({
                 </div>
               </div>
 
-
-
               <div className="p-2">
                 <label className="form-label ml-2 ">mortgage_branch</label>
                 <input
@@ -1054,23 +1055,21 @@ function AddEdit({
                 </div>
               </div>
 
+              <div className="p-2">
+                <label className="form-label ml-2 ">mortgager_name</label>
+                <input
+                  {...fields.mortgager_name}
+                  type="mortgager_name"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgager_name ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgager_name?.message?.toString()}
+                </div>
+              </div>
 
-<div className="p-2">
-  <label className="form-label ml-2 ">mortgager_name</label>
-  <input
-    {...fields.mortgager_name}
-    type="mortgager_name"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.mortgager_name ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.mortgager_name?.message?.toString()}
-  </div>
-</div>
-
-
-<div className="p-2">
+              <div className="p-2">
                 <label className="form-label ml-2 ">mortgager_phone</label>
                 <input
                   {...fields.mortgager_phone}
@@ -1084,8 +1083,7 @@ function AddEdit({
                 </div>
               </div>
 
-
-<div className="p-2">
+              <div className="p-2">
                 <label className="form-label ml-2 ">mortgage_start_date</label>
                 <input
                   {...fields.mortgage_start_date}
@@ -1099,7 +1097,7 @@ function AddEdit({
                 </div>
               </div>
 
-<div className="p-2">
+              <div className="p-2">
                 <label className="form-label ml-2 ">mortgage_end_date</label>
                 <input
                   {...fields.mortgage_end_date}
@@ -1113,64 +1111,51 @@ function AddEdit({
                 </div>
               </div>
 
+              <div className="p-2">
+                <label className="form-label ml-2 ">
+                  mortgage_interest_rate_month
+                </label>
+                <input
+                  {...fields.mortgage_interest_rate_month}
+                  type="mortgage_interest_rate_month"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_interest_rate_month ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_interest_rate_month?.message?.toString()}
+                </div>
+              </div>
 
-<div className="p-2">
-  <label className="form-label ml-2 ">mortgage_interest_rate_month</label>
-  <input
-    {...fields.mortgage_interest_rate_month}
-    type="mortgage_interest_rate_month"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.mortgage_interest_rate_month ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.mortgage_interest_rate_month?.message?.toString()}
-  </div>
-</div>
+              <div className="p-2">
+                <label className="form-label ml-2 ">
+                  mortgage_interest_rate_year
+                </label>
+                <input
+                  {...fields.mortgage_interest_rate_year}
+                  type="mortgage_interest_rate_year"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_interest_rate_year ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_interest_rate_year?.message?.toString()}
+                </div>
+              </div>
 
-<div className="p-2">
-  <label className="form-label ml-2 ">mortgage_interest_rate_year</label>
-  <input
-    {...fields.mortgage_interest_rate_year}
-    type="mortgage_interest_rate_year"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.mortgage_interest_rate_year ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.mortgage_interest_rate_year?.message?.toString()}
-  </div>
-</div>
-
-
-
-<div className="p-2">
-  <label className="form-label ml-2 ">mortgage_estimate</label>
-  <input
-    {...fields.mortgage_estimate}
-    type="mortgage_estimate"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.mortgage_estimate ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.mortgage_estimate?.message?.toString()}
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              <div className="p-2">
+                <label className="form-label ml-2 ">mortgage_estimate</label>
+                <input
+                  {...fields.mortgage_estimate}
+                  type="mortgage_estimate"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgage_estimate ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_estimate?.message?.toString()}
+                </div>
+              </div>
 
               <div className="p-2 ml-1">
                 <label className="form-label ml-2 ">Estimated Price </label>
@@ -1198,7 +1183,7 @@ function AddEdit({
                   {errors.loan_price_old?.message?.toString()}
                 </div>
               </div>
-              
+
               <div className="p-2">
                 <label className="form-label ml-2 ">Interest </label>
                 <input
@@ -1214,12 +1199,13 @@ function AddEdit({
               </div>
               <div className="p-2">
                 <label className="form-label ml-2 ">Status</label>
-               
+
                 <select
                   {...fields.status}
                   className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                     errors.status ? "is-invalid" : ""
-                  }`}>
+                  }`}
+                >
                   <option value="">-select option</option>
                   <option className="PENDING">PENDING</option>
                   <option className="PROCESSING">PROCESSING</option>
@@ -1232,45 +1218,41 @@ function AddEdit({
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    First Installment Date
+                  </label>
+                  <input
+                    {...fields.first_installment}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                      errors.first_installment ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.first_installment?.message?.toString()}
+                  </div>
+                </div>
 
-
-
-
-
-              <div className="p-2">
-  <label className="form-label ml-2 ">First Installment Date</label>
-  <input
-    {...fields.first_installment}
-    type="date"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.first_installment ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.first_installment?.message?.toString()}
-  </div>
-</div>
-
-
-
-<div className="p-2">
-  <label className="form-label ml-2 ">Last Installment Date</label>
-  <input
-    {...fields.last_installment}
-    type="date"
-    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-      errors.last_installment ? "is-invalid" : ""
-    }`}
-  />
-  <div className="invalid-feedback">
-    {errors.last_installment?.message?.toString()}
-  </div>
-</div>
-
-
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    Last Installment Date
+                  </label>
+                  <input
+                    {...fields.last_installment}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                      errors.last_installment ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.last_installment?.message?.toString()}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2">
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2"></div>
             <div className="my-3">
               <button
                 type="submit"
@@ -1319,110 +1301,103 @@ function AddEdit({
             : "bg-red-600"
         }  w-full`}
       ></div>
-      {loan &&(
+      {loan && (
+        <>
+          <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">
+            GUARANTOR DETAILS
+          </h1>
 
-      <>
-
-<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">GUARANTOR DETAILS</h1>
-
- <div className="text-center bg-white shadow-md">{loan?.guarantors.length>0?"":"No Guarantors Found"}</div>
- <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1"> 
-{loan?.guarantors?.map((i: any) => (
-  <>
-  
-          <div>
-            {loan ? (
-              <div>
-
-
-                <div className={`bg-white mb-2 m-1 p-3  border-1 shadow-md`}>
-                  
-            <div className="bg-white ">
-              <div className=" flex items-center justify-between leading-none  ">
-                <a
-                  className="flex items-center no-underline  text-black"
-                  href="#"
-                >
-                  <FaUserCircle className="float-left  text-5xl" />
-
-                  <div className="text-xl -mt-3">
-                    <div className="text-gray-800 mt-1 p-1 font-bold">
-                      <span>
-                        { i?.firstName +
-                            " " +
-                            i?.lastName
-                          }
-                      </span>
-                    </div>
-                  </div>
-                </a>
-                <button
-                        onClick={() =>
-                          submitHandlerDelUser(loan?.id, { name: i._id })
-                        }
-                        // onClick={() => {
-
-                        //   loanService.deleteItem(loan?.id, {name:i?._id});
-                        //   fetchReviews();
-                        // }  }
-                        className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
-                        style={{ width: "60px" }}
-                        //  disabled={true}
-                        // disabled={isDeleting}
-                      >
-                        {isDeleting ? (
-                          <span className="spinner-border spinner-border-sm"></span>
-                        ) : (
-                          <span>Delete</span>
-                        )}
-                      </button>
-              </div>
-            </div>
-                  <div className="mb-2 md:mb-1 md:flex items-center">
-                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                      NIC
-                    </label>
-                    <span className="mr-4 inline-block  md:block">:</span>
-                    <div className="flex-1">{i?.nic}</div>
-                  </div>
-                 
-                </div>
-              </div>
-            ) : (
-              <></>
-            )}
+          <div className="text-center bg-white shadow-md">
+            {loan?.guarantors.length > 0 ? "" : "No Guarantors Found"}
           </div>
-  </>
-))}
-         
+          <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1">
+            {loan?.guarantors?.map((i: any) => (
+              <>
+                <div>
+                  {loan ? (
+                    <div>
+                      <div
+                        className={`bg-white mb-2 m-1 p-3  border-1 shadow-md`}
+                      >
+                        <div className="bg-white ">
+                          <div className=" flex items-center justify-between leading-none  ">
+                            <a
+                              className="flex items-center no-underline  text-black"
+                              href="#"
+                            >
+                              <FaUserCircle className="float-left  text-5xl" />
 
+                              <div className="text-xl -mt-3">
+                                <div className="text-gray-800 mt-1 p-1 font-bold">
+                                  <span>
+                                    {i?.firstName + " " + i?.lastName}
+                                  </span>
+                                </div>
+                              </div>
+                            </a>
+                            <button
+                              onClick={() =>
+                                submitHandlerDelUser(loan?.id, { name: i._id })
+                              }
+                              // onClick={() => {
 
+                              //   loanService.deleteItem(loan?.id, {name:i?._id});
+                              //   fetchReviews();
+                              // }  }
+                              className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
+                              style={{ width: "60px" }}
+                              //  disabled={true}
+                              // disabled={isDeleting}
+                            >
+                              {isDeleting ? (
+                                <span className="spinner-border spinner-border-sm"></span>
+                              ) : (
+                                <span>Delete</span>
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                        <div className="mb-2 md:mb-1 md:flex items-center">
+                          <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                            NIC
+                          </label>
+                          <span className="mr-4 inline-block  md:block">:</span>
+                          <div className="flex-1">{i?.nic}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </>
+            ))}
+          </div>
 
-        </div>
-
-      <div className="text-center mt-3">
-
-      <button className={`btn btn-primary me-2 bg-blue-700
+          <div className="text-center mt-3">
+            <button
+              className={`btn btn-primary me-2 bg-blue-700
       
-      ${addGuarantorSec?`bg-red-600 hover:border-red-600 border-red-600 hover:bg-red-700 `:`bg-blue-700`}
-      `} 
-      onClick={()=>setAddGuarantorSec(!addGuarantorSec)}>
-        
-        {addGuarantorSec?"HIDE Add Guarantor Section":"SHOW Add Guarantor Section"}</button>
-      </div>
-
-      {
-        addGuarantorSec && (
-          <>
-          
-          
-      <AddEditGuarantor title="ADD GUARANTOR" loan={loan}/>
-          </>
-        )
+      ${
+        addGuarantorSec
+          ? `bg-red-600 hover:border-red-600 border-red-600 hover:bg-red-700 `
+          : `bg-blue-700`
       }
-      
-      </>
+      `}
+              onClick={() => setAddGuarantorSec(!addGuarantorSec)}
+            >
+              {addGuarantorSec
+                ? "HIDE Add Guarantor Section"
+                : "SHOW Add Guarantor Section"}
+            </button>
+          </div>
 
+          {addGuarantorSec && (
+            <>
+              <AddEditGuarantor title="ADD GUARANTOR" loan={loan} />
+            </>
+          )}
+        </>
       )}
     </>
   );
