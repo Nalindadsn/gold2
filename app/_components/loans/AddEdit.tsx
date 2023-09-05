@@ -318,49 +318,7 @@ function AddEdit({
     setTasks(tasks.map((task) => (task.id === id ? updatedTask : task)));
   };
 
-  // const tasksData: any = [];
 
-  // const initialFormState = {
-  //   id: null,
-  //   name: "",
-  //   karat: "",
-  //   net_weight: "",
-  //   total_weight: "",
-  //   pound: "",
-  // };
-
-  // const [tasks, setUsers] = useState(tasksData);
-  // const [editing, setEditing] = useState(false);
-  // const [currentUser, setCurrentUser] = useState(initialFormState);
-
-  // const addUser = (user: any) => {
-  //   user.id = tasks.length + 1;
-
-  //   // console.log(user)
-  //   setUsers([...tasks, user]);
-  // };
-
-  // const deleteUser = (id: any) => {
-  //   setEditing(false);
-  //   setUsers(tasks.filter((user: any) => user.id !== id));
-  // };
-
-  // const editRow = (user: any) => {
-  //   setEditing(true);
-
-  //   setCurrentUser(user);
-  // };
-
-  // const updateUser = (id: any, updatedUser: any) => {
-  //   setEditing(false);
-  //   setUsers(tasks.map((user: any) => (user.id === id ? updatedUser : user)));
-  // };
-  // const taskArray: any = tasks.forEach(function (v: any) {
-  //   delete v.id;
-  // });
-  // const myArray = tasks.filter(function( obj:any ) {
-  //   return obj.id !== id;
-  // });
   async function onSubmit(data: any) {
     alertService.clear();
     var result = tasks.map(function (obj: any) {
@@ -407,24 +365,6 @@ function AddEdit({
     }
   }
 
-  // const total_pounds_add =
-  //   tasks.reduce(function (acc: any, obj: any) {
-  //     return (
-  //       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
-  //     );
-  //   }, 0);
-  // ;
-  // const itm_total_net_add =
-  //   tasks.reduce(function (acc: any, obj: any) {
-  //     return acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0);
-  //   }, 0);
-
-  // const itm_total_weight_add =
-  //   tasks.reduce(function (acc: any, obj: any) {
-  //     return (
-  //       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.total_weight) : 0) / 8
-  //     );
-  //   }, 0);
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
     return (
@@ -464,7 +404,6 @@ function AddEdit({
   };
   return (
     <>
-      <>
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
             -{loan ? "UPDATE " : "NEW"} Order
@@ -872,8 +811,6 @@ function AddEdit({
           </>
         )}
 
-        {}
-      </>
 
       {reviews.length > 0 || tasks.length > 0 ? (
         <>

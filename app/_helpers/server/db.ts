@@ -77,6 +77,7 @@ function userModel() {
 
 
 
+// flex w-full  -mx-1 pt-2 border-b md:border-b-0
   return mongoose.models.User || mongoose.model("User", schema);
 }
 function loanModel() {
