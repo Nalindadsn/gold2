@@ -1143,6 +1143,23 @@ function AddEdit({
                 </div>
               </div>
 
+</div>
+
+<div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               <div className="p-2">
                 <label className="form-label ml-2 ">mortgage_estimate</label>
                 <input
