@@ -74,14 +74,14 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
 
     return (
         <>
-
+<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">{title}</h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
-            <h1>{title}</h1>
+            <h1 className='font-bold m-1'>Basic Details</h1>
 
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
 <div className='p-2'>
                     <label className="form-label">First Name</label>
                     <input {...fields.firstName} type="text" className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} />
@@ -110,27 +110,33 @@ value={username}                    />
                     <div className="invalid-feedback">{errors.username?.message?.toString()}</div>
                 </div>
 
+                <div className='p-2'>
+                    <label className="form-label">Mobile Number</label>
+                    <input {...fields.phone} type="text" className={`form-control ${errors.phone ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
+                </div>
+                <div className='p-2'>
+                    <label className="form-label">Whatsapp</label>
+                    <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
+                    <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
+                </div>
 
+</div>
+<h2 className='font-bold mt-3 ml-2'>Employment Details</h2>
 
-
+                <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
                 
                 <div className='p-2'>
                     <label className="form-label">Occupation</label>
                     <input {...fields.occupation} type="text" className={`form-control ${errors.occupation ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.occupation?.message?.toString()}</div>
                 </div>
-
-
-
                 
                 <div className='p-2'>
                     <label className="form-label">Job Type</label>
                     <input {...fields.nature_of_emp} type="text" className={`form-control ${errors.nature_of_emp ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.nature_of_emp?.message?.toString()}</div>
                 </div>
-
-
-                
                 <div className='p-2'>
                     <label className="form-label">Working Place</label>
                     <input {...fields.name_of_office} type="text" className={`form-control ${errors.name_of_office ? 'is-invalid' : ''}`}  />
@@ -142,16 +148,12 @@ value={username}                    />
                     <input {...fields.income} type="text" className={`form-control ${errors.income ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.income?.message?.toString()}</div>
                 </div>
-                <div className='p-2'>
-                    <label className="form-label">Mobile Number</label>
-                    <input {...fields.phone} type="text" className={`form-control ${errors.phone ? 'is-invalid' : ''}`}  />
-                    <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
-                </div>
-                <div className='p-2'>
-                    <label className="form-label">Whatsapp</label>
-                    <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
-                    <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
-                </div>
+</div>
+<h2 className='font-bold mt-3 ml-2'>Other </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 pb-2">
+
+                
                 <div className='p-2'>
                     <label className="form-label">Role</label>
                     <select {...fields.role}  className={`form-control ${errors.role ? 'is-invalid' : ''}`} >
