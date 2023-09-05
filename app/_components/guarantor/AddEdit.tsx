@@ -124,7 +124,7 @@ value={username}                    />
 
                 
                 <div className='p-2'>
-                    <label className="form-label">nature_of_emp</label>
+                    <label className="form-label">Job Type</label>
                     <input {...fields.nature_of_emp} type="text" className={`form-control ${errors.nature_of_emp ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.nature_of_emp?.message?.toString()}</div>
                 </div>
@@ -132,23 +132,23 @@ value={username}                    />
 
                 
                 <div className='p-2'>
-                    <label className="form-label">name_of_office</label>
+                    <label className="form-label">Working Place</label>
                     <input {...fields.name_of_office} type="text" className={`form-control ${errors.name_of_office ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.name_of_office?.message?.toString()}</div>
                 </div>
                 
                 <div className='p-2'>
-                    <label className="form-label">income</label>
+                    <label className="form-label">Income</label>
                     <input {...fields.income} type="text" className={`form-control ${errors.income ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.income?.message?.toString()}</div>
                 </div>
                 <div className='p-2'>
-                    <label className="form-label">phone</label>
+                    <label className="form-label">Mobile Number</label>
                     <input {...fields.phone} type="text" className={`form-control ${errors.phone ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
                 </div>
                 <div className='p-2'>
-                    <label className="form-label">whatsapp</label>
+                    <label className="form-label">Whatsapp</label>
                     <input {...fields.whatsapp} type="text" className={`form-control ${errors.whatsapp ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.whatsapp?.message?.toString()}</div>
                 </div>
@@ -161,7 +161,7 @@ value={username}                    />
                 </div>
 
                 <div className='p-2'>
-                    <label className="form-label">status</label>
+                    <label className="form-label">Status</label>
                     <select {...fields.status}  className={`form-control ${errors.status ? 'is-invalid' : ''}`} >
                         <option value="GUARANTOR">GUARANTOR</option>
                     </select>

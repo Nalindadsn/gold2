@@ -1057,7 +1057,7 @@ function AddEdit({
                 <label className="form-label ml-2 ">mortgage_start_date</label>
                 <input
                   {...fields.mortgage_start_date}
-                  type="text"
+                  type="date"
                   className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                     errors.mortgage_start_date ? "is-invalid" : ""
                   }`}
@@ -1071,7 +1071,7 @@ function AddEdit({
                 <label className="form-label ml-2 ">mortgage_end_date</label>
                 <input
                   {...fields.mortgage_end_date}
-                  type="text"
+                  type="date"
                   className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                     errors.mortgage_end_date ? "is-invalid" : ""
                   }`}
@@ -1406,7 +1406,7 @@ function AddEdit({
           <>
           
           
-      <AddEditGuarantor title="EDIT Guarantor" loan={loan}/>
+      <AddEditGuarantor title="ADD GUARANTOR" loan={loan}/>
           </>
         )
       }

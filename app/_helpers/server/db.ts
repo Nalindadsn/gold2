@@ -91,9 +91,6 @@ function loanModel() {
       
       form_number: { type: String },
 
-
-
-
       mortgage_cmp: { type: String },
       mortgage_branch: { type: String },
       mortgager_name: { type: String },
