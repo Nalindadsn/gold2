@@ -1043,7 +1043,7 @@ function AddEdit({
               </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">mortgager_phone</label>
+                <label className="form-label ml-2 ">Contact </label>
                 <input
                   {...fields.mortgager_phone}
                   type="mortgager_phone"
@@ -1055,10 +1055,11 @@ function AddEdit({
                   {errors.mortgager_phone?.message?.toString()}
                 </div>
               </div>
+<div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
 
               <div className="p-2">
                 <label className="form-label ml-2 ">
-                  mortgage_interest_rate_month
+                 Interest Rate (Monthly)
                 </label>
                 <input
                   {...fields.mortgage_interest_rate_month}
@@ -1074,7 +1075,7 @@ function AddEdit({
 
               <div className="p-2">
                 <label className="form-label ml-2 ">
-                  mortgage_interest_rate_year
+                 Interest Rate (Yearly)
                 </label>
                 <input
                   {...fields.mortgage_interest_rate_year}
@@ -1088,8 +1089,12 @@ function AddEdit({
                 </div>
               </div>
 
+</div>
+<div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
+
+
               <div className="p-2">
-                <label className="form-label ml-2 ">mortgage_start_date</label>
+                <label className="form-label ml-2 ">Start Date</label>
                 <input
                   {...fields.mortgage_start_date}
                   type="date"
@@ -1103,7 +1108,7 @@ function AddEdit({
               </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">mortgage_end_date</label>
+                <label className="form-label ml-2 ">End Date</label>
                 <input
                   {...fields.mortgage_end_date}
                   type="date"
@@ -1115,6 +1120,9 @@ function AddEdit({
                   {errors.mortgage_end_date?.message?.toString()}
                 </div>
               </div>
+
+</div>
+
             </div>
 
             <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
