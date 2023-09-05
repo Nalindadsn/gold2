@@ -1052,6 +1052,20 @@ function AddEdit({
 </div>
 
 
+<div className="p-2">
+                <label className="form-label ml-2 ">mortgager_phone</label>
+                <input
+                  {...fields.mortgager_phone}
+                  type="mortgager_phone"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    errors.mortgager_phone ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgager_phone?.message?.toString()}
+                </div>
+              </div>
+
 
 <div className="p-2">
                 <label className="form-label ml-2 ">mortgage_start_date</label>
@@ -1081,20 +1095,6 @@ function AddEdit({
                 </div>
               </div>
 
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">mortgager_phone</label>
-                <input
-                  {...fields.mortgager_phone}
-                  type="mortgager_phone"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
-                    errors.mortgager_phone ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgager_phone?.message?.toString()}
-                </div>
-              </div>
 
 <div className="p-2">
   <label className="form-label ml-2 ">mortgage_interest_rate_month</label>
@@ -1157,10 +1157,10 @@ function AddEdit({
 
 
 <div className="p-2">
-  <label className="form-label ml-2 ">first_installment</label>
+  <label className="form-label ml-2 ">First Installment Date</label>
   <input
     {...fields.first_installment}
-    type="first_installment"
+    type="date"
     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
       errors.first_installment ? "is-invalid" : ""
     }`}
@@ -1173,10 +1173,10 @@ function AddEdit({
 
 
 <div className="p-2">
-  <label className="form-label ml-2 ">last_installment</label>
+  <label className="form-label ml-2 ">Last Installment Date</label>
   <input
     {...fields.last_installment}
-    type="last_installment"
+    type="date"
     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
       errors.last_installment ? "is-invalid" : ""
     }`}
@@ -1316,7 +1316,9 @@ function AddEdit({
       <>
 
 <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">GUARANTOR DETAILS</h1>
-<div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1">
+
+ <div className="text-center bg-white shadow-md">{loan?.guarantors.length>0?"":"No Guarantors Found"}</div>
+ <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1"> 
 {loan?.guarantors?.map((i: any) => (
   <>
   
@@ -1370,7 +1372,7 @@ function AddEdit({
             </div>
                   <div className="mb-2 md:mb-1 md:flex items-center">
                     <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                      nic
+                      NIC
                     </label>
                     <span className="mr-4 inline-block  md:block">:</span>
                     <div className="flex-1">{i?.nic}</div>
