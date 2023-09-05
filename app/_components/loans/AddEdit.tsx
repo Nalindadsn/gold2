@@ -882,6 +882,7 @@ function AddEdit({
             className="bg-white p-2 shadow-sm"
             // style={{ marginLeft: "5%", marginRight: "5%" }}
           >
+
             <div className="border shadow-sm mb-3">
               <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                 <div className="w-full hidden md:block"></div>
