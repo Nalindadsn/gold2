@@ -75,6 +75,8 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
 
 
+        <h1 className="font-bold m-1">Basic Details
+</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
 
