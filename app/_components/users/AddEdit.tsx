@@ -23,7 +23,7 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
 
 
 
-        username: register('username', { required: 'NIC is required' }),
+        username: register('username', { }),
 
 
         
@@ -99,13 +99,12 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                 <div className='p-2'>
                     <label className="form-label">nic</label>
                     <input {...fields.nic} type="text" className={`form-control ${errors.nic ? 'is-invalid' : ''}`} 
-                    
-                    onChange={(e)=>setUsername(e.target.value)}
+                    // onChange={(e)=>setUsername(e.target.value)}
                      />
                     <div className="invalid-feedback">{errors.nic?.message?.toString()}</div>
                 </div>
                 
-                <div className='p-2'>
+                <div className='p-2 hidden'>
                     <label className="form-label">Username</label>
                     <input {...fields.username} type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`} value={username}    />
                     <div className="invalid-feedback">{errors.username?.message?.toString()}</div>

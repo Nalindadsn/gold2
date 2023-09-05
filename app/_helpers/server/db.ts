@@ -14,7 +14,7 @@ function userModel() {
   const schema = new Schema(
     {
       fullname: { type: String },
-      username: { type: String, unique: true, required: true },
+      username: { type: String },
       address_new: {
         line_one: { type: String },
         line_two: { type: String },
@@ -37,7 +37,7 @@ function userModel() {
       name_of_office: { type: String },
       income: { type: String },
       phone: { type: String },
-      nic:{ type: String, unique: true},
+      nic:{ type: String},
       whatsapp: { type: String },
 
       hash: {

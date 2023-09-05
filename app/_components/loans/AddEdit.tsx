@@ -478,8 +478,6 @@ function AddEdit({
                       )}
                       Status
                     </label>
-                    <span className="mr-4 inline-block  md:block">:</span>
-                    <div className="flex-1">{loan?.status}</div>
                   </div>
                   <div className="mb-2 md:mb-1 md:flex items-center">
                     <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
@@ -861,6 +859,7 @@ function AddEdit({
                       className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
                         errors.expected_price_old ? "is-invalid" : ""
                       }`}
+                      // onBlur={()=>()}
                       onChange={(e) => setExpected_price_old(e.target.value)}
                     />
                   </div>
@@ -974,7 +973,7 @@ function AddEdit({
               </div>
             </div>
 
-            <h3 className="text-xl font-bold">MORTGAGE DETAILS</h3>
+            <h3 className="text-xl font-bold border-t-2 mt-5 pt-2">MORTGAGE DETAILS</h3>
             <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
               <div className="w-full hidden md:block"></div>
               <div
