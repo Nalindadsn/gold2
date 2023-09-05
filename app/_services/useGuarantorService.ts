@@ -71,6 +71,7 @@ function useGuarantorService(): IGuarantorService {
             console.log('test gu')
             console.log(user)
             await fetch.post('/api/guarantor', user);
+            
         },
         update: async (id, params) => {
             await fetch.put(`/api/guarantor/${id}`, params);
@@ -80,26 +81,12 @@ function useGuarantorService(): IGuarantorService {
                 userStore.setState({ currentGuarantor: { ...currentGuarantor, ...params } })
             }
         },
-        delete: async (id) => {
-            // set isDeleting prop to true on user
-            userStore.setState({
-                users: users!.map(x => {
-                    if (x.id === id) { x.isDeleting = true; }
-                    return x;
-                })
-            });
-
-            // delete user
-            const response = await fetch.delete(`/api/guarantor/${id}`);
-
-            // remove deleted user from state
-            userStore.setState({ users: users!.filter(x => x.id !== id) });
-
-            // logout if the user deleted their own record
-            if (response.deletedSelf) {
-                router.push('/account/login');
-            }
-        }
+        
+    delete: async (id, params) => {
+        console.log(id,params)
+        const response = await fetch.delete(`/api/guarantor/${id}`,params);
+        console.log(id,params)
+      },
     }
 };
 
@@ -121,6 +108,9 @@ interface IGuarantorStore {
     currentGuarantor?: IGuarantor
 }
 
+interface ILoanItem {
+    id: string;
+  }
 interface IGuarantorService extends IGuarantorStore {
     login: (username: string, password: string) => Promise<void>,
     logout: () => Promise<void>,
@@ -130,5 +120,5 @@ interface IGuarantorService extends IGuarantorStore {
     getCurrent: () => Promise<void>,
     create: (user: IGuarantor) => Promise<void>,
     update: (id: string, params: Partial<IGuarantor>) => Promise<void>,
-    delete: (id: string) => Promise<void>
+    delete: (id: string,  params: Partial<ILoanItem>) => Promise<void>
 }

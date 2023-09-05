@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { useAlertService, useLoanService } from "_services";
+import { useAlertService, useGuarantorService, useLoanService } from "_services";
 import { useCallback, useEffect, useState } from "react";
 import { AddEdit as AddEditGuarantor } from '_components/guarantor';
 
@@ -28,6 +28,7 @@ function AddEdit({
   const router = useRouter();
   const alertService = useAlertService();
   const loanService = useLoanService();
+  const guarantorService = useGuarantorService();
 
   // get functions to build form with useForm() hook
   const { register, handleSubmit, reset, formState } = useForm({
@@ -220,6 +221,19 @@ function AddEdit({
       await loanService.deleteItem(e, b);
       fetchReviews();
       setLoading(false);
+    } catch (err) {
+      setLoading(false);
+
+      // toast.success(err);
+    }
+  };
+  const submitHandlerDelUser = async (e: any, b: any) => {
+    setLoading(true);
+    try {
+      await guarantorService.delete(e, b);
+      
+      setLoading(false);
+      router.push('/loans')
     } catch (err) {
       setLoading(false);
 
@@ -1302,7 +1316,7 @@ function AddEdit({
 
 <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-800 sm:text-xl ">GUARANTOR DETAILS</h1>
 <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1">
-{loan?.guarantor?.map((i: any) => (
+{loan?.guarantors?.map((i: any) => (
   <>
   
           <div>
@@ -1331,6 +1345,26 @@ function AddEdit({
                     </div>
                   </div>
                 </a>
+                <button
+                        onClick={() =>
+                          submitHandlerDelUser(loan?.id, { name: i._id })
+                        }
+                        // onClick={() => {
+
+                        //   loanService.deleteItem(loan?.id, {name:i?._id});
+                        //   fetchReviews();
+                        // }  }
+                        className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
+                        style={{ width: "60px" }}
+                        //  disabled={true}
+                        // disabled={isDeleting}
+                      >
+                        {isDeleting ? (
+                          <span className="spinner-border spinner-border-sm"></span>
+                        ) : (
+                          <span>Delete</span>
+                        )}
+                      </button>
               </div>
             </div>
                   <div className="mb-2 md:mb-1 md:flex items-center">

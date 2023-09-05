@@ -125,11 +125,7 @@ function useLoanService(): ILoanService {
       }
     },
     deleteItem: async (id, params) => {
-      // console.log("---")
-      // console.log(params)
-      // console.log("---")
       const response = await fetch.put(`/api/loan-item-del/${id}?id=${params}`,params);
-
     },
   };
 }

@@ -3,7 +3,7 @@ import joi from 'joi';
 import { cookies } from 'next/headers';
 
 import { apiHandler } from '_helpers/server/api';
-import { usersRepo } from '_helpers/server';
+import { guarantorRepo } from '_helpers/server';
 
 module.exports = apiHandler({
     GET: getById,
@@ -12,12 +12,12 @@ module.exports = apiHandler({
 });
 
 async function getById(req: Request, { params: { id } }: any) {
-    return await usersRepo.getById(id);
+    return await guarantorRepo.getById(id);
 }
 
 async function update(req: Request, { params: { id } }: any) {
     const body = await req.json();
-    await usersRepo.update(id, body);
+    await guarantorRepo.update(id, body);
 }
 
 update.schema = joi.object({
@@ -39,11 +39,14 @@ update.schema = joi.object({
 });
 
 async function _delete(req: Request, { params: { id } }: any) {
-    await usersRepo.delete(id);
+    const body = await req.json();
+
+    await guarantorRepo.delete(id,body);
+console.log(id)
 
     // auto logout if deleted self
-    if (id === req.headers.get('userId')) {
-        cookies().delete('authorization');
-        return { deletedSelf: true };
-    }
+    // if (id === req.headers.get('userId')) {
+    //     cookies().delete('authorization');
+    //     return { deletedSelf: true };
+    // }
 }

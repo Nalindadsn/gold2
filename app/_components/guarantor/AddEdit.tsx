@@ -45,7 +45,6 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
         })
     };
 
-
     async function onSubmit(data: any) {
         alertService.clear();
         try {
@@ -59,6 +58,8 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
                 await userService.create(data);
                  reset()
                 message = 'User added';
+
+             router.push('/loans');
             }
 
             // redirect to user list with success message

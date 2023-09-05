@@ -86,7 +86,7 @@ async function getById(id: string) {
       from: "users",
       localField: "guarantor.user_id",
       foreignField: "_id",
-      as: "guarantor"
+      as: "guarantors"
     }
   },
         {
