@@ -75,7 +75,7 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
 
 
-        <h1 className="font-bold m-1">Basic Details
+        <h1 className="font-bold m-1">Basic Information
 </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
@@ -152,20 +152,14 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                     <input {...fields.occupation} type="text" className={`form-control ${errors.occupation ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.occupation?.message?.toString()}</div>
                 </div>
-
-
-
                 
                 <div className='p-2'>
-                    <label className="form-label">nature_of_emp</label>
+                    <label className="form-label">Company Type</label>
                     <input {...fields.nature_of_emp} type="text" className={`form-control ${errors.nature_of_emp ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.nature_of_emp?.message?.toString()}</div>
                 </div>
-
-
-                
                 <div className='p-2'>
-                    <label className="form-label">name_of_office</label>
+                    <label className="form-label">Work Place</label>
                     <input {...fields.name_of_office} type="text" className={`form-control ${errors.name_of_office ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.name_of_office?.message?.toString()}</div>
                 </div>
