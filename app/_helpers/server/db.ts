@@ -97,14 +97,8 @@ function loanModel() {
       mortgage_cmp: { type: String },
       mortgage_branch: { type: String },
       mortgager_name: { type: String },
-      mortgage_start_date: {
-        type: Date,
-        default: Date.now,
-      },
-      mortgage_end_date: {
-        type: Date,
-        default: Date.now,
-      },
+      mortgage_start_date: { type: String },
+      mortgage_end_date: { type: String },
       mortgager_phone: { type: String },
       mortgage_interest_rate_month: { type: String },
       mortgage_interest_rate_year: { type: String },

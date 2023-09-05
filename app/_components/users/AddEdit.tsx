@@ -89,6 +89,14 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
 
 
 
+                <div className='p-2'>
+                    <label className="form-label">nic</label>
+                    <input {...fields.nic} type="text" className={`form-control ${errors.nic ? 'is-invalid' : ''}`} 
+                    
+                    onChange={(e)=>setUsername(e.target.value)}
+                     />
+                    <div className="invalid-feedback">{errors.nic?.message?.toString()}</div>
+                </div>
                 
                 <div className='p-2'>
                     <label className="form-label">Username</label>
@@ -132,14 +140,6 @@ function AddEdit({ title, user }: { title: string, user?: any }) {
                     <label className="form-label">phone</label>
                     <input {...fields.phone} type="text" className={`form-control ${errors.phone ? 'is-invalid' : ''}`}  />
                     <div className="invalid-feedback">{errors.phone?.message?.toString()}</div>
-                </div>
-                <div className='p-2'>
-                    <label className="form-label">nic</label>
-                    <input {...fields.nic} type="text" className={`form-control ${errors.nic ? 'is-invalid' : ''}`} 
-                    
-                    onChange={(e)=>setUsername(e.target.value)}
-                     />
-                    <div className="invalid-feedback">{errors.nic?.message?.toString()}</div>
                 </div>
                 <div className='p-2'>
                     <label className="form-label">whatsapp</label>

@@ -397,6 +397,7 @@ function AddEdit({
       } else {
         await loanService.create(dataV);
         message = "Loan added";
+        router.push(`/loans`);
       }
 
       // router.push(`/loans`);
