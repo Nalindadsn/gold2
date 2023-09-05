@@ -26,7 +26,7 @@ function Edit({ params: { id } }: any) {
         <>
         {/* {console.log(user)} */}
         
-        <AddEdit title="Edit User" user={user} />
+        <AddEdit title="UPDATE CUSTOMER" user={user} />
         
         </>
         : <Spinner />;
