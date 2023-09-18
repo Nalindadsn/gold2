@@ -1,9 +1,17 @@
-import React from 'react'
+"use client"
+import { useSearchParams } from 'next/navigation';
 
-function Search() {
+export default function Page() {
+  const searchParams = useSearchParams();
+
+  // E.g. `/dashboard?page=2&order=asc`
+  const page = searchParams.get('page');
+  const order = searchParams.get('order');
+
   return (
-    <div>Search</div>
-  )
+    <div>
+      <p>Page: {page}</p>
+      <p>Order: {order}</p>
+    </div>
+  );
 }
-
-export default Search
