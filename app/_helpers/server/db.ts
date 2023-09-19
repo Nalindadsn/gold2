@@ -179,6 +179,7 @@ function gold_rateModal() {
     {
       company: { type: String },
       gold_rate: { type: String },
+      selected: { type: String ,default:"NO"},
     },
     {
       // add createdAt and updatedAt timestamps
