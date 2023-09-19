@@ -732,74 +732,83 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                   <div>
                     <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                       <div className="px-1  text-right">
-                        
+                        <label className="text-left w-full ml-2 text-sm">Description</label>
                         <input
                           type="text"
                           onChange={(e) => setItmName(e.target.value)}
                           value={name}
                           name="name"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
                           placeholder="Description"
                           required
                         />
                       </div>
                       <div className="px-1  text-right">
+                        <label className="text-left w-full ml-2 text-sm">Karat</label>
                         <input
                           type="text"
                           onChange={(e) => setKarat(e.target.value)}
                           value={karat}
                           name="karat"
-                          className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
                           placeholder="Karat"
                           required
                         />
                       </div>
 
                       <div className="px-1  text-right">
+                        <label className="text-left w-full ml-2 text-sm">Total Weight</label>
                         <input
                           type="text"
                           onChange={(e) => setTotal_weight(e.target.value)}
                           value={total_weight}
                           name="total_weight"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
                           placeholder="Total Weight"
                           required
                         />
                       </div>
                       <div className="px-1  text-right">
+                        <label className="text-left w-full ml-2 text-sm">Net Weight</label>
                         <input
                           type="text"
                           onChange={(e) => setNet_weight(e.target.value)}
                           value={net_weight}
                           name="net_weight"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
                           placeholder="Net Weight"
                           required
                         />
                       </div>
                       <div className="px-1  text-right">
+                        
+                      <label className="text-left w-full ml-2 text-sm">Pound</label>
                         <input
                           type="text"
                           onChange={(e) => setPound(e.target.value)}
                           value={net_weight_cal}
                           name="pound"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
                           placeholder="Pound"
                           required
                         />
                       </div>
 
                       <div className="px-1  text-right">
+                        
+                      <label className="text-left w-full ml-2 text-sm">Condition</label>
                         <select
                           onChange={(e) => setStatus(e.target.value)}
                           name="status"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
                         >
                           <option>NOT ISSUE</option>
                           <option>ISSUE</option>
                         </select>
                       </div>
                       <div className="px-1 pt-1  text-right">
+                      <label className="text-left w-full ml-2 text-sm">&nbsp;</label>
+
                         <button
                           className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
                           type="reset"
@@ -946,7 +955,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                   <input
                     {...fields.form_number}
                     type="form_number"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.form_number ? "is-invalid" : ""
                     }`}
                   />
@@ -970,7 +979,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                     {/* <input
                       {...fields.expected_price_old}
                       type="text"
-                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                         errors.expected_price_old ? "is-invalid" : ""
                       }`}
                       // onBlur={()=>()}
@@ -979,7 +988,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                     <input
                   {...fields.expected_price_old}
                   type="expected_price_old"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.expected_price_old ? "is-invalid" : ""
                   }` 
                 }
@@ -1032,7 +1041,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
 
                       <select
                         {...fields.no_of_month}
-                        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                           errors.no_of_month ? "is-invalid" : ""
                         }`}
                       >
@@ -1066,7 +1075,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.loan_amount}
                   type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.loan_amount ? "is-invalid" : ""
                   }`}  
                   value={
@@ -1083,7 +1092,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.payable_in_hand}
                   type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.payable_in_hand ? "is-invalid" : ""
                   }`}
                  
@@ -1102,7 +1111,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.monthly_installment}
                   type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.monthly_installment ? "is-invalid" : ""
                   }`}
                   value={installmentV(watchExpectedPriceOld,max_price,watchNoOfMonth) }
@@ -1120,7 +1129,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                   <input
                     {...fields.first_installment}
                     type="date"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.first_installment ? "is-invalid" : ""
                     }`}
                   />
@@ -1136,7 +1145,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                   <input
                     {...fields.last_installment}
                     type="date"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.last_installment ? "is-invalid" : ""
                     }`}
                   />
@@ -1163,7 +1172,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgage_invoice_number}
                   type="mortgage_invoice_number"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgage_invoice_number ? "is-invalid" : ""
                   }`}
                 />
@@ -1180,7 +1189,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgage_cmp}
                   type="mortgage_cmp"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgage_cmp ? "is-invalid" : ""
                   }`}
                 />
@@ -1194,7 +1203,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgage_branch}
                   type="mortgage_branch"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgage_branch ? "is-invalid" : ""
                   }`}
                 />
@@ -1208,7 +1217,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgager_name}
                   type="mortgager_name"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgager_name ? "is-invalid" : ""
                   }`}
                 />
@@ -1222,7 +1231,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgager_phone}
                   type="mortgager_phone"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgager_phone ? "is-invalid" : ""
                   }`}
                 />
@@ -1239,7 +1248,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgage_interest_rate_month}
                   type="mortgage_interest_rate_month"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgage_interest_rate_month ? "is-invalid" : ""
                   }`}
                 />
@@ -1269,7 +1278,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgage_interest_rate_year}
                   type="mortgage_interest_rate_year"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgage_interest_rate_year ? "is-invalid" : ""
                   }`}
                 />
@@ -1290,7 +1299,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgage_start_date}
                   type="date"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgage_start_date ? "is-invalid" : ""
                   }`}
                 />
@@ -1304,7 +1313,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.mortgage_end_date}
                   type="date"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.mortgage_end_date ? "is-invalid" : ""
                   }`}
                 />
@@ -1323,7 +1332,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.requested_loan}
                   type="requested_loan"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.requested_loan ? "is-invalid" : ""
                   }`}
                 />
@@ -1337,7 +1346,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.estimated_price_old}
                   type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.estimated_price_old ? "is-invalid" : ""
                   }`}
                 />
@@ -1350,7 +1359,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.loan_price_old}
                   type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.loan_price_old ? "is-invalid" : ""
                   }`}
                 />
@@ -1364,7 +1373,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <input
                   {...fields.interest_old}
                   type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.interest_old ? "is-invalid" : ""
                   }`}
                 />
@@ -1377,7 +1386,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
 
                 <select
                   {...fields.status}
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md ${
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                     errors.status ? "is-invalid" : ""
                   }`}
                  
