@@ -203,8 +203,8 @@ function todoModel() {
 function settingModal() {
   const schema = new Schema(
     {
-      name: { type: String },
-      gold_rate: { type: String },
+      company: { type: String },
+      risk_management_value: { type: String },
     },
     {
       // add createdAt and updatedAt timestamps

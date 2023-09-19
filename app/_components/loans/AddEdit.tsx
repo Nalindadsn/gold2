@@ -868,7 +868,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                               POUNDS - {i?.pound}
                             </div>
                           </div>
-                          <div>GOLD PERCENTAGE -  {i?.net_weight/i?.total_weight*100}%</div>
+                          <div>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</div>
                         </div>
                       </div>
                     </div>
