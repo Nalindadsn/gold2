@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.app-container {
+    min-height: 350px;
+}
+.offcanvas-header > button{
+   background-color: #e20017;
+}
+.offcanvas-header > button:before{
+    content: "X";
+    position:absolute;
+    top:18px;
+    right:18px;
+    color:#fff;
+}
+body > div:nth-child(1) > div.sm\:ml-64 > div > div > div > div.overflow-scroll > iframe{
+    width:100%
+}
+body > div.app-container.bg-light > div > div > div > main > section.grid.md\:grid-cols-2.xl\:grid-cols-4.xl\:grid-rows-3.xl\:grid-flow-col.gap-6 > div.flex.flex-col.md\:col-span-2.md\:row-span-2.bg-white.shadow.rounded-lg > div.p-4.flex-grow > div > div > canvas{
+    width:100% !important
+}
+.btn-close{
+    
+    background-color: #e20017;
+    color: #fff;
+    padding: 0;
+}
+input{
+    border: 1px solid #ccc;
+}
+body > div.app-container.bg-light > div.container > div > div > button
+td{
+    border:1px solid #333;
+}
+
+#hideMe {
+    -webkit-animation: cssAnimation 9s forwards; 
+    animation: cssAnimation 9s forwards;
+}
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
