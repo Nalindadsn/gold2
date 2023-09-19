@@ -28,7 +28,7 @@ function Settings() {
     },
     {
       name: "Setting",
-      selector: (row: any) =>parseFloat(row.risk_managemenet_value).toFixed(2),
+      selector: (row: any) =>parseFloat(row.risk_management_value).toFixed(2),
       sortable: true,
     },
     {
