@@ -16,18 +16,14 @@ function Settings() {
   
 
   const column: any = [
-    {
-      name: "ID",
-      selector: (row: any) => row._id,
-      sortable: true,
-    },
+    
     {
       name: "Company",
       selector: (row: any) => row.company,
       sortable: true,
     },
     {
-      name: "Setting",
+      name: "Risk Management Value",
       selector: (row: any) =>parseFloat(row.risk_management_value).toFixed(2),
       sortable: true,
     },
