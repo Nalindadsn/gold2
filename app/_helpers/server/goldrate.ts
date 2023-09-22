@@ -9,6 +9,7 @@ const GoldRate = db.gold_rate;
 export const usersRepo = {
     getAll,
     getById,
+    getSelected,
     create,
     update,
     delete: _delete
@@ -17,6 +18,9 @@ export const usersRepo = {
 
 async function getAll() {
     return await User.find({role:"USER"}).sort({_id:-1});
+}
+async function getSelected() {
+    return await User.findOne({selected:"YES"});
 }
 
 

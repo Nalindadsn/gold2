@@ -6,9 +6,11 @@ import mongoose from "mongoose";
 
 
 const Rate = db.gold_rate;
+const Setting = db.Setting;
 
 export const ratesRepo = {
   getAll,
+  getSelected,
   getById,
   create,
   update,
@@ -26,6 +28,16 @@ async function getById(id: string) {
      return await Rate.findById(id);
   } catch {
     throw "Loan Not Found";
+  }
+}
+async function getSelected() {
+  try {
+    
+    const rmv=await Setting.findOne()
+    const mktv= await Rate.findOne({selected:"YES"})
+     return {rmv:rmv.risk_management_value,mkt:mktv.gold_rate,cmp_rate:mktv.gold_rate-rmv.risk_management_value};
+  } catch {
+    throw "Rate Not Found";
   }
 }
 

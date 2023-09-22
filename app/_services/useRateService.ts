@@ -38,6 +38,14 @@ function useRateService(): IRateService {
         alertService.error(error);
       }
     },
+    getSelected: async () => {
+      rateStore.setState({ rate: undefined });
+      try {
+        rateStore.setState({ rate: await fetch.get(`/api/rates/selected`) });
+      } catch (error: any) {
+        alertService.error(error);
+      }
+    },
     create: async (rate) => {
       await fetch.post("/api/rates", rate);
     },
@@ -132,6 +140,7 @@ interface IRateStore {
 
 interface IRateService extends IRateStore {
   getAll: () => Promise<void>;
+  getSelected: () => Promise<void>;
   getById: (id: string) => Promise<void>;
   create: (rate: IRate) => Promise<void>;
   update: (id: string, params: Partial<IRate>) => Promise<void>;

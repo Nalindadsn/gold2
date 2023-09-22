@@ -6,25 +6,33 @@ import { useRouter } from 'next/navigation';
 import { AddEdit } from '_components/loans';
 import { AddEdit as AddEditGuarantor } from '_components/guarantor';
 import { Spinner } from '_components';
-import { useLoanService, useUserService } from '_services';
+import { useLoanService, useUserService,useRateService } from '_services';
 
 export default Edit;
 
 function Edit(props: any) {
     const router = useRouter();
+
+    
     const loanService = useLoanService();
     const loan = loanService.loan;
 
     
+    const rateService = useRateService();
+    const rate = rateService.rate;
+
+
     useEffect(() => {
         if (!props.params.id) return;
         loanService.getById(props.params.id)
+        rateService.getSelected()
     }, [router]);
 
     return loan
         ?(<>
+        {JSON.stringify(rate)}
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
-        <AddEdit title="EDIT LOAN DETAILS" loan={loan}/>
+        <AddEdit title="EDIT LOAN DETAILS" loan={loan}  rate={rate}/>
         
         </> )
         : 

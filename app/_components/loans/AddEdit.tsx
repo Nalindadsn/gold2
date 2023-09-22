@@ -25,10 +25,12 @@ function AddEdit({
   title,
   loan,
   user,
+  rate,
 }: {
   title: string;
   loan?: any;
   user?: any;
+  rate?: any;
 }) {
   
   const [show, setShow] = useState(false);
@@ -504,35 +506,35 @@ return installment(
   }
   
   
-  const actual_karat=(gold_percentage:any)=>{
+  const actual_karat=(gold_percentage:any):any=>{
 	let finalGrades = ["24","22","21","20","19","18","17","16","15","14","13","12"];
 
 	if(gold_percentage >= 109.09){
-    return "22"
+    return {karat:"24",value:((rate.cmp_rate/22)*24).toFixed(2)}
 	} else if(gold_percentage >= 100 && gold_percentage < 109.09) {
-    return "22"
+    return {karat:"22",value:((rate.cmp_rate/22)*22).toFixed(2)}
 	}else if(gold_percentage >= 95.45 && gold_percentage < 100) {
-    return "21"
+    return {karat:"21",value:((rate.cmp_rate/22)*21).toFixed(2)}
 	} else if(gold_percentage >= 90.91 && gold_percentage < 95.45) {
-    return "20"
+    return {karat:"20",value:((rate.cmp_rate/22)*20).toFixed(2)}
 	} else if(gold_percentage >= 86.36 && gold_percentage < 90.91) {
-    return "19"
+    return {karat:"19",value:((rate.cmp_rate/22)*19).toFixed(2)}
 	} else if(gold_percentage >= 81.82 && gold_percentage < 86.36) {
-    return "18"
+    return {karat:"18",value:((rate.cmp_rate/22)*18).toFixed(2)}
 	} else if(gold_percentage >= 77.27 && gold_percentage < 81.82) {
-    return "17"
+    return {karat:"17",value:((rate.cmp_rate/22)*17).toFixed(2)}
 	} else if(gold_percentage >= 72.73 && gold_percentage < 77.27) {
-    return "16"
+    return {karat:"16",value:((rate.cmp_rate/22)*16).toFixed(2)}
 	} else if(gold_percentage >= 68.18 && gold_percentage < 72.73) {
-    return "15"
+    return {karat:"15",value:((rate.cmp_rate/22)*15).toFixed(2)}
 	} else if(gold_percentage >= 63.64 && gold_percentage < 68.18) {
-    return "14"
+    return {karat:"14",value:((rate.cmp_rate/22)*14).toFixed(2)}
 	} else if(gold_percentage >= 59.09 && gold_percentage < 63.64) {
-    return "13"
+    return {karat:"13",value:((rate.cmp_rate/22)*13).toFixed(2)}
 	} else if(gold_percentage >= 54.55 && gold_percentage < 59.09) {
-    return "12"
+    return {karat:"12",value:((rate.cmp_rate/22)*12).toFixed(2)}
 	} else {
-    return "Less than 12 karat"
+    return {karat:"Less than 12 karat",value:0}
 	}
 }
 const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
@@ -721,7 +723,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                       NO OF ITEMS : {reviews.length}
                     </span></div>
                     <div className="text-right whitespace-nowrap">
-                      <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat : {(actual_karat(gPr).toString())} </span>
+                      <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat : {(actual_karat(gPr).karat.toString())} </span>
                       
                       
                       <br/>
@@ -843,7 +845,10 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                             Karat : {i?.karat}
                           </span>
                           <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
-                            Actual : {actual_karat(i?.net_weight/i?.total_weight*100)}
+                            Actual : {(actual_karat(i?.net_weight/i?.total_weight*100)).karat}
+                          </span>
+                          <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
+                            Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
                           </span>
                           {i?.status == "NOT ISSUE" ? (
                             <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
