@@ -1340,7 +1340,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
 
             <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
               <div className="p-2">
-                <label className="form-label ml-2 "> Estimated Loan Amount (Requested)</label>
+                <label className="form-label ml-2 ">  Loan Amount (Requested)</label>
                 <input
                   {...fields.requested_loan}
                   type="requested_loan"
