@@ -847,9 +847,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                           <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
                             Actual : {(actual_karat(i?.net_weight/i?.total_weight*100)).karat}
                           </span>
-                          <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
-                            Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
-                          </span>
+                          
                           {i?.status == "NOT ISSUE" ? (
                             <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
                               {i?.status}
@@ -873,7 +871,14 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                               POUNDS - {i?.pound}
                             </div>
                           </div>
-                          <div>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</div>
+
+                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0"><span>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
+                          <span className={`ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
+                            Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
+                          </span>
+                          
+                          
+                          </div>
                         </div>
                       </div>
                     </div>
