@@ -741,10 +741,11 @@ alertService.success(message, true);
                     
                 <div className="px-1  text-right m-1 border-1">
                <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
-               {actual_karat(gPr).value}
+               <div className="bg-gray-800 text-white px-2">{actual_karat(gPr).value}</div>
                 </div>
                 <div className="px-1  text-right m-1 border-1">
-                Maximum <br/> {(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)}
+                Maximum <br/>
+                <div className="bg-gray-800 text-white px-2">{(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)}</div> 
                 </div>
                     <div className="text-right whitespace-nowrap">
                       <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :  {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} </span>
