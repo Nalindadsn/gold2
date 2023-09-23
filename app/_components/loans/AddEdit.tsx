@@ -520,7 +520,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
 
 const submitHandler = async (e: any) => {
   e.preventDefault();
-  // console.log(name)
+  
   setLoading(true);
   try {
     const data: any = {
@@ -532,7 +532,7 @@ const submitHandler = async (e: any) => {
       per_pound: actual_karat(gPr).value,
       status: status ? status : "NOT ISSUE",
     };
-
+console.log(data)
     await loanService.updateItem(loan?.id, data);
     fetchReviews();
           
