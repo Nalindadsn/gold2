@@ -70,11 +70,11 @@ const TaskTable = (props:any) => (
 
 
                                   {task?.status == "NOT ISSUE" ? (
-                                    <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                                    <span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
                                       {task?.status}
                                     </span>
                                   ) : (
-                                    <span className="bg-red-600 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                                    <span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
                                       {task?.status}
                                     </span>
                                   )}
