@@ -71,9 +71,9 @@ function useGuarantorService(): IGuarantorService {
         create: async (user) => {
             
             user.username=user.nic
-         loanService.getById(user.loan_id)
             await fetch.post('/api/guarantor', user);
             
+         loanService.getById(user.loan_id)
     // const loanService = useLoanService();
     // const loan = loanService.loan;
 
