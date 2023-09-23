@@ -88,7 +88,8 @@ const TaskTable = (props:any) => (
             <div  className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">POUNDS - {task?.pound}</div>
           </div>
           
-          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 "><span className="border px-2">GOLD PERCENTAGE -  {parseFloat((task?.net_weight/task?.total_weight*100).toString()).toFixed(2)}%</span>
+          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 ">
+            <span className={` px-2 ${((task?.net_weight/task?.total_weight*100)==100)?"  border-1 border-orange-600":"  border-1 border-red-500 "}`}>GOLD PERCENTAGE -  {parseFloat((task?.net_weight/task?.total_weight*100).toString()).toFixed(2)}%</span>
                           <span className={`ml-1 ${((task?.net_weight/task?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
                             Amount per pound : {(actual_karat(task?.net_weight/task?.total_weight*100,props.rate)).value}
                           </span>
