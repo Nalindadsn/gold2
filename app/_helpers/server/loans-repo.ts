@@ -265,6 +265,7 @@ async function updateItem(id: string, params: any) {
         net_weight: params.net_weight,
         total_weight: params.total_weight,
         pound: params.pound,
+        per_pound: params.per_pound,
         status: params?.status || "ok", 
     }
 

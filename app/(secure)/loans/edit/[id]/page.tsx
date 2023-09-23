@@ -30,7 +30,6 @@ function Edit(props: any) {
 
     return loan
         ?(<>
-        {JSON.stringify(rate)}
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
         <AddEdit title="EDIT LOAN DETAILS" loan={loan}  rate={rate}/>
         

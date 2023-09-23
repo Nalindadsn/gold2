@@ -532,7 +532,6 @@ const submitHandler = async (e: any) => {
       per_pound: actual_karat(gPr).value,
       status: status ? status : "NOT ISSUE",
     };
-console.log(data)
     await loanService.updateItem(loan?.id, data);
     fetchReviews();
           

@@ -19,25 +19,12 @@ async function update(req: Request, { params: { id } }: any) {
         net_weight: body.net_weight,
         total_weight: body.total_weight,
         pound: body.pound,
+        per_pound: body.per_pound,
         status: body?.status || "ok", 
     }
-    await loansRepo.updateItem(id, data);
-    // const body = await req.json();
-    // console.log(body)
-    // console.log("api user")
     
-    // const loan= await loansRepo.getById(id);
-    // const data:any={
-    //     name:body.itmName,
-    //     karat:body.karat,
-    //     net_weight: body.net_weight,
-    //     total_weight: body.total_weight,
-    //     pound: body.pound,
-    //     status: body?.status || "ok", 
-    // }
-
-    // loan.items.push(data);
-    // return await loan.save();
+    await loansRepo.updateItem(id, data);
+    
 }
 async function getById(req: Request, { params: { id } }: any) {   
     return await loansRepo.getById(id);
@@ -64,6 +51,13 @@ async function addItem(req: Request, { params: { id } }: any) {
 }
 async function updateItem(req: Request, { params: { id } }: any) {
     const body = await req.json();
+    
+    
+
+    console.log("params2");
+    console.log(body);
+
+
     const loan= await loansRepo.getById(id);
     
     const items = {
