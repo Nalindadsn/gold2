@@ -585,9 +585,7 @@ alertService.success(message, true);
 
             <div className="relative inline-block">
               
-              {loan?<Button variant="primary" onClick={handleShow} className="bg-blue-500 ml-2 -mt-5">
-        New Guarantor
-      </Button>:""}
+              
         
             </div>
           </div>
@@ -727,12 +725,6 @@ alertService.success(message, true);
                 <div className="px-1  text-right m-1 border-1">
                   total pound : {total_pounds.toFixed(4)}
                 </div>
-                <div className="px-1  text-right m-1 border-1">
-                Amount per pound : {actual_karat(gPr).value}
-                </div>
-                <div className="px-1  text-right m-1 border-1">
-                Maximum : {(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)}
-                </div>
 
 
                 
@@ -746,6 +738,14 @@ alertService.success(message, true);
                     <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm  ">
                       NO OF ITEMS : {reviews.length}
                     </span></div>
+                    
+                <div className="px-1  text-right m-1 border-1">
+               <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
+               {actual_karat(gPr).value}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                Maximum <br/> {(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)}
+                </div>
                     <div className="text-right whitespace-nowrap">
                       <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :  {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} </span>
                       
