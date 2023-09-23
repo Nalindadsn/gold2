@@ -357,7 +357,7 @@ alertService.error(message, true);
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
     return (
-      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+      acc + (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(parseFloat(obj.pound) ? parseFloat(obj.pound) : 0) 
     );
   }, 0);
   
@@ -366,10 +366,12 @@ alertService.error(message, true);
       acc + (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) * (parseFloat(obj.pound) ? parseFloat(obj.pound) : 0)
     );
   }, 0);
-  const max_price: any = loan
-    ? total_pounds * rate?.cmp_rate
-    : total_pounds_add * 130000;
 
+  
+  const max_price: any = loan
+    ? total_mx
+    : total_pounds_add;
+    
     const installmentV=(exp_price:any,mx_price:any,no_of_month:any)=>{
       if(exp_price <= mx_price){
 return installment(
