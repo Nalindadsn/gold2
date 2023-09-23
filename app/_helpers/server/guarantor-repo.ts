@@ -13,6 +13,7 @@ export const guarantorRepo = {
     getAllAdmin,
     getAllCustomers,
     getById,
+    getByNic,
     getCurrent,
     create,
     update,
@@ -54,6 +55,18 @@ async function getById(id: string) {
         throw 'User Not Found';
     }
 }
+async function getByNic(id: string) {
+    try {
+        const users = await User.find({nic:id});
+
+        return users;
+    } catch {
+        throw 'User Not Found';
+    }
+}
+
+
+
 
 async function getCurrent() {
     try {

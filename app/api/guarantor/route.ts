@@ -20,8 +20,6 @@ async function create(req: Request) {
 
 create.schema = joi.object({
 
-
-    
     relationship: joi.string(),
     fullName: joi.string(),
     gender: joi.string().allow('').optional(),
