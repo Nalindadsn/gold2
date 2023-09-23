@@ -331,7 +331,7 @@ alertService.error(message, true);
 
   const addTask = (task: any) => {
     task.pound = task.net_weight / 8;
-    task.per_pound = (((actual_karat(task?.net_weight/task?.total_weight*100)).value)*task?.pound).toFixed(2);
+    task.per_pound = (((actual_karat(task?.net_weight/task?.total_weight*100)).value)).toFixed(2);
     task.id = tasks.length + 1;
     setTasks([...tasks, task]);
   };
@@ -351,7 +351,7 @@ alertService.error(message, true);
     setEditing(false);
 
     updatedTask.pound = updatedTask.net_weight / 8;
-    updatedTask.per_pound = (((actual_karat(updatedTask.net_weight/updatedTask.total_weight*100)).value)*updatedTask.pound).toFixed(2);
+    updatedTask.per_pound = parseFloat(((actual_karat(updatedTask.net_weight/updatedTask.total_weight*100)).value)).toFixed(2);
 
     
     setTasks(tasks.map((task) => (task.id === id ? updatedTask : task)));
@@ -362,7 +362,7 @@ alertService.error(message, true);
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
     return (
-      acc + ((parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(parseFloat(obj.pound) ? parseFloat(obj.pound) : 0)) 
+      acc + ((parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(parseFloat(obj.pound) ? parseFloat(obj.pound) : 0))
     );
   }, 0);
   
@@ -958,6 +958,7 @@ alertService.success(message, true);
                     />
                   </div>
                 </div>
+                {JSON.stringify(tasks)}
                 <div className="flex-large">
                   <TaskTable
                     tasks={tasks}
