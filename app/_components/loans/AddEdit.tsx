@@ -741,11 +741,11 @@ alertService.success(message, true);
                       NO OF ITEMS : {reviews.length}
                     </span></div>
                     
-                <div className="px-1  text-right m-1 border-1">
+                <div className="px-1  text-right m-1 mt-0 border-1">
                <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
                <div className="bg-gray-800 text-white px-2">{actual_karat(gPr).value}</div>
                 </div>
-                <div className="px-1  text-right m-1 border-1">
+                <div className="px-1  text-right m-1 mt-0 border-1">
                 Maximum <br/>
                 <div className="bg-gray-800 text-white px-2">{(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)}</div> 
                 </div>
