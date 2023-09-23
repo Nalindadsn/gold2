@@ -153,20 +153,10 @@ if(name=="net_weight"){
           props.editing ? props.updateTask(task.id, task) : props.addTask(task);
           resetAddTask();
         }}>
-        {/* <div className="flex flex-col md:flex-row -mx-1 py-2 border-b">
-  <div className="px-1"></div>
-  <div className="px-1  text-right">Total Weight : 2.4975</div>
-  <div className="px-1  text-right">Net Weight : 19.9800</div>
-  <div className="px-1  text-right">total pound : 2.4975</div>
-  </div> */}
+     
         <div className="flex flex-wrap -mx-3 " key={task.id}>
           <div className="w-full md:w-full px-3 mb-2 mt-2">
-            {/* <h2 className=" text-gray-800 text-lg">
-              items
-              <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm ">
-                NO OF ITEMS : 1
-              </span>
-            </h2> */}
+            
             <div>
 
 
