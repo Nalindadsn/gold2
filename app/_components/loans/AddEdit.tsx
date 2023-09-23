@@ -223,41 +223,6 @@ required: "required",
   const [loading, setLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   // --------------------------------------------------------
-  const submitHandler = async (e: any) => {
-    e.preventDefault();
-    // console.log(name)
-    setLoading(true);
-    try {
-      const data: any = {
-        name: name,
-        karat: karat,
-        net_weight: net_weight,
-        total_weight: total_weight,
-        pound: parseFloat(net_weight) / 8,
-        status: status ? status : "NOT ISSUE",
-      };
-
-      await loanService.updateItem(loan?.id, data);
-      fetchReviews();
-            
-      let message;
-message = "Item Added ";
-
-alertService.success(message, true);
-      setLoading(false);
-
-      //enqueueSnackbar('Review submitted successfully', { variant: 'success' });
-      setItmName("");
-      setKarat("");
-      setTotal_weight("");
-      setNet_weight("");
-      // toast.success('Review submitted successfully');
-    } catch (err) {
-      setLoading(false);
-
-      // toast.success(err);
-    }
-  };
   // --------------------------------------------------------
   const submitHandlerDel = async (e: any, b: any) => {
     setLoading(true);
@@ -395,9 +360,13 @@ alertService.error(message, true);
       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
     );
   }, 0);
+
+
+
   const max_price: any = loan
-    ? total_pounds * 130000
+    ? total_pounds * rate?.cmp_rate
     : total_pounds_add * 130000;
+
     const installmentV=(exp_price:any,mx_price:any,no_of_month:any)=>{
       if(exp_price <= mx_price){
 return installment(
@@ -536,10 +505,49 @@ if(rate?.cmp_rate){
 	} else {
     return {karat:"Less than 12 karat",value:0}
 	}
+}else{
+  return {karat:"",value:0}
 }
 
 }
 const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
+
+const submitHandler = async (e: any) => {
+  e.preventDefault();
+  // console.log(name)
+  setLoading(true);
+  try {
+    const data: any = {
+      name: name,
+      karat: karat,
+      net_weight: net_weight,
+      total_weight: total_weight,
+      pound: parseFloat(net_weight) / 8,
+      per_pound: actual_karat(gPr).value,
+      status: status ? status : "NOT ISSUE",
+    };
+
+    await loanService.updateItem(loan?.id, data);
+    fetchReviews();
+          
+    let message;
+message = "Item Added ";
+
+alertService.success(message, true);
+    setLoading(false);
+
+    //enqueueSnackbar('Review submitted successfully', { variant: 'success' });
+    setItmName("");
+    setKarat("");
+    setTotal_weight("");
+    setNet_weight("");
+    // toast.success('Review submitted successfully');
+  } catch (err) {
+    setLoading(false);
+
+    // toast.success(err);
+  }
+};
   return (
     <>
         <div className="flex justify-between">
@@ -714,6 +722,15 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                 <div className="px-1  text-right m-1 border-1">
                   total pound : {total_pounds.toFixed(4)}
                 </div>
+                <div className="px-1  text-right m-1 border-1">
+                Amount per pound : {actual_karat(gPr).value}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                Maximum : {(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)}
+                </div>
+
+
+                
               </div>
               <div className="flex flex-wrap -mx-3 ">
                 <div className="w-full md:w-full px-3 mb-2 mt-2">
@@ -725,7 +742,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                       NO OF ITEMS : {reviews.length}
                     </span></div>
                     <div className="text-right whitespace-nowrap">
-                      <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat : {(actual_karat(gPr).karat.toString())} </span>
+                      <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :  {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} </span>
                       
                       
                       <br/>
@@ -874,7 +891,7 @@ const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
                             </div>
                           </div>
 
-                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t"><span>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
+                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t"><span className="border px-2">GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
                           <span className={`ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
                             Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
                           </span>

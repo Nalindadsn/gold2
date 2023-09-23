@@ -116,6 +116,7 @@ function loanModel() {
         total_weight:{type:String},
         net_weight:{type:String},
         pound:{type:String},
+        per_pound:{type:String},
         status:{type:String,default:"NOT ISSUE"}
         
 }
