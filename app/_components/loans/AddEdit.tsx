@@ -343,6 +343,7 @@ alertService.error(message, true);
 
   const editRow = (task: any) => {
     task.pound = task.net_weight / 8;
+    // setPound(task.net_weight / 8);
     setEditing(true);
     setCurrentTask(task);
   };
