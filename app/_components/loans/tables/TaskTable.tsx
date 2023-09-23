@@ -92,8 +92,11 @@ const TaskTable = (props:any) => (
                           <span className={`ml-1 ${((task?.net_weight/task?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
                             Amount per pound : {(actual_karat(task?.net_weight/task?.total_weight*100,props.rate)).value}
                           </span>
-                          
-                          
+
+                            <span className={`ml-1 ${((task?.net_weight/task?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
+                            Amount : {(((actual_karat(task?.net_weight/task?.total_weight*100,props.rate)).value)*task?.pound).toFixed(2)}
+                          </span>
+                                
                           </div>
                                 </div>
                               </div>

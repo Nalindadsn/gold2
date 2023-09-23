@@ -8,6 +8,7 @@ const EditTaskForm = (props: any) => {
     net_weight: "",
     total_weight: "",
     pound: "",
+    per_pound: "",
     status: "",
   };
   const [id, setID] = useState(null);
@@ -28,6 +29,7 @@ const EditTaskForm = (props: any) => {
       net_weight: "",
       total_weight: "",
       pound: "",
+      per_pound: "",
       status: "",
     }
   );
@@ -142,6 +144,8 @@ if(name=="net_weight"){
               total pound : {total_pounds.toFixed(4)}
             </div>
           </div>
+
+
       <form className="bg-white"
         onSubmit={(event) => {
           event.preventDefault();
