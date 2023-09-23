@@ -196,6 +196,18 @@ if(name=="net_weight"){
                   
                 </div>
                 <div className="flex-1 px-1">
+                <label className="text-left w-full ml-2 text-sm">Total Weight</label>
+
+                  <input
+                    className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    placeholder="Total Weight"
+                    type="text"
+                    name="total_weight"
+                    value={task.total_weight}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="flex-1 px-1">
                 <label className="text-left w-full ml-2 text-sm">Net Weight</label>
 
                   <input
@@ -207,18 +219,6 @@ if(name=="net_weight"){
                     onChange={handleInputChange}
                   />
                   
-                </div>
-                <div className="flex-1 px-1">
-                <label className="text-left w-full ml-2 text-sm">Total Weight</label>
-
-                  <input
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                    placeholder="Total Weight"
-                    type="text"
-                    name="total_weight"
-                    value={task.total_weight}
-                    onChange={handleInputChange}
-                  />
                 </div>
                 <div className="flex-1 px-1">
                 <label className="text-left w-full ml-2 text-sm">Pounds</label>
