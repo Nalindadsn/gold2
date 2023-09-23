@@ -360,6 +360,12 @@ alertService.error(message, true);
       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
     );
   }, 0);
+  
+  const total_mx = arr.reduce(function (acc: any, obj: any) {
+    return (
+      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+    );
+  }, 0);
 
 
 
@@ -946,6 +952,7 @@ alertService.success(message, true);
                       updateTask={updateTask}
                       addTask={addTask}
                       tasks={tasks}
+                      rate={rate}
                     />
                   </div>
                 </div>

@@ -87,7 +87,42 @@ if(name=="net_weight"){
       acc + (parseFloat(obj.total_weight) ? parseFloat(obj.total_weight) : 0) 
     );
   }, 0);
-
+  
+  const actual_karat=(gold_percentage:any):any=>{
+    let finalGrades = ["24","22","21","20","19","18","17","16","15","14","13","12"];
+  if(props.rate?.cmp_rate){
+    if(gold_percentage >= 109.09){
+      return {karat:"24",value:((props.rate.cmp_rate/22)*24).toFixed(2)}
+    } else if(gold_percentage >= 100 && gold_percentage < 109.09) {
+      return {karat:"22",value:((props.rate.cmp_rate/22)*22).toFixed(2)}
+    }else if(gold_percentage >= 95.45 && gold_percentage < 100) {
+      return {karat:"21",value:((props.rate.cmp_rate/22)*21).toFixed(2)}
+    } else if(gold_percentage >= 90.91 && gold_percentage < 95.45) {
+      return {karat:"20",value:((props.rate.cmp_rate/22)*20).toFixed(2)}
+    } else if(gold_percentage >= 86.36 && gold_percentage < 90.91) {
+      return {karat:"19",value:((props.rate.cmp_rate/22)*19).toFixed(2)}
+    } else if(gold_percentage >= 81.82 && gold_percentage < 86.36) {
+      return {karat:"18",value:((props.rate.cmp_rate/22)*18).toFixed(2)}
+    } else if(gold_percentage >= 77.27 && gold_percentage < 81.82) {
+      return {karat:"17",value:((props.rate.cmp_rate/22)*17).toFixed(2)}
+    } else if(gold_percentage >= 72.73 && gold_percentage < 77.27) {
+      return {karat:"16",value:((props.rate.cmp_rate/22)*16).toFixed(2)}
+    } else if(gold_percentage >= 68.18 && gold_percentage < 72.73) {
+      return {karat:"15",value:((props.rate.cmp_rate/22)*15).toFixed(2)}
+    } else if(gold_percentage >= 63.64 && gold_percentage < 68.18) {
+      return {karat:"14",value:((props.rate.cmp_rate/22)*14).toFixed(2)}
+    } else if(gold_percentage >= 59.09 && gold_percentage < 63.64) {
+      return {karat:"13",value:((props.rate.cmp_rate/22)*13).toFixed(2)}
+    } else if(gold_percentage >= 54.55 && gold_percentage < 59.09) {
+      return {karat:"12",value:((props.rate.cmp_rate/22)*12).toFixed(2)}
+    } else {
+      return {karat:"Less than 12 karat",value:0}
+    }
+  }else{
+    return {karat:"",value:0}
+  }
+  
+  }
   return (
     <>
     

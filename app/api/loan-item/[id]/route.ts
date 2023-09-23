@@ -65,13 +65,14 @@ async function addItem(req: Request, { params: { id } }: any) {
 async function updateItem(req: Request, { params: { id } }: any) {
     const body = await req.json();
     const loan= await loansRepo.getById(id);
-    // console.log(loan)
+    console.log(body)
     //  const product = await loansRepo.findById(id);
     const items = {
       name:body.itmName,
       karat:body.karat,
       net_weight: body.net_weight,
       pound: body.pound,
+      per_pound: body.pound,
       status: body?.status || "ok",
     };
      loan.items.push(items);
