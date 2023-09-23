@@ -363,12 +363,9 @@ alertService.error(message, true);
   
   const total_mx = arr.reduce(function (acc: any, obj: any) {
     return (
-      acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
+      acc + (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) * (parseFloat(obj.pound) ? parseFloat(obj.pound) : 0)
     );
   }, 0);
-
-
-
   const max_price: any = loan
     ? total_pounds * rate?.cmp_rate
     : total_pounds_add * 130000;
