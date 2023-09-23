@@ -163,7 +163,7 @@ if(name=="net_weight"){
                   {/* {(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)} */}
                   </div> 
                 </div>
-                    <div className="text-right whitespace-nowrap">
+                    <div className="text-right whitespace-nowrap border">
                     {/* <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :   */}
                     <span className="bg-gray-800 text-white px-2">Actual Karat :  
                       {/* {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat}  */}
