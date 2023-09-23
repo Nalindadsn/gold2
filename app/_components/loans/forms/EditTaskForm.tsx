@@ -81,6 +81,8 @@ if(name=="total_weight"){
     });
     
   setPoundV("0")
+  setTotal_weight("")
+  setNet_weight("")
   };
 
 
