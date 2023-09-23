@@ -14,8 +14,9 @@ const EditTaskForm = (props: any) => {
   const [id, setID] = useState(null);
   const [name, setItmName] = useState("");
   const [karat, setKarat] = useState("");
-  const [net_weight2, setNet_weight2] = useState("");
+  const [poundV, setPoundV] = useState("");
   const [total_weight, setTotal_weight] = useState("");
+  const [net_weight, setNet_weight] = useState("");
   const [pound, setPound] = useState("0");
   const [status, setStatus] = useState("NOT ISSUE");
 
@@ -38,10 +39,15 @@ const EditTaskForm = (props: any) => {
     let { name, value } = event.target;
 let a:any=(value/8).toFixed(4)
 if(name=="net_weight"){
-  setNet_weight2(a)
-  
+  setPoundV(a)
+  setNet_weight(value)
 }
-    // setNet_weight2(net_weight)
+if(name=="total_weight"){
+  setPoundV(a)
+  setTotal_weight(value)
+}
+
+    // setPoundV(net_weight)
     setTask({ ...task, [name]: value });
     
     
@@ -74,7 +80,7 @@ if(name=="net_weight"){
       status: "",
     });
     
-  setNet_weight2("0")
+  setPoundV("0")
   };
 
 
@@ -154,25 +160,25 @@ if(name=="net_weight"){
                 <div className="px-1  text-right m-1 border-1">
                <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
                <div className="bg-gray-800 text-white px-2">
-                {/* {actual_karat(gPr).value} */}
+                {actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100).value}
                 </div>
                 </div>
                 <div className="px-1  text-right m-1 border-1">
                 Maximum <br/>
                 <div className="bg-gray-800 text-white px-2">
-                  {/* {(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)} */}
+                  {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100).value)*(parseFloat(net_weight) / 8)}
                   </div> 
                 </div>
-                    <div className="text-right whitespace-nowrap border">
-                    {/* <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :   */}
-                    <span className="bg-gray-800 text-white px-2">Actual Karat :  
-                      {/* {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat}  */}
+                    <div className="text-right whitespace-nowrap border mt-1">
+                    <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :  
+                    {/* <span className="bg-gray-800 text-white px-2">Actual Karat :   */}
+                      {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} 
                     </span>
                       
                       
                       <br/>
                       Karat Percentage :
-                       {/* {gPr.toFixed(2)} */}
+                       {((parseFloat(net_weight)/parseFloat(total_weight))*100).toFixed(2)}
                        %
                     </div>
                     </div>
@@ -253,7 +259,7 @@ if(name=="net_weight"){
                     placeholder="Pounds"
                     type="text"
                     name="pound"
-                    value={net_weight2}
+                    value={poundV}
                     onChange={handleInputChange}
                   />
                 </div>
