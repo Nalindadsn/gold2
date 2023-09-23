@@ -958,7 +958,6 @@ alertService.success(message, true);
                     />
                   </div>
                 </div>
-                {JSON.stringify(tasks)}
                 <div className="flex-large">
                   <TaskTable
                     tasks={tasks}
