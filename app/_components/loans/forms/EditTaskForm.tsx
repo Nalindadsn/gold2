@@ -58,6 +58,7 @@ if(name=="net_weight"){
       net_weight: "",
       total_weight: "",
       pound: "",
+      per_pound: "",
       status: "",
     });
     props.setCurrentTask({
@@ -67,6 +68,7 @@ if(name=="net_weight"){
       net_weight: "",
       total_weight: "",
       pound: "",
+      per_pound: "",
       status: "",
     });
     
@@ -162,6 +164,10 @@ if(name=="net_weight"){
               </span>
             </h2> */}
             <div>
+
+
+
+
               <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                 <div className="flex-1 px-1">
                 <label className="text-left w-full ml-2 text-sm">Description</label>

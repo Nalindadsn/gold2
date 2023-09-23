@@ -367,7 +367,7 @@ alertService.error(message, true);
     );
   }, 0);
 
-  
+
   const max_price: any = loan
     ? total_mx
     : total_pounds_add;
@@ -516,10 +516,8 @@ if(rate?.cmp_rate){
 
 }
 const gPr =(parseFloat(net_weight)/parseFloat(total_weight))*100;
-
 const submitHandler = async (e: any) => {
   e.preventDefault();
-  
   setLoading(true);
   try {
     const data: any = {
@@ -958,6 +956,7 @@ alertService.success(message, true);
                 <div className="flex-large">
                   <TaskTable
                     tasks={tasks}
+                    rate={rate}
                     editRow={editRow}
                     deleteTask={deleteTask}
                   />
