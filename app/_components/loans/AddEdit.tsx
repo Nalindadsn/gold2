@@ -876,11 +876,11 @@ alertService.success(message, true);
                           </span>
                           
                           {i?.status == "NOT ISSUE" ? (
-                            <span className="bg-green-700 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                            <span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
                               {i?.status}
                             </span>
                           ) : (
-                            <span className="bg-red-600 text-blue-100 py-0 px-2 rounded-full text-sm ">
+                            <span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
                               {i?.status}
                             </span>
                           )}
@@ -898,13 +898,17 @@ alertService.success(message, true);
                               POUNDS - {i?.pound}
                             </div>
                           </div>
-
-                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t"><span className="border px-2">GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
+                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t"><span className={` px-2 ${((i?.net_weight/i?.total_weight*100)==100)?"  border-1 border-orange-600":"  border-1 border-red-500 "}`}>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
                           <span className={`ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
                             Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
                           </span>
                           
                           
+
+                          <span className={`ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
+                            Amount : {(((actual_karat(i?.net_weight/i?.total_weight*100)).value)*i?.pound).toFixed(2)}
+                          </span>
+                                
                           </div>
                         </div>
                       </div>
