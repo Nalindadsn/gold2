@@ -331,7 +331,7 @@ alertService.error(message, true);
 
   const addTask = (task: any) => {
     task.pound = task.net_weight / 8;
-    task.per_pound = (((actual_karat(task?.net_weight/task?.total_weight*100)).value)).toFixed(2);
+    task.per_pound = parseFloat(((actual_karat(task?.net_weight/task?.total_weight*100)).value)).toFixed(2);
     task.id = tasks.length + 1;
     setTasks([...tasks, task]);
   };

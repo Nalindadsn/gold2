@@ -144,7 +144,38 @@ if(name=="net_weight"){
               total pound : {total_pounds.toFixed(4)}
             </div>
           </div>
-
+          <div className="flex flex-col md:flex-row -mx-1 ">
+<div className="w-full"><br/>Items
+                    <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm  ">
+                      NO OF ITEMS : 
+                      {props.tasks.length}
+                    </span></div>
+                    
+                <div className="px-1  text-right m-1 border-1">
+               <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
+               <div className="bg-gray-800 text-white px-2">
+                {/* {actual_karat(gPr).value} */}
+                </div>
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                Maximum <br/>
+                <div className="bg-gray-800 text-white px-2">
+                  {/* {(actual_karat(gPr).value)*(parseFloat(net_weight) / 8)} */}
+                  </div> 
+                </div>
+                    <div className="text-right whitespace-nowrap">
+                    {/* <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :   */}
+                    <span className="bg-gray-800 text-white px-2">Actual Karat :  
+                      {/* {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat}  */}
+                    </span>
+                      
+                      
+                      <br/>
+                      Karat Percentage :
+                       {/* {gPr.toFixed(2)} */}
+                       %
+                    </div>
+                    </div>
 
       <form className="bg-white"
         onSubmit={(event) => {
