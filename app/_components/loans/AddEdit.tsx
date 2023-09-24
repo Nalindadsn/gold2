@@ -369,7 +369,7 @@ alertService.error(message, true);
   
   const total_mx = arr.reduce(function (acc: any, obj: any) {
     return (
-      acc + (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) * (parseFloat(obj.pound) ? parseFloat(obj.pound) : 0)
+      acc + ((parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(parseFloat(obj.pound) ? parseFloat(obj.pound) : 0))
     );
   }, 0);
 
@@ -437,6 +437,7 @@ return installment(
         net_weight: obj.net_weight,
         total_weight: obj.total_weight,
         pound: obj.pound,
+        per_pound: obj.per_pound,
       };
     });
 
@@ -558,6 +559,7 @@ alertService.success(message, true);
 };
   return (
     <>
+    {JSON.stringify(arr)} {JSON.stringify(tasks)}
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
             -{loan ? "UPDATE " : "NEW"} Order
@@ -761,7 +763,7 @@ alertService.success(message, true);
                     </div>
                   </h2>
                   <div>
-                    <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
+                    <div className="flex  flex-col md:flex-row -mx-1 py-2 ">
                       <div className="px-1  text-right">
                         <label className="text-left w-full ml-2 text-sm">Description</label>
                         <input
@@ -848,7 +850,7 @@ alertService.success(message, true);
                         </button>
                       </div>
                     </div>
-                    <button
+                    <div className="border-gray-800 border-b border-b-1 pb-2"> <button
                       type="submit"
                       disabled={loading}
                       className="btn btn-primary me-2 mt-1 bg-blue-700"
@@ -857,7 +859,8 @@ alertService.success(message, true);
                         <span className="spinner-border spinner-border-sm me-1"></span>
                       )}
                       ADD ITEMS
-                    </button>
+                    </button></div>
+                   
                   </div>
                 </div>
               </div>

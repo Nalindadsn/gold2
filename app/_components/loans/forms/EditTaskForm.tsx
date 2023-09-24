@@ -282,13 +282,13 @@ if(name=="total_weight"){
                 </div>
                 
               </div>
-              
-        <button className="btn btn-primary me-2 mt-1 bg-blue-700">{props.editing ? "Update task" : "ADD ITEM"}</button>
+              <div className="border-b border-b-1 border-gray-800"><button className="btn btn-primary me-2 mt-1 bg-blue-700">{props.editing ? "Update task" : "ADD ITEM"}</button>
         {props.editing && (
           <button onClick={resetAddTask} className="button muted-button">
             Cancel
           </button>
-        )}
+        )}</div>
+        
             </div>
           </div>
         </div>
