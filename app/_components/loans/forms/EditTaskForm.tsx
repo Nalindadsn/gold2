@@ -166,7 +166,7 @@ if(name=="total_weight"){
                 </div>
                 </div>
                 <div className="px-1  text-right m-1 border-1">
-                Maximum <br/>
+                Issuable  <br/>
                 <div className="bg-gray-800 text-white px-2">
                   {((actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100).value)*(parseFloat(net_weight) / 8)).toFixed(2)}
                   </div> 

@@ -459,6 +459,7 @@ function AddEdit({
               {...fields.role}
               className={`form-control ${errors.role ? "is-invalid" : ""}`}
             >
+              {loan_id?<option value="GUARANTOR">GUARANTOR</option>:""}
               <option value="USER">CUSTOMER</option>
             </select>
 
