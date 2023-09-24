@@ -100,7 +100,7 @@ export default function Pdf() {
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 496 512"
                     className="float-left  text-5xl"
                     height="1em"
