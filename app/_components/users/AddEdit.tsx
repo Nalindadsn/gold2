@@ -505,7 +505,7 @@ function AddEdit({
           >
             Reset
           </button>
-          <Link href="/users" className="btn btn-link">
+          <Link href={loan_id?`/loans/edit/${loan_id}`:`/users`} className="btn btn-link">
             Cancel
           </Link>
         </div>
