@@ -865,15 +865,14 @@ alertService.success(message, true);
             <div className="bg-white p-2 ">
               {reviews.map((i: any) => (
                 <div key={n++}>
-                  <div className="flex w-full flex-col md:flex-row  p-1 border-b   rounded-lg shadow-sm  mb-1 border">
-                    <div className="flex-2 px-1 w-full">
-                      <div className="ml-2 text-sm">
-                        <span>
-                          <span className="font-bold">{i?.name}</span> &nbsp;
-                          <span className="  bg-orange-300 rounded-sm px-2 mr-3">
+                      <div className="bg-gray-800 text-sm">
+
+                      <span>
+                          <span className="font-bold text-white ml-2">{i?.name}</span> &nbsp;
+                          <span className="  text-orange-300 rounded-sm px-2 mr-3">
                             Karat : {i?.karat}
                           </span>
-                          <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}  rounded-sm px-2 mr-3`}>
+                          <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" text-orange-300":" text-red-500 "}  rounded-sm px-2 mr-3`}>
                             Actual : {(actual_karat(i?.net_weight/i?.total_weight*100)).karat}
                           </span>
                           
@@ -887,7 +886,11 @@ alertService.success(message, true);
                             </span>
                           )}
                         </span>
-                        <br />
+                      </div>
+                  <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
+                    <div className="flex-2 px-1 w-full">
+                      <div className="ml-2 text-sm">
+                        
                         <div>
                           <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
                             <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
