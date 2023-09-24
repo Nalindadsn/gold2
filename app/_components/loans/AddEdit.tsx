@@ -679,9 +679,8 @@ alertService.success(message, true);
           <div>
             <div className="bg-white p-2 m-1 shadow-sm border">
               <div className=" flex items-center justify-between leading-none  ">
-                <a
+                <Link href={`/users/edit/${loan? loan?.customer[0]?._id :user?.id}`}
                   className="flex items-center no-underline  text-black"
-                  href="#"
                 >
                   <FaUserCircle className="float-left  text-5xl" />
 
@@ -689,13 +688,14 @@ alertService.success(message, true);
                     <div className="text-gray-800 mt-1 font-bold">
                       <span>
                         {loan
-                          ? 
-                            loan?.customer[0]?.fullName
-                          :  user?.fullName}
+                          ? loan?.customer[0]?.fullName
+                            
+                          : user?.fullName
+                          }
                       </span>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
               <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">
                 CUSTOMER{" "}

@@ -55,9 +55,10 @@ async function getById(id: string) {
         throw 'User Not Found';
     }
 }
-async function getByNic(id: string) {
+async function getByNic(nic:any) {
     try {
-        const users = await User.find({nic:id});
+
+        const users = await User.find({nic:nic});
 
         return users;
     } catch {

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useAlertService, useUserService } from "_services";
 export { AddEdit };
 import { useState } from "react";
+import App from "_components/select";
 
 function AddEdit({
   title,
@@ -138,6 +139,7 @@ function AddEdit({
     <>
       <h1 className="text-2xl font-bold  pt-2 tracking-wider uppercase  ">
         {loan_id?"UPDATE GUARANTOR":title}
+        <App/>
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className=" bg-white p-2">
