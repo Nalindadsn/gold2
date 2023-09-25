@@ -19,6 +19,7 @@ function App() {
   // load options using API call
   const loadOptions = (inputValue:any) => {
     if(inputValue){
+        
 
         return fetch(`/api/guarantor/nic/${inputValue}`).then(res => res.json());
 
@@ -39,10 +40,10 @@ function App() {
         loadOptions={loadOptions}
         onInputChange={handleInputChange}
         onChange={handleChange}
-      />
-      {}
+      /><br/><br/><br/>
+      {/* {}{JSON.stringify(loadOptions(inputValue))}- */}
       <pre>Selected Value: {JSON.stringify(selectedValue || {}, null, 2)}</pre>
-{/* {selectedValue} */}
+
     </div>
   );
 }

@@ -441,7 +441,7 @@ return installment(
       };
     });
 
-     data.loan_amount=((parseFloat(watchExpectedPriceOld) <= max_price) ? parseFloat(watchExpectedPriceOld).toFixed(2):max_price.toFixed(2)).toString()
+    data.loan_amount=((parseFloat(watchExpectedPriceOld) <= max_price) ? parseFloat(watchExpectedPriceOld).toFixed(2):max_price.toFixed(2)).toString()
     
     data.payable_in_hand=parseFloat(payment_values_amount(
       parseFloat(watchExpectedPriceOld),
@@ -559,7 +559,7 @@ alertService.success(message, true);
 };
   return (
     <>
-    {JSON.stringify(arr)} {JSON.stringify(tasks)}
+    
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
             -{loan ? "UPDATE " : "NEW"} Order
