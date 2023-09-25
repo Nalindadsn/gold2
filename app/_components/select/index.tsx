@@ -16,33 +16,46 @@ function App() {
     setSelectedValue(value);
   }
  
+  const emt = () => {
+    setSelectedValue(null);
+  }
+ 
   // load options using API call
-  const loadOptions = (inputValue:any) => {
+  const loadOptions:any = (inputValue:any) => {
     if(inputValue){
-        
+                const users:any= fetch(`/api/guarantor/nic/${inputValue}`).then(
+                  (res:any) => res.json()
+                  ).then((res)=>{
+                    console.log(res)
+                     return res.users
+                  });
+                  // console.log(JSON.stringify(users))
+                return {users:users}
 
-        return fetch(`/api/guarantor/nic/${inputValue}`).then(res => res.json());
-
-    }else{
+    } else{
 
     }
   };
  
   return (
     <div className="App">
-      {/* <pre>Input Value: "{inputValue}"</pre> */}
+      <div className='flex w-full'>
+        
       <AsyncSelect
         cacheOptions
         defaultOptions
         value={selectedValue}
         getOptionLabel={(e:any) => e.fullName}
         getOptionValue={(e:any) => e.nic}
-        loadOptions={loadOptions}
+        loadOptions={loadOptions.users}
         onInputChange={handleInputChange}
         onChange={handleChange}
-      /><br/><br/><br/>
+        className="w-full"
+      /><button onClick={emt}>reset</button>
+      </div>
       {/* {}{JSON.stringify(loadOptions(inputValue))}- */}
-      <pre>Selected Value: {JSON.stringify(selectedValue || {}, null, 2)}</pre>
+      <pre>Selected Value: {JSON.stringify(selectedValue)}</pre>
+      
 
     </div>
   );

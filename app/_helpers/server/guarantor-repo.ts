@@ -59,8 +59,10 @@ async function getByNic(nic:any) {
     try {
 
         const users = await User.find({nic:nic});
+        // users.my_loans="red"
 
-        return users;
+        return {users:users};
+
     } catch {
         throw 'User Not Found';
     }

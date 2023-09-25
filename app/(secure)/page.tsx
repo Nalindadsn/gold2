@@ -6,6 +6,7 @@ import Chart2 from "_components/chart2";
 import { useLoanService, useUserService } from "_services";
 import Link from "next/link";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
+import App from "_components/select";
 
 function Page() {
   const loanService = useLoanService();
@@ -27,11 +28,14 @@ function Page() {
       {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates molestias distinctio quisquam libero nesciunt aut quos dolores, impedit ullam esse minus alias iusto, nihil rem pariatur aperiam illo! Obcaecati, officia. */}
 
       <main className=" overflow-hidden ">
+        <div><App/></div>
         <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
           <div className="mr-6">
             <h1 className="text-4xl font-semibold mb-2">Dashboard</h1>
           </div>
+          
           <div className="flex flex-wrap items-start justify-end -mb-3">
+          
           <Link
               href={`/users/add`}
               className="inline-flex px-5 py-3 text-white bg-blue-600 hover:bg-purple-700 focus:bg-blue-700 rounded-md ml-6 mb-3"
