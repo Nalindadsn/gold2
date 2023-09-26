@@ -58,9 +58,61 @@ async function getById(id: string) {
 async function getByNic(nic:any) {
     try {
 
-        const users = await User.find({nic:nic});
-        // users.my_loans="red"
+        const my_guarantors=  await Loan.aggregate(
+            [  
+        {
+            $lookup: {
+              from: "users",
+              localField: "user_id",
+              foreignField: "_id",
+              as: "customer",
+            },
+          },
+       {
+         $unwind: "$guarantor"
+       },
+       {
+         $addFields: {
+           nic: { $first: "$customer.nic" }
+         }
+       },
+       {
+         $match: {
+           "nic":nic
+         }
+       }
+      ]
+      )
+        const users:any = await User.aggregate(
+            [  {
+       
+         $match: {
+           "nic":nic
+         
+       }
+    },
+       {
+        $addFields: {
+          my_guarantors: my_guarantors
+        }
+      }
+ ]
+      
+ )
+//  find({nic:nic})
+        
+        
+        .then(async(users)=>{
 
+
+    //  return users.map(v => ({...v, my_guarantors: my_guarantors}))
+      return users
+})
+    
+const array=null;
+
+
+          console.log(users)
         return {users:users};
 
     } catch {
@@ -91,14 +143,10 @@ async function create(params: any) {
         nic:params.nic
     }
     if (userExist) {
-        //check already acc
         data.user_id=userExist._id
-//         const ObjIdToFind = 5;
-// const isElementPresent = arr.some((o) => o.id === ObjIdToFind);
     }else{
         const user = new User(params);
         const guarantor =await user.save();
-    
         data.user_id=guarantor._id
     }
     await Loan.findOneAndUpdate(
@@ -106,11 +154,6 @@ async function create(params: any) {
         { $push: { guarantor: data } },
         { new: true }
       );
-
-    // const loan = new Loan(params);
-
-
-    
 }
 
 async function update(id: string, params: any) {

@@ -71,6 +71,14 @@ function useLoanService(): ILoanService {
         alertService.error(error);
       }
     },
+    getByNic: async (id) => {
+      loanStore.setState({ loan: undefined });
+      try {
+        loanStore.setState({ loan: await fetch.get(`/api/loans/${id}`) });
+      } catch (error: any) {
+        alertService.error(error);
+      }
+    },
     getCurrent: async () => {
       if (!currentLoan) {
         loanStore.setState({
@@ -177,6 +185,7 @@ interface ILoanService extends ILoanStore {
   getAll: () => Promise<void>;
   getSummary: () => Promise<void>;
   getById: (id: string) => Promise<void>;
+  getByNic: (id: string) => Promise<void>;
   getCurrent: () => Promise<void>;
   create: (loan: ILoan) => Promise<void>;
   update: (id: string, params: Partial<ILoan>) => Promise<void>;

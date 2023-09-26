@@ -5,6 +5,7 @@ import AsyncSelect from 'react-select/async';
 function App() {
   const [inputValue, setValue] = useState('');
   const [selectedValue, setSelectedValue] = useState(null);
+  const [lValue, setLValue] = useState(null);
  
   // handle input change event
   const handleInputChange = (value:any) => {
@@ -23,15 +24,15 @@ function App() {
   // load options using API call
   const loadOptions:any = (inputValue:any) => {
     if(inputValue){
-                const users:any= fetch(`/api/guarantor/nic/${inputValue}`).then(
+                const users:any= fetch(`/api/guarantor/nic/${inputValue}`, { cache: 'no-store' }).then(
                   (res:any) => res.json()
-                  ).then((res)=>{
-                    console.log(res)
-                     return res.users
+                  ).then((json)=>{
+                    console.log(json)
+                    
+                      return json.users
                   });
                   // console.log(JSON.stringify(users))
-                return {users:users}
-
+                return users
     } else{
 
     }
@@ -47,14 +48,14 @@ function App() {
         value={selectedValue}
         getOptionLabel={(e:any) => e.fullName}
         getOptionValue={(e:any) => e.nic}
-        loadOptions={loadOptions.users}
+        loadOptions={loadOptions}
         onInputChange={handleInputChange}
         onChange={handleChange}
         className="w-full"
       /><button onClick={emt}>reset</button>
       </div>
       {/* {}{JSON.stringify(loadOptions(inputValue))}- */}
-      <pre>Selected Value: {JSON.stringify(selectedValue)}</pre>
+      <>Selected Value: {JSON.stringify(selectedValue)}</>
       
 
     </div>

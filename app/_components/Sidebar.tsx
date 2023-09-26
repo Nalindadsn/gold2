@@ -2,6 +2,7 @@
 import { useState,useEffect } from 'react';
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { useUserService } from '_services';
 import Button from 'react-bootstrap/Button';
@@ -26,7 +27,12 @@ function Sidebar() {
     useEffect(() => {
       userService.getCurrent();
   }, []);
-
+  
+  const router = useRouter();
+  const submitHandler = async (e: any) => {
+   e.preventDefault();
+   router.push("/search");
+  }
   return <>
   
   <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen  transition-transform -translate-x-full   border-gray-200 md:translate-x-0  bg-gray-800 text-blue-100" aria-label="Sidebar">
@@ -35,7 +41,8 @@ function Sidebar() {
                  <li className="pt-2 pb-3 bg-gray-900 text-gray-300"><Link href="/" className="text-3xl font-bold m-2 pt-5" >Gold Loan</Link></li>
                 
                 
-                <li>       <form action="" className="app-search overflow-hidden" method="GET">
+                <li>       <form  
+              onSubmit={submitHandler}>
                                 <div className="relative group ">
                                     <input type="text"
                                         className="form-input rounded-md bg-gray-700 text-sm text-gray-300 pl-10 py-1.5 ml-5 border-transparent border-none outline-none focus:ring-0 focus:text-white transition-all duration-300 ease-in-out focus:w-60 w-48"
