@@ -20,6 +20,7 @@ export default function Search() {
   const emt = (e: any) => {
     setQuery("");
   };
+  
 
   return (
     <div>
