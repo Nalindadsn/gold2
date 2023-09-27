@@ -1,87 +1,145 @@
-'use client';
+"use client";
+import React from "react";
+// import './style.css';
+import { fetchSearchResults } from "./utils";
+import ListItem from "./ListItem";
+import SearchInput from "./SearchInput";
+export default function App() {
+  const [loading, setLoading] = React.useState("");
+  const [query, setQuery] = React.useState("");
 
-import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+  const [results, setResults]: any = React.useState([]);
+  const fetchData = async () => {
+    setLoading("loading...");
+    const res = await fetchSearchResults(query);
+    setResults(res);
+    setLoading("");
+  };
+  React.useEffect(() => {
+    fetchData();
+  }, [query]);
+  const emt = (e: any) => {
+    setQuery("");
+  };
 
-import { AddEdit } from '_components/loans';
-import { Spinner } from '_components';
-import { useLoanService, useUserService,useRateService } from '_services';
+  return (
+    <div>
+      <SearchInput
+        value={query}
+        onChangeText={(e: any) => {
+          setQuery(e.target.value);
+        }}
+      />
+      {loading}
+      <button onClick={emt} className="p-1">
+        reset
+      </button>
 
-export default Edit;
+      <div className="container my-12 mx-auto px-4 md:px-12">
+        {(results?.users?.length>0)?
 
-function Edit(props: any) {
-  const searchParams = useSearchParams();
-    const router = useRouter();
-    const nic = searchParams.get('nic');
-    
-    const loanService = useLoanService();
-    const loan:any = loanService.loan;
+        <>
+        
+        <div className="flex flex-wrap  lg:-mx-4">
+          <div className="flex flex-col md:flex-row w-full  ">
+            <div className="p-1  w-1/2">
+              <h3 className="bg-gray-800 text-white font-bold p-1">
+                {results?.users[0]?.fullName}'s Loans
+              </h3>
+              <div className="border">
+                {results?.users[0]?.my_loans?.map((i: any) => (
+                  <>
+                    <div className="my-1 px-1 w-full ">
+                      <article className="overflow-hidden rounded-lg shadow-md border">
+                        <header className="flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
+                          <h1 className="text-lg">
+                            <a
+                              className="no-underline hover:underline text-black"
+                              href="#"
+                            >
+                              {i?.form_number}
+                            </a>
+                          </h1>
+                          <p className="text-grey-darker text-sm">
+                            {i?.createdAt}
+                          </p>
+                        </header>
 
-    
-    const rateService = useRateService();
-    const rate = rateService.rate;
-const a =nic
-
-    useEffect(() => {
-        if (!a) return;
-        loanService.getByNic(a)
-        rateService.getSelected()
-    }, [a]);
-let n=0
-    return loan
-        ?(<>
-        {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
-        {/* <AddEdit title="EDIT LOAN DETAILS" loan={loan}  rate={rate}/> */}
-        {console.log(loan?.users[0])}
-      <div className="flex flex-col md:flex-row w-full  ">
-        <div className="p-1  w-1/2">
-          <h3 className="bg-gray-200 p-1">{loan?.users[0]?.fullName}'s Loan</h3>
-          <div>
-            {loan?.users[0]?.my_loan?.map((i: any) => (
-              
-              <div key={n++} className="border border-t-0 flex flex-col md:flex-row w-full ">
-                <div className="w-full">{i?.form_number}</div>
-                <div className="pr-2 whitespace-nowrap"> LKR {parseFloat(i?.loan_amount).toFixed(2)}</div>
-                <div>{i?.status}</div>
-                
+                        <footer className="flex items-center justify-between leading-none p-2 pt-1 md:p-4">
+                          <a
+                            className="flex items-center no-underline hover:underline text-black"
+                            href="#"
+                          >
+                            <p className="ml-2 text-sm">
+                              Loan LKR {parseFloat(i?.loan_amount).toFixed(2)}{" "}
+                              for {i?.no_of_month} month
+                            </p>
+                          </a>
+                          <a
+                            className="no-underline text-grey-darker hover:text-red-dark"
+                            href="#"
+                          >
+                            <span>{i?.status}</span>
+                          </a>
+                        </footer>
+                      </article>
+                    </div>
+                  </>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div className="p-1 w-1/2 ">
+              <h3 className="bg-gray-800 text-white font-bold p-1">
+                Related Loans
+              </h3>
+              {results?.users[0]?.my_guarantors?.map((i: any) => (
+                <>
+                  <div className="my-1 px-1 w-full ">
+                    <article className="overflow-hidden rounded-lg shadow-md border">
+                      <header className="flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
+                        <h1 className="text-lg">
+                          <a
+                            className="no-underline hover:underline text-black"
+                            href="#"
+                          >
+                            {i?.form_number}
+                          </a>
+                        </h1>
+                        <p className="text-grey-darker text-sm">
+                          {i?.createdAt}
+                        </p>
+                      </header>
+
+                      <footer className="flex items-center justify-between leading-none p-2 pt-1 md:p-4">
+                        <a
+                          className="flex items-center no-underline hover:underline text-black"
+                          href="#"
+                        >
+                          <p className="ml-2 text-sm">
+                            Loan LKR {parseFloat(i?.loan_amount).toFixed(2)} for{" "}
+                            {i?.no_of_month} month
+                          </p>
+                        </a>
+                        <a
+                          className="no-underline text-grey-darker hover:text-red-dark"
+                          href="#"
+                        >
+                          <span>{i?.status}</span>
+                        </a>
+                      </footer>
+                    </article>
+                  </div>
+                </>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="p-1 w-1/2 ">
-          <h3 className="bg-gray-200 p-1">Related Loans</h3>
-          <div className="border">
-            {loan?.users[0]?.my_guarantors?.map((i: any) => (
-              <div key={n++} className="border border-t-0 flex flex-col md:flex-row w-full ">
-                <div className="w-full">{i?.form_number}</div>
-                <div className="pr-2 whitespace-nowrap"> LKR {parseFloat(i?.loan_amount).toFixed(2)}</div>
-                <div>{i?.status}</div>
-                
-              </div>
-            ))}
-          </div>
-        </div>
+        
+        </>
+        
+        :""}
       </div>
-        </> )
-        : 
-        <Spinner />
-        ;
+    </div>
+  );
 }
-// "use client"
-// import { useSearchParams } from 'next/navigation';
-
-// export default function Page() {
-//   const searchParams = useSearchParams();
-
-//   // E.g. `/dashboard?page=2&order=asc`
-//   const page = searchParams.get('page');
-//   const order = searchParams.get('order');
-
-//   return (
-//     <div>
-//       <p>Page: {page}</p>
-//       <p>Order: {order}</p>
-//     </div>
-//   );
-// }
