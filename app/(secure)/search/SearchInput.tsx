@@ -12,7 +12,8 @@ return (
    type="text"
    value={value}
    onChange={onChangeText}
-   placeholder="Search beer by name"
+   className="w-full p-1"
+   placeholder="Search  by NIC"
   />
  </div>
  
