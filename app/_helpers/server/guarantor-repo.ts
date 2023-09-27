@@ -75,7 +75,6 @@ async function getByNic(nic:any) {
             }
           }
         ])
-        console.log(my_loans)
 
         const my_guarantors=  await Loan.aggregate(
             [  
@@ -102,6 +101,10 @@ async function getByNic(nic:any) {
        }
       ]
       )
+    //   if(my_guarantors && my_loans){
+        
+    //   }
+
         const users:any = await User.aggregate(
             [  {
        
@@ -118,11 +121,7 @@ async function getByNic(nic:any) {
       }
  ]
       
- )
-//  find({nic:nic})
-        
-        
-        .then(async(users)=>{
+ ).then(async(users)=>{
 
 
     //  return users.map(v => ({...v, my_guarantors: my_guarantors}))
