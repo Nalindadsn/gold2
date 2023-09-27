@@ -75,7 +75,6 @@ async function getByNic(nic:any) {
             }
           }
         ])
-        console.log(my_loans)
 
         const my_guarantors=  await Loan.aggregate(
             [  

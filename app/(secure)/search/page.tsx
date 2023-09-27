@@ -3,7 +3,7 @@ import React from "react";
 import { fetchSearchResults } from "./utils";
 import ListItem from "./ListItem";
 import SearchInput from "./SearchInput";
-export default function App() {
+export default function Search() {
   const [loading, setLoading] = React.useState("");
   const [query, setQuery] = React.useState("");
 
@@ -23,37 +23,41 @@ export default function App() {
 
   return (
     <div>
-      
-      
-<div className="container  mx-auto px-4 md:px-12">
-
-      <div className="flex    border bg-gray-800 text-white">
-        <div className="w-full p-1">
-
-
-          <span className="m-2">{results?.users?.length > 0 ? loading?"loading...":<>{results?.users[0]?.fullName}<br/>{results?.users[0]?.nic}</>:""}</span>
-        
-
-          
+      <div className="container  p-0">
+        <div className="flex    border bg-gray-800 text-white">
+          <div className="w-full p-1">
+            <span className="m-2">
+              {results?.users?.length > 0 ? (
+                loading ? (
+                  "loading..."
+                ) : (
+                  <>
+                    {results?.users[0]?.fullName}
+                    <br />
+                    {results?.users[0]?.nic}
+                  </>
+                )
+              ) : (
+                ""
+              )}
+            </span>
           </div>
-        <div className="w-full p-1 css-b62m3t-container">
-          
-      <SearchInput
-      className="w-full"
-        value={query}
-        onChangeText={(e: any) => {
-          setQuery(e.target.value);
-        }}
-      />
+          <div className="w-full p-1 css-b62m3t-container">
+            <SearchInput
+              className="w-full"
+              value={query}
+              onChangeText={(e: any) => {
+                setQuery(e.target.value);
+              }}
+            />
+          </div>
+          <button onClick={emt} className="p-1">
+            reset
+          </button>
         </div>
-        <button onClick={emt} className="p-1">
-        reset
-      </button>
-            </div>
+      </div>
 
-</div>
-
-      <div className="container  mx-auto px-4 md:px-12">
+      <div className="container  p-0">
         {/* {JSON.stringify(results?.users)} */}
         {results?.users?.length > 0 ? (
           <>
@@ -65,17 +69,20 @@ export default function App() {
                   </h3>
                   <div className="border">
                     {results?.users[0]?.my_loans?.map((i: any) => (
-                      <>
-                        <div className="my-1 px-1 w-full ">
+                        <div  key={i?._id} className="my-1 px-1 w-full ">
                           <article className="overflow-hidden rounded-lg shadow-md border">
                             <header className="flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
                               <h1 className="text-lg">
-                                <a
-                                  className="no-underline hover:underline text-black"
-                                  href="#"
-                                >
-                                  {i?.form_number}
-                                </a>
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
+                              >
+                                Ref No : {i?._id}
+                              </div>
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
+                              >
+                                Form Number : {i?.form_number}
+                              </div>
                               </h1>
                               <p className="text-grey-darker text-sm">
                                 {i?.createdAt}
@@ -102,7 +109,6 @@ export default function App() {
                             </footer>
                           </article>
                         </div>
-                      </>
                     ))}
                   </div>
                 </div>
@@ -112,17 +118,21 @@ export default function App() {
                     Related Loans
                   </h3>
                   {results?.users[0]?.my_guarantors?.map((i: any) => (
-                    <>
-                      <div className="my-1 px-1 w-full ">
+                    
+                      <div key={i?._id} className="my-1 px-1 w-full ">
                         <article className="overflow-hidden rounded-lg shadow-md border">
                           <header className="flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
                             <h1 className="text-lg">
-                              <a
-                                className="no-underline hover:underline text-black"
-                                href="#"
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
                               >
-                                {i?.form_number}
-                              </a>
+                                Ref No : {i?._id}
+                              </div>
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
+                              >
+                                Form Number : {i?.form_number}
+                              </div>
                             </h1>
                             <p className="text-grey-darker text-sm">
                               {i?.createdAt}
@@ -135,21 +145,24 @@ export default function App() {
                               href="#"
                             >
                               <p className="ml-2 text-sm">
-                                Creditor : {i?.customer[0]?.fullName}<br/>
-                                Loan LKR {parseFloat(i?.loan_amount).toFixed(2)}{" "}
+                                Creditor : {i?.customer[0]?.fullName}
+                                <br />
+                                Loan LKR {parseFloat(i?.loan_amount).toFixed(
+                                  2
+                                )}{" "}
                                 for {i?.no_of_month} month
                               </p>
                             </a>
                             <a
                               className="no-underline text-grey-darker hover:text-red-dark"
                               href="#"
-                            ><br/>
+                            >
+                              <br />
                               <span>{i?.status}</span>
                             </a>
                           </footer>
                         </article>
                       </div>
-                    </>
                   ))}
                 </div>
               </div>
