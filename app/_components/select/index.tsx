@@ -31,7 +31,7 @@ function App() {
       })
         .then((res: any) => res.json())
         .then((json) => {
-          console.log(json);
+          // console.log(json);
 
           return json.users;
         });

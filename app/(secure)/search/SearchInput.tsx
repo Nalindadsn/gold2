@@ -12,7 +12,7 @@ return (
    type="text"
    value={value}
    onChange={onChangeText}
-   className="w-full p-1"
+   className="w-full p-1 text-gray-500"
    placeholder="Search  by NIC"
   />
  </div>
