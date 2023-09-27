@@ -7,7 +7,6 @@ import { useLoanService, useUserService } from "_services";
 import Link from "next/link";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 import App from "_components/select";
-import Search from "./search/page";
 
 function Page() {
   const loanService = useLoanService();
@@ -29,7 +28,9 @@ function Page() {
       {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates molestias distinctio quisquam libero nesciunt aut quos dolores, impedit ullam esse minus alias iusto, nihil rem pariatur aperiam illo! Obcaecati, officia. */}
 
       <main className=" overflow-hidden ">
-        <div><Search/></div>
+        <div>
+          
+        </div>
         <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
           <div className="mr-6">
             <h1 className="text-4xl font-semibold mb-2">Dashboard</h1>
