@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import AsyncSelect from 'react-select/async';
  
 function App() {
+  let selectedValue:any
+  let setSelectedValue:any
   const [inputValue, setValue] = useState('');
-  const [selectedValue, setSelectedValue] = useState(null);
+   [selectedValue, setSelectedValue] = useState(null);
   const [lValue, setLValue] = useState(null);
  
   // handle input change event
@@ -44,7 +46,16 @@ function App() {
  
   return (
     <div className="App">
-      <div className='flex w-full'>
+      
+      <div className="flex flex-col md:flex-row -mx-1  border-b">
+        <div className="w-full p-1">
+          {
+            selectedValue?<>
+          <h3>Full Name :{selectedValue?.fullName}</h3>
+          <h4>Nic {`   `} :{selectedValue?.nic}</h4></>:""
+          }
+
+        </div>
         
       <AsyncSelect
         cacheOptions
@@ -53,13 +64,15 @@ function App() {
         getOptionLabel={(e:any) => e.fullName}
         getOptionValue={(e:any) => e.nic}
         loadOptions={loadOptions}
+        key={loadOptions.length}
         onInputChange={handleInputChange}
         onChange={handleChange}
-        className="w-full"
-      /><button onClick={emt}>reset</button>
+        className="w-full p-1"
+      />
+      <button onClick={emt} className="p-1">reset</button>
       </div>
       {/* {}{JSON.stringify(loadOptions(inputValue))}- */}
-      <>Selected Value: {JSON.stringify(selectedValue)}</>
+      {/* <>Selected Value: {JSON.stringify(selectedValue)}</> */}
       
 
     </div>
