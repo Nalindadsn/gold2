@@ -16,7 +16,7 @@ export default function Search() {
   };
   React.useEffect(() => {
     fetchData();
-  }, [query]);
+  }, []);
   const emt = (e: any) => {
     setQuery("");
   };
