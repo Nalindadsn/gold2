@@ -112,7 +112,6 @@ async function getByNic(nic:any) {
 const array=null;
 
 
-          console.log(users)
         return {users:users};
 
     } catch {

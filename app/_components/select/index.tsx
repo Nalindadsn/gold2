@@ -14,20 +14,24 @@ function App() {
  
   // handle selection
   const handleChange = (value:any) => {
+    
     setSelectedValue(value);
   }
  
-  const emt = () => {
+  const emt = (e:any) => {
     setSelectedValue(null);
+    setValue("")
   }
  
   // load options using API call
   const loadOptions:any = (inputValue:any) => {
     if(inputValue){
+      
                 const users:any= fetch(`/api/guarantor/nic/${inputValue}`, { cache: 'no-store' }).then(
                   (res:any) => res.json()
                   ).then((json)=>{
                     console.log(json)
+                    
                     
                       return json.users
                   });
