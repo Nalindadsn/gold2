@@ -2,9 +2,6 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-
-import { AddEdit } from '_components/loans';
 import { Spinner } from '_components';
 import { useLoanService, useUserService,useRateService } from '_services';
 
@@ -12,21 +9,17 @@ export default Edit;
 
 function Edit(props: any) {
   const searchParams = useSearchParams();
-    const router = useRouter();
     const nic = searchParams.get('nic');
     
     const loanService = useLoanService();
     const loan:any = loanService.loan;
 
     
-    const rateService = useRateService();
-    const rate = rateService.rate;
 const a =nic
 
     useEffect(() => {
         if (!a) return;
         loanService.getByNic(a)
-        rateService.getSelected()
     }, [a]);
 let n=0
     return loan
