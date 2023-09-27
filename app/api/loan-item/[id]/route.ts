@@ -54,8 +54,8 @@ async function updateItem(req: Request, { params: { id } }: any) {
     
     
 
-    // console.log("params2");
-    // console.log(body);
+    console.log("params2");
+    console.log(body);
 
 
     const loan= await loansRepo.getById(id);

@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Link from "next/link";
+
+import { NavLink } from "_components";
 import { useUserService } from "_services";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
 export { NavB };
@@ -12,7 +20,7 @@ function NavB() {
 
   useEffect(() => {
     userService.getCurrent();
-  }, [userService]);
+  }, []);
 
   return (
     <>

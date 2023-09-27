@@ -26,7 +26,7 @@ function Sidebar() {
   
     useEffect(() => {
       userService.getCurrent();
-  }, [userService]);
+  }, []);
   
   const router = useRouter();
   const submitHandler = async (e: any) => {
