@@ -61,7 +61,7 @@ function Edit() {
                   {loan?.users?  loan?.users[0]?.fullName:""}'s Loans
                   </h3>
                   <div className="border">
-                  {loan?.users?  loan?.users[0]?.fullName:""}
+                  {/* {loan?.users?  loan?.users[0]?.fullName:""} */}
                     {/* {loan?.users[0]?.my_loans?.map((i: any) => ( */}
                       <></>
                     {/* ))} */}
