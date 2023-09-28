@@ -70,7 +70,7 @@ function Edit() {
                                 </a>
                                 <a
                                   className="no-underline text-grey-darker hover:text-red-dark"
-                                  href="#"
+                                  href=""
                                 >
                                   <br />
                                   
