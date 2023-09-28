@@ -22,7 +22,6 @@ function Edit() {
           <div className="flex    border bg-gray-800 text-white">
             <div className="w-full p-1">
               <div className="m-2">
-
               </div>
             </div>
           </div>
@@ -37,7 +36,6 @@ function Edit() {
                       <h3 className="bg-gray-800 text-white font-bold p-1">
                         <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
                           {/* {loan?.users[0]?.fullName}'s Loans */}
-                          
                         </h3>
                         {loan?.users[0]?.my_loans.map((i: any) => (
                           <div key={i?._id} className="my-1 px-1 w-full ">
@@ -71,10 +69,10 @@ function Edit() {
                                 </a>
                                 <a
                                   className="no-underline text-grey-darker hover:text-red-dark"
-                                  href=""
+                                  href="#"
                                 >
                                   <br />
-                                  
+
                                   <span>{i?.status}</span>
                                 </a>
                               </footer>
