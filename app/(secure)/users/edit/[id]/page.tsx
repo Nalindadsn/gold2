@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import {  useRouter, useSearchParams } from 'next/navigation';
 
 import { AddEdit } from '_components/users';
 import { Spinner } from '_components';
@@ -27,14 +27,12 @@ function Edit({ params: { id } }: any) {
 
         // fetch user for add/edit form
         userService.getById(id)
-    }, [router]);
+    }, [router,userService,id]);
 
     return user
         ? 
         <>
-        
-        <AddEdit title="- Edit User" user={user} loan_id={loan_id} />
-        
+            <AddEdit title="- Edit User" user={user} loan_id={loan_id} />
         </>
         : <Spinner />;
 }

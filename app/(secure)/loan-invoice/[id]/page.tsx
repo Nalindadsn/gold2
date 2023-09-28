@@ -37,10 +37,10 @@ function Edit(props: any) {
 
 
 
-    }, [router]);
+    }, [router,loanService,rateService,props]);
     useEffect(() => {
       setIsClient(true)
-    }, [])
+    }, [setIsClient])
     return loan
         ?(<>
         <div className="flex w-full">

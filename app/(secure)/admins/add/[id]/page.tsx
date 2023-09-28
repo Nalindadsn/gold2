@@ -16,10 +16,8 @@ function Edit({ params: { id } }: any) {
 
     useEffect(() => {
         if (!id) return;
-
-        // fetch user for add/edit form
         userService.getById(id)
-    }, [router]);
+    }, [router,id,userService]);
 
     return user
         ? 

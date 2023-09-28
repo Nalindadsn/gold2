@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { useAlertService } from '_services';
-import { FaUserCircle } from '@react-icons/all-files/fa/FaUserCircle';
 
 export { Alert };
 
@@ -16,7 +15,7 @@ function Alert() {
     useEffect(() => {
         // clear alert on location change
         alertService.clear();
-    }, [pathname]);
+    }, [pathname,alertService]);
 
     if (!alert) return null;
 

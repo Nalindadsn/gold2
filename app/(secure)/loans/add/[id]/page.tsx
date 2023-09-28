@@ -27,7 +27,7 @@ function Edit(props:any) {
         userService.getById(props.params.id)
         
         rateService.getSelected()
-    }, [router]);
+    }, [router,userService,rateService,props]);
 
     return user
         ?<>

@@ -26,7 +26,7 @@ function Edit(props: any) {
         if (!props.params.id) return;
         loanService.getById(props.params.id)
         rateService.getSelected()
-    }, [router]);
+    }, [router,loanService,rateService,props]);
 
     return loan
         ?(<>

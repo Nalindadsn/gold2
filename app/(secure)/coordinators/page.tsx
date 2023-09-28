@@ -17,7 +17,7 @@ function Users() {
 
   useEffect(() => {
     userService.getCurrent();
-}, []);
+}, [userService]);
 
   const column: any = [
     {
@@ -99,7 +99,7 @@ function Users() {
   useEffect(() => {
     
     userService.getAllCoordinators();
-  }, [users]);
+  }, [users,userService]);
 
   return (
     <>

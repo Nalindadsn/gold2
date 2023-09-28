@@ -19,7 +19,7 @@ function Edit({ params: { id } }: any) {
 
         // fetch user for add/edit form
         userService.getById(id)
-    }, [router]);
+    }, [router,userService,id]);
 
     return user
         ? 

@@ -64,7 +64,7 @@ function Rates() {
     
     
     rateService.getAll();
-  }, [rates]);
+  }, [rates,rateService]);
 
   return (
     <>

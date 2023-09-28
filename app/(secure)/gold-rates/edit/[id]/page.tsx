@@ -18,7 +18,7 @@ function Edit(props: any) {
     useEffect(() => {
         if (!props.params.id) return;
         rateService.getById(props.params.id)
-    }, [router]);
+    }, [router,rateService,props]);
 
     return rate
         ?(<>
