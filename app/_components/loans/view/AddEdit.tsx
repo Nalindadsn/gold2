@@ -80,7 +80,6 @@ function View({ title, loan }: { title: string; loan?: any }) {
 					</div>
 					
 				</div>
-				
 				<div className="relative inline-block">
 					<div className="text-gray-500 cursor-pointer w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center">
 						<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -100,21 +99,21 @@ function View({ title, loan }: { title: string; loan?: any }) {
 			<div className="w-2/4">
 				<div className="mb-2 md:mb-1 md:flex items-center">
 					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Invoice No.</label>
-					<span className="mr-4 inline-block hidden md:block">:</span>
+					<span className="mr-4 inline-block md:block">:</span>
 					<div className="flex-1">
 					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="text" placeholder="eg. #INV-100001" x-model="invoiceNumber" />
 					</div>
 				</div>
 				<div className="mb-2 md:mb-1 md:flex items-center">
 					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Invoice Date</label>
-					<span className="mr-4 inline-block hidden md:block">:</span>
+					<span className="mr-4 inline-block md:block">:</span>
 					<div className="flex-1">
 					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 js-datepicker" type="text" id="datepicker1" placeholder="eg. 17 Feb, 2020" x-model="invoiceDate"  />
 					</div>
 				</div>
 				<div className="mb-2 md:mb-1 md:flex items-center">
 					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Due date</label>
-					<span className="mr-4 inline-block hidden md:block">:</span>
+					<span className="mr-4 inline-block md:block">:</span>
 					<div className="flex-1">
 					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 js-datepicker-2" id="datepicker2" type="text" placeholder="eg. 17 Mar, 2020" x-model="invoiceDueDate"/>
 					</div>
