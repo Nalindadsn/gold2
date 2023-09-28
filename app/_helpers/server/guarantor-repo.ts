@@ -122,9 +122,6 @@ async function getByNic(nic:any) {
  ]
       
  ).then(async(users)=>{
-
-
-    //  return users.map(v => ({...v, my_guarantors: my_guarantors}))
       return users
 })
     
