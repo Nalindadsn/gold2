@@ -25,7 +25,7 @@ function Edit() {
               <div className="m-2">
           
                   <div>Full Name : {loan?.users?loan?.users[0]?.fullName:"FULL NAME"}</div>
-                        <div>NIC : {loan?.users?loan?.users[0]?.nic:"000000000V"}</div>
+                        {/* <div>NIC : {loan?.users?loan?.users[0]?.nic:"000000000V"}</div> */}
                 
               </div>
             </div>
