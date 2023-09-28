@@ -40,7 +40,7 @@ function Edit() {
             <span className="m-2">
              
                   <>
-                    {  loan?.users[0]?.fullName}
+                    {loan?.users[0]?.fullName}
                     <br />
                     {loan?.users[0]?.nic}
                   </>
@@ -58,7 +58,7 @@ function Edit() {
               <div className="flex flex-col md:flex-row w-full  space-x-1 ">
                 <div className="p-1   md:w-full border mt-1">
                   <h3 className="bg-gray-800 text-white font-bold p-1">
-                  {JSON.stringify(loan?.users[0]?.fullName)  }
+                  {/* {JSON.stringify(loan?.users[0]?.fullName)  } */}
                     {/* {console.log(loan?.users )} */}
                   {/* {loan?.users?  loan?.users[0]?.fullName:""}'s Loans */}
                   </h3>
