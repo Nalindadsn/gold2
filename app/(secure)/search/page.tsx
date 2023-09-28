@@ -61,7 +61,7 @@ function Edit() {
                   {loan?.users?  loan?.users[0]?.fullName:""}'s Loans
                   </h3>
                   <div className="border">
-                    {JSON.stringify(loan?.users[0]?.my_loans)}
+                    {JSON.stringify(loan? loan:"no")}
                     {/* {loan?.users[0]?.my_loans?.map((i: any) => ( */}
                       <></>
                     {/* ))} */}
