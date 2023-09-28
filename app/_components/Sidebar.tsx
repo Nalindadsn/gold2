@@ -7,10 +7,13 @@ import { useRouter } from "next/navigation";
 import { useUserService } from '_services';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useSearchParams } from 'next/navigation';
+
 export { Sidebar };
 
 function Sidebar() {
-    const [loggingOut, setLoggingOut] = useState<boolean>(false);
+   const [loggingOut, setLoggingOut] = useState<boolean>(false);
+   const [search, setSearch] = useState("");
 
     async function logout() {
         setLoggingOut(true);
@@ -24,6 +27,10 @@ function Sidebar() {
     const userService = useUserService();
     const user:any = userService.currentUser;
   
+    const searchParams = useSearchParams();
+
+    // E.g. `/dashboard?page=2&order=asc`
+    const nic = searchParams.get('nic');
     useEffect(() => {
       userService.getCurrent();
   }, []);
@@ -31,7 +38,7 @@ function Sidebar() {
   const router = useRouter();
   const submitHandler = async (e: any) => {
    e.preventDefault();
-   router.push("/search");
+   router.push(`/search?nic=${search}`);
   }
   return <>
   
@@ -45,6 +52,7 @@ function Sidebar() {
               onSubmit={submitHandler}>
                                 <div className="relative group ">
                                     <input type="text"
+                                    onChange={(e)=>setSearch(e.target.value)}
                                         className="form-input rounded-md bg-gray-700 text-sm text-gray-300 pl-10 py-1.5 ml-5 border-transparent border-none outline-none focus:ring-0 focus:text-white transition-all duration-300 ease-in-out focus:w-60 w-48"
                                         placeholder="Search..." />
                                     <span

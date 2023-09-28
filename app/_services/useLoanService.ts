@@ -74,7 +74,7 @@ function useLoanService(): ILoanService {
     getByNic: async (id) => {
       loanStore.setState({ loan: undefined });
       try {
-        loanStore.setState({ loan: await fetch.get(`/api/loans/${id}`) });
+        loanStore.setState({ loan: await fetch.get(`/api/guarantor/nic/${id}`) });
       } catch (error: any) {
         alertService.error(error);
       }
