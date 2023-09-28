@@ -52,7 +52,118 @@ function Edit() {
       </div>
 
       <div className="container  p-0">
+{loan?.users? loan?.users?.length > 0 ? (
+          <>
+            <div className=" ">
+              <div className="flex flex-col md:flex-row w-full  space-x-1 ">
+                <div className="p-1   md:w-full border mt-1">
+                  <h3 className="bg-gray-800 text-white font-bold p-1">
+                  {loan?.users?  loan?.users[0]?.fullName:""}'s Loans
+                  </h3>
+                  <div className="border">
+                    {loan?.users[0]?.my_loans?.map((i: any) => (
+                        <div  key={i?._id} className="my-1 px-1 w-full ">
+                          <article className="overflow-hidden rounded-lg shadow-md border">
+                            <header className="flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
+                              <h1 className="text-lg">
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
+                              >
+                                Ref No : {i?._id}
+                              </div>
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
+                              >
+                                Form Number : {i?.form_number}
+                              </div>
+                              </h1>
+                              <p className="text-grey-darker text-sm">
+                                {i?.createdAt}
+                              </p>
+                            </header>
 
+                            <footer className="flex items-center justify-between leading-none p-2 pt-1 md:p-4">
+                              <a
+                                className="flex items-center no-underline hover:underline text-black"
+                                href="#"
+                              >
+                                <p className="ml-2 text-sm">
+                                  Loan LKR{" "}
+                                  {parseFloat(i?.loan_amount).toFixed(2)} for{" "}
+                                  {i?.no_of_month} month
+                                </p>
+                              </a>
+                              <a
+                                className="no-underline text-grey-darker hover:text-red-dark"
+                                href="#"
+                              >
+                                <span>{i?.status}</span>
+                              </a>
+                            </footer>
+                          </article>
+                        </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-1  md:w-full border mt-1">
+                  <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
+                    Related Loans
+                  </h3>
+                  {/* {loan?.users[0]?.my_guarantors?.map((i: any) => (
+                    
+                      <div key={i?._id} className="my-1 px-1 w-full ">
+                        <article className="overflow-hidden rounded-lg shadow-md border">
+                          <header className="flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
+                            <h1 className="text-lg">
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
+                              >
+                                Ref No : {i?._id}
+                              </div>
+                              <div
+                                className="no-underline hover:underline text-black text-sm ml-2"
+                              >
+                                Form Number : {i?.form_number}
+                              </div>
+                            </h1>
+                            <p className="text-grey-darker text-sm">
+                              {i?.createdAt}
+                            </p>
+                          </header>
+
+                          <footer className="flex items-center justify-between leading-none p-2 pt-1 md:p-4">
+                            <a
+                              className="flex items-center no-underline hover:underline text-black"
+                              href="#"
+                            >
+                              <p className="ml-2 text-sm">
+                                Creditor : {i?.customer[0]?.fullName}
+                                <br />
+                                Loan LKR {parseFloat(i?.loan_amount).toFixed(
+                                  2
+                                )}{" "}
+                                for {i?.no_of_month} month
+                              </p>
+                            </a>
+                            <a
+                              className="no-underline text-grey-darker hover:text-red-dark"
+                              href="#"
+                            >
+                              <br />
+                              <span>{i?.status}</span>
+                            </a>
+                          </footer>
+                        </article>
+                      </div>
+                  ))} */}
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          ""
+        ):""}
         {}
       </div>
     </div>
