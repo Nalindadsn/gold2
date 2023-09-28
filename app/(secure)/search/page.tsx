@@ -62,7 +62,7 @@ function Edit() {
                   <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
                     Related Loans
                   </h3>
-                  {/* {loan?.users[0]?.my_guarantors?.map((i: any) => (
+                  {loan?.users[0]?.my_guarantors.map((i: any) => (
                     
                       <div key={i?._id} className="my-1 px-1 w-full ">
                         <article className="overflow-hidden rounded-lg shadow-md border">
@@ -107,7 +107,7 @@ function Edit() {
                           </footer>
                         </article>
                       </div>
-                  ))} */}
+                  ))}
                 </div>
               </div>
             </div>
