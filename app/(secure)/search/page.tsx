@@ -33,7 +33,6 @@ function Edit() {
     return nic
         ?(<>
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
-nic = {nic}  {console.log(loan)}
 <div>
       <div className="container  p-0">
         <div className="flex    border bg-gray-800 text-white">
