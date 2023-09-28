@@ -22,8 +22,7 @@ function Edit() {
           <div className="flex    border bg-gray-800 text-white">
             <div className="w-full p-1">
               <div className="m-2">
-<div>Full Name : </div>
-<div>NIC : </div>
+
               </div>
             </div>
           </div>
