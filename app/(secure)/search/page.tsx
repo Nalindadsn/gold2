@@ -40,7 +40,7 @@ function Edit() {
             <span className="m-2">
              
                   <>
-                    {  loan?.users[0]?.fullName}
+                    {loan?.users[0]?.fullName}
                     <br />
                     {loan?.users[0]?.nic}
                   </>
@@ -52,7 +52,7 @@ function Edit() {
       </div>
 
       <div className="container  p-0">
-{loan?.users? loan?.users?.length > 0 ? (
+{ loan?.users?.length > 0 ? (
           <>
             <div className=" ">
               <div className="flex flex-col md:flex-row w-full  space-x-1 ">
@@ -166,7 +166,7 @@ function Edit() {
           </>
         ) : (
           ""
-        ):""}
+        )}
         {}
       </div>
     </div>
