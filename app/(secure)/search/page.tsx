@@ -42,7 +42,7 @@ function Edit() {
                   <>
                     {loan?.user?  loan?.users[0]?.fullName:""}
                     <br />
-                    {/* {loan?.users[0]?.nic} */}
+                    {loan?.users[0]?.nic}
                   </>
                 
             </span>
