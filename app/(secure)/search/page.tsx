@@ -58,7 +58,7 @@ function Edit() {
               <div className="flex flex-col md:flex-row w-full  space-x-1 ">
                 <div className="p-1   md:w-full border mt-1">
                   <h3 className="bg-gray-800 text-white font-bold p-1">
-                  {loan?.users?  loan?.users[0]?.fullName:""}'s Loans
+                  {/* {loan?.users?  loan?.users[0]?.fullName:""}'s Loans */}
                   </h3>
                   <div className="border">
                   {/* {loan?.users?  loan?.users[0]?.fullName:""} */}
