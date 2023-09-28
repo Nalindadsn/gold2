@@ -25,8 +25,8 @@ function Edit() {
               <div className="m-2">
           
                   <div>Full Name : {loan?.users?loan?.users[0]?.fullName:"FULL NAME"}</div>
-         {/*                <div>NIC : {loan?.users?loan?.users[0]?.nic:"000000000V"}</div>
-                 */}
+                        <div>NIC : {loan?.users?loan?.users[0]?.nic:"000000000V"}</div>
+                
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@ function Edit() {
                     <div className="p-1   md:w-full border mt-1">
                       <h3 className="bg-gray-800 text-white font-bold p-1">
                         <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
-                          {/* {loan?.users[0]?.fullName}'s Loans */}
+                        {loan?.users?loan?.users[0]?.fullName:"FULL NAME"}'s Loans
                         </h3>
                         {loan?.users[0]?.my_loans.map((i: any) => (
                           <div key={i?._id} className="my-1 px-1 w-full ">
