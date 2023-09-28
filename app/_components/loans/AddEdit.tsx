@@ -270,7 +270,7 @@ alertService.error(message, true);
         setReviews([]);
       }
     } catch (err) {
-      //enqueueSnackbar(getError(err), { variant: 'error' });
+      //enqueueSnackbar(getError(e rr), { variant: 'error' });
     }
   }, [loan]);
   const fetchGuarantor = useCallback(async () => {
