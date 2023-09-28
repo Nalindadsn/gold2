@@ -40,7 +40,7 @@ function Edit() {
             <span className="m-2">
              
                   <>
-                    {loan?.users?  loan?.users[0]?.fullName:""}
+                    {  loan?.users[0]?.fullName}
                     <br />
                     {loan?.users[0]?.nic}
                   </>
