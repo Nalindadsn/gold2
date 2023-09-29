@@ -907,13 +907,13 @@ alertService.success(message, true);
                             </div>
                           </div>
                           <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t"><span className={` px-2 ${((i?.net_weight/i?.total_weight*100)==100)?"  border-1 border-orange-600":"  border-1 border-red-500 "}`}>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
-                          <span className={`ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
+                          <span className={`md:ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
                             Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
                           </span>
                           
                           
 
-                          <span className={`ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
+                          <span className={`md:ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
                             Amount : {(((actual_karat(i?.net_weight/i?.total_weight*100)).value)*i?.pound).toFixed(2)}
                           </span>
                                 
