@@ -35,7 +35,7 @@ function Edit() {
         </div>
         <div className="container  p-0">
           {loan?.users ? (
-            loan?.users.length > 0 ? (
+            loan?.users?.length > 0 ? (
               <>
                 <div className=" ">
                   <div className="flex flex-col md:flex-row w-full  space-x-1 ">
@@ -43,7 +43,12 @@ function Edit() {
                       <h3 className="bg-gray-800 text-white font-bold p-1">
                         <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
                           
-                          {loan?.users[0]?.fullName}'s Loans
+                        {(loan?.users) ? (((loan?.users).length > 0) ? (
+
+<div className="m-2">
+<div>Full Name : { loan?.users[0]?.fullName}</div>
+</div>
+):""):""}'s Loans
                         </h3>
                         {loan?.users[0]?.my_loans.map((i: any) => (
                           <div key={i?._id} className="my-1 px-1 w-full ">
