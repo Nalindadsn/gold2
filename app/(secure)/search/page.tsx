@@ -22,7 +22,9 @@ function Edit() {
           <div className="flex    border bg-gray-800 text-white">
             <div className="w-full p-1">
               <div className="m-2">
-
+{/* {loan?.users[0]?.fullName}'s Loans */}
+<div>Full Name : {loan?.users?loan?.users[0]?.fullName:"FULL NAME"}</div>
+                          <div>NIC : {loan?.users?loan?.users[0]?.nic:"FULL NAME"}</div>
               </div>
             </div>
           </div>
@@ -35,10 +37,9 @@ function Edit() {
                   <div className="flex flex-col md:flex-row w-full  space-x-1 ">
                     <div className="p-1   md:w-full border mt-1">
                       <h3 className="bg-gray-800 text-white font-bold p-1">
-                        <div className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
-                          {/* {loan?.users[0]?.fullName}'s Loans */}
-                          <div>Full Name : {loan?.users?loan?.users[0]?.fullName:"FULL NAME"}</div>
-                        </div>
+                        <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
+                          {loan?.users[0]?.fullName}'s Loans
+                        </h3>
                         {loan?.users[0]?.my_loans.map((i: any) => (
                           <div key={i?._id} className="my-1 px-1 w-full ">
                             <article className="overflow-hidden rounded-lg shadow-md border">
