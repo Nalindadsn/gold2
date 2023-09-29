@@ -1,7 +1,8 @@
 "use client"
 import React, { useState } from 'react';
 import AsyncSelect from 'react-select/async';
- 
+import Link from "next/link";
+
 function App() {
   let selectedValue:any
   let setSelectedValue:any
@@ -51,7 +52,7 @@ function App() {
         <div className="w-full p-1">
           {
             selectedValue?<>
-          <h3>Full Name :{selectedValue?.fullName}</h3>
+          <h3>Full Name :<Link href={`/search?nic=${selectedValue?.nic}`}>{selectedValue?.fullName}</Link> </h3>
           <h4>Nic {`   `} :{selectedValue?.nic}</h4></>:""
           }
 
