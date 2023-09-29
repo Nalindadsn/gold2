@@ -19,11 +19,13 @@ function Edit(props: any) {
     useEffect(() => {
         if (!props.params.id) return;
         settingService.getById(props.params.id)
-    }, [router,settingService,props]);
+    }, [router]);
 
     return setting
         ?(<>
         <AddEdit title="EDIT RATES " setting={setting}/>
         </> )
-        : <Spinner />;
+        : 
+        <Spinner />
+        ;
 }

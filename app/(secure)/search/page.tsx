@@ -14,7 +14,7 @@ function Edit() {
   useEffect(() => {
     if (!nic) return;
     loanService.getByNic(nic);
-  }, [nic,loanService]);
+  }, [nic]);
   return loan ? (
     <>
       <div>
@@ -22,6 +22,7 @@ function Edit() {
           <div className="flex    border bg-gray-800 text-white">
             <div className="w-full p-1">
               <div className="m-2">
+
               </div>
             </div>
           </div>
@@ -69,10 +70,10 @@ function Edit() {
                                 </a>
                                 <a
                                   className="no-underline text-grey-darker hover:text-red-dark"
-                                  href="#"
+                                  href=""
                                 >
                                   <br />
-
+                                  
                                   <span>{i?.status}</span>
                                 </a>
                               </footer>

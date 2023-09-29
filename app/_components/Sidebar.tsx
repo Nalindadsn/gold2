@@ -33,7 +33,7 @@ function Sidebar() {
     const nic = searchParams.get('nic');
     useEffect(() => {
       userService.getCurrent();
-  }, [userService]);
+  }, []);
   
   const router = useRouter();
   const submitHandler = async (e: any) => {

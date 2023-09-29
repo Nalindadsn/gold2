@@ -7,6 +7,8 @@ import { Spinner } from "_components";
 import { useUserService } from "_services";
 import { useRouter } from 'next/navigation';
 
+
+
 export default Users;
 
 function Users() {
@@ -55,15 +57,13 @@ function Users() {
               
 {user?.role=="ADMIN"?
  <>
-              <Link
-                href={`/admins/edit/${row.id}`}
-                className="btn btn-sm btn-warning me-1  focus:bg-yellow-500"
-              >
-                Edit
-              </Link>
-
  
- 
+ <Link
+ href={`/coordinators/edit/${row.id}`}
+ className="btn btn-sm btn-warning me-1  focus:bg-yellow-500"
+>
+ Edit
+</Link>
               <button
                 onClick={() =>{ userService.delete(row.id);
                     setRecords(null)
@@ -81,6 +81,7 @@ function Users() {
                 )}
               </button>
  </>
+
 :""}             
             </div>
       </>),
@@ -101,19 +102,19 @@ function Users() {
 
   useEffect(() => {
     
-    userService.getAllAdmins();
+    userService.getAllCoordinators();
   }, [users]);
 
   return (
     <>
       <div className="p-1 flex w-full clear-both flex-col md:flex-row -mx-1 py-2  mb-1">
-        <h1 className="w-full text-2xl font-bold ">- ADMINS</h1>
+        <h1 className="w-full text-2xl font-bold ">- Coordinators</h1>
         <Link
-          href="/admins/add"
+          href="/coordinators/add"
           className="text-right btn btn-primary"
           style={{ whiteSpace: "nowrap" }}
         >
-          + New Admin
+          + New Coordinator
         </Link>
       </div>
       
@@ -235,6 +236,7 @@ function Users() {
               <div>ID : {user.id}</div>
               <div>Username : {user.username}</div>
               <div>NIC : {user.nic}</div>
+              <div>Role : {user.role}</div>
             </div>
             <div style={{ whiteSpace: "nowrap" }} className="">
               <Link
@@ -244,7 +246,7 @@ function Users() {
                 Add Loan
               </Link>
               <Link
-                href={`/users/edit/${user.id}`}
+                href={`/coordinators/edit/${user.id}`}
                 className="btn btn-sm btn-warning me-1"
               >
                 Edit

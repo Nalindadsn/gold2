@@ -270,9 +270,9 @@ alertService.error(message, true);
         setReviews([]);
       }
     } catch (err) {
-      //enqueueSnackbar(getError(e rr), { variant: 'error' });
+      //enqueueSnackbar(getError(err), { variant: 'error' });
     }
-  }, [loan]);
+  }, []);
   const fetchGuarantor = useCallback(async () => {
     try {
       if (loan) {
@@ -284,7 +284,7 @@ alertService.error(message, true);
     } catch (err) {
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
-  }, [loan]);
+  }, []);
   let n: any = 1;
   const net_weight_cal: any = (parseFloat(net_weight) / 8).toFixed(4);
   useEffect(() => {

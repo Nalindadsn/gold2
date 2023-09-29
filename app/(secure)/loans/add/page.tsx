@@ -14,7 +14,7 @@ function Add() {
 
     useEffect(() => {
         rateService.getSelected()
-    }, [rateService]);
+    }, []);
     return rate?<AddEdit title="ADD LOAN DETAILS" rate={rate}/>:
     <Spinner />;
 }

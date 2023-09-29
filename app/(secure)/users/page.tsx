@@ -22,7 +22,7 @@ function Users() {
 
   useEffect(() => {
     userService.getCurrent();
-}, [userService]);
+}, []);
 
   const column: any = [
     {
@@ -108,7 +108,7 @@ function Users() {
   useEffect(() => {
     
     userService.getAll();
-  }, [users,userService]);
+  }, [users]);
 
   return (
     <>

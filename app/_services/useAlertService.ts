@@ -23,7 +23,7 @@ function useAlertService(): IAlertService {
             });
         },
         clear: () => {
-            alertStore?.setState(state => {
+            alertStore.setState(state => {
                 let alert = state.alert;
     
                 // if showAfterRedirect is true the alert is kept for

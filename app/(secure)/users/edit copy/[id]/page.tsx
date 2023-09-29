@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
-import {  AddEditAdmin } from '_components/users';
+import { AddEdit } from '_components/users';
 import { Spinner } from '_components';
 import { useUserService } from '_services';
 
@@ -14,14 +14,6 @@ function Edit({ params: { id } }: any) {
     const userService = useUserService();
     const user = userService.user;
 
- 
- 
-    const searchParams = useSearchParams()
- 
-    const loan_id = searchParams.get('id')
-
-
-// console.log(loan_id)
     useEffect(() => {
         if (!id) return;
 
@@ -33,7 +25,7 @@ function Edit({ params: { id } }: any) {
         ? 
         <>
         
-        <AddEditAdmin title="- EDIT ADMIN/COORDINATOR" user={user} loan_id={loan_id} />
+        <AddEdit title="- Edit User" user={user} />
         
         </>
         : <Spinner />;

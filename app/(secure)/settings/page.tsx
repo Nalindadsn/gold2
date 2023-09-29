@@ -60,7 +60,7 @@ function Settings() {
     
     
     settingService.getAll();
-  }, [settingService]);
+  }, [settings]);
 
   return (
     <>

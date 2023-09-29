@@ -19,12 +19,15 @@ function Edit({ params: { id } }: any) {
 
         // fetch user for add/edit form
         userService.getById(id)
-    }, [router,userService,id]);
+    }, [router]);
 
     return user
         ? 
         <>
-            <AddEdit title="UPDATE CUSTOMER" user={user} />
+        {/* {console.log(user)} */}
+        
+        <AddEdit title="UPDATE CUSTOMER" user={user} />
+        
         </>
         : <Spinner />;
 }

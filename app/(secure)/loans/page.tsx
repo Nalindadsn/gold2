@@ -19,7 +19,7 @@ function Loans() {
     loanService.getAll();
     
     userService.getCurrent();
-  }, [loanService,userService]);
+  }, []);
   const formatDate = (dateString: any) => {
     const options: any = {
       year: "numeric",

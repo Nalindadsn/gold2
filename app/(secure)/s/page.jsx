@@ -28,7 +28,7 @@ function Edit() {
     useEffect(() => {
         if (!nic) return;
         loanService.getByNic(nic)
-    }, [nic,loanService]);
+    }, [nic]);
 
     return nic
         ?(<>

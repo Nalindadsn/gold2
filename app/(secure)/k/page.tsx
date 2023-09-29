@@ -28,12 +28,12 @@ function Page() {
 
   useEffect(() => {
       userService.getCurrent();
-  }, [userService]);
+  }, []);
 
   
   useEffect(() => {
       loanService.getSummary()
-  }, [loanService]);
+  }, []);
 
   return (
     <div>
