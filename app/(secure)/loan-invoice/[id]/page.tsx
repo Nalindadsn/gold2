@@ -2,15 +2,13 @@
 "use client"
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import Invoice from "./Invoice";
-import PdfCard from "./PdfCard";
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { AddEdit } from '_components/loans';
-import { AddEdit as AddEditGuarantor } from '_components/guarantor';
+
 import { Spinner } from '_components';
-import { useLoanService, useUserService } from '_services';
+import { useLoanService } from '_services';
 import Link from "next/link";
 
 import { useRateService } from "_services";
@@ -30,12 +28,16 @@ function Edit(props: any) {
 
          const [isClient, setIsClient] = useState(false)
 
+        const rate = rateService.rate;
+         
     useEffect(() => {
         if (!props.params.id) return;
         loanService.getById(props.params.id)
         rateService.getAll()
 
 
+
+        rateService.getSelected()
 
     }, [router]);
     useEffect(() => {
@@ -46,7 +48,7 @@ function Edit(props: any) {
         <div className="flex w-full">
           <div className="w-full"></div>
           
-        <PDFDownloadLink document={<Invoice  loan={loan}/>} fileName='invoice.pdf'>
+        <PDFDownloadLink document={<Invoice  loan={loan}  rates={rates} rate={rate} />} fileName='invoice.pdf'>
        <div className="btn btn-sm btn-warning me-1 float-right rounded-0 focus:bg-yellow-500">
           {/* <HiOutlineDownload size={14}/> */}
           {/* <Invoice loan={loan} /> */}
@@ -59,7 +61,7 @@ function Edit(props: any) {
              { isClient ?
         <div className="overflow-scroll">
           <PDFViewer width="1000" height="650" className="app" >
-            <Invoice loan={loan} rates={rates} />
+            <Invoice loan={loan} rates={rates} rate={rate} />
           </PDFViewer>
          
 
