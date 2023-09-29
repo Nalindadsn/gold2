@@ -73,7 +73,8 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
 
           const styles = StyleSheet.create({
             page: {fontSize: 11,paddingTop: 20,paddingLeft: 40,paddingRight: 40,lineHeight: 1.5,flexDirection: 'column' },
-    
+            cellsp: { fontSize: 11,whiteSpace: "nowrap" },
+
             spaceBetween : {flex : 1,flexDirection: 'row',alignItems:'center',justifyContent:'space-between',color: "#3E3E3E" },
     
             titleContainer: {flexDirection: 'row',marginTop: 24},
@@ -330,7 +331,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
                          <Text >{receipt.name}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
-                        <Text > LKR {((actual_karat(receipt?.net_weight/receipt?.total_weight*100).value)*(parseFloat(receipt.net_weight) / 8)).toFixed(2)}</Text>   
+                        <Text  style={[styles.cellsp]}> LKR {((actual_karat(receipt?.net_weight/receipt?.total_weight*100).value)*(parseFloat(receipt.net_weight) / 8)).toFixed(2)}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
                          <Text >GIVEN&nbsp; : {receipt.karat}</Text>   
