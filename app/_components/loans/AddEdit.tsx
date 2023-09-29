@@ -443,14 +443,26 @@ return installment(
 
     data.loan_amount=((parseFloat(watchExpectedPriceOld) <= max_price) ? parseFloat(watchExpectedPriceOld).toFixed(2):max_price.toFixed(2)).toString()
     
-    data.payable_in_hand=parseFloat(payment_values_amount(
+    data.payable_in_hand=loan? payment_values_amount(
+      parseFloat(watchExpectedPriceOld),
+      parseFloat(status),
+      parseFloat(watchNoOfMonth)
+    ):parseFloat(payment_values_amount(
       parseFloat(watchExpectedPriceOld),
       parseFloat(status),
       parseFloat(watchNoOfMonth)
     ).toString()).toString(2) 
+
+
     data.monthly_installment=(parseFloat(installmentV(watchExpectedPriceOld,max_price,watchNoOfMonth)).toFixed(2)).toString()
 
     const dataV: any = data;
+console.log(payment_values_amount(
+      parseFloat(watchExpectedPriceOld),
+      parseFloat(status),
+      parseFloat(watchNoOfMonth)
+    ))
+    console.log(data)
 
     if (loan) {
     } else {
@@ -1153,12 +1165,12 @@ alertService.success(message, true);
                     parseFloat(watchNoOfMonth)
                   )} 
                 />
-                {(watchExpectedPriceOld - max_price).toFixed(2)}
+                {/* {(watchExpectedPriceOld - max_price).toFixed(2)}
                 {payment_values_amount(
                     parseFloat(watchExpectedPriceOld),
                     parseFloat(status),
                     parseFloat(watchNoOfMonth)
-                  )}
+                  )} */}
                 <div className="invalid-feedback">
                   {errors.payable_in_hand?.message?.toString()}
                 </div>
