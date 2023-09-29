@@ -1028,7 +1028,7 @@ alertService.success(message, true);
                 <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                   <div className="px-1 w-full">
                     <label className="form-label ml-2 ">
-                      Expected Price{" * "}
+                      Expected Price <span className="text-red-500">*</span>
                       {payment_values(
                         parseFloat(watchExpectedPriceOld),
                         parseFloat(status),
@@ -1131,7 +1131,8 @@ alertService.success(message, true);
               <div className="grid grid-cols-1 md:grid-cols-3">
              
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Loan Amount <span className="text-red">*</span></label>
+
+                <label className="form-label ml-2 ">Loan Amount <span className="text-red-500">*</span></label>
                 <input
                   {...fields.loan_amount}
                   type="text"
@@ -1148,7 +1149,7 @@ alertService.success(message, true);
                 </div>
               </div>   
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Payable in Hand <span className="text-red">*</span></label>
+                <label className="form-label ml-2 ">Payable in Hand <span className="text-red-500">*</span></label>
                 <input
                   {...fields.payable_in_hand}
                   type="text"
@@ -1173,7 +1174,7 @@ alertService.success(message, true);
                 </div>
               </div>
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Monthly Installment <span className="text-red">*</span></label>
+                <label className="form-label ml-2 ">Monthly Installment <span className="text-red-500">*</span></label>
                 <input
                   {...fields.monthly_installment}
                   type="text"
@@ -1190,7 +1191,7 @@ alertService.success(message, true);
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-2">
                   <label className="form-label ml-2 ">
-                    First Installment Date <span className="text-red">*</span>
+                    First Installment Date <span className="text-red-500">*</span>
                   </label>
                   <input
                     {...fields.first_installment}
@@ -1207,7 +1208,7 @@ alertService.success(message, true);
 
                 <div className="p-2">
                   <label className="form-label ml-2 ">
-                    Last Installment Date <span className="text-red">*</span>
+                    Last Installment Date <span className="text-red-500">*</span>
                   </label>
                   <input
                     {...fields.last_installment}
@@ -1253,7 +1254,7 @@ alertService.success(message, true);
 
             <div className="grid grid-cols-1 md:grid-cols-2  border-t">
               <div className="p-2">
-                <label className="form-label ml-2 ">Mortgager <span className="text-red">*</span></label>
+                <label className="form-label ml-2 ">Mortgager <span className="text-red-500">*</span></label>
                 <input
                   {...fields.mortgage_cmp}
                   type="mortgage_cmp"
@@ -1396,7 +1397,7 @@ alertService.success(message, true);
 
             <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
               <div className="p-2">
-                <label className="form-label ml-2 ">  Loan Amount (Requested) <span className="text-red">*</span></label>
+                <label className="form-label ml-2 ">  Loan Amount (Requested) <span className="text-red-500">*</span></label>
                 <input
                   {...fields.requested_loan}
                   type="requested_loan"
@@ -1410,7 +1411,7 @@ alertService.success(message, true);
               </div>
 
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Estimated Price <span className="text-red">*</span></label>
+                <label className="form-label ml-2 ">Estimated Price <span className="text-red-500">*</span></label>
                 <input
                   {...fields.estimated_price_old}
                   type="text"
@@ -1423,7 +1424,7 @@ alertService.success(message, true);
                 </div>
               </div>
               <div className="p-2">
-                <label className="form-label ml-2 ">Loan Price <span className="text-red">*</span></label>
+                <label className="form-label ml-2 ">Loan Price <span className="text-red-500">*</span></label>
                 <input
                   {...fields.loan_price_old}
                   type="text"
@@ -1437,7 +1438,7 @@ alertService.success(message, true);
               </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">Interest Amount <span className="text-red">*</span></label>
+                <label className="form-label ml-2 ">Interest Amount <span className="text-red-500">*</span></label>
                 <input
                   {...fields.interest_old}
                   type="text"
