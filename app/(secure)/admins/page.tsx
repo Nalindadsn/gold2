@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { Spinner } from "_components";
+import { Spinner  } from "_components";
 import { useUserService } from "_services";
 import { useRouter } from 'next/navigation';
 
