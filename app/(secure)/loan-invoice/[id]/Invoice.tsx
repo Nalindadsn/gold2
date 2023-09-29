@@ -280,13 +280,13 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
                     <Text >Basic</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{(130000).toFixed(2)}</Text>   
+                    <Text>{parseFloat(rate?.cmp_rate).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{total_pounds.toFixed(4)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{(total_pounds*130000).toFixed(2)}</Text>   
+                    <Text>{parseFloat((total_pounds*rate?.cmp_rate).toString()).toFixed(2)}</Text>   
                 </View>
             </View>
             <View style={{ width:'100%', flexDirection :'row'}} >
