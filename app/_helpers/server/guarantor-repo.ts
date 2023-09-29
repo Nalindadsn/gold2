@@ -71,7 +71,8 @@ async function getByNic(nic:any) {
           
           {
             $match: {
-              "nic": "$customer.nic" 
+            
+              "nic":  { $first: "$customer.nic" }
             }
           }
         ])
