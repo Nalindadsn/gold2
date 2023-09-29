@@ -1,3 +1,5 @@
+
+
 "use client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -21,7 +23,6 @@ function AddEditCoordinator({
 
   const userCurrent: any = userService.currentUser;
 
-  const [username, setUsername] = useState("");
   // get functions to build form with useForm() hook
   const { register, handleSubmit, reset, formState } = useForm({
     defaultValues: user,
@@ -39,13 +40,10 @@ function AddEditCoordinator({
     username: register("username", {}),
 
     occupation: register("occupation", { required: "Occupation is required" }),
-    nature_of_emp: register("nature_of_emp", {
-      required: "Nature of Emp is required",
-    }),
+    
     // name_of_office: register("name_of_office", {
     //   required: "Office is required",
     // }),
-    income: register("income", { required: "Income is required" }),
     phone: register("phone", {
       required: "Mobile Number is required",
       pattern: {
@@ -62,10 +60,7 @@ function AddEditCoordinator({
         minLength: (v) => v.length == 10 || v.length == 12,
       },
     }),
-    whatsapp: register("whatsapp", {
-      required: "Mobile Number is required",
-      
-    }),
+    
     role: register("role", { required: "role is required" }),
     status: register("status", { required: "status is required" }),
 
@@ -95,7 +90,7 @@ function AddEditCoordinator({
       if (loan_id) {
         router.push(`/loans/edit/${loan_id}`);
       } else {
-        router.push(`/coordinators`);
+        router.push(`/admins`);
       }
       alertService.success(message, true);
     } catch (error: any) {
@@ -159,7 +154,7 @@ function AddEditCoordinator({
               {...fields.username}
               type="text"
               className={`form-control ${errors.username ? "is-invalid" : ""}`}
-              value={username}
+              
             />
             <div className="invalid-feedback">
               {errors.username?.message?.toString()}
@@ -197,26 +192,26 @@ function AddEditCoordinator({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">role</label>
+<label className="form-label">role</label>
 
-            <select
-              {...fields.role}
-              className={`form-control ${errors.role ? "is-invalid" : ""}`}
-            >
-              {userCurrent?.role == "ADMIN" ? (
-                <>
-                  <option value="COORDINATOR">COORDINATOR</option>
-                  <option value="ADMIN">ADMIN</option>
-                </>
-              ) : (
-                ""
-              )}
-            </select>
+<select
+  {...fields.role}
+  className={`form-control ${errors.role ? "is-invalid" : ""}`}
+>
+  {userCurrent?.role == "ADMIN" ? (
+    <>
+      <option value="COORDINATOR">COORDINATOR</option>
+      <option value="ADMIN">ADMIN</option>
+    </>
+  ) : (
+    ""
+  )}
+</select>
 
-            <div className="invalid-feedback">
-              {errors.role?.message?.toString()}
-            </div>
-          </div>
+<div className="invalid-feedback">
+  {errors.role?.message?.toString()}
+</div>
+</div>
 
           <div className="p-2">
             <label className="form-label">status</label>
@@ -254,7 +249,7 @@ function AddEditCoordinator({
         </div>
 
         <div className="p-2">
-          <button
+        <button
             type="submit"
             disabled={formState.isSubmitting}
             className="btn btn-primary me-2 bg-blue-700"
@@ -280,3 +275,4 @@ function AddEditCoordinator({
     </>
   );
 }
+
