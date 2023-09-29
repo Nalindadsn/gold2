@@ -23,8 +23,8 @@ function Edit() {
             <div className="w-full p-1">
               <div className="m-2">
 {/* {loan?.users[0]?.fullName}'s Loans */}
-<div>Full Name : {loan?.users?loan?.users[0]?.fullName:"FULL NAME"}</div>
-                          <div>NIC : {loan?.users?loan?.users[0]?.nic:"FULL NAME"}</div>
+<div>Full Name : { loan?.users[0]?.fullName}</div>
+                          <div>NIC : { loan?.users[0]?.nic}</div>
               </div>
             </div>
           </div>
