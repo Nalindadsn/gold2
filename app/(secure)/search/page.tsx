@@ -35,9 +35,10 @@ function Edit() {
                   <div className="flex flex-col md:flex-row w-full  space-x-1 ">
                     <div className="p-1   md:w-full border mt-1">
                       <h3 className="bg-gray-800 text-white font-bold p-1">
-                        <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
+                        <div className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
                           {/* {loan?.users[0]?.fullName}'s Loans */}
-                        </h3>
+                          <div>Full Name : {loan?.users?loan?.users[0]?.fullName:"FULL NAME"}</div>
+                        </div>
                         {loan?.users[0]?.my_loans.map((i: any) => (
                           <div key={i?._id} className="my-1 px-1 w-full ">
                             <article className="overflow-hidden rounded-lg shadow-md border">
