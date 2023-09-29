@@ -35,7 +35,7 @@ function Edit() {
         </div>
         <div className="container  p-0">
           {loan?.users ? (
-            loan?.users?.length > 0 ? (
+            loan?.users.length > 0 ? (
               <>
                 <div className=" ">
                   <div className="flex flex-col md:flex-row w-full  space-x-1 ">
