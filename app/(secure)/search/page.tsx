@@ -45,9 +45,9 @@ function Edit() {
                           
                         {(loan?.users) ? (((loan?.users).length > 0) ? (
 
-<div className="m-2">
-<div>Full Name : { loan?.users[0]?.fullName}</div>
-</div>
+<>
+<span>{ loan?.users[0]?.fullName+`'s Loans`}</span>
+</>
 ):""):""}
                         </div>
                         {loan?.users[0]?.my_loans.map((i: any) => (
