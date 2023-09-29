@@ -53,6 +53,16 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
             
         const arr =loan?  loan?.items : [];
 
+
+  
+        const total_mx = arr.reduce(function (acc: any, obj: any) {
+            return (
+              acc + ((parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(parseFloat(obj.pound) ? parseFloat(obj.pound) : 0))
+            );
+          }, 0);
+
+
+
         const total_pounds = arr.reduce(function (acc: any, obj: any) {
           return (
             acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
@@ -73,7 +83,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
 
           const styles = StyleSheet.create({
             page: {fontSize: 11,paddingTop: 20,paddingLeft: 40,paddingRight: 40,lineHeight: 1.5,flexDirection: 'column' },
-            cellsp: { fontSize: 11,whiteSpace: "nowrap" },
+            cellsp: { fontSize: 10,whiteSpace: "nowrap" },
 
             spaceBetween : {flex : 1,flexDirection: 'row',alignItems:'center',justifyContent:'space-between',color: "#3E3E3E" },
     
@@ -115,8 +125,9 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
                         <Text style={styles.invoice }>BACKEND REPORT </Text>
                     <Text style={styles.invoiceNumber}>Invoice number{`    `}:{`  `} {loan?.id} </Text>
                         <Text style={styles.invoiceNumber}>Form number{`       `}:{`  `} {loan?.form_number} </Text>
-
-                        <Text style={styles.invoiceNumber3}>Loan Amount{`       `}:{`  `} {loan?.loan_amount} </Text>
+                        
+                        <Text style={styles.invoiceNumber3}>Excepted Amount{`       `}:{`  `} {total_mx.toFixed(2)} </Text>
+                        <Text style={styles.invoiceNumber3}>Given Amount{`       `}:{`  `} {loan?.loan_amount} </Text>
                         <Text style={styles.invoiceNumber}>Installment{`           `}:{`  `} {loan?.monthly_installment} </Text>
                         <Text style={styles.invoiceNumber}>No of Month{`         `}:{`  `} {loan?.no_of_month} </Text>
                     </View>
@@ -153,7 +164,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
                     <Text >Items</Text>   
                 </View>
                 <View style={styles.theader}>
-                    <Text>Amount</Text>   
+                    <Text>Amount LKR</Text>   
                 </View>
                 <View style={styles.theader}>
                     <Text>Karat</Text>   
@@ -301,7 +312,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
             <Text >Total</Text>   
         </View>
         <View style={styles.theader}>
-            <Text></Text>   
+            <Text>{total_mx.toFixed(2)}</Text>   
         </View>
         <View style={styles.theader}>
             <Text></Text>   
@@ -328,15 +339,16 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
              <React.Fragment key={receipt.id}>
                  <View style={{ width:'100%', flexDirection :'row'}}>
                      <View style={[styles.tbody, styles.tbody2]}>
-                         <Text >{receipt.name}</Text>   
+                         <Text >{receipt.name}</Text>                            
+                         <Text >PER POUND : </Text>   
+                         <Text>LKR {(actual_karat(receipt?.net_weight/receipt?.total_weight*100)).value}</Text>
                      </View>
                      <View style={[styles.tbody]}>
-                        <Text  style={[styles.cellsp]}> LKR {((actual_karat(receipt?.net_weight/receipt?.total_weight*100).value)*(parseFloat(receipt.net_weight) / 8)).toFixed(2)}</Text>   
+                        <Text  style={[styles.cellsp]}>  {((actual_karat(receipt?.net_weight/receipt?.total_weight*100).value)*(parseFloat(receipt.net_weight) / 8)).toFixed(2)}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
                          <Text >GIVEN&nbsp; : {receipt.karat}</Text>   
                          <Text >ACTUAL : {(actual_karat(receipt?.net_weight/receipt?.total_weight*100)).karat}</Text>   
-                         <Text >PER POUND : LKR {(actual_karat(receipt?.net_weight/receipt?.total_weight*100)).value}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
                          <Text >{parseFloat(receipt.total_weight).toFixed(4)}</Text>   
