@@ -59,23 +59,28 @@ async function getByNic(nic:any) {
     try {
         const my_loans=  await Loan.aggregate(
             [  
-        {
-            $lookup: {
-              from: "users",
-              localField: "user_id",
-              foreignField: "_id",
-              as: "customer",
-            },
-          },
+                {
+                    $lookup: {
+                      from: "users",
+                      localField: "user_id",
+                      foreignField: "_id",
+                      as: "customer",
+                    },
+                  },
+                
+               {
+                 $addFields: {
+                  
+                      "nic":  { $first: "$customer.nic" }}},
+                  {
+                    $match: {
+                      
+                      "nic":   nic
+                    }
+                  }
+                ]
         
-          
-          {
-            $match: {
-            
-              "nic":  { $first: "$customer.nic" }
-            }
-          }
-        ])
+        )
 
         const my_guarantors=  await Loan.aggregate(
             [  

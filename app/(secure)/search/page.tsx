@@ -52,7 +52,7 @@ function Edit() {
                         </div>
                         {loan?.users[0]?.my_loans.map((i: any) => (
                           <div key={i?._id} className="my-1 px-1 w-full ">
-                            <article className="overflow-hidden rounded-lg shadow-md border">
+                            <article className="overflow-hidden rounded-lg shadow-md border bg-white">
                               <header className="flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
                                 <h1 className="text-lg">
                                   <div className="no-underline hover:underline text-black text-sm ml-2">
@@ -62,7 +62,7 @@ function Edit() {
                                     Form Number : {i?.form_number}
                                   </div>
                                 </h1>
-                                <p className="text-grey-darker text-sm">
+                                <p className="text-grey-darker text-sm  text-gray-600">
                                   {i?.createdAt}
                                 </p>
                               </header>
@@ -71,7 +71,7 @@ function Edit() {
                                   className="flex items-center no-underline hover:underline text-black"
                                   href="#"
                                 >
-                                  <p className="ml-2 text-sm">
+                                  <p className="ml-2 text-sm  text-gray-600">
                                     Creditor : {i?.customer[0]?.fullName}
                                     <br />
                                     Loan LKR{" "}
@@ -81,7 +81,7 @@ function Edit() {
                                   </p>
                                 </a>
                                 <a
-                                  className="no-underline text-grey-darker hover:text-red-dark"
+                                  className="no-underline text-grey-darker hover:text-red-dark text-gray-600"
                                   href=""
                                 >
                                   <br />
