@@ -52,7 +52,7 @@ function App() {
         <div className="w-full p-1">
           {
             selectedValue?<>
-          <h3>Full Name :<Link href={`/search?nic=${selectedValue?.nic}`}>{selectedValue?.fullName}</Link> </h3>
+          <h3>Full Name :<Link href={`/search?nic=${selectedValue?.nic}`} className="  text-blue-600 hover:text-purple-700 focus:text-blue-700 ">{selectedValue?.fullName}</Link> </h3>
           <h4>Nic {`   `} :{selectedValue?.nic}</h4></>:""
           }
 
