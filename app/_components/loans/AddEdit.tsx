@@ -1139,7 +1139,7 @@ alertService.success(message, true);
                 </div>
               </div>   
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Payable in Hand *</label>
+                <label className="form-label ml-2 ">Payable in Hand -*</label>
                 <input
                   {...fields.payable_in_hand}
                   type="text"
@@ -1153,6 +1153,12 @@ alertService.success(message, true);
                     parseFloat(watchNoOfMonth)
                   )} 
                 />
+                {(watchExpectedPriceOld - max_price).toFixed(2)}
+                {payment_values_amount(
+                    parseFloat(watchExpectedPriceOld),
+                    parseFloat(status),
+                    parseFloat(watchNoOfMonth)
+                  )}
                 <div className="invalid-feedback">
                   {errors.payable_in_hand?.message?.toString()}
                 </div>
