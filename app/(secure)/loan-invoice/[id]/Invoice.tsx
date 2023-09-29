@@ -126,14 +126,16 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
                     <Text style={styles.invoiceNumber}>Invoice number{`    `}:{`  `} {loan?.id} </Text>
                         <Text style={styles.invoiceNumber}>Form number{`       `}:{`  `} {loan?.form_number} </Text>
                         
-                        <Text style={styles.invoiceNumber3}>Excepted Amount{`       `}:{`  `} {total_mx.toFixed(2)} </Text>
+                        <Text style={styles.invoiceNumber3}>Excepted Amount{``}:{`  `} {total_mx.toFixed(2)} </Text>
                         <Text style={styles.invoiceNumber3}>Given Amount{`       `}:{`  `} {loan?.loan_amount} </Text>
                         <Text style={styles.invoiceNumber}>Installment{`           `}:{`  `} {loan?.monthly_installment} </Text>
                         <Text style={styles.invoiceNumber}>No of Month{`         `}:{`  `} {loan?.no_of_month} </Text>
                     </View>
                     <View>
-                        <Text style={styles.invoiceNumber2}>Full Name{`            `}:{`  `} {loan?.customer[0]?.fullName} </Text>
-                        <Text style={styles.invoiceNumber}>NIC{`                      `}:{`  `} {loan?.customer[0]?.nic} </Text>
+                        <Text style={styles.invoiceNumber2}>Full Name{`     `}:{`  `} {loan?.customer[0]?.fullName} </Text>
+                        <Text style={styles.invoiceNumber}>NIC{`               `}:{`  `} {loan?.customer[0]?.nic} </Text>
+                        <Text style={styles.invoiceNumber}>Loan Start{`    `}:{`  `} {loan?.first_installment} </Text>
+                        <Text style={styles.invoiceNumber}>Loan End{`     `}:{`  `} {loan?.last_installment} </Text>
                        
                     <Text style={styles.reportTitle}>GOLD LOAN</Text>
                     </View>
@@ -164,7 +166,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
                     <Text >Items</Text>   
                 </View>
                 <View style={styles.theader}>
-                    <Text>Amount LKR</Text>   
+                    <Text>Amount </Text>   
                 </View>
                 <View style={styles.theader}>
                     <Text>Karat</Text>   
