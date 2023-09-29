@@ -81,17 +81,16 @@ async function getCurrent() {
 
 async function create(params: any) {
     // validate
-    if (await User.findOne({ username: params.username })) {
+const userExist:any=await User.findOne({ username: params.username })
+    if (userExist) {
+        console.log(userExist)
         throw 'Username "' + params.username + '" is already taken';
     }
-
     const user = new User(params);
-
     // hash password
     if (params.password) {
         user.hash = bcrypt.hashSync(params.password, 10);
     }
-
     // save user
     await user.save();
 }

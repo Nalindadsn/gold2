@@ -46,6 +46,9 @@ function AddEdit({
   const guarantorService = useGuarantorService();
 
   // get functions to build form with useForm() hook
+//   if(!loan){
+// loan.last_installment=
+//   }
   const { register, handleSubmit,watch, reset, formState } = useForm({
     defaultValues: loan,
     mode:'onChange'
@@ -107,28 +110,22 @@ required: "required",
 
 
       mortgager_name: register("mortgager_name", {
-        required: "Mortgage company is required",
       }),
       mortgage_branch: register("mortgage_branch", {
         // required: "Mortgager Name is required",
       }),
     mortgage_start_date: register("mortgage_start_date", {
-      required: "Start date is required",
     }),
     mortgage_end_date: register("mortgage_end_date", {
-      required: "End date is required",
     }),
     mortgager_phone: register("mortgager_phone", {
-      required: "Mortgager phone is required",
     }),
     mortgage_interest_rate_month: register("mortgage_interest_rate_month", {
-      required: "Interest rate month is required",
     }),
     mortgage_interest_rate_year: register("mortgage_interest_rate_year", {
-      required: "Interest rate  is required",
     }),
     mortgage_invoice_number: register("mortgage_invoice_number", {
-      required: "Invoice number is required",
+      
     }),
     requested_loan: register("requested_loan", {
       required: "Mortgager estimate is required",
@@ -1134,7 +1131,7 @@ alertService.success(message, true);
               <div className="grid grid-cols-1 md:grid-cols-3">
              
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Loan Amount *</label>
+                <label className="form-label ml-2 ">Loan Amount <span className="text-red">*</span></label>
                 <input
                   {...fields.loan_amount}
                   type="text"
@@ -1151,7 +1148,7 @@ alertService.success(message, true);
                 </div>
               </div>   
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Payable in Hand -*</label>
+                <label className="form-label ml-2 ">Payable in Hand <span className="text-red">*</span></label>
                 <input
                   {...fields.payable_in_hand}
                   type="text"
@@ -1176,7 +1173,7 @@ alertService.success(message, true);
                 </div>
               </div>
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Monthly Installment *</label>
+                <label className="form-label ml-2 ">Monthly Installment <span className="text-red">*</span></label>
                 <input
                   {...fields.monthly_installment}
                   type="text"
@@ -1193,7 +1190,7 @@ alertService.success(message, true);
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-2">
                   <label className="form-label ml-2 ">
-                    First Installment Date
+                    First Installment Date <span className="text-red">*</span>
                   </label>
                   <input
                     {...fields.first_installment}
@@ -1201,6 +1198,7 @@ alertService.success(message, true);
                     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.first_installment ? "is-invalid" : ""
                     }`}
+
                   />
                   <div className="invalid-feedback">
                     {errors.first_installment?.message?.toString()}
@@ -1209,7 +1207,7 @@ alertService.success(message, true);
 
                 <div className="p-2">
                   <label className="form-label ml-2 ">
-                    Last Installment Date
+                    Last Installment Date <span className="text-red">*</span>
                   </label>
                   <input
                     {...fields.last_installment}
@@ -1217,6 +1215,7 @@ alertService.success(message, true);
                     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.last_installment ? "is-invalid" : ""
                     }`}
+                    
                   />
                   <div className="invalid-feedback">
                     {errors.last_installment?.message?.toString()}
@@ -1254,7 +1253,7 @@ alertService.success(message, true);
 
             <div className="grid grid-cols-1 md:grid-cols-2  border-t">
               <div className="p-2">
-                <label className="form-label ml-2 ">Mortgager *</label>
+                <label className="form-label ml-2 ">Mortgager <span className="text-red">*</span></label>
                 <input
                   {...fields.mortgage_cmp}
                   type="mortgage_cmp"
@@ -1364,7 +1363,7 @@ alertService.success(message, true);
 
 
               <div className="p-2">
-                <label className="form-label ml-2 ">Start Date</label>
+                <label className="form-label ml-2 ">Loan Start Date</label>
                 <input
                   {...fields.mortgage_start_date}
                   type="date"
@@ -1378,7 +1377,7 @@ alertService.success(message, true);
               </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">End Date</label>
+                <label className="form-label ml-2 ">Loan End Date</label>
                 <input
                   {...fields.mortgage_end_date}
                   type="date"
@@ -1397,7 +1396,7 @@ alertService.success(message, true);
 
             <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
               <div className="p-2">
-                <label className="form-label ml-2 ">  Loan Amount (Requested)</label>
+                <label className="form-label ml-2 ">  Loan Amount (Requested) <span className="text-red">*</span></label>
                 <input
                   {...fields.requested_loan}
                   type="requested_loan"
@@ -1411,7 +1410,7 @@ alertService.success(message, true);
               </div>
 
               <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Estimated Price *</label>
+                <label className="form-label ml-2 ">Estimated Price <span className="text-red">*</span></label>
                 <input
                   {...fields.estimated_price_old}
                   type="text"
@@ -1424,7 +1423,7 @@ alertService.success(message, true);
                 </div>
               </div>
               <div className="p-2">
-                <label className="form-label ml-2 ">Loan Price *</label>
+                <label className="form-label ml-2 ">Loan Price <span className="text-red">*</span></label>
                 <input
                   {...fields.loan_price_old}
                   type="text"
@@ -1438,7 +1437,7 @@ alertService.success(message, true);
               </div>
 
               <div className="p-2">
-                <label className="form-label ml-2 ">Interest Amount *</label>
+                <label className="form-label ml-2 ">Interest Amount <span className="text-red">*</span></label>
                 <input
                   {...fields.interest_old}
                   type="text"
