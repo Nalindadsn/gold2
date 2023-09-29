@@ -37,17 +37,18 @@ create.schema = joi.object({
     
     mortgage_cmp: joi.string(),
 
-     mortgage_branch: joi.string(),
-    mortgager_name: joi.string(),
-    mortgage_start_date: joi.string(),
-    mortgage_end_date: joi.string(),
-    mortgager_phone: joi.string(),
-    mortgage_interest_rate_month: joi.string(),
-    mortgage_interest_rate_year: joi.string(),
-    mortgage_invoice_number: joi.string(),
     requested_loan: joi.string(),
     first_installment: joi.string(),
     last_installment: joi.string(),
+    
+    mortgage_branch: joi.string().allow('').optional(),
+    mortgager_name: joi.string().allow('').optional(),
+    mortgage_start_date: joi.string().allow('').optional(),
+    mortgage_end_date: joi.string().allow('').optional(),
+    mortgager_phone: joi.string().allow('').optional(),
+    mortgage_interest_rate_month: joi.string().allow('').optional(),
+    mortgage_interest_rate_year: joi.string().allow('').optional(),
+    mortgage_invoice_number: joi.string().allow('').optional(),
 
 
 
