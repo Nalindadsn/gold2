@@ -193,9 +193,11 @@ function Sidebar() {
            <div className="h-full  pb-4 overflow-y-auto   bg-gray-800 text-blue-100">
               <ul className="space-y-2 font-medium">
                
-                 <li>       <form action="" className="app-search overflow-hidden" method="GET">
+                 <li>        <form  
+              onSubmit={submitHandler}>
                                 <div className="relative group ">
                                     <input type="text"
+                                    onChange={(e)=>setSearch(e.target.value)}
                                         className="form-input rounded-md bg-gray-700 text-sm text-gray-300 pl-10 py-1.5 ml-5 border-transparent border-none outline-none focus:ring-0 focus:text-white transition-all duration-300 ease-in-out focus:w-60 w-48"
                                         placeholder="Search..." />
                                     <span
@@ -207,7 +209,10 @@ function Sidebar() {
                                         </svg>
                                     </span>
                                 </div>
-                            </form></li>
+                            </form>
+                            
+                            
+                            </li>
                             
                  <li>
                     <a href="/" className="flex items-center py-2 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
