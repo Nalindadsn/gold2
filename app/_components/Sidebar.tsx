@@ -196,7 +196,7 @@ function Sidebar() {
                  <li>        <form method='GET' action={`/search`}>
                                 <div className="relative group ">
                                     <input type="text"
-                                    name="id"
+                                    name="nic"
                                     onChange={(e)=>setSearch(e.target.value)}
                                         className="form-input rounded-md bg-gray-700 text-sm text-gray-300 pl-10 py-1.5 ml-5 border-transparent border-none outline-none focus:ring-0 focus:text-white transition-all duration-300 ease-in-out focus:w-60 w-48"
                                         placeholder="Search..." />
