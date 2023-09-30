@@ -34,7 +34,6 @@ function AddEdit({
 }) {
   
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -1081,7 +1080,7 @@ alertService.success(message, true);
                             : installment(
                                 parseFloat(loan.no_of_month),
                                 parseFloat(max_price)
-                              )}
+                              )} - SAVED
                         </>
                       ) : (
                         <>

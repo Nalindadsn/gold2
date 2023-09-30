@@ -180,8 +180,7 @@ if(name=="total_weight"){
                       
                       <br/>
                       Karat Percentage :
-                       {((parseFloat(net_weight)/parseFloat(total_weight))*100).toFixed(2)}
-                       %
+                       {((parseFloat(net_weight)/parseFloat(total_weight))*100).toFixed(2)}%
                     </div>
                     </div>
 

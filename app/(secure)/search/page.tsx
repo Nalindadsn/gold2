@@ -30,9 +30,12 @@ function Edit() {
     <>
       <div>
         <div className="container  p-0">
-          <div className="flex    border bg-gray-800 text-white">
+          <div className="flex flex-col md:flex-row w-full  bg-gray-800 text-white space-x-1">
             <div className="w-full p-1">
               {/* {loan?.users[0]?.fullName}'s Loans */}
+
+
+              
               {loan?.users ? (
                 (loan?.users).length > 0 ? (
                   <div className="m-2">
@@ -47,6 +50,7 @@ function Edit() {
                 ""
               )}
             </div>
+            <div className="w-full p-1 text-right">{formatDate(loan?.users[0]?.createdAt)}</div>
           </div>
         </div>
         <div className="container  p-0">

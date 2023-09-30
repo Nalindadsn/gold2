@@ -191,14 +191,11 @@ async function update(id: string, params: any) {
         params.hash = bcrypt.hashSync(params.password, 10);
     }
 
-    // copy params properties to user
     Object.assign(user, params);
-
     await user.save();
 }
 
 async function _delete(id: string,params:any) {
-    
     await Loan.findOneAndUpdate(
         { _id:new mongoose.Types.ObjectId(id)   },
         { $pull: { guarantor: { user_id:new mongoose.Types.ObjectId(params.name)   } } },
@@ -206,4 +203,3 @@ async function _delete(id: string,params:any) {
       );
 
 }
-
