@@ -50,7 +50,9 @@ function Edit() {
                 ""
               )}
             </div>
-            <div className="w-full p-1 text-right">{formatDate(loan?.users[0]?.createdAt)}</div>
+            <div className="w-full p-1 text-right">
+              {loan?.users[0]?.role}<br/>
+              {formatDate(loan?.users[0]?.createdAt)}</div>
           </div>
         </div>
         <div className="container  p-0">
