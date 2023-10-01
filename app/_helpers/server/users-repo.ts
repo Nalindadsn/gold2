@@ -80,6 +80,7 @@ async function getCurrent() {
 }
 
 async function create(params: any) {
+    
     // validate
 const userExist:any=await User.findOne({ username: params.username })
     if (userExist) {
@@ -91,7 +92,6 @@ const userExist:any=await User.findOne({ username: params.username })
     if (params.password) {
         user.hash = bcrypt.hashSync(params.password, 10);
     }
-    // save user
     await user.save();
 }
 

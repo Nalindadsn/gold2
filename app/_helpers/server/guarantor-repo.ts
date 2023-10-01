@@ -164,6 +164,24 @@ async function create(params: any) {
         nic:params.nic
     }
     if (userExist) {
+
+
+
+    // validate
+    if (!userExist) throw 'User not found';
+    if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
+        throw 'Username "' + params.username + '" is already taken';
+    }
+
+    // hash password if it was entered
+    if (params.password) {
+        params.hash = bcrypt.hashSync(params.password, 10);
+    }
+
+    Object.assign(userExist, params);
+    await userExist.save();
+
+
         data.user_id=userExist._id
     }else{
         const user = new User(params);

@@ -109,7 +109,7 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
 
     return (
         <>
-<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">{title}</h1>
+<h1 className="py-1 px-3  mt-3 block text-base font-semibol sm:text-xl ">{title}</h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1 className='font-bold m-1'>Basic Details</h1>
@@ -381,7 +381,9 @@ value={username}                    />
                 <div className='p-2'>
                     <label className="form-label">Role</label>
                     <select {...fields.role}  className={`form-control ${errors.role ? 'is-invalid' : ''}`} >
-                        <option value="GUARANTOR">GUARANTOR</option>
+                    <option value="GUARANTOR">GUARANTOR</option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="COORDINATOR">COORDINATOR</option>
                     </select>
                      <div className="invalid-feedback">{errors.role?.message?.toString()}</div>
                 </div>
