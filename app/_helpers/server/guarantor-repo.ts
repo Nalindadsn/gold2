@@ -154,7 +154,7 @@ async function getCurrent() {
 }
 
 async function create(params: any) {
-  
+  console.log(params)
 
     const userExist=await User.findOne({ nic: params.nic });
 
@@ -178,6 +178,7 @@ async function create(params: any) {
 }
 
 async function update(id: string, params: any) {
+    console.log("test")
     const user = await User.findById(id);
 
     // validate
