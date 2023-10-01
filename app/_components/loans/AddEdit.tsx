@@ -785,7 +785,12 @@ alertService.success(message, true);
                   </div>
                   <div className="px-1 ">
                     <div>
-                      <br/>
+                        {payment_values_amount(
+                    parseFloat(watchExpectedPriceOld),
+                    parseFloat(status),
+                    parseFloat(watchNoOfMonth)
+                  )>0?<><br/></>:""}
+                      
                       <label className="form-label  ">
                         No of Month 
                         <span className="text-red-500">{" *"}                       </span>  
