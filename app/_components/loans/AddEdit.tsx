@@ -398,7 +398,7 @@ return installment(
             <>
               <br />
               <span className="">
-                <span className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm ">
+                <span className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm whitespace-nowrap">
                   {max_price.toFixed(2)}
                 </span>{" "}
                 is Our Maximum Amount.
@@ -407,7 +407,7 @@ return installment(
           ) : (
             <>
               <br />
-              <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm ">
+              <span className="mx-1 bg-yellow-500 text-white py-0 px-2 rounded-full text-sm whitespace-nowrap">
                 LKR {(a - max_price).toFixed(2)}
               </span>
               Amount payable in hand <br />

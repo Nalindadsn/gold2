@@ -1,6 +1,13 @@
 "use client";
 import { useState,useEffect } from 'react';
-
+import {
+   Navbar,
+   Nav,
+   Form,
+   FormControl,
+   NavDropdown,
+   
+ } from "react-bootstrap";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -285,6 +292,30 @@ function Sidebar() {
                        <span className="flex-1 ml-3 whitespace-nowrap ">Gold Rate</span>
                     </a>
                  </li>
+                 
+          <Nav.Link href="#link">Link</Nav.Link>
+          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">
+              Another action
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">
+              Separated link
+            </NavDropdown.Item>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </NavDropdown>
                  <li>
                  <Button variant="danger" onClick={logout} className='w-full text-center bg-red-600 p-2 text-gray-100 rounded-lg  hover:bg-red-700 dark:hover:bg-gray-700 group rounded-0'>
                     

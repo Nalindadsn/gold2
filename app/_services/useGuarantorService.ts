@@ -63,6 +63,15 @@ function useGuarantorService(): IGuarantorService {
                 alertService.error(error);
             }
         },
+        
+    getByNic: async (id) => {
+      userStore.setState({ user: undefined });
+      try {
+        userStore.setState({ user: await fetch.get(`/api/guarantor/nic/${id}`) });
+      } catch (error: any) {
+        alertService.error(error);
+      }
+    },
         getCurrent: async () => {
             if (!currentGuarantor) {
                 userStore.setState({ currentGuarantor: await fetch.get('/api/guarantor/current') });
@@ -139,6 +148,7 @@ interface IGuarantorService extends IGuarantorStore {
     register: (user: IGuarantor) => Promise<void>,
     getAll: () => Promise<void>,
     getById: (id: string) => Promise<void>,
+    getByNic: (id: string) => Promise<void>,
     getCurrent: () => Promise<void>,
     create: (user: IGuarantor) => Promise<void>,
     update: (id: string, params: Partial<IGuarantor>) => Promise<void>,

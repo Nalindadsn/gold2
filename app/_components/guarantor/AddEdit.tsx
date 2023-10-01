@@ -10,10 +10,16 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
     const router = useRouter();
     const alertService = useAlertService();
     const userService = useGuarantorService();
+
+
+    
+  const userData: any = userService.user;
+  
     const [username, setUsername] = useState("");
 
     // get functions to build form with useForm() hook
     const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user });
+    const { register:register2, handleSubmit:handleSubmit2, reset:reset2, formState:{ errors:errors2 } } = useForm({ defaultValues: user });
     const { errors } = formState;
 
     const fields = {
@@ -77,34 +83,95 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
     };
 
     async function onSubmit(data: any) {
-        alertService.clear();
-        try {
-            // create or update user based on user prop
-            let message;
-            if (user) {
-                data.loan_id=loan._id
-                await userService.update(user.id, data);
-                message = 'User updated';
-            } else {
-                data.loan_id=loan._id
-                await userService.create(data);
-                 reset()
-                message = 'User added';
+      alertService.clear();
+      try {
+          // create or update user based on user prop
+          let message;
+          if (user) {
+              data.loan_id=loan._id
+              await userService.update(user.id, data);
+              message = 'User updated';
+          } else {
+              data.loan_id=loan._id
+              await userService.create(data);
+               reset()
+              message = 'User added';
 
-            //  router.push('/loans');
-            }
+          //  router.push('/loans');
+          }
 
-            // redirect to user list with success message
-            // router.push('/users');
-            alertService.success(message, true);
-        } catch (error: any) {
-            alertService.error(error);
-        }
-    }
+          // redirect to user list with success message
+          // router.push('/users');
+          alertService.success(message, true);
+      } catch (error: any) {
+          alertService.error(error);
+      }
+  }
+  const fieldsCheck = {
+nic: register2('nic', { required: 'NIC is required',
+  })}
+
+
+  async function onSubmitCheck(data: any) {
+      alertService.clear();
+      try {
+          // create or update user based on user prop
+          let message =null;
+
+
+         userService.getByNic(data.nic)
+alert(JSON.stringify(data))
+          // if (user) {
+          //     data.loan_id=loan._id
+          //     await userService.update(user.id, data);
+          //     message = 'User updated';
+          // } else {
+          //     data.loan_id=loan._id
+          //     await userService.create(data);
+          //      reset()
+            message = 'User Availble';
+
+          // //  router.push('/loans');
+          // }
+
+          // redirect to user list with success message
+          // router.push('/users');
+          // alertService.success(message, true);
+      } catch (error: any) {
+          alertService.error(error);
+      }
+  }
 
     return (
         <>
 <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">{title}</h1>
+
+
+<form onSubmit={handleSubmit2(onSubmitCheck)} className=' bg-white p-2'>
+            <h1 className='font-bold m-1'>Basic Details</h1>
+
+
+                <div className='p-2'>
+                    <label className="form-label">nic</label>
+                    <input  {...fieldsCheck.nic} type="text" className={`form-control ${errors2.nic ? 'is-invalid' : ''}`} 
+                    
+                    // onChange={(e)=>setUsername(e.target.value)}
+                    />
+                    <div className="invalid-feedback">{errors2.nic?.message?.toString()}</div>
+                </div>
+                
+
+            <div className="p-2">
+                <button type="submit" disabled={formState.isSubmitting} className="btn btn-primary me-2 bg-blue-700">
+                    {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
+                    Check
+                </button>
+                <button onClick={() => reset()} type="button" disabled={formState.isSubmitting} className="btn btn-secondary bg-gray-900">Reset</button>
+                <Link href="/users" className="btn btn-link">Cancel</Link>
+            </div>
+{JSON.stringify(user?user:"no")}
+</form>
+
 
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1 className='font-bold m-1'>Basic Details</h1>
