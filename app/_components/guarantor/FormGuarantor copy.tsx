@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { useAlertService, useGuarantorService } from '_services';
 export { AddEdit };
 import {  useState } from "react";
-import { FormGuarantor } from './FormGuarantor';
 
 function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) {
     const router = useRouter();
@@ -185,11 +184,9 @@ setValue("fullName", n++, {
             </div> 
 </form>
 
-{userData?
- userData?.users.length>0 ? 
-(<>
-<FormGuarantor title='a'  user={userData?.users[0]} />
-        {/* <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
+{userData?(<>
+
+        <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1 className='font-bold m-1'>Basic Details</h1>
 
             
@@ -492,11 +489,8 @@ value={username}                    />
                 <button onClick={() => reset()} type="button" disabled={formState.isSubmitting} className="btn btn-secondary bg-gray-900">Reset</button>
                 <Link href="/users" className="btn btn-link">Cancel</Link>
             </div>
-        </form> */}
-</>):<>
-
-<FormGuarantor title='a'  />
-</>:""}
+        </form>
+</>):""}
 
 </>
 
