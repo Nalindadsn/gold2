@@ -711,6 +711,43 @@ alertService.success(message, true);
                 CUSTOMER{" "}
               </div>
             </div>
+            
+         
+
+
+            {loan ? (
+
+              <>
+             <div className="bg-white p-2 m-1 shadow-sm border">
+
+
+    <div className="flex flex-col md:flex-row -mx-1  border-b text-white bg-gray-900">
+                <div className="px-1">
+                  {loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                  Total Weight : {itm_total_weight.toFixed(4)}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                  Net Weight : {itm_total_net.toFixed(4)}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                  total pound : {total_pounds.toFixed(4)}
+                </div>
+
+
+              </div>
+                {payment_values(
+                        parseFloat(watchExpectedPriceOld),
+                        parseFloat(status),
+                        parseFloat(watchNoOfMonth)
+                      )}{" "} 
+
+            </div>   
+              </>
+            ):""}
           </div>
         </div>
 
@@ -728,6 +765,256 @@ alertService.success(message, true);
             className="bg-white p-2 "
             // style={{ marginLeft: "5%", marginRight: "5%" }}
           >
+<div className="border shadow-sm">
+
+<div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
+              <div className="p-2">
+                <label className="form-label ml-2 ">  Loan Amount (Requested) <span className="text-red-500">*</span></label>
+                <input
+                  {...fields.requested_loan}
+                  type="requested_loan"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.requested_loan ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.requested_loan?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="p-2 ml-1">
+                <label className="form-label ml-2 ">Estimated Price <span className="text-red-500">*</span></label>
+                <input
+                  {...fields.estimated_price_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.estimated_price_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.estimated_price_old?.message?.toString()}
+                </div>
+              </div>
+              <div className="p-2">
+                <label className="form-label ml-2 ">Loan Price <span className="text-red-500">*</span></label>
+                <input
+                  {...fields.loan_price_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.loan_price_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.loan_price_old?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">Interest Amount <span className="text-red-500">*</span></label>
+                <input
+                  {...fields.interest_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.interest_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.interest_old?.message?.toString()}
+                </div>
+              </div>
+              {/* <div className="p-2">
+                <label className="form-label ml-2 ">Status</label>
+
+                <select
+                  {...fields.status}
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.status ? "is-invalid" : ""
+                  }`}
+                 
+                >
+                  <option value="">-select option</option>
+                  <option className="PENDING">PENDING</option>
+                  <option className="PROCESSING">PROCESSING</option>
+                  <option className="SUCCESS">SUCCESS</option>
+                  <option className="REJECTED">REJECTED</option>
+                </select>
+
+                <div className="invalid-feedback">
+                  {errors.status?.message?.toString()}
+                </div>
+              </div> */}
+            </div>
+
+            <h3 className="text-xl font-bold border-t-2 pl-2 pt-2">MORTGAGE DETAILS</h3>
+            <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+              <div className="w-full hidden md:block"></div>
+              <div
+                className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                
+                <label className="form-label ml-2 mt-2">
+                  Invoice Number
+                </label>
+                <input
+                  {...fields.mortgage_invoice_number}
+                  type="mortgage_invoice_number"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_invoice_number ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_invoice_number?.message?.toString()}
+                </div>
+
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2  border-t">
+              <div className="p-2">
+                <label className="form-label ml-2 ">Mortgager <span className="text-red-500">*</span></label>
+                <input
+                  {...fields.mortgage_cmp}
+                  type="mortgage_cmp"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_cmp ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_cmp?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">Branch</label>
+                <input
+                  {...fields.mortgage_branch}
+                  type="mortgage_branch"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_branch ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_branch?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">Mortgager Name</label>
+                <input
+                  {...fields.mortgager_name}
+                  type="mortgager_name"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgager_name ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgager_name?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">Contact </label>
+                <input
+                  {...fields.mortgager_phone}
+                  type="mortgager_phone"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgager_phone ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgager_phone?.message?.toString()}
+                </div>
+              </div>
+<div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">
+                 Interest Rate % (Monthly)
+                </label>
+                <input
+                  {...fields.mortgage_interest_rate_month}
+                  type="mortgage_interest_rate_month"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_interest_rate_month ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_interest_rate_month?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="p-2">
+
+
+
+              {/* <div className="group w-72 md:w-80 lg:w-96">
+      <label htmlFor="5" className="inline-block w-full text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">Outline icon inline suffix</label>
+      <div className="relative flex items-center">
+        <input id="5" type="text" className="peer relative h-10 w-full rounded-md bg-gray-50 pl-4 pr-10 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg" />
+        <span className="material-symbols-outlined absolute right-2 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">mail</span>
+      </div>
+    </div> */}
+ <div className="relative">
+
+                <label className="form-label ml-2 ">
+                 Interest Rate % (Yearly)
+                </label>
+                <div className=" ">
+                  
+                <input
+                  {...fields.mortgage_interest_rate_year}
+                  type="mortgage_interest_rate_year"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_interest_rate_year ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_interest_rate_year?.message?.toString()}
+                </div>
+                </div>
+
+ </div>
+              </div>
+
+</div>
+<div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
+
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">Loan Start Date</label>
+                <input
+                  {...fields.mortgage_start_date}
+                  type="date"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_start_date ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_start_date?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">Loan End Date</label>
+                <input
+                  {...fields.mortgage_end_date}
+                  type="date"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_end_date ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_end_date?.message?.toString()}
+                </div>
+              </div>
+
+</div>
+
+            </div>
+
+
+</div>
             <div className="border shadow-sm mb-3">
               <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                 <div className="w-full hidden md:block"></div>
@@ -917,7 +1204,7 @@ alertService.success(message, true);
                 </div>
               </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="grid grid-cols-1 md:grid-cols-3">
                 <div className="p-2">
                   <label className="form-label ml-2 ">
                     First Installment Date <span className="text-red-500">*</span>
@@ -951,234 +1238,7 @@ alertService.success(message, true);
                     {errors.last_installment?.message?.toString()}
                   </div>
                 </div>
-              </div>
-            </div>
-<div className="border shadow-sm">
-
-
-            <h3 className="text-xl font-bold border-t-2 pl-2 pt-2">MORTGAGE DETAILS</h3>
-            <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-              <div className="w-full hidden md:block"></div>
-              <div
-                className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
-                style={{ whiteSpace: "nowrap" }}
-              >
                 
-                <label className="form-label ml-2 mt-2">
-                  Invoice Number
-                </label>
-                <input
-                  {...fields.mortgage_invoice_number}
-                  type="mortgage_invoice_number"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgage_invoice_number ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_invoice_number?.message?.toString()}
-                </div>
-
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2  border-t">
-              <div className="p-2">
-                <label className="form-label ml-2 ">Mortgager <span className="text-red-500">*</span></label>
-                <input
-                  {...fields.mortgage_cmp}
-                  type="mortgage_cmp"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgage_cmp ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_cmp?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">Branch</label>
-                <input
-                  {...fields.mortgage_branch}
-                  type="mortgage_branch"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgage_branch ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_branch?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">Mortgager Name</label>
-                <input
-                  {...fields.mortgager_name}
-                  type="mortgager_name"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgager_name ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgager_name?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">Contact </label>
-                <input
-                  {...fields.mortgager_phone}
-                  type="mortgager_phone"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgager_phone ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgager_phone?.message?.toString()}
-                </div>
-              </div>
-<div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">
-                 Interest Rate % (Monthly)
-                </label>
-                <input
-                  {...fields.mortgage_interest_rate_month}
-                  type="mortgage_interest_rate_month"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgage_interest_rate_month ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_interest_rate_month?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
-
-
-
-              {/* <div className="group w-72 md:w-80 lg:w-96">
-      <label htmlFor="5" className="inline-block w-full text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">Outline icon inline suffix</label>
-      <div className="relative flex items-center">
-        <input id="5" type="text" className="peer relative h-10 w-full rounded-md bg-gray-50 pl-4 pr-10 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg" />
-        <span className="material-symbols-outlined absolute right-2 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">mail</span>
-      </div>
-    </div> */}
- <div className="relative">
-
-                <label className="form-label ml-2 ">
-                 Interest Rate % (Yearly)
-                </label>
-                <div className=" ">
-                  
-                <input
-                  {...fields.mortgage_interest_rate_year}
-                  type="mortgage_interest_rate_year"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgage_interest_rate_year ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_interest_rate_year?.message?.toString()}
-                </div>
-                </div>
-
- </div>
-              </div>
-
-</div>
-<div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
-
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">Loan Start Date</label>
-                <input
-                  {...fields.mortgage_start_date}
-                  type="date"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgage_start_date ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_start_date?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">Loan End Date</label>
-                <input
-                  {...fields.mortgage_end_date}
-                  type="date"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.mortgage_end_date ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.mortgage_end_date?.message?.toString()}
-                </div>
-              </div>
-
-</div>
-
-            </div>
-
-            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
-              <div className="p-2">
-                <label className="form-label ml-2 ">  Loan Amount (Requested) <span className="text-red-500">*</span></label>
-                <input
-                  {...fields.requested_loan}
-                  type="requested_loan"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.requested_loan ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.requested_loan?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2 ml-1">
-                <label className="form-label ml-2 ">Estimated Price <span className="text-red-500">*</span></label>
-                <input
-                  {...fields.estimated_price_old}
-                  type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.estimated_price_old ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.estimated_price_old?.message?.toString()}
-                </div>
-              </div>
-              <div className="p-2">
-                <label className="form-label ml-2 ">Loan Price <span className="text-red-500">*</span></label>
-                <input
-                  {...fields.loan_price_old}
-                  type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.loan_price_old ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.loan_price_old?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="p-2">
-                <label className="form-label ml-2 ">Interest Amount <span className="text-red-500">*</span></label>
-                <input
-                  {...fields.interest_old}
-                  type="text"
-                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                    errors.interest_old ? "is-invalid" : ""
-                  }`}
-                />
-                <div className="invalid-feedback">
-                  {errors.interest_old?.message?.toString()}
-                </div>
-              </div>
               <div className="p-2">
                 <label className="form-label ml-2 ">Status</label>
 
@@ -1200,10 +1260,8 @@ alertService.success(message, true);
                   {errors.status?.message?.toString()}
                 </div>
               </div>
+              </div>
             </div>
-
-</div>
-
 
 
             <div className="grid grid-cols-1 md:grid-cols-2"></div>
@@ -1235,7 +1293,7 @@ alertService.success(message, true);
         <>
         <div className="flex  mt-3">
           
-          <h1 className="py-1 px-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">
+          <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl ">
             GUARANTOR DETAILS
           </h1>
           {loan?<Button variant="primary" onClick={handleShow} className="bg-blue-500 ml-2 btn-sm ">
