@@ -16,9 +16,10 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
   
     const [username, setUsername] = useState("");
 
-    // get functions to build form with useForm() hook
-    const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user });
+    // get functions to build form with useForm() hook    
     const { register:register2, handleSubmit:handleSubmit2, reset:reset2, formState:{ errors:errors2 } } = useForm({ defaultValues: user });
+
+    const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user });
     const { errors } = formState;
 
     const fields = {
@@ -165,14 +166,18 @@ setLoading('Loading...')
                     {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
                     Check
                 </button>
+                <button onClick={() => {reset2() }} type="button" disabled={formState.isSubmitting} className="btn btn-secondary bg-gray-900">Reset</button>
+
             </div>
           <div className='px-2'>
-             {userData?(<>
-                <a href={`/search?nic=${userData?.users[0]?.nic}`} className='text-blue-800 font-bold'>{userData?.users[0]?.fullName + `  `}</a> has taken  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_loans.length}</span> loans and <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_guarantors.length}</span> guarantees<br/>
+             {userData?
+             userData?.users.length>0 ?             
+             (<>
+                <a href={`/search?nic=${userData?.users[0]?.nic}`} className='text-blue-800 font-bold'>{userData?.users[0]?.fullName + `  `}</a> has taken  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_loans.length}</span> loans and  is a guarantor for  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_guarantors.length}</span> guarantees<br/>
              </>
 
             // 
-            )
+            ):"User not found"
             :loading}
             
             </div> 
