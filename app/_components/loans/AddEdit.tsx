@@ -716,291 +716,16 @@ alertService.success(message, true);
 
         <div className="flex mb-8 justify-between"></div>
 
-        {loan ? (
-          <>
-            <form
-              onSubmit={submitHandler}
-              className=" p-2 shadow-sm bg-white border"
-              style={{ overflow: "hidden" }}
-            >
-              <div className="flex flex-col md:flex-row -mx-1  border-b text-white bg-gray-900">
-                <div className="px-1">
-                  {loading && (
-                    <span className="spinner-border spinner-border-sm"></span>
-                  )}
-                </div>
-                <div className="px-1  text-right m-1 border-1">
-                  Total Weight : {itm_total_weight.toFixed(4)}
-                </div>
-                <div className="px-1  text-right m-1 border-1">
-                  Net Weight : {itm_total_net.toFixed(4)}
-                </div>
-                <div className="px-1  text-right m-1 border-1">
-                  total pound : {total_pounds.toFixed(4)}
-                </div>
-
-
-                
-              </div>
-              <div className="flex flex-wrap -mx-3 ">
-                <div className="w-full md:w-full px-3 mb-2 mt-2">
-                  <h2 className=" text-gray-800 text-lg">
-                    
-                    <div className="flex flex-col md:flex-row -mx-1 ">
-<div className="w-full"><br/>Items
-                    <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm  ">
-                      NO OF ITEMS : {reviews.length}
-                    </span></div>
-                    
-                <div className="px-1  text-right m-1 mt-0 border-1">
-               <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
-               <div className="bg-gray-800 text-white px-2">{actual_karat(gPr).value}</div>
-                </div>
-                <div className="px-1  text-right m-1 mt-0 border-1">
-                Issuable 
- <br/>
-                <div className="bg-gray-800 text-white px-2">{((actual_karat(gPr).value)*(parseFloat(net_weight) / 8)).toFixed(2)}</div> 
-                </div>
-                    <div className="text-right whitespace-nowrap border">
-                      <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :  {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} </span>
-                      
-                      
-                      <br/>
-                      Karat Percentage : {gPr.toFixed(2)}%
-                    </div>
-                    </div>
-                  </h2>
-                  <div>
-                    <div className="flex  flex-col md:flex-row -mx-1 py-2 ">
-                      <div className="px-1  text-right">
-                        <label className="text-left w-full ml-2 text-sm">Description</label>
-                        <input
-                          type="text"
-                          onChange={(e) => setItmName(e.target.value)}
-                          value={name}
-                          name="name"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-                          placeholder="Description"
-                          required
-                        />
-                      </div>
-                      <div className="px-1  text-right">
-                        <label className="text-left w-full ml-2 text-sm">Karat</label>
-                        <input
-                          type="text"
-                          onChange={(e) => setKarat(e.target.value)}
-                          value={karat}
-                          name="karat"
-                          className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-                          placeholder="Karat"
-                          required
-                        />
-                      </div>
-
-                      <div className="px-1  text-right">
-                        <label className="text-left w-full ml-2 text-sm">Total Weight</label>
-                        <input
-                          type="text"
-                          onChange={(e) => setTotal_weight(e.target.value)}
-                          value={total_weight}
-                          name="total_weight"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-                          placeholder="Total Weight"
-                          required
-                        />
-                      </div>
-                      <div className="px-1  text-right">
-                        <label className="text-left w-full ml-2 text-sm">Net Weight</label>
-                        <input
-                          type="text"
-                          onChange={(e) => setNet_weight(e.target.value)}
-                          value={net_weight}
-                          name="net_weight"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-                          placeholder="Net Weight"
-                          required
-                        />
-                      </div>
-                      <div className="px-1  text-right">
-                        
-                      <label className="text-left w-full ml-2 text-sm">Pound</label>
-                        <input
-                          type="text"
-                          onChange={(e) => setPound(e.target.value)}
-                          value={net_weight_cal}
-                          name="pound"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-                          placeholder="Pound"
-                          required
-                        />
-                      </div>
-
-                      <div className="px-1  text-right">
-                        
-                      <label className="text-left w-full ml-2 text-sm">Condition</label>
-                        <select
-                          onChange={(e) => setStatus(e.target.value)}
-                          name="status"
-                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-                        >
-                          <option>NOT ISSUE</option>
-                          <option>ISSUE</option>
-                        </select>
-                      </div>
-                      <div className="px-1 pt-1  text-right">
-                      <label className="text-left w-full ml-2 text-sm">&nbsp;</label>
-
-                        <button
-                          className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
-                          type="reset"
-                        >
-                          RESET
-                        </button>
-                      </div>
-                    </div>
-                    <div className="border-gray-800 border-b border-b-1 pb-2"> <button
-                      type="submit"
-                      disabled={loading}
-                      className="btn btn-primary me-2 mt-1 bg-blue-700"
-                    >
-                      {loading && (
-                        <span className="spinner-border spinner-border-sm me-1"></span>
-                      )}
-                      ADD ITEMS
-                    </button></div>
-                   
-                  </div>
-                </div>
-              </div>
-            
-            <div className="bg-white p-2 ">
-              {reviews.map((i: any) => (
-                <div key={n++}>
-                      <div className="bg-gray-800 text-sm">
-
-                      <span>
-                          <span className="font-bold text-white ml-2">{i?.name}</span> &nbsp;
-                          <span className="  text-orange-300 rounded-sm px-2 mr-3">
-                            Karat : {i?.karat}
-                          </span>
-                          <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" text-orange-300":" text-red-500 "}  rounded-sm px-2 mr-3`}>
-                            Actual : {(actual_karat(i?.net_weight/i?.total_weight*100)).karat}
-                          </span>
-                          
-                          {i?.status == "NOT ISSUE" ? (
-                            <span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
-                              {i?.status}
-                            </span>
-                          ) : (
-                            <span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
-                              {i?.status}
-                            </span>
-                          )}
-                        </span>
-                      </div>
-                  <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
-                    <div className="flex-2 px-1 w-full">
-                      <div className="ml-2 text-sm">
-                        
-                        <div>
-                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
-                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-                              TOTAL WEIGHT - {i?.total_weight}
-                            </div>
-                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-                              NET WEIGHT - {i?.net_weight}
-                            </div>
-                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-                              POUNDS - {i?.pound}
-                            </div>
-                          </div>
-                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t"><span className={` px-2 ${((i?.net_weight/i?.total_weight*100)==100)?"  border-1 border-orange-600":"  border-1 border-red-500 "}`}>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
-                          <span className={`md:ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
-                            Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
-                          </span>
-                          
-                          
-
-                          <span className={`md:ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
-                            Amount : {(((actual_karat(i?.net_weight/i?.total_weight*100)).value)*i?.pound).toFixed(2)}
-                          </span>
-                                
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="px-1 text-right">
-                      <button
-                        onClick={() =>
-                          submitHandlerDel(loan?.id, { name: i?._id })
-                        }
-                        // onClick={() => {
-
-                        //   loanService.deleteItem(loan?.id, {name:i?._id});
-                        //   fetchReviews();
-                        // }  }
-                        className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
-                        style={{ width: "60px" }}
-                        //  disabled={true}
-                        // disabled={isDeleting}
-                      >
-                        {isDeleting ? (
-                          <span className="spinner-border spinner-border-sm"></span>
-                        ) : (
-                          <span>Delete</span>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            </form>
-          </>
-        ) : (
-          <>
-            <div className="container bg-white shadow-sm">
-              <div className="flex-row">
-                <div className="flex-large">
-                  <div>
-                    <h2 className="text-xl font-bold ml-2">
-                      {editing ? "Edit Item" : "ADD ITEM"}
-                    </h2>
-                    <EditTaskForm
-                      editing={editing}
-                      setEditing={setEditing}
-                      currentTask={currentTask}
-                      setCurrentTask={setCurrentTask}
-                      updateTask={updateTask}
-                      addTask={addTask}
-                      tasks={tasks}
-                      rate={rate}
-                    />
-                  </div>
-                </div>
-                <div className="flex-large">
-                  <TaskTable
-                    tasks={tasks}
-                    rate={rate}
-                    editRow={editRow}
-                    deleteTask={deleteTask}
-                  />
-                </div>
-              </div>
-            </div>
-          </>
-        )}
 
 
       {/* {reviews.length > 0 || tasks.length > 0 ? ( */}
         <>
-          <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">
-            {title}
-          </h1>
+          
+<div className="shadow-sm border">
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white p-2 shadow-sm border"
+            className="bg-white p-2 "
             // style={{ marginLeft: "5%", marginRight: "5%" }}
           >
             <div className="border shadow-sm mb-3">
@@ -1501,31 +1226,7 @@ alertService.success(message, true);
               </Link>
             </div>
           </form>
-        </>
-      {/* // ) : (
-      //   ""
-      // )} */}
-
-      <div className="fixed bottom-0 right-0 text-red-600">
-        {loading && (
-          <>
-            <span className="spinner-border spinner-border-sm text-red-600"></span>{" "}
-            Loading
-          </>
-        )}
-      </div>
-      <div
-        className={`fixed left-0 bottom-0 h-1 ${
-          loan
-            ? loan.items.length > 0
-              ? "bg-yellow-500"
-              : "bg-red-600"
-            : tasks.length > 0
-            ? "bg-blue-500"
-            : "bg-red-600"
-        }  w-full`}
-      ></div>
-      {loan && (
+          {loan && (
         <>
         <div className="flex  mt-3">
           
@@ -1622,6 +1323,309 @@ alertService.success(message, true);
           
         </>
       )}
+
+</div>
+        
+        
+          {loan ? (
+          <>
+            <form
+              onSubmit={submitHandler}
+              className=" p-2 shadow-sm bg-white border mt-5"
+              style={{ overflow: "hidden" }}
+            >
+              <div className="flex flex-col md:flex-row -mx-1  border-b text-white bg-gray-900">
+                <div className="px-1">
+                  {loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                  Total Weight : {itm_total_weight.toFixed(4)}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                  Net Weight : {itm_total_net.toFixed(4)}
+                </div>
+                <div className="px-1  text-right m-1 border-1">
+                  total pound : {total_pounds.toFixed(4)}
+                </div>
+
+
+                
+              </div>
+              <div className="flex flex-wrap -mx-3 ">
+                <div className="w-full md:w-full px-3 mb-2 mt-2">
+                  <h2 className=" text-gray-800 text-lg">
+                    
+                    <div className="flex flex-col md:flex-row -mx-1 ">
+<div className="w-full"><br/>Items
+                    <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm  ">
+                      NO OF ITEMS : {reviews.length}
+                    </span></div>
+                    
+                <div className="px-1  text-right m-1 mt-0 border-1">
+               <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
+               <div className="bg-gray-800 text-white px-2">{actual_karat(gPr).value}</div>
+                </div>
+                <div className="px-1  text-right m-1 mt-0 border-1">
+                Issuable 
+ <br/>
+                <div className="bg-gray-800 text-white px-2">{((actual_karat(gPr).value)*(parseFloat(net_weight) / 8)).toFixed(2)}</div> 
+                </div>
+                    <div className="text-right whitespace-nowrap border">
+                      <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :  {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} </span>
+                      
+                      
+                      <br/>
+                      Karat Percentage : {gPr.toFixed(2)}%
+                    </div>
+                    </div>
+                  </h2>
+                  <div>
+                    <div className="flex  flex-col md:flex-row -mx-1 py-2 ">
+                      <div className="px-1  text-right">
+                        <label className="text-left w-full ml-2 text-sm">Description</label>
+                        <input
+                          type="text"
+                          onChange={(e) => setItmName(e.target.value)}
+                          value={name}
+                          name="name"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                          placeholder="Description"
+                          required
+                        />
+                      </div>
+                      <div className="px-1  text-right">
+                        <label className="text-left w-full ml-2 text-sm">Karat</label>
+                        <input
+                          type="text"
+                          onChange={(e) => setKarat(e.target.value)}
+                          value={karat}
+                          name="karat"
+                          className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                          placeholder="Karat"
+                          required
+                        />
+                      </div>
+
+                      <div className="px-1  text-right">
+                        <label className="text-left w-full ml-2 text-sm">Total Weight</label>
+                        <input
+                          type="text"
+                          onChange={(e) => setTotal_weight(e.target.value)}
+                          value={total_weight}
+                          name="total_weight"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                          placeholder="Total Weight"
+                          required
+                        />
+                      </div>
+                      <div className="px-1  text-right">
+                        <label className="text-left w-full ml-2 text-sm">Net Weight</label>
+                        <input
+                          type="text"
+                          onChange={(e) => setNet_weight(e.target.value)}
+                          value={net_weight}
+                          name="net_weight"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                          placeholder="Net Weight"
+                          required
+                        />
+                      </div>
+                      <div className="px-1  text-right">
+                        
+                      <label className="text-left w-full ml-2 text-sm">Pound</label>
+                        <input
+                          type="text"
+                          onChange={(e) => setPound(e.target.value)}
+                          value={net_weight_cal}
+                          name="pound"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                          placeholder="Pound"
+                          required
+                        />
+                      </div>
+
+                      <div className="px-1  text-right">
+                        
+                      <label className="text-left w-full ml-2 text-sm">Condition</label>
+                        <select
+                          onChange={(e) => setStatus(e.target.value)}
+                          name="status"
+                          className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                        >
+                          <option>NOT ISSUE</option>
+                          <option>ISSUE</option>
+                        </select>
+                      </div>
+                      <div className="px-1 pt-1  text-right">
+                      <label className="text-left w-full ml-2 text-sm">&nbsp;</label>
+
+                        <button
+                          className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
+                          type="reset"
+                        >
+                          RESET
+                        </button>
+                      </div>
+                    </div>
+                    <div className="border-gray-800 border-b border-b-1 pb-2"> <button
+                      type="submit"
+                      disabled={loading}
+                      className="btn btn-primary me-2 mt-1 bg-blue-700"
+                    >
+                      {loading && (
+                        <span className="spinner-border spinner-border-sm me-1"></span>
+                      )}
+                      ADD ITEMS
+                    </button></div>
+                   
+                  </div>
+                </div>
+              </div>
+            
+            <div className="bg-white p-2 ">
+              {reviews.map((i: any) => (
+                <div key={n++}>
+                      <div className="bg-gray-800 text-sm">
+
+                      <span>
+                          <span className="font-bold text-white ml-2">{i?.name}</span> &nbsp;
+                          <span className="  text-orange-300 rounded-sm px-2 mr-3">
+                            Karat : {i?.karat}
+                          </span>
+                          <span className={`${((i?.net_weight/i?.total_weight*100)==100)?" text-orange-300":" text-red-500 "}  rounded-sm px-2 mr-3`}>
+                            Actual : {(actual_karat(i?.net_weight/i?.total_weight*100)).karat}
+                          </span>
+                          
+                          {i?.status == "NOT ISSUE" ? (
+                            <span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
+                              {i?.status}
+                            </span>
+                          ) : (
+                            <span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
+                              {i?.status}
+                            </span>
+                          )}
+                        </span>
+                      </div>
+                  <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
+                    <div className="flex-2 px-1 w-full">
+                      <div className="ml-2 text-sm">
+                        
+                        <div>
+                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
+                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                              TOTAL WEIGHT - {i?.total_weight}
+                            </div>
+                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                              NET WEIGHT - {i?.net_weight}
+                            </div>
+                            <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                              POUNDS - {i?.pound}
+                            </div>
+                          </div>
+                          <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t"><span className={` px-2 ${((i?.net_weight/i?.total_weight*100)==100)?"  border-1 border-orange-600":"  border-1 border-red-500 "}`}>GOLD PERCENTAGE -  {parseFloat((i?.net_weight/i?.total_weight*100).toString()).toFixed(2)}%</span>
+                          <span className={`md:ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
+                            Amount per pound : {(actual_karat(i?.net_weight/i?.total_weight*100)).value}
+                          </span>
+                          
+                          
+
+                          <span className={`md:ml-1 ${((i?.net_weight/i?.total_weight*100)==100)?" bg-orange-300":" bg-red-500 text-white"}   px-2 md:mr-3`}>
+                            Amount : {(((actual_karat(i?.net_weight/i?.total_weight*100)).value)*i?.pound).toFixed(2)}
+                          </span>
+                                
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="px-1 text-right">
+                      <button
+                        onClick={() =>
+                          submitHandlerDel(loan?.id, { name: i?._id })
+                        }
+                        // onClick={() => {
+
+                        //   loanService.deleteItem(loan?.id, {name:i?._id});
+                        //   fetchReviews();
+                        // }  }
+                        className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
+                        style={{ width: "60px" }}
+                        //  disabled={true}
+                        // disabled={isDeleting}
+                      >
+                        {isDeleting ? (
+                          <span className="spinner-border spinner-border-sm"></span>
+                        ) : (
+                          <span>Delete</span>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            </form>
+          </>
+        ) : (
+          <>
+            <div className="container bg-white shadow-sm">
+              <div className="flex-row">
+                <div className="flex-large">
+                  <div>
+                    <h2 className="text-xl font-bold ml-2">
+                      {editing ? "Edit Item" : "ADD ITEM"}
+                    </h2>
+                    <EditTaskForm
+                      editing={editing}
+                      setEditing={setEditing}
+                      currentTask={currentTask}
+                      setCurrentTask={setCurrentTask}
+                      updateTask={updateTask}
+                      addTask={addTask}
+                      tasks={tasks}
+                      rate={rate}
+                    />
+                  </div>
+                </div>
+                <div className="flex-large">
+                  <TaskTable
+                    tasks={tasks}
+                    rate={rate}
+                    editRow={editRow}
+                    deleteTask={deleteTask}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+        </>
+      {/* // ) : (
+      //   ""
+      // )} */}
+
+      <div className="fixed bottom-0 right-0 text-red-600">
+        {loading && (
+          <>
+            <span className="spinner-border spinner-border-sm text-red-600"></span>{" "}
+            Loading
+          </>
+        )}
+      </div>
+      <div
+        className={`fixed left-0 bottom-0 h-1 ${
+          loan
+            ? loan.items.length > 0
+              ? "bg-yellow-500"
+              : "bg-red-600"
+            : tasks.length > 0
+            ? "bg-blue-500"
+            : "bg-red-600"
+        }  w-full`}
+      ></div>
+ 
     </>
   );
 }

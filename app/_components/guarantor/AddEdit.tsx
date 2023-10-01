@@ -146,7 +146,7 @@ setValue("fullName", n++, {
 
     return (
         <>
-<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">{title}</h1>
+<h1 className="py-1 px-3  mt-3 block text-base font-semibold sm:text-xl ">{title}</h1>
 
 
 <form onSubmit={handleSubmit2(onSubmitCheck)} className=' bg-white '>
