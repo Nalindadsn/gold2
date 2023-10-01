@@ -1,4 +1,3 @@
-"use client";
 
 import { FormProvider } from "../components/FormContext";
 import "./globals.css";
