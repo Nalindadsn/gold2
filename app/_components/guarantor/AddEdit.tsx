@@ -11,8 +11,7 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
     const alertService = useAlertService();
     const userService = useGuarantorService();
 
-
-    
+    const [loading, setLoading] = useState('');    
   const userData: any = userService.user;
   
     const [username, setUsername] = useState("");
@@ -116,11 +115,11 @@ nic: register2('nic', { required: 'NIC is required',
       alertService.clear();
       try {
           // create or update user based on user prop
-          let message =null;
-
+          // let message =null;
+setLoading('Loading...')
 
          userService.getByNic(data.nic)
-alert(JSON.stringify(data))
+         
           // if (user) {
           //     data.loan_id=loan._id
           //     await userService.update(user.id, data);
@@ -129,7 +128,7 @@ alert(JSON.stringify(data))
           //     data.loan_id=loan._id
           //     await userService.create(data);
           //      reset()
-            message = 'User Availble';
+            // message = 'User Availble';
 
           // //  router.push('/loans');
           // }
@@ -147,7 +146,7 @@ alert(JSON.stringify(data))
 <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">{title}</h1>
 
 
-<form onSubmit={handleSubmit2(onSubmitCheck)} className=' bg-white p-2'>
+<form onSubmit={handleSubmit2(onSubmitCheck)} className=' bg-white '>
             <h1 className='font-bold m-1'>Basic Details</h1>
 
 
@@ -166,10 +165,17 @@ alert(JSON.stringify(data))
                     {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
                     Check
                 </button>
-                <button onClick={() => reset()} type="button" disabled={formState.isSubmitting} className="btn btn-secondary bg-gray-900">Reset</button>
-                <Link href="/users" className="btn btn-link">Cancel</Link>
             </div>
-{JSON.stringify(user?user:"no")}
+          <div className='px-2'>
+             {userData?(<>
+                <a href={`/search?nic=${userData?.users[0]?.nic}`} className='text-blue-800 font-bold'>{userData?.users[0]?.fullName + `  `}</a> has taken  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_loans.length}</span> loans and <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_guarantors.length}</span> guarantees<br/>
+             </>
+
+            // 
+            )
+            :loading}
+            
+            </div> 
 </form>
 
 
