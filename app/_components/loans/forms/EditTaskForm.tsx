@@ -149,7 +149,7 @@ if(name=="total_weight"){
               Net Weight : {itm_total_net.toFixed(4)}
             </div>
             <div className="px-1  text-right  border-1 m-1">
-              total pound : {total_pounds.toFixed(4)}
+              Total pound : {total_pounds.toFixed(4)}
             </div>
           </div>
           <div className="flex flex-col md:flex-row px-3 bg-gray-800 text-white">

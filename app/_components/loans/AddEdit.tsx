@@ -715,7 +715,7 @@ function AddEdit({
                     Net Weight : {itm_total_net.toFixed(4)}
                   </div>
                   <div className="px-1  text-right m-1 border-1">
-                    total pound : {total_pounds.toFixed(4)}
+                    Total pound : {total_pounds.toFixed(4)}
                   </div>
                 </div>
                 {payment_values(
@@ -1406,7 +1406,7 @@ function AddEdit({
                   Net Weight : {itm_total_net.toFixed(4)}
                 </div>
                 <div className="px-1  text-right m-1 border-1">
-                  total pound : {total_pounds.toFixed(4)}
+                  Total pound : {total_pounds.toFixed(4)}
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 ">
