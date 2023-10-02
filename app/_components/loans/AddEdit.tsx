@@ -1407,7 +1407,7 @@ function AddEdit({
                 <div className="w-full md:w-full px-3 mb-2 mt-2">
                   <h2 className=" text-gray-800 text-lg">
                     <div className="flex flex-col md:flex-row -mx-1 ">
-                      <div className="w-full">
+                      <div className="w-full text-blue-100 ">
                         <br />
                         Items
                         <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm  ">
@@ -1415,7 +1415,7 @@ function AddEdit({
                         </span>
                       </div>
 
-                      <div className="px-1  text-right m-1 mt-0 border-1">
+                      <div className="px-1  text-right text-white m-1 mt-0 border-1">
                         <span className=" whitespace-nowrap">
                           Amount per pound{" "}
                         </span>{" "}
@@ -1424,7 +1424,7 @@ function AddEdit({
                           {actual_karat(gPr).value}
                         </div>
                       </div>
-                      <div className="px-1  text-right m-1 mt-0 border-1">
+                      <div className="px-1  text-right text-white m-1 mt-0 border-1">
                         Issuable
                         <br />
                         <div className="bg-gray-800 text-white px-2">
