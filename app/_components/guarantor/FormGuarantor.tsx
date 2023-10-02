@@ -91,7 +91,9 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
                 // await userService.update(user._id, data);
                 // message = 'User updated';
             } else {
-                data.loan_id=loan._id
+              data.loan_id=loan._id
+              data.role="GUARANTOR"
+              data.status="ACTIVE"
                 await userService.create(data);
                  reset()
                 message = 'User added';
@@ -373,11 +375,11 @@ value={username}                    />
 
 
         </div>
-<h2 className='font-bold mt-3 ml-2'>Other </h2>
+{/* <h2 className='font-bold mt-3 ml-2'>Other </h2> */}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 pb-2">
 
-                
+{/*                 
                 <div className='p-2'>
                     <label className="form-label">Role</label>
                     <select {...fields.role}  className={`form-control ${errors.role ? 'is-invalid' : ''}`} >
@@ -395,7 +397,7 @@ value={username}                    />
                     </select>
 
                     <div className="invalid-feedback">{errors.status?.message?.toString()}</div>
-                </div>
+                </div> */}
 
 
 
