@@ -3,7 +3,7 @@
   <div className="px-1"></div>
   <div className="px-1  text-right">Total Weight : 2.4975</div>
   <div className="px-1  text-right">Net Weight : 19.9800</div>
-  <div className="px-1  text-right">Total pound : 2.4975</div>
+  <div className="px-1  text-right">Total Pound : 2.4975</div>
   </div>
   <div className="flex flex-wrap -mx-3 ">
     <div className="w-full md:w-full px-3 mb-2 mt-2">
