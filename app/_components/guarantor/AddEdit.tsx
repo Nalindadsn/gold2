@@ -175,6 +175,7 @@ setValue("fullName", n++, {
              {userData?
              userData?.users.length>0 ?             
              (<>
+             <span className='whitespace-nowrap'>Role : {userData?.users[0]?.role}</span> | <span className='whitespace-nowrap'>Status : {userData?.users[0]?.status}</span><hr/>
                 <a href={`/search?nic=${userData?.users[0]?.nic}`} className='text-blue-800 font-bold'>{userData?.users[0]?.fullName + `  `}</a> has taken  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_loans.length}</span> loans and  is a guarantor for  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_guarantors.length}</span> guarantees<br/>
              </>
 
