@@ -1085,7 +1085,7 @@ function AddEdit({
                     } */}
                     {
                       parseFloat(watchExpectedPriceOld) <= max_price
-                        ? "o"
+                        ? ""
                         : <><br/></>
                     }
 
