@@ -4,6 +4,14 @@
 .app-container {
     min-height: 350px;
 }
+#cell-1-6516e006852903c6c93abcd5 > div > div{
+    white-space: nowrap;
+    width:200px
+}
+.rdt_Table  div {
+    white-space: normal !important;
+    overflow: visible !important;
+}
 .offcanvas-header > button{
    background-color: #e20017;
 }

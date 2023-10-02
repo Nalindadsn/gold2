@@ -23,11 +23,56 @@ function Users() {
   useEffect(() => {
     userService.getCurrent();
 }, []);
-
+const formatDate = (dateString: any) => {
+  const options: any = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
   const column: any = [
     {
       name: "ID",
-      selector: (row: any) => row.id,
+      selector: (row: any) => (<>ID : {row.id}
+        <div style={{ whiteSpace: "nowrap",width:"200px" }} className="">
+                <Link
+                  href={`/loans/add/${row.id}`}
+                  className="btn btn-sm btn-primary me-1 focus:bg-blue-700"
+                >
+                  Add Loan
+                </Link>
+                <Link
+                  href={`/users/edit/${row.id}`}
+                  className="btn btn-sm btn-warning me-1  focus:bg-yellow-500"
+                >
+                  Edit
+                </Link>
+  
+  {user?.role=="ADMIN"?
+   
+                <button
+                  onClick={() =>{ userService.delete(row.id);
+                      setRecords(null)
+                  
+                  }
+                  }
+                  className="btn btn-sm btn-danger btn-delete-user focus:bg-red-700"
+                  style={{ width: "60px" }}
+                  disabled={row.isDeleting}
+                >
+                  {row.isDeleting ? (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  ) : (
+                    <span>Delete</span>
+                  )}
+                </button>
+  :""}             
+              </div>
+        </>),
       sortable: true,
     },
     {
@@ -47,52 +92,52 @@ function Users() {
     },
     {
       name: "Created At",
-      selector: (row: any) => row.createdAt,
+      selector: (row: any) => (
+      formatDate(row.createdAt)
+),
       sortable: true,
     },
-    {
-      name: "action",
-      selector: (row: any) => (<>
-      
-      
-      <div style={{ whiteSpace: "nowrap" }} className="">
-              <Link
-                href={`/loans/add/${row.id}`}
-                className="btn btn-sm btn-primary me-1 focus:bg-blue-700"
-              >
-                Add Loan
-              </Link>
-              <Link
-                href={`/users/edit/${row.id}`}
-                className="btn btn-sm btn-warning me-1  focus:bg-yellow-500"
-              >
-                Edit
-              </Link>
+//     {
+//       name: "action",
+//       selector: (row: any) => (<>
+//       <div style={{ whiteSpace: "nowrap" }} className="">
+//               <Link
+//                 href={`/loans/add/${row.id}`}
+//                 className="btn btn-sm btn-primary me-1 focus:bg-blue-700"
+//               >
+//                 Add Loan
+//               </Link>
+//               <Link
+//                 href={`/users/edit/${row.id}`}
+//                 className="btn btn-sm btn-warning me-1  focus:bg-yellow-500"
+//               >
+//                 Edit
+//               </Link>
 
-{user?.role=="ADMIN"?
+// {user?.role=="ADMIN"?
  
-              <button
-                onClick={() =>{ userService.delete(row.id);
-                    setRecords(null)
+//               <button
+//                 onClick={() =>{ userService.delete(row.id);
+//                     setRecords(null)
                 
-                }
-                }
-                className="btn btn-sm btn-danger btn-delete-user focus:bg-red-700"
-                style={{ width: "60px" }}
-                disabled={row.isDeleting}
-              >
-                {row.isDeleting ? (
-                  <span className="spinner-border spinner-border-sm"></span>
-                ) : (
-                  <span>Delete</span>
-                )}
-              </button>
-:""}             
-            </div>
-      </>),
+//                 }
+//                 }
+//                 className="btn btn-sm btn-danger btn-delete-user focus:bg-red-700"
+//                 style={{ width: "60px" }}
+//                 disabled={row.isDeleting}
+//               >
+//                 {row.isDeleting ? (
+//                   <span className="spinner-border spinner-border-sm"></span>
+//                 ) : (
+//                   <span>Delete</span>
+//                 )}
+//               </button>
+// :""}             
+//             </div>
+//       </>),
       
-      width: "fit-content",
-    },
+//       width: "fit-content",
+//     },
   ];
   const [records,setRecords]=useState(null)
   const handleFilter=(event:any)=>{
@@ -140,11 +185,15 @@ function Users() {
         </div>
         <div className="invalid-feedback"></div>
       </div>
-      {users?<DataTable
+      {users?
+      
+      
+      <DataTable
         columns={column}
         data={records?records:users}
         pagination
         selectableRows
+
       ></DataTable>:<div>
       <div>
         
