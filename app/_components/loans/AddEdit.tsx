@@ -1072,17 +1072,18 @@ function AddEdit({
                   </div>
                   <div className="px-1 ">
                     <div>
-                      {payment_values_amount(
-                        parseFloat(watchExpectedPriceOld),
-                        parseFloat(status),
-                        parseFloat(watchNoOfMonth)
-                      ) > 0 ? (
-                        <>
-                          <br />
-                        </>
-                      ) : (
-                        ""
-                      )}
+                     
+                     
+                      {/* {
+                      
+                      ((payment_values_amount(
+                      parseFloat(watchExpectedPriceOld),
+                      parseFloat(status),
+                      parseFloat(watchNoOfMonth)
+                    )) >0)?"":""
+                    
+                    } */}
+
 
                       <label className="form-label  ">
                         No of Month
