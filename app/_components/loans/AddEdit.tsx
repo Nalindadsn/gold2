@@ -778,13 +778,69 @@ function AddEdit({
                   <div className="invalid-feedback">
                     {errors.requested_loan?.message?.toString()}
                   </div>
-                </div><div>
+                </div>
+                <div className="p-2">
+                  <label className="form-label ml-2 ">Status</label>
+
+                  <select
+                    {...fields.status}
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.status ? "is-invalid" : ""
+                    }`}
+                  >
+                    <option value="">-select option</option>
+                    <option className="PENDING">PENDING</option>
+                    <option className="PROCESSING">PROCESSING</option>
+                    <option className="SUCCESS">SUCCESS</option>
+                    <option className="REJECTED">REJECTED</option>
+                  </select>
+
+                  <div className="invalid-feedback">
+                    {errors.status?.message?.toString()}
+                  </div>
+                </div>
 
 </div>
 
-</div>
-              <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
-               
+<h3 className="text-xl font-bold border-t-2 pl-2 mt-3 pt-2">
+                MORTGAGE DETAILS
+              </h3>
+              
+              <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+                <div className="w-full hidden md:block"></div>
+                <div
+                  className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
+                  style={{ whiteSpace: "nowrap" }}
+                >
+                  <label className="form-label ml-2 mt-2">Invoice Number</label>
+                  <input
+                    {...fields.mortgage_invoice_number}
+                    type="mortgage_invoice_number"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.mortgage_invoice_number ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.mortgage_invoice_number?.message?.toString()}
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 -md mt-3 ">
+              <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    Mortgager <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.mortgage_cmp}
+                    type="mortgage_cmp"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.mortgage_cmp ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.mortgage_cmp?.message?.toString()}
+                  </div>
+                </div>
 
                 <div className="p-2 ml-1">
                   <label className="form-label ml-2 ">
@@ -855,45 +911,9 @@ function AddEdit({
               </div> */}
               </div>
 
-              <h3 className="text-xl font-bold border-t-2 pl-2 mt-3 pt-2">
-                MORTGAGE DETAILS
-              </h3>
-              <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-                <div className="w-full hidden md:block"></div>
-                <div
-                  className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
-                  style={{ whiteSpace: "nowrap" }}
-                >
-                  <label className="form-label ml-2 mt-2">Invoice Number</label>
-                  <input
-                    {...fields.mortgage_invoice_number}
-                    type="mortgage_invoice_number"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgage_invoice_number ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.mortgage_invoice_number?.message?.toString()}
-                  </div>
-                </div>
-              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2  border-t">
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    Mortgager <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.mortgage_cmp}
-                    type="mortgage_cmp"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgage_cmp ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.mortgage_cmp?.message?.toString()}
-                  </div>
-                </div>
+               
 
                 <div className="p-2">
                   <label className="form-label ml-2 ">Branch</label>
@@ -936,7 +956,8 @@ function AddEdit({
                     {errors.mortgager_phone?.message?.toString()}
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
+                <div></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 border-b">
                   <div className="p-2">
                     <label className="form-label ml-2 ">
                       Interest Rate % (Monthly)
@@ -982,7 +1003,7 @@ function AddEdit({
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 shadow-md border-t">
+                <div className="grid grid-cols-1 md:grid-cols-2 border-b">
                   <div className="p-2">
                     <label className="form-label ml-2 ">Loan Start Date</label>
                     <input
@@ -1196,7 +1217,7 @@ function AddEdit({
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3">
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-2">
                   <label className="form-label ml-2 ">
                     First Installment Date{" "}
@@ -1231,26 +1252,6 @@ function AddEdit({
                   </div>
                 </div>
 
-                <div className="p-2">
-                  <label className="form-label ml-2 ">Status</label>
-
-                  <select
-                    {...fields.status}
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.status ? "is-invalid" : ""
-                    }`}
-                  >
-                    <option value="">-select option</option>
-                    <option className="PENDING">PENDING</option>
-                    <option className="PROCESSING">PROCESSING</option>
-                    <option className="SUCCESS">SUCCESS</option>
-                    <option className="REJECTED">REJECTED</option>
-                  </select>
-
-                  <div className="invalid-feedback">
-                    {errors.status?.message?.toString()}
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -1281,15 +1282,15 @@ function AddEdit({
           </form>
           {loan && (
             <>
-              <div className="flex  mt-3">
-                <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl ">
+              <div className="flex  mt-3 pt-2 border-t">
+                <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl w-full">
                   GUARANTOR DETAILS
                 </h1>
                 {loan ? (
                   <Button
                     variant="primary"
                     onClick={handleShow}
-                    className="bg-blue-500 ml-2 btn-sm "
+                    className="bg-blue-500 ml-2 btn-sm  whitespace-nowrap"
                   >
                     + New Guarantor
                   </Button>
@@ -1301,7 +1302,7 @@ function AddEdit({
               <div className="text-center bg-white shadow-md">
                 {loan?.guarantors.length > 0 ? "" : "No Guarantors Found"}
               </div>
-              <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 border">
+              <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
                 {guarantorList?.map((i: any) => (
                   <div key={i._id}>
                     {loan ? (
@@ -1383,7 +1384,7 @@ function AddEdit({
           <>
             <form
               onSubmit={submitHandler}
-              className=" p-2 shadow-sm bg-white border mt-5"
+              className=" p-2 shadow-sm bg-gray-800 text-white border mt-5"
               style={{ overflow: "hidden" }}
             >
               <div className="flex flex-col md:flex-row -mx-1  border-b text-white bg-gray-900">
