@@ -1628,7 +1628,7 @@ function AddEdit({
                             </div>
                             <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t">
                               <span
-                                className={` px-2 ${
+                                className={`text-gray-800 px-2 ${
                                   (i?.net_weight / i?.total_weight) * 100 == 100
                                     ? "  border-1 border-orange-600"
                                     : "  border-1 border-red-500 "
