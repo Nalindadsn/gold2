@@ -1083,6 +1083,11 @@ function AddEdit({
                     )) >0)?"":""
                     
                     } */}
+                    {
+                      parseFloat(watchExpectedPriceOld) <= max_price
+                        ? "o"
+                        : <><br/></>
+                    }
 
 
                       <label className="form-label  ">
