@@ -1411,7 +1411,7 @@ function AddEdit({
                       <div className="w-full text-blue-100 ">
                         <br />
                         Items
-                        <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm  ">
+                        <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm border-1 ">
                           NO OF ITEMS : {reviews.length}
                         </span>
                       </div>

@@ -138,7 +138,7 @@ if(name=="total_weight"){
   return (
     <>
     
-    <div className="flex flex-col md:flex-row -mx-1  border-b bg-gray-900 text-white">
+    <div className="flex flex-col md:flex-row  border-b bg-gray-800 text-white">
             <div className="px-1">
              
             </div>
@@ -152,9 +152,9 @@ if(name=="total_weight"){
               total pound : {total_pounds.toFixed(4)}
             </div>
           </div>
-          <div className="flex flex-col md:flex-row -mx-1 ">
+          <div className="flex flex-col md:flex-row px-3 bg-gray-800 text-white">
 <div className="w-full"><br/>Items
-                    <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm  ">
+                    <span className="bg-dark ml-2 text-blue-100 py-0 px-2 rounded-full text-sm border ">
                       NO OF ITEMS : 
                       {props.tasks.length}
                     </span></div>
@@ -184,7 +184,7 @@ if(name=="total_weight"){
                     </div>
                     </div>
 
-      <form className="bg-white"
+      <form className="bg-gray-800"
         onSubmit={(event) => {
           event.preventDefault();
           if (!task.name || !task.karat) return;
@@ -202,7 +202,7 @@ if(name=="total_weight"){
 
               <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                 <div className="flex-1 px-1">
-                <label className="text-left w-full ml-2 text-sm">Description</label>
+                <label className="text-left w-full ml-2 text-sm text-gray-50">Description</label>
 
                 <input
                     className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -215,7 +215,7 @@ if(name=="total_weight"){
 
                 </div>
                 <div className="flex-1 px-1">
-                <label className="text-left w-full ml-2 text-sm">Karat</label>
+                <label className="text-left w-full ml-2 text-sm text-gray-50">Karat</label>
 
                   <input
                     className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -228,7 +228,7 @@ if(name=="total_weight"){
                   
                 </div>
                 <div className="flex-1 px-1">
-                <label className="text-left w-full ml-2 text-sm">Total Weight</label>
+                <label className="text-left w-full ml-2 text-sm text-gray-50">Total Weight</label>
 
                   <input
                     className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -240,7 +240,7 @@ if(name=="total_weight"){
                   />
                 </div>
                 <div className="flex-1 px-1">
-                <label className="text-left w-full ml-2 text-sm">Net Weight</label>
+                <label className="text-left w-full ml-2 text-sm text-gray-50">Net Weight</label>
 
                   <input
                     className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -253,7 +253,7 @@ if(name=="total_weight"){
                   
                 </div>
                 <div className="flex-1 px-1">
-                <label className="text-left w-full ml-2 text-sm">Pounds</label>
+                <label className="text-left w-full ml-2 text-sm text-gray-50">Pounds</label>
 
                   <input
                     className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -265,7 +265,7 @@ if(name=="total_weight"){
                   />
                 </div>
                 <div className="flex-1 px-1">
-                <label className="text-left w-full ml-2 text-sm">&nbsp;</label>
+                <label className="text-left w-full ml-2 text-sm text-gray-50">&nbsp;</label>
 
                   <select
                     name="status"
