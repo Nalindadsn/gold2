@@ -41,7 +41,7 @@ const formatDate = (dateString: any) => {
         <div style={{ whiteSpace: "nowrap",width:"200px",marginBottom:"5px" }} className="">
                 <Link
                   href={`/loans/add/${row.id}`}
-                  className="btn btn-sm btn-primary me-1 focus:bg-blue-700"
+                  className="btn btn-sm btn-primary me-1 text-white bg-blue-600 focus:bg-purple-700"
                 >
                   Add Loan
                 </Link>
@@ -161,7 +161,7 @@ const formatDate = (dateString: any) => {
         <h1 className="w-full text-2xl font-bold ">- Customers</h1>
         <Link
           href="/users/add"
-          className="text-right btn btn-primary"
+          className="text-right btn btn-primary text-white bg-blue-600  focus:bg-purple-700"
           style={{ whiteSpace: "nowrap" }}
         >
           + New Customer
