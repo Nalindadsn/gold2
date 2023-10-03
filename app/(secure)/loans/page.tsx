@@ -44,6 +44,7 @@ function Loans() {
         selector: (row: any) => row.form_number,
         sortable: true,
       },
+      
     {
       name: "action",
       selector: (row: any) => (

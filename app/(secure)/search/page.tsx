@@ -83,10 +83,10 @@ function Edit() {
                             <article className="overflow-hidden rounded-lg shadow-md border bg-white">
                               <header className="flex flex-col md:flex-row w-full leading-tight pb-0 p-2 md:p-4">
                                 <h1 className="text-lg">
-                                  <div className="no-underline hover:underline text-black text-sm ml-2">
+                                  <div className=" text-black text-sm ml-2">
                                     Order ID : {i?._id}
                                   </div>
-                                  <div className="no-underline hover:underline text-black text-sm ml-2">
+                                  <div className=" text-black text-sm ml-2">
                                     Form Number : {i?.form_number}
                                   </div>
                                 </h1>
@@ -132,10 +132,10 @@ function Edit() {
                           <article className="overflow-hidden rounded-lg shadow-md border bg-white">
                             <header className="flex flex-col md:flex-row w-full leading-tight pb-0 p-2 md:p-4">
                               <h1 className="text-lg">
-                                <div className="no-underline hover:underline text-black text-sm ml-2">
+                                <div className=" text-black text-sm ml-2">
                                   Order ID : {i?._id}
                                 </div>
-                                <div className="no-underline hover:underline text-black text-sm ml-2">
+                                <div className=" text-black text-sm ml-2">
                                   Form Number : {i?.form_number}
                                 </div>
                               </h1>
