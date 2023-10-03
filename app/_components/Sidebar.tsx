@@ -44,7 +44,7 @@ function Sidebar() {
   
   const router = useRouter();
   const submitHandler = async (e: any) => {
-   // e.preventDefault();
+    e.preventDefault();
    router.push(`/search?nic=${search}`);
   }
   return <>
