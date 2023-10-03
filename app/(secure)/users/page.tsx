@@ -97,6 +97,13 @@ const formatDate = (dateString: any) => {
 ),
       sortable: true,
     },
+    {
+      name: "Status",
+      selector: (row: any) => 
+      row.status
+,
+      sortable: true,
+    },
 //     {
 //       name: "action",
 //       selector: (row: any) => (<>

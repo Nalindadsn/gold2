@@ -61,7 +61,7 @@ function Loans() {
       },
     {
       name: "Created At",
-      selector: (row: any) => row.createdAt+" by " +row?.officer[0]?.gender,
+      selector: (row: any) => row.createdAt+" by " +row?.officer[0]?.fullName,
       sortable: true,
     },
     {
