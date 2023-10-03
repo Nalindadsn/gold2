@@ -153,7 +153,7 @@ setValue("fullName", n++, {
 
 
                 <div className='p-2'>
-                    <label className="form-label">nic</label>
+                    <label className="form-label">NIC</label>
                     <input  {...fieldsCheck.nic} type="text" className={`form-control ${errors2.nic ? 'is-invalid' : ''}`} 
                     
                     // onChange={(e)=>setUsername(e.target.value)}

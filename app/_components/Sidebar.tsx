@@ -52,9 +52,7 @@ function Sidebar() {
   <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen  transition-transform -translate-x-full   border-gray-200 md:translate-x-0  bg-gray-800 text-blue-100" aria-label="Sidebar">
            <div className="h-full  pb-4 overflow-y-auto ">
               <ul className="space-y-2 font-medium">
-                 <li className="pt-2 pb-3 bg-gray-900 text-gray-300"><Link href="/" className="text-3xl font-bold m-2 pt-5" >Gold Loan</Link></li>
-                
-                
+                 <li className="pt-2 pb-3 bg-gray-900 text-gray-300"><Link href="/" className="text-3xl font-bold m-2 pt-5" >Gold Loan</Link></li>                
                 <li>       <form  
               onSubmit={submitHandler}>
                                 <div className="relative group ">
