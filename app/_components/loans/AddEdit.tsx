@@ -1354,7 +1354,7 @@ function AddEdit({
                               </button>
                             </div>
                           </div>
-                          <div className="mb-2 md:mb-1 md:flex items-center">
+                          <div className=" md:mb-1 md:flex items-center">
                             <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
                               NIC
                             </label>
@@ -1362,6 +1362,15 @@ function AddEdit({
                               :
                             </span>
                             <div className="flex-1">{i?.nic}</div>
+                          </div>
+                          <div className="mb-2 md:mb-1 md:flex items-center">
+                            <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                              Relationship
+                            </label>
+                            <span className="mr-4 inline-block  md:block">
+                              :
+                            </span>
+                            <div className="flex-1">{i?.relationship}</div>
                           </div>
                         </div>
                       </div>

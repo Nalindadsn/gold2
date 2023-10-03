@@ -13,7 +13,7 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
     const [username, setUsername] = useState("");
 
     // get functions to build form with useForm() hook
-    const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user });
+    const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user || {} });
     const { errors } = formState;
 
     const fields = {
@@ -78,10 +78,13 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
 
     async function onSubmit(data: any) {
         alertService.clear();
+              console.log(data)
         try {
             // create or update user based on user prop
             let message;
             if (user) {
+              
+              console.log("user")
                 
                 data.loan_id=loan._id
                 await userService.create(data);
@@ -91,13 +94,13 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
                 // await userService.update(user._id, data);
                 // message = 'User updated';
             } else {
-              data.loan_id=loan._id
-              data.role="GUARANTOR"
-              data.status="ACTIVE"
+              
+              console.log("user n")
+                
+                data.loan_id=loan._id
                 await userService.create(data);
                  reset()
                 message = 'User added';
-
             //  router.push('/loans');
             }
 

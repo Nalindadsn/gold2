@@ -495,8 +495,9 @@ value={username}                    />
             </div>
         </form> */}
 </>):<>
+{/* <FormGuarantor title="ADD GUARANTOR" loan={loan}  user={userData?.users[0]}  /> */}
 
-<FormGuarantor title='a'  loan={loan}   />
+<FormGuarantor title='ADD GUARANTOR'  loan={loan}   />
 </>:""}
 
 </>
