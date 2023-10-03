@@ -33,7 +33,7 @@ function Edit({ params: { id } }: any) {
         ? 
         <>
         
-        <AddEdit title="- Edit User" user={user} loan_id={loan_id} />
+        <AddEdit title="- Edit Customer" user={user} loan_id={loan_id} />
         
         </>
         : <Spinner />;
