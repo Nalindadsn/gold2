@@ -56,7 +56,7 @@ function Page() {
               </svg>
               New Customer
             </Link>
-            {user?.role?<>
+            {user?.role? user.role=="admin"?<>
             
             
             <Link
@@ -80,7 +80,7 @@ function Page() {
               New Admin
             </Link>
             
-            </>:""}
+            </>:"":""}
             
           </div>
         </div>

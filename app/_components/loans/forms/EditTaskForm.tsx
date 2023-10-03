@@ -85,7 +85,6 @@ if(name=="total_weight"){
   setNet_weight("")
   };
 
-
   const total_pounds = props.tasks.reduce(function (acc: any, obj: any) {
     return (
       acc + (parseFloat(obj.net_weight) ? parseFloat(obj.net_weight) : 0) / 8
@@ -194,12 +193,7 @@ if(name=="total_weight"){
      
         <div className="flex flex-wrap -mx-3 " key={task.id}>
           <div className="w-full md:w-full px-3 mb-2 mt-2 mr-2">
-            
             <div>
-
-
-
-
               <div className="flex  flex-col md:flex-row -mx-1 py-2 border-b">
                 <div className="flex-1 px-1">
                 <label className="text-left w-full ml-2 text-sm text-gray-50">Description</label>
