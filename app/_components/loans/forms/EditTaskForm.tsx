@@ -193,7 +193,7 @@ if(name=="total_weight"){
         }}>
      
         <div className="flex flex-wrap -mx-3 " key={task.id}>
-          <div className="w-full md:w-full px-3 mb-2 mt-2">
+          <div className="w-full md:w-full px-3 mb-2 mt-2 mr-2">
             
             <div>
 
