@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { Spinner } from "_components";
-import { useSettingService } from "_services";
+import { useSettingService,useUserService } from "_services";
 import { useRouter } from 'next/navigation';
 
 export default Settings;
@@ -15,6 +15,12 @@ function Settings() {
 
   
 
+  const userService = useUserService();
+  const user: any = userService.currentUser;
+
+  useEffect(() => {
+    userService.getCurrent();
+  }, []);
   const column: any = [
     
     {
@@ -30,7 +36,9 @@ function Settings() {
     {
       name: "Action",
       selector: (row: any) =>(
-        <>
+      <>
+      
+        {user?.role? user.role=="ADMIN"? <>
         
 <Link
           href={`/settings/edit/${row._id}`}
@@ -40,6 +48,8 @@ function Settings() {
         </Link>
 
         </>
+:"NO":"Loading..."}</>
+       
       ),
       sortable: true,
     },

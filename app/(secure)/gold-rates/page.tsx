@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { Spinner } from "_components";
-import { useRateService } from "_services";
+import { useRateService,useUserService } from "_services";
 import { useRouter } from 'next/navigation';
 
 export default Rates;
@@ -14,6 +14,12 @@ function Rates() {
   const rates:any = rateService.rates;  
 
   
+  const userService = useUserService();
+  const user: any = userService.currentUser;
+
+  useEffect(() => {
+    userService.getCurrent();
+  }, []);
 
   const column: any = [
     {
@@ -35,6 +41,11 @@ function Rates() {
       name: "Action",
       selector: (row: any) =>(
         <>
+      
+        {user?.role? user.role=="ADMIN"? <>
+        
+
+        <>
         
 <Link
           href={`/gold-rates/edit/${row._id}`}
@@ -44,6 +55,9 @@ function Rates() {
         </Link>
 
         </>
+        
+        </>
+:"NO":"Loading..."}</>
       ),
       sortable: true,
     },
