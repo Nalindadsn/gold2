@@ -38,32 +38,12 @@ function Loans() {
       selector: (row: any) => row.id,
       sortable: true,
     },
-
+    
     {
         name: "Form No",
         selector: (row: any) => row.form_number,
         sortable: true,
       },
-      {
-        name: "Name",
-        selector: (row: any) =><><FaUserCircle className="float-left mr-2 text-xl" />{row?.customer[0]?.fullName}</> ,
-        sortable: true,
-      },
-      {
-        name: "NIC",
-        selector: (row: any) =><>{row?.customer[0]?.nic}</> ,
-        sortable: true,
-      },
-      {
-        name: "Expected Price",
-        selector: (row: any) => row.expected_price_old,
-        sortable: true,
-      },
-    {
-      name: "Created At",
-      selector: (row: any) => row.createdAt+" by " +row?.officer[0]?.fullName,
-      sortable: true,
-    },
     {
       name: "action",
       selector: (row: any) => (
@@ -72,18 +52,18 @@ function Loans() {
         
         <a
             href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}
-            className="btn btn-sm btn-warning me-1  focus:bg-yellow-500"
+            className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 whitespace-nowrap my-1"
           >
             Backend Report
           </a>
 
 <Link
           href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}
-          className="btn btn-sm btn-warning me-1  focus:bg-yellow-500"
+          className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 mb-1"
         >
           Edit
         </Link>
-
+<br/>
 
 
           {user?.role=="ADMIN"?
@@ -104,7 +84,27 @@ function Loans() {
         </>
       ),
 
-      width: "fit-content",
+    },
+
+      {
+        name: "Name",
+        selector: (row: any) =><><FaUserCircle className="float-left mr-2 text-xl" />{row?.customer[0]?.fullName}</> ,
+        sortable: true,
+      },
+      {
+        name: "NIC",
+        selector: (row: any) =><>{row?.customer[0]?.nic}</> ,
+        sortable: true,
+      },
+      {
+        name: "Expected Price",
+        selector: (row: any) => row.expected_price_old,
+        sortable: true,
+      },
+    {
+      name: "Created At",
+      selector: (row: any) => row.createdAt+" by " +row?.officer[0]?.fullName,
+      sortable: true,
     },
   ];
   const [records, setRecords] = useState(null);
