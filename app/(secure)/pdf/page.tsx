@@ -59,7 +59,7 @@ export default function Pdf() {
               </div>
               <div className="mb-2 md:mb-1 md:flex items-center">
                 <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                  Order No
+                  Order No 
                 </label>
                 <span className="mr-4 inline-block  md:block">:</span>
                 <div className="flex-1">64f6ad1e82760a2e1886484c</div>

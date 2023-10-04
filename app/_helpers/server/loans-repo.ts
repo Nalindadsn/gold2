@@ -11,7 +11,7 @@ const User = db.User;
 export const loansRepo = {
   getAll,
   getSummary,
-  getById,
+  getById,getByIdGuarantor,
   create,
   update,
   updateItem,
@@ -182,7 +182,317 @@ async function getAll() {
   ]);
 }
 
-async function getById(id: string) {
+async function getByIdGuarantor(id: string) {
+  try {
+    const loan= await Loan.aggregate([
+      {
+        "$match": {
+          "_id": new mongoose.Types.ObjectId(id)
+        }
+      },
+
+      // {
+      //   "$match": {
+      //     "_id": ObjectId('65103277ab76f156d99eb6cd')
+      //   }
+      // },
+            {
+              $lookup: {
+                from: "users",
+                localField: "user_id",
+                foreignField: "_id",
+                as: "customer",
+              },
+            },
+            {
+              $lookup: {
+                from: "users",
+                localField: "officer_id",
+                foreignField: "_id",
+                as: "officer",
+              },
+            },
+    
+      {
+        $lookup: {
+          from: "users",
+          localField: "guarantor.user_id",
+          foreignField: "_id",
+          as: "guarantors"
+        }
+      },
+            {
+              $addFields: {
+                id: "$_id",
+              },
+            },
+
+
+
+
+   {
+              $unwind: {
+                path: "$guarantor",
+                preserveNullAndEmptyArrays: true
+              }
+            },
+            {
+              $lookup: {
+                from: "users",
+                localField: "guarantor.user_id",
+                foreignField: "_id",
+                as: "author"
+              }
+            },
+            {
+              $addFields: {
+                "guarantor.guarantors": {
+                  $cond: [
+                    {
+                      $ne: [
+                        "$author",
+                        []
+                      ]
+                    },
+                    {
+                      $arrayElemAt: [
+                        "$author",
+                        0
+                      ]
+                    },
+                    "$guarantor.user_id"
+                  ]
+                }
+              }
+            },
+
+
+
+      //       {
+      //         $lookup: {
+      //           from: "users",
+      //           localField: "user_id",
+      //           foreignField: "_id",
+      //           as: "customer",
+      //         },
+      //       },
+      //       {
+      //         $lookup: {
+      //           from: "users",
+      //           localField: "officer_id",
+      //           foreignField: "_id",
+      //           as: "officer",
+      //         },
+      //       },
+    
+      // {
+      //   $lookup: {
+      //     from: "users",
+      //     localField: "guarantor.user_id",
+      //     foreignField: "_id",
+      //     as: "guarantors"
+      //   }
+      // },
+      //       {
+      //         $addFields: {
+      //           id: "$_id",
+      //         },
+      //       },
+            // {
+            //   $unwind: {
+            //     path: "$guarantor",
+            //     preserveNullAndEmptyArrays: true
+            //   }
+            // },
+            // {
+            //   $lookup: {
+            //     from: "users",
+            //     localField: "guarantor.user_id",
+            //     foreignField: "_id",
+            //     as: "author"
+            //   }
+            // },
+            // {
+            //   $addFields: {
+            //     "guarantor.guarantors": {
+            //       $cond: [
+            //         {
+            //           $ne: [
+            //             "$author",
+            //             []
+            //           ]
+            //         },
+            //         {
+            //           $arrayElemAt: [
+            //             "$author",
+            //             0
+            //           ]
+            //         },
+            //         "$guarantor.user_id"
+            //       ]
+            //     }
+            //   }
+            // },
+
+
+//  try {
+//     const loan= await Loan.aggregate([
+//   {
+//     "$match": {
+//       "_id": new mongoose.Types.ObjectId(id)
+//     }
+//   },
+//         {
+//           $lookup: {
+//             from: "users",
+//             localField: "user_id",
+//             foreignField: "_id",
+//             as: "customer",
+//           },
+//         },
+//         {
+//           $lookup: {
+//             from: "users",
+//             localField: "officer_id",
+//             foreignField: "_id",
+//             as: "officer",
+//           },
+//         },
+
+//   {
+//     $lookup: {
+//       from: "users",
+//       localField: "guarantor.user_id",
+//       foreignField: "_id",
+//       as: "guarantors"
+//     }
+//   },
+//         {
+//           $addFields: {
+//             id: "$_id",
+//           },
+//         },
+//       ]);
+//       return loan[0]
+//   } catch {
+//     throw "Loan Not Found";
+//   }
+
+  // {
+
+
+  
+  //   "$match": {
+  //     "_id": new mongoose.Types.ObjectId(id)
+  //   }
+  // },
+  //       {
+  //         $lookup: {
+  //           from: "users",
+  //           localField: "user_id",
+  //           foreignField: "_id",
+  //           as: "customer",
+  //         },
+  //       },
+  //       {
+  //         $lookup: {
+  //           from: "users",
+  //           localField: "officer_id",
+  //           foreignField: "_id",
+  //           as: "officer",
+  //         },
+  //       },
+
+
+  //       {
+  //   $lookup: {
+  //     from: "users",
+  //     localField: "guarantor.user_id",
+  //     foreignField: "_id",
+  //     as: "guarantors"
+  //   }
+  // },
+  
+  //       {
+  //         $addFields: {
+  //           id: "$_id",
+  //         },
+  //       },
+  
+  // {
+  //   $unwind: {
+  //     path: "$guarantor",
+  //     preserveNullAndEmptyArrays: true
+  //   }
+  // },
+  // {
+  //   $lookup: {
+  //     from: "users",
+  //     localField: "guarantor.user_id",
+  //     foreignField: "_id",
+  //     as: "user_id"
+  //   }
+  // },
+  // {
+  //   $addFields: {
+  //     "guarantor.user_id": {
+  //       $cond: [
+  //         {
+  //           $ne: [
+  //             "$user_id",
+  //             []
+  //           ]
+  //         },
+  //         {
+  //           $arrayElemAt: [
+  //             "$user_id",
+  //             0
+  //           ]
+  //         },
+  //         "$guarantor.user_id"
+  //       ]
+  //     }
+  //   }
+  // },
+  // {
+  //   $group: {
+  //     _id: "$_id",
+  //     data: {
+  //       $first: "$$ROOT"
+  //     },
+  //     guarantor: {
+  //       $push: "$guarantor"
+  //     }
+  //   }
+  // },
+  // {
+  //   $addFields: {
+  //     "data.guarantor": "$guarantor"
+  //   }
+  // },
+  // {
+  //   $project: {
+  //     "data.user_id": 0
+  //   }
+  // },
+  // {
+  //   $replaceRoot: {
+  //     newRoot: "$data"
+  //   }
+  // }
+       ]);
+
+      //  console.log(loan[0])
+
+      return loan
+  } catch {
+    throw "Loan Not Found";
+  }
+
+}
+  async function getById(id: string) {
+
+
   console.log("oop")
   try {
     const loan= await Loan.aggregate([
@@ -221,6 +531,42 @@ async function getById(id: string) {
                 id: "$_id",
               },
             },
+            // {
+            //   $unwind: {
+            //     path: "$guarantor",
+            //     preserveNullAndEmptyArrays: true
+            //   }
+            // },
+            // {
+            //   $lookup: {
+            //     from: "users",
+            //     localField: "guarantor.user_id",
+            //     foreignField: "_id",
+            //     as: "author"
+            //   }
+            // },
+            // {
+            //   $addFields: {
+            //     "guarantor.guarantors": {
+            //       $cond: [
+            //         {
+            //           $ne: [
+            //             "$author",
+            //             []
+            //           ]
+            //         },
+            //         {
+            //           $arrayElemAt: [
+            //             "$author",
+            //             0
+            //           ]
+            //         },
+            //         "$guarantor.user_id"
+            //       ]
+            //     }
+            //   }
+            // },
+
 
 //  try {
 //     const loan= await Loan.aggregate([

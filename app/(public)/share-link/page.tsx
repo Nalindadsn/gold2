@@ -2,18 +2,18 @@
 import React, { useEffect, useState } from 'react'
 
 function page() {
-  const [username, setUsername] = useState<string | null>(null);
+  const [nic, setNic] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [userData, setUserData] = useState<{email: string, age: number} | null>(null);
   const [keys, setKeys] = useState<string[]>([]);
   const [length, setLength] = useState<number>(0);
   function handleSave() {
     if (typeof window !== "undefined" && window.localStorage) {
-      localStorage.setItem("username", "Anisha");
+      localStorage.setItem("nic", "Anisha");
       localStorage.setItem("userId", "12345");
       localStorage.setItem("userData", JSON.stringify({ email: "anisha@example.com", age: 25 }));
   
-      let username = localStorage.getItem("username");
+      let nic = localStorage.getItem("nic");
       let userId = localStorage.getItem("userId");
       let userData = JSON.parse(localStorage.getItem("userData")!);
       let keys: string[] = [];
@@ -21,7 +21,7 @@ function page() {
         keys.push(localStorage.key(i)!);
       }
   
-      setUsername(username);
+      setNic(nic);
       setUserId(userId);
       setUserData(userData);
       setKeys(keys);
@@ -30,21 +30,21 @@ function page() {
   }
   function handleRemove() {
     if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.removeItem('username');
-      setUsername(null);
+      localStorage.removeItem('nic');
+      setNic(null);
     }
   }
   function handleClear() {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.clear();
-      setUsername(null);
+      setNic(null);
       setUserId(null);
       setUserData(null);
     }
   }
   useEffect(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
-      let username:any = localStorage.getItem('username');
+      let nic:any = localStorage.getItem('nic');
       let userId:any = localStorage.getItem('userId');
       let lc=localStorage.getItem('userData')
       let userData:any=""
@@ -56,7 +56,7 @@ function page() {
       for (let i = 0; i < localStorage.length; i++) {
         keys.push(localStorage.key(i)!);
       }
-      setUsername(username);
+      setNic(nic);
       setUserId(userId);
       setUserData(userData);
       setKeys(keys);
@@ -71,7 +71,7 @@ function page() {
   <button onClick={handleSave}>Save to localStorage</button>
   <button onClick={handleRemove}>Remove from localStorage</button>
   <button onClick={handleClear}>Clear localStorage</button>
-  <p>Username: {username}</p>
+  <p>Nic: {nic}</p>
   <p>UserId: {userId}</p>
   <p>UserData: {JSON.stringify(userData)}</p>
   <p>List of Keys: {keys.join(", ")}</p>

@@ -169,9 +169,17 @@ async function create(params: any) {
 
     // validate
     if (!userExist) throw 'User not found';
-    if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
-        throw 'Username "' + params.username + '" is already taken';
-    }
+    // if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
+
+    //     await Loan.findOneAndUpdate(
+    //         { _id: params.loan_id },
+    //         { $push: { guarantor: data } },
+    //         { new: true }
+    //       );
+
+
+    //     throw 'Username "' + params.username + '" is already taken';
+    // }
 
     // hash password if it was entered
     if (params.password) {

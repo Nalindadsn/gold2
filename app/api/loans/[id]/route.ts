@@ -19,9 +19,7 @@ async function update(req: Request, { params: { id } }: any) {
     
     const body = await req.json();
     console.log(body)
-    
- 
-    await loansRepo.update(id, body);
+        await loansRepo.update(id, body);
 }
 
 update.schema = joi.object({

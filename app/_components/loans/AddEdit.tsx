@@ -255,8 +255,8 @@ function AddEdit({
   const fetchGuarantor = useCallback(async () => {
     try {
       if (loan) {
-        const { data } = await axios.get(`/api/loans/${loan?.id}`);
-        setGuarantor(data.guarantors);
+        const { data } = await axios.get(`/api/loans/guarantors/${loan?.id}`);
+        setGuarantor(data);
       } else {
         setGuarantor([]);
       }
@@ -625,7 +625,7 @@ function AddEdit({
                 </div>
                 <div className="mb-2 md:mb-1 md:flex items-center">
                   <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                    Order No
+                    Order No &nbsp;&nbsp;&nbsp;
                   </label>
                   <span className="mr-4 inline-block  md:block">:</span>
                   <div className="flex-1">{loan?._id}</div>
@@ -1309,9 +1309,11 @@ function AddEdit({
                 {/* {JSON.stringify(loan?.guarantors)} */}
                 {loan?.guarantors.length > 0 ? "" : "No Guarantors Found"}
               </div>
+                              {/* {JSON.stringify(guarantorList.length)} */}
+
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
                 {guarantorList?.map((i: any) => (
-                  <div key={i._id}>
+                  <div key={i.guarantor._id}>
                     {loan ? (
                       <div>
                         <div
@@ -1321,20 +1323,21 @@ function AddEdit({
                             <div className=" flex items-center justify-between leading-none  ">
                               <Link
                                 className="flex items-center no-underline  text-black"
-                                href={`/users/edit/${i._id}?id=${loan._id}`}
+                                href={`/users/edit/${i.guarantor._id}?id=${loan._id}`}
                               >
+                                {/* {i.guarantor._id} */}
                                 <FaUserCircle className="float-left  text-5xl" />
 
                                 <div className="text-xl -mt-3">
                                   <div className="text-gray-800 mt-1 p-1 font-bold">
-                                    <span>{i?.fullName + " "}</span>
+                                    <span>{i?.guarantor?.guarantors.fullName + " "}</span>
                                   </div>
                                 </div>
                               </Link>
                               <button
                                 onClick={() =>
                                   submitHandlerDelUser(loan?.id, {
-                                    name: i._id,
+                                    name: i?.guarantor?._id,
                                   })
                                 }
                                 // onClick={() => {
@@ -1362,7 +1365,7 @@ function AddEdit({
                             <span className="mr-4 inline-block  md:block">
                               :
                             </span>
-                            <div className="flex-1">{i?.nic}</div>
+                            <div className="flex-1">{i?.guarantor?.guarantors?.nic}</div>
                           </div>
                           <div className="mb-2 md:mb-1 md:flex items-center">
                             <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
@@ -1371,7 +1374,7 @@ function AddEdit({
                             <span className="mr-4 inline-block  md:block">
                               :
                             </span>
-                            <div className="flex-1">{i?.relationship}</div>
+                            <div className="flex-1">{i?.guarantor?.relationship}</div>
                           </div>
                         </div>
                       </div>
