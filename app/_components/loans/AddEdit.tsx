@@ -1313,7 +1313,7 @@ function AddEdit({
 
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
                 {guarantorList?.map((i: any) => (
-                  <div key={i.guarantor._id}>
+                  <div key={i.guarantor?.guarantors?._id}>
                     {loan ? (
                       <div>
                         <div
@@ -1323,21 +1323,21 @@ function AddEdit({
                             <div className=" flex items-center justify-between leading-none  ">
                               <Link
                                 className="flex items-center no-underline  text-black"
-                                href={`/users/edit/${i.guarantor._id}?id=${loan._id}`}
+                                href={`/users/edit/${i?.guarantor?.guarantors?._id}?id=${loan._id}`}
                               >
                                 {/* {i.guarantor._id} */}
                                 <FaUserCircle className="float-left  text-5xl" />
 
                                 <div className="text-xl -mt-3">
                                   <div className="text-gray-800 mt-1 p-1 font-bold">
-                                    <span>{i?.guarantor?.guarantors.fullName + " "}</span>
+                                    <span>{i?.guarantor?.guarantors?.fullName + " "}</span>
                                   </div>
                                 </div>
                               </Link>
                               <button
                                 onClick={() =>
                                   submitHandlerDelUser(loan?.id, {
-                                    name: i?.guarantor?._id,
+                                    name: i?.guarantor?.guarantors?._id,
                                   })
                                 }
                                 // onClick={() => {
