@@ -85,15 +85,28 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
           // create or update user based on user prop
           let message;
           if (user) {
-              data.loan_id=loan._id
-              await userService.update(user._id, data);
-              message = 'User updated';
+            console.log("user")
+                
+            data.loan_id=loan._id
+            await userService.create(data);
+             reset()
+            message = 'User added';
+              // data.loan_id=loan._id
+              // await userService.update(user._id, data);
+              // message = 'User updated';
           } else {
-              data.loan_id=loan._id
-              await userService.create(data);
-               reset()
-              message = 'User added';
+              // data.loan_id=loan._id
+              // await userService.create(data);
+              //  reset()
+              // message = 'User added';
 
+              
+              console.log("user n")
+                
+                data.loan_id=loan._id
+                await userService.create(data);
+                 reset()
+                message = 'User added';
           //  router.push('/loans');
           }
 
