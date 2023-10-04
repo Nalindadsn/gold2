@@ -73,8 +73,8 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
             minLength: (v) => v.length == 10,
          }
         }),
-        role: register('role', { required: 'role is required' }),
-        status: register('status', { required: 'status is required' }),
+        // role: register('role', { required: 'role is required' }),
+        // status: register('status', { required: 'status is required' }),
 
 
     };
@@ -463,7 +463,7 @@ value={username}                    />
 
 
         </div>
-<h2 className='font-bold mt-3 ml-2'>Other </h2>
+{/* <h2 className='font-bold mt-3 ml-2'>Other </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 pb-2">
 
@@ -491,7 +491,7 @@ value={username}                    />
 
 
 
-</div>
+</div> */}
 
 
             <div className="p-2">
