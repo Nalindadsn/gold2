@@ -1306,6 +1306,7 @@ function AddEdit({
               </div>
 
               <div className="text-center bg-white shadow-md">
+                {/* {JSON.stringify(loan?.guarantors)} */}
                 {loan?.guarantors.length > 0 ? "" : "No Guarantors Found"}
               </div>
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">

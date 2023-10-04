@@ -3,30 +3,26 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useAlertService, useGuarantorService } from '_services';
-export { AddEdit };
+export { FormGuarantor };
 import {  useState } from "react";
-import { FormGuarantor } from './FormGuarantor';
 
-function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) {
+function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:any }) {
     const router = useRouter();
     const alertService = useAlertService();
     const userService = useGuarantorService();
-
-    const [loading, setLoading] = useState('');    
-  const userData: any = userService.user;
-  
     const [username, setUsername] = useState("");
 
-    // get functions to build form with useForm() hook    
-    const { register:register2, handleSubmit:handleSubmit2, reset:reset2, formState:{ errors:errors2 } } = useForm({ defaultValues: user });
-
-    const { register, handleSubmit, reset,setValue , formState } = useForm({ defaultValues: userData?userData?.users[0]:{}});
+    // get functions to build form with useForm() hook
+    const { register, handleSubmit, reset, formState } = useForm({ defaultValues: user || {} });
     const { errors } = formState;
 
     const fields = {
         relationship: register('relationship', { required: 'Relationship Field is required' }),
         fullName: register('fullName', { required: 'Full Name is required' }),
         gender: register('gender', { required: 'Gender is required' }),
+
+
+
         username: register('username', { }),
 
 
@@ -80,125 +76,53 @@ function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) 
 
     };
 
-    async function onSubmit(data: any) {
-      alertService.clear();
-      try {
-          // create or update user based on user prop
-          let message;
-          if (user) {
-              data.loan_id=loan._id
-              await userService.update(user.id, data);
-              message = 'User updated';
-          } else {
-              data.loan_id=loan._id
-              await userService.create(data);
-               reset()
-              message = 'User added';
+    async function onSubmit(data: any ) {
+        alertService.clear();
+              console.log(data)
+        try {
+            // create or update user based on user prop
+            let message;
+            if (user) {
+              
+              console.log("user")
+                
+                data.loan_id=loan._id
+                await userService.create(data);
+                 reset()
+                message = 'User added';
+                // data.loan_id=loan._id
+                // await userService.update(user._id, data);
+                // message = 'User updated';
+            } else {
+              
+              console.log("user n")
+                
+                data.loan_id=loan._id
+                await userService.create(data);
+                 reset()
+                message = 'User added';
+            //  router.push('/loans');
+            }
 
-          //  router.push('/loans');
-          }
-
-          // redirect to user list with success message
-          // router.push('/users');
-          alertService.success(message, true);
-      } catch (error: any) {
-          alertService.error(error);
-      }
-  }
-  const fieldsCheck = {
-nic: register2('nic', { required: 'NIC is required',
-  })}
-
-let n=0
-  async function onSubmitCheck(data: any) {
-    
-      alertService.clear();
-      try {
-          // create or update user based on user prop
-          // let message =null;
-userService.getByNic(data.nic)         
-setLoading('Loading...')
-reset()
-setValue("fullName", n++, {
-  shouldValidate: true,
-  // shouldDirty: true
-})
-          // if (user) {
-          //     data.loan_id=loan._id
-          //     await userService.update(user.id, data);
-          //     message = 'User updated';
-          // } else {
-          //     data.loan_id=loan._id
-          //     await userService.create(data);
-          //      reset()
-            // message = 'User Availble';
-
-          // //  router.push('/loans');
-          // }
-
-          // redirect to user list with success message
-          // router.push('/users');
-          // alertService.success(message, true);
-      } catch (error: any) {
-          alertService.error(error);
-      }
-  }
+            // redirect to user list with success message
+            // router.push('/users');
+            alertService.success(message, true);
+        } catch (error: any) {
+            alertService.error(error);
+        }
+    }
 
     return (
         <>
-{/* <h1 className="py-1  mt-3 block text-base font-semibold sm:text-xl ">{title}</h1> */}
-
-
-<form onSubmit={handleSubmit2(onSubmitCheck)} className=' bg-white '>
-
-
-                <div className='p-2'>
-                    <label className="form-label">NIC</label>
-                    <input  {...fieldsCheck.nic} type="text" className={`form-control ${errors2.nic ? 'is-invalid' : ''}`} 
-                    
-                    // onChange={(e)=>setUsername(e.target.value)}
-                    />
-                    <div className="invalid-feedback">{errors2.nic?.message?.toString()}</div>
-                </div>
-                
-
-            <div className="p-2">
-                <button type="submit" disabled={formState.isSubmitting} className="btn btn-primary me-2 bg-blue-700">
-                    {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
-                    Check
-                </button>
-                <button onClick={() => {reset2() }} type="button" disabled={formState.isSubmitting} className="btn btn-secondary bg-gray-900">Reset</button>
-
-            </div>
-          <div className='px-2'>
-             {userData?
-             userData?.users.length>0 ?             
-             (<>
-             <span className='whitespace-nowrap'>Role : {userData?.users[0]?.role}</span> | <span className='whitespace-nowrap'>Status : {userData?.users[0]?.status}</span><hr/>
-                <a href={`/search?nic=${userData?.users[0]?.nic}`} className='text-blue-800 font-bold'>{userData?.users[0]?.fullName + `  `}</a> has taken  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_loans.length}</span> loans and  is a guarantor for  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_guarantors.length}</span> guarantees<br/>
-             </>
-
-            // 
-            ):"User not found"
-            :loading}
-            
-            </div> 
-</form>
-
-{userData?
- userData?.users.length>0 ? 
-(<>
-{/* <FormGuarantor title='a'  user={userData?.users[0]} /> */}
-<FormGuarantor title="ADD GUARANTOR" loan={loan}  user={userData?.users[0]}  />
-        {/* <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
+<h1 className="py-1 px-3  mt-3 block text-base font-semibol sm:text-xl ">{title}</h1>
+--{JSON.stringify(formState)}--
+        <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1 className='font-bold m-1'>Basic Details</h1>
 
-            
             <div className='p-2'>
                     <label className="form-label">Full Name</label>
                     <input {...fields.fullName} type="text" className={`form-control ${errors.fullName ? 'is-invalid' : ''}`} />
                     <div className="invalid-feedback">{errors.fullName?.message?.toString()}</div></div>
-
 
 
             <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
@@ -454,15 +378,17 @@ value={username}                    />
 
 
         </div>
-<h2 className='font-bold mt-3 ml-2'>Other </h2>
+{/* <h2 className='font-bold mt-3 ml-2'>Other </h2> */}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 pb-2">
 
-                
+{/*                 
                 <div className='p-2'>
                     <label className="form-label">Role</label>
                     <select {...fields.role}  className={`form-control ${errors.role ? 'is-invalid' : ''}`} >
-                        <option value="GUARANTOR">GUARANTOR</option>
+                    <option value="GUARANTOR">GUARANTOR</option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="COORDINATOR">COORDINATOR</option>
                     </select>
                      <div className="invalid-feedback">{errors.role?.message?.toString()}</div>
                 </div>
@@ -474,7 +400,7 @@ value={username}                    />
                     </select>
 
                     <div className="invalid-feedback">{errors.status?.message?.toString()}</div>
-                </div>
+                </div> */}
 
 
 
@@ -486,20 +412,18 @@ value={username}                    />
 
 
             <div className="p-2">
-                <button type="submit" disabled={formState.isSubmitting} className="btn btn-primary me-2 bg-blue-700">
+                <button type="submit" 
+                disabled={formState.isSubmitting}
+                 className="btn btn-primary me-2 bg-blue-700">
                     {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
                     Save
                 </button>
-                <button onClick={() => reset()} type="button" disabled={formState.isSubmitting} className="btn btn-secondary bg-gray-900">Reset</button>
+                <button onClick={() => reset()} type="button" 
+                disabled={formState.isSubmitting} 
+                className="btn btn-secondary bg-gray-900">Reset</button>
                 <Link href="/users" className="btn btn-link">Cancel</Link>
             </div>
-        </form> */}
-</>):<>
-{/* <FormGuarantor title="ADD GUARANTOR" loan={loan}  user={userData?.users[0]}  /> */}
-
-<FormGuarantor title='ADD GUARANTOR'  loan={loan}   />
-</>:""}
-
+        </form>
 </>
 
 

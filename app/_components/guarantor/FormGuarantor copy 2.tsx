@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { useAlertService, useGuarantorService } from '_services';
 export { AddEdit };
 import {  useState } from "react";
-import { FormGuarantor } from './FormGuarantor';
 
 function AddEdit({ title, user,loan }: { title: string, user?: any,loan?:any }) {
     const router = useRouter();
@@ -146,14 +145,15 @@ setValue("fullName", n++, {
 
     return (
         <>
-{/* <h1 className="py-1  mt-3 block text-base font-semibold sm:text-xl ">{title}</h1> */}
+<h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">{title}</h1>
 
 
 <form onSubmit={handleSubmit2(onSubmitCheck)} className=' bg-white '>
+            <h1 className='font-bold m-1'>Basic Details</h1>
 
 
                 <div className='p-2'>
-                    <label className="form-label">NIC</label>
+                    <label className="form-label">nic</label>
                     <input  {...fieldsCheck.nic} type="text" className={`form-control ${errors2.nic ? 'is-invalid' : ''}`} 
                     
                     // onChange={(e)=>setUsername(e.target.value)}
@@ -174,7 +174,6 @@ setValue("fullName", n++, {
              {userData?
              userData?.users.length>0 ?             
              (<>
-             <span className='whitespace-nowrap'>Role : {userData?.users[0]?.role}</span> | <span className='whitespace-nowrap'>Status : {userData?.users[0]?.status}</span><hr/>
                 <a href={`/search?nic=${userData?.users[0]?.nic}`} className='text-blue-800 font-bold'>{userData?.users[0]?.fullName + `  `}</a> has taken  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_loans.length}</span> loans and  is a guarantor for  <span className='text-blue-800 font-bold'>{userData?.users[0]?.my_guarantors.length}</span> guarantees<br/>
              </>
 
@@ -185,12 +184,9 @@ setValue("fullName", n++, {
             </div> 
 </form>
 
-{userData?
- userData?.users.length>0 ? 
-(<>
-{/* <FormGuarantor title='a'  user={userData?.users[0]} /> */}
-<FormGuarantor title="ADD GUARANTOR" loan={loan}  user={userData?.users[0]}  />
-        {/* <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
+{userData?(<>
+
+        <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1 className='font-bold m-1'>Basic Details</h1>
 
             
@@ -493,12 +489,8 @@ value={username}                    />
                 <button onClick={() => reset()} type="button" disabled={formState.isSubmitting} className="btn btn-secondary bg-gray-900">Reset</button>
                 <Link href="/users" className="btn btn-link">Cancel</Link>
             </div>
-        </form> */}
-</>):<>
-{/* <FormGuarantor title="ADD GUARANTOR" loan={loan}  user={userData?.users[0]}  /> */}
-
-<FormGuarantor title='ADD GUARANTOR'  loan={loan}   />
-</>:""}
+        </form>
+</>):""}
 
 </>
 

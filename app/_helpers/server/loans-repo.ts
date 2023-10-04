@@ -183,48 +183,199 @@ async function getAll() {
 }
 
 async function getById(id: string) {
+  console.log("oop")
   try {
     const loan= await Loan.aggregate([
-  {
-    "$match": {
-      "_id": new mongoose.Types.ObjectId(id)
-    }
-  },
-        {
-          $lookup: {
-            from: "users",
-            localField: "user_id",
-            foreignField: "_id",
-            as: "customer",
-          },
-        },
-        {
-          $lookup: {
-            from: "users",
-            localField: "officer_id",
-            foreignField: "_id",
-            as: "officer",
-          },
-        },
+      {
+        "$match": {
+          "_id": new mongoose.Types.ObjectId(id)
+        }
+      },
+            {
+              $lookup: {
+                from: "users",
+                localField: "user_id",
+                foreignField: "_id",
+                as: "customer",
+              },
+            },
+            {
+              $lookup: {
+                from: "users",
+                localField: "officer_id",
+                foreignField: "_id",
+                as: "officer",
+              },
+            },
+    
+      {
+        $lookup: {
+          from: "users",
+          localField: "guarantor.user_id",
+          foreignField: "_id",
+          as: "guarantors"
+        }
+      },
+            {
+              $addFields: {
+                id: "$_id",
+              },
+            },
 
-  {
-    $lookup: {
-      from: "users",
-      localField: "guarantor.user_id",
-      foreignField: "_id",
-      as: "guarantors"
-    }
-  },
-        {
-          $addFields: {
-            id: "$_id",
-          },
-        },
-      ]);
+//  try {
+//     const loan= await Loan.aggregate([
+//   {
+//     "$match": {
+//       "_id": new mongoose.Types.ObjectId(id)
+//     }
+//   },
+//         {
+//           $lookup: {
+//             from: "users",
+//             localField: "user_id",
+//             foreignField: "_id",
+//             as: "customer",
+//           },
+//         },
+//         {
+//           $lookup: {
+//             from: "users",
+//             localField: "officer_id",
+//             foreignField: "_id",
+//             as: "officer",
+//           },
+//         },
+
+//   {
+//     $lookup: {
+//       from: "users",
+//       localField: "guarantor.user_id",
+//       foreignField: "_id",
+//       as: "guarantors"
+//     }
+//   },
+//         {
+//           $addFields: {
+//             id: "$_id",
+//           },
+//         },
+//       ]);
+//       return loan[0]
+//   } catch {
+//     throw "Loan Not Found";
+//   }
+
+  // {
+
+
+  
+  //   "$match": {
+  //     "_id": new mongoose.Types.ObjectId(id)
+  //   }
+  // },
+  //       {
+  //         $lookup: {
+  //           from: "users",
+  //           localField: "user_id",
+  //           foreignField: "_id",
+  //           as: "customer",
+  //         },
+  //       },
+  //       {
+  //         $lookup: {
+  //           from: "users",
+  //           localField: "officer_id",
+  //           foreignField: "_id",
+  //           as: "officer",
+  //         },
+  //       },
+
+
+  //       {
+  //   $lookup: {
+  //     from: "users",
+  //     localField: "guarantor.user_id",
+  //     foreignField: "_id",
+  //     as: "guarantors"
+  //   }
+  // },
+  
+  //       {
+  //         $addFields: {
+  //           id: "$_id",
+  //         },
+  //       },
+  
+  // {
+  //   $unwind: {
+  //     path: "$guarantor",
+  //     preserveNullAndEmptyArrays: true
+  //   }
+  // },
+  // {
+  //   $lookup: {
+  //     from: "users",
+  //     localField: "guarantor.user_id",
+  //     foreignField: "_id",
+  //     as: "user_id"
+  //   }
+  // },
+  // {
+  //   $addFields: {
+  //     "guarantor.user_id": {
+  //       $cond: [
+  //         {
+  //           $ne: [
+  //             "$user_id",
+  //             []
+  //           ]
+  //         },
+  //         {
+  //           $arrayElemAt: [
+  //             "$user_id",
+  //             0
+  //           ]
+  //         },
+  //         "$guarantor.user_id"
+  //       ]
+  //     }
+  //   }
+  // },
+  // {
+  //   $group: {
+  //     _id: "$_id",
+  //     data: {
+  //       $first: "$$ROOT"
+  //     },
+  //     guarantor: {
+  //       $push: "$guarantor"
+  //     }
+  //   }
+  // },
+  // {
+  //   $addFields: {
+  //     "data.guarantor": "$guarantor"
+  //   }
+  // },
+  // {
+  //   $project: {
+  //     "data.user_id": 0
+  //   }
+  // },
+  // {
+  //   $replaceRoot: {
+  //     newRoot: "$data"
+  //   }
+  // }
+       ]);
+
+       console.log(loan[0])
+
       return loan[0]
   } catch {
     throw "Loan Not Found";
   }
+
 }
 
 async function create(params: any) {
@@ -301,3 +452,181 @@ async function _deleteItem(id: any,params:any) {
     { new: true }
   );
 }
+
+
+
+
+// db={
+//   "loan": [
+//     {
+//       "_id": "5e9167c5303a530023bcae42",
+//       guarantors: [
+//         {
+//           "user_id": "5e9167c5303a530023bcae42",
+//           "relationship": 5,
+//           "createdAt": "2020-04-12T16:08:34.966Z",
+//           "updatedAt": "2020-04-12T16:08:34.966Z"
+//         },
+//         {
+//           "user_id": "5e9167c5303a530023bcae46",
+//           "relationship": 4,
+//           "createdAt": "2020-04-12T16:08:34.966Z",
+//           "updatedAt": "2020-04-12T16:08:34.966Z"
+//         },
+//         {
+//           "user_id": "5e9167c5303a530023bcae45",
+//           "relationship": 3,
+//           "createdAt": "2020-04-12T16:08:34.966Z",
+//           "updatedAt": "2020-04-12T16:08:34.966Z"
+//         }
+//       ]
+//     }
+//   ],
+//   "users": [
+//     {
+//       "_id": "5e9167c5303a530023bcae42",
+//       "name": "abc"
+//     },
+//     {
+//       "_id": "5e9167c5303a530023bcae45",
+//       "name": "def"
+//     }
+//   ]
+// }
+
+
+
+// db.loan.aggregate([
+  
+//   {
+//     $unwind: {
+//       path: "$guarantors",
+//       preserveNullAndEmptyArrays: true
+//     }
+//   },
+//   {
+//     $lookup: {
+//       from: "users",
+//       localField: "guarantors.user_id",
+//       foreignField: "_id",
+//       as: "user_id"
+//     }
+//   },
+//   {
+//     $addFields: {
+//       "guarantors.user_id": {
+//         $cond: [
+//           {
+//             $ne: [
+//               "$user_id",
+//               []
+//             ]
+//           },
+//           {
+//             $arrayElemAt: [
+//               "$user_id",
+//               0
+//             ]
+//           },
+//           "$guarantors.user_id"
+//         ]
+//       }
+//     }
+//   },
+//   {
+//     $group: {
+//       _id: "$_id",
+//       data: {
+//         $first: "$$ROOT"
+//       },
+//       guarantors: {
+//         $push: "$guarantors"
+//       }
+//     }
+//   },
+//   {
+//     $addFields: {
+//       "data.guarantors": "$guarantors"
+//     }
+//   },
+//   {
+//     $project: {
+//       "data.user_id": 0
+//     }
+//   },
+//   {
+//     $replaceRoot: {
+//       newRoot: "$data"
+//     }
+//   }
+// ])
+
+
+// [
+//   {
+//      "$match": {
+//        "_id": ObjectId('6516e9d2c570be454f64d716')
+//      }
+//    },
+//    {
+//      $unwind: {
+//        path: "$guarantor",
+//        preserveNullAndEmptyArrays: true
+//      }
+//    },
+//    {
+//      $lookup: {
+//        from: "users",
+//        localField: "guarantor.user_id",
+//        foreignField: "_id",
+//        as: "user_id"
+//      }
+//    },
+//    {
+//      $addFields: {
+//        "guarantor.user_id": {
+//          $cond: [
+//            {
+//              $ne: [
+//                "$user_id",
+//                []
+//              ]
+//            },
+//            {
+//              $arrayElemAt: [
+//                "$user_id",
+//                0
+//              ]
+//            },
+//            "$guarantor.user_id"
+//          ]
+//        }
+//      }
+//    },
+//    {
+//      $group: {
+//        _id: "$_id",
+//        data: {
+//          $first: "$$ROOT"
+//        },
+//        guarantor: {
+//          $push: "$guarantor"
+//        }
+//      }
+//    },
+//    {
+//      $addFields: {
+//        "data.guarantor": "$guarantor"
+//      }
+//    },
+//    {
+//      $project: {
+//        "data.user_id": 0
+//      }
+//    },
+//    {
+//      $replaceRoot: {
+//        newRoot: "$data"
+//      }
+//    }
+//  ]

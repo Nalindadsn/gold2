@@ -280,7 +280,7 @@ function Page() {
               <div className="">
                 {summary?.totalSales2.map((i:any)=>(
                   <div key={i._id}  className="border mb-2  shadow-sm">
-                    <div  className="font-bold px-1 bg-gray-200">{new Date(i?._id).toLocaleDateString(undefined, {year: "numeric",
+                    <div  className="font-bold px-1 bg-blue-100 text-blue-700">{new Date(i?._id).toLocaleDateString(undefined, {year: "numeric",
     month: "long",})}</div>
                     <div>
                     &nbsp;LKR {i?.totalSales.toFixed(2)}
@@ -325,7 +325,7 @@ function Page() {
                   
                     <li key={i._id} className="flex items-center  shadow-sm mt-1 p-1">
                       <div className="h-10 w-10 mr-3  overflow-hidden">
-                        <FaUserCircle className="float-left  text-4xl" />
+                        <FaUserCircle className="float-left text-blue-700  text-4xl" />
                       </div>
                       <div className="text-gray-600">
                          {(((i.fullName).length )> 10)? i.fullName.substring(0,10) +"...": i.fullName}
