@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import { headers } from 'next/headers';
 import { db } from './db';
 import mongoose from 'mongoose';
+import { log } from 'console';
 
 const User = db.User;
 const Loan = db.Loan;
@@ -222,9 +223,10 @@ async function update(id: string, params: any) {
 }
 
 async function _delete(id: string,params:any) {
+    console.log(id,params)
     await Loan.findOneAndUpdate(
         { _id:new mongoose.Types.ObjectId(id)   },
-        { $pull: { guarantor: { user_id:new mongoose.Types.ObjectId(params.name)   } } },
+        { $pull: { guarantor: { _id:new mongoose.Types.ObjectId(params.name)   } } },
         { new: true }
       );
 
