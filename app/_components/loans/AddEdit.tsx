@@ -1307,9 +1307,8 @@ function AddEdit({
 
               <div className="text-center bg-white shadow-md">
                 {/* {JSON.stringify(loan?.guarantors)} */}
-                {loan?.guarantors.length > 0 ? "" : "No Guarantors Found"}
+                {guarantorList.length > 0 ? "" : "No Guarantors Found"}
               </div>
-                              {JSON.stringify(guarantorList.length)}
 
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
                 
@@ -1328,7 +1327,6 @@ function AddEdit({
                               >
                                 {/* {i.guarantor._id} */}
                                 <FaUserCircle className="float-left  text-5xl" />
-{i?._id}
                                 <div className="text-xl -mt-3">
                                   <div className="text-gray-800 mt-1 p-1 font-bold">
                                     <span>{i?.user?.fullName + " "}</span>
