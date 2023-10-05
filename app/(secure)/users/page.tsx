@@ -37,8 +37,8 @@ const formatDate = (dateString: any) => {
   const column: any = [
     {
       name: "ID",
-      selector: (row: any) => (<>ID : {row.id}
-        <div style={{ whiteSpace: "nowrap",width:"200px",marginBottom:"5px" }} className="">
+      selector: (row: any) => (<><span  style={{ whiteSpace: "nowrap",marginBottom:"5px" }}>ID : {row.id}</span> 
+        <div style={{ whiteSpace: "nowrap",marginBottom:"5px" }} className="">
                 <Link
                   href={`/loans/add/${row.id}`}
                   className="btn btn-sm btn-primary me-1 text-white bg-blue-600 focus:bg-purple-700"
@@ -51,7 +51,7 @@ const formatDate = (dateString: any) => {
                 >
                   Edit
                 </Link>
-  
+  <br/>
   {user?.role=="ADMIN"?
    
                 <button
@@ -60,7 +60,7 @@ const formatDate = (dateString: any) => {
                   
                   }
                   }
-                  className="btn btn-sm btn-danger btn-delete-user focus:bg-red-700"
+                  className="btn btn-sm btn-danger btn-delete-user focus:bg-red-700 mt-1"
                   style={{ width: "60px" }}
                   disabled={row.isDeleting}
                 >
