@@ -179,7 +179,15 @@ if(existGuarantor){
     Object.assign(userExist, params);
     await userExist.save();
 }else{
+    const data:any={
+        user_id:undefined,
+        relationship:params.relationship,
+    }
+    
+    loanExist.guarantor.push(data);
+    await userExist.save();
 
+  
 }
 
         // console.log(existGuarantor?"y":"n")
@@ -189,7 +197,23 @@ if(existGuarantor){
 
         
     }else{
+
+
         console.log("user not found")
+        const data:any={
+            user_id:undefined,
+            relationship:params.relationship,
+        }
+        const user = new User(params);
+        const guarantor =await user.save();
+        data.user_id=guarantor._id
+
+
+        
+        loanExist.guarantor.push(data);
+        await userExist.save();
+    
+
     }
     }
     // ({
