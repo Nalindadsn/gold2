@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 
-function page() {
+function Page() {
   const [nic, setNic] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [userData, setUserData] = useState<{email: string, age: number} | null>(null);
@@ -82,4 +82,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
