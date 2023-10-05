@@ -191,80 +191,126 @@ async function getByIdGuarantor(id: string) {
         }
       },
 
+  {
+    $unwind: {
+      path: "$guarantor",
+      preserveNullAndEmptyArrays: true
+    }
+  },
+  {
+    $lookup: {
+      from: "users",
+      localField: "guarantor.user_id",
+      foreignField: "_id",
+      as: "user"
+    }
+  },
+  {
+    $addFields: {
+      "guarantor.user": {
+        $cond: [
+          {
+            $ne: [
+              "$user",
+              []
+            ]
+          },
+          {
+            $arrayElemAt: [
+              "$user",
+              0
+            ]
+          },
+          
+          
+          "$guarantor.user",
+        ]
+      }
+    }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      guarantors: {
+        $push: "$guarantor"
+      }
+    }
+  }
+
       // {
       //   "$match": {
       //     "_id": ObjectId('65103277ab76f156d99eb6cd')
       //   }
       // },
-            {
-              $lookup: {
-                from: "users",
-                localField: "user_id",
-                foreignField: "_id",
-                as: "customer",
-              },
-            },
-            {
-              $lookup: {
-                from: "users",
-                localField: "officer_id",
-                foreignField: "_id",
-                as: "officer",
-              },
-            },
+  //           {
+  //             $lookup: {
+  //               from: "users",
+  //               localField: "user_id",
+  //               foreignField: "_id",
+  //               as: "customer",
+  //             },
+  //           },
+  //           {
+  //             $lookup: {
+  //               from: "users",
+  //               localField: "officer_id",
+  //               foreignField: "_id",
+  //               as: "officer",
+  //             },
+  //           },
     
-      {
-        $lookup: {
-          from: "users",
-          localField: "guarantor.user_id",
-          foreignField: "_id",
-          as: "guarantors"
-        }
-      },
-            {
-              $addFields: {
-                id: "$_id",
-              },
-            },
+  //     {
+  //       $lookup: {
+  //         from: "users",
+  //         localField: "guarantor.user_id",
+  //         foreignField: "_id",
+  //         as: "guarantors"
+  //       }
+  //     },
+  //           {
+  //             $addFields: {
+  //               id: "$_id",
+  //             },
+  //           },
 
 
 
 
-   {
-              $unwind: {
-                path: "$guarantor",
-                preserveNullAndEmptyArrays: true
-              }
-            },
-            {
-              $lookup: {
-                from: "users",
-                localField: "guarantor.user_id",
-                foreignField: "_id",
-                as: "author"
-              }
-            },
-            {
-              $addFields: {
-                "guarantor.guarantors": {
-                  $cond: [
-                    {
-                      $ne: [
-                        "$author",
-                        []
-                      ]
-                    },
-                    {
-                      $arrayElemAt: [
-                        "$author",
-                        0
-                      ]
-                    },
-                    "$guarantor.user_id"
-                  ]
-                }
-              }
-            },
+  //  {
+  //             $unwind: {
+  //               path: "$guarantor",
+  //               preserveNullAndEmptyArrays: true
+  //             }
+  //           },
+  //           {
+  //             $lookup: {
+  //               from: "users",
+  //               localField: "guarantor.user_id",
+  //               foreignField: "_id",
+  //               as: "author"
+  //             }
+  //           },
+  //           {
+  //             $addFields: {
+  //               "guarantor.guarantors": {
+  //                 $cond: [
+  //                   {
+  //                     $ne: [
+  //                       "$author",
+  //                       []
+  //                     ]
+  //                   },
+  //                   {
+  //                     $arrayElemAt: [
+  //                       "$author",
+  //                       0
+  //                     ]
+  //                   },
+  //                   "$guarantor.user_id"
+  //                 ]
+  //               }
+  //             }
+  //           },
 
 
 

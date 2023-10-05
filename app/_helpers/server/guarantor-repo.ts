@@ -156,7 +156,7 @@ async function getCurrent() {
 async function create(params: any) {
   console.log(params)
 
-    const userExist=await User.findOne({ nic: params.nic });
+  const userExist=await User.findOne({ nic: params.nic });
 
     const data:any={
         user_id:undefined,
@@ -169,17 +169,17 @@ async function create(params: any) {
 
     // validate
     if (!userExist) throw 'User not found';
-    // if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
+    if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
 
-    //     await Loan.findOneAndUpdate(
-    //         { _id: params.loan_id },
-    //         { $push: { guarantor: data } },
-    //         { new: true }
-    //       );
+        await Loan.findOneAndUpdate(
+            { _id: params.loan_id },
+            { $push: { guarantor: data } },
+            { new: true }
+          );
 
 
-    //     throw 'Username "' + params.username + '" is already taken';
-    // }
+        throw 'Username "' + params.username + '" is already taken';
+    }
 
     // hash password if it was entered
     if (params.password) {
@@ -188,7 +188,6 @@ async function create(params: any) {
 
     Object.assign(userExist, params);
     await userExist.save();
-
 
         data.user_id=userExist._id
     }else{

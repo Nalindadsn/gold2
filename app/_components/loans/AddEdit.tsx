@@ -256,7 +256,7 @@ function AddEdit({
     try {
       if (loan) {
         const { data } = await axios.get(`/api/loans/guarantors/${loan?.id}`);
-        setGuarantor(data);
+        setGuarantor(data[0].guarantors);
       } else {
         setGuarantor([]);
       }
@@ -1309,10 +1309,11 @@ function AddEdit({
                 {/* {JSON.stringify(loan?.guarantors)} */}
                 {loan?.guarantors.length > 0 ? "" : "No Guarantors Found"}
               </div>
-                              {/* {JSON.stringify(guarantorList.length)} */}
+                              {JSON.stringify(guarantorList.length)}
 
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
-                {guarantorList?.map((i: any) => (
+                
+                { guarantorList.map((i: any) => (
                   <div key={i.guarantor?.guarantors?._id}>
                     {loan ? (
                       <div>
