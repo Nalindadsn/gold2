@@ -220,9 +220,7 @@ async function getByIdGuarantor(id: string) {
               "$user",
               0
             ]
-          },
-          
-          
+          },       
           "$guarantor.user",
         ]
       }
@@ -236,7 +234,6 @@ async function getByIdGuarantor(id: string) {
       }
     }
   }
-
 ]);
 
       return loan
