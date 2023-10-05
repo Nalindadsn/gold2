@@ -155,49 +155,95 @@ async function getCurrent() {
 }
 
 async function create(params: any) {
+    // console.log(params)
+    const loanExist=await Loan.findOne({ _id: params.loan_id });
+    //  console.log(userExist)
+    if(loanExist){
+    const userExist:any=await User.findOne({ nic: params.nic });
+    if(userExist){
 
-  const gExist=await Loan.findOne({ nic: params.nic });
-  const userExist=await User.findOne({ nic: params.nic });
-    const data:any={
-        user_id:undefined,
-        relationship:params.relationship,
-        nic:params.nic
-    }
-    if (userExist) {
-    // validate
-    if (!userExist) throw 'User not found';
-    if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
+        const existGuarantor = loanExist.guarantor.find((x:any) => x.user_id == (userExist._id).toString());
 
-        // await Loan.findOneAndUpdate(
-        //     { _id: params.loan_id },
-        //     { $push: { guarantor: data } },
-        //     { new: true }
-        //   );
-        // throw 'Username "' + params.username + '" is already taken';
+if(existGuarantor){
 
-    }
+        await Loan.updateOne(
+            {_id: params.loan_id,   'guarantor.user_id': (userExist._id).toString() },
+            {
+              $set: {
+                'guarantor.$.relationship': params.relationship,
+              },
+            }
+          );
 
-    // hash password if it was entered
-    if (params.password) {
-        params.hash = bcrypt.hashSync(params.password, 10);
-    }
-
+       
     Object.assign(userExist, params);
     await userExist.save();
+}else{
 
-        data.user_id=userExist._id
+}
+
+        // console.log(existGuarantor?"y":"n")
+
+
+
+
+        
     }else{
-        const user = new User(params);
-        const guarantor =await user.save();
-        data.user_id=guarantor._id
+        console.log("user not found")
     }
-    await Loan.findOneAndUpdate(
-        { _id: params.loan_id },
-        { $push: { guarantor: data } },
-        { new: true }
-      );
+    }
+    // ({
+    //     users: {
+    //       $elemMatch: {
+    //         id: "a"
+    //       }
+    //     }
+    //   },
+    //   {
+    //     "users.$": 1
+    //   })
 
+// --------
+//   const userExist=await User.findOne({ nic: params.nic });
+//     const data:any={
+//         user_id:undefined,
+//         relationship:params.relationship,
+//         nic:params.nic
+//     }
+//     if (userExist) {
+// //   const gExist=await Loan.findOne({ 'guarantor.user_id': data.user_id });
+//     // validate
+//     if (!userExist) throw 'User not found';
+//     if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
+//         // await Loan.findOneAndUpdate(
+//         //     { _id: params.loan_id },
+//         //     { $push: { guarantor: data } },
+//         //     { new: true }
+//         //   );
+//         // throw 'Username "' + params.username + '" is already taken';
+//     }
 
+//     // hash password if it was entered
+//     if (params.password) {
+//         params.hash = bcrypt.hashSync(params.password, 10);
+//     }
+
+//     Object.assign(userExist, params);
+//     await userExist.save();
+
+//         data.user_id=userExist._id
+//     }else{
+//         const user = new User(params);
+//         const guarantor =await user.save();
+//         data.user_id=guarantor._id
+//     }
+//     await Loan.findOneAndUpdate(
+//         { _id: params.loan_id },
+//         { $push: { guarantor: data } },
+//         { new: true }
+//       );
+
+// --------------
 
 
 }
