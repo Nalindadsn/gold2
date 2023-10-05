@@ -155,31 +155,26 @@ async function getCurrent() {
 }
 
 async function create(params: any) {
-  console.log(params)
 
+  const gExist=await Loan.findOne({ nic: params.nic });
   const userExist=await User.findOne({ nic: params.nic });
-
     const data:any={
         user_id:undefined,
         relationship:params.relationship,
         nic:params.nic
     }
     if (userExist) {
-
-
-
     // validate
     if (!userExist) throw 'User not found';
     if (userExist.username !== params.username && await User.findOne({ username: params.username })) {
 
-        await Loan.findOneAndUpdate(
-            { _id: params.loan_id },
-            { $push: { guarantor: data } },
-            { new: true }
-          );
+        // await Loan.findOneAndUpdate(
+        //     { _id: params.loan_id },
+        //     { $push: { guarantor: data } },
+        //     { new: true }
+        //   );
+        // throw 'Username "' + params.username + '" is already taken';
 
-
-        throw 'Username "' + params.username + '" is already taken';
     }
 
     // hash password if it was entered
@@ -201,10 +196,13 @@ async function create(params: any) {
         { $push: { guarantor: data } },
         { new: true }
       );
+
+
+
+
 }
 
 async function update(id: string, params: any) {
-    console.log("test")
     const user = await User.findById(id);
 
     // validate
@@ -223,7 +221,6 @@ async function update(id: string, params: any) {
 }
 
 async function _delete(id: string,params:any) {
-    console.log(id,params)
     await Loan.findOneAndUpdate(
         { _id:new mongoose.Types.ObjectId(id)   },
         { $pull: { guarantor: { _id:new mongoose.Types.ObjectId(params.name)   } } },

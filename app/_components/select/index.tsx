@@ -33,7 +33,6 @@ function App() {
                 const users:any= fetch(`/api/guarantor/nic/${inputValue}`, { cache: 'no-store' }).then(
                   (res:any) => res.json()
                   ).then((json)=>{
-                    console.log(json)
                     
                     
                       return json.users

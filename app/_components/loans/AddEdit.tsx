@@ -440,14 +440,7 @@ function AddEdit({
       .toString();
 
     const dataV: any = data;
-    console.log(
-      payment_values_amount(
-        parseFloat(watchExpectedPriceOld),
-        parseFloat(status),
-        parseFloat(watchNoOfMonth)
-      )
-    );
-    console.log(data);
+    
 
     if (loan) {
     } else {

@@ -76,7 +76,6 @@ update.schema = joi.object({
 
 async function _delete(req: Request, { params: { id } }: any) {
     const body = await req.json();
-console.log(id)
     await guarantorRepo.delete(id,body);
 
  

@@ -85,7 +85,6 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
           // create or update user based on user prop
           let message;
           if (user) {
-            console.log("user")
                 
             data.loan_id=loan._id
             await userService.create(data);
@@ -101,7 +100,6 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
               // message = 'User added';
 
               
-              console.log("user n")
                 
                 data.loan_id=loan._id
                 await userService.create(data);

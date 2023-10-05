@@ -538,8 +538,6 @@ async function getByIdGuarantor(id: string) {
 }
   async function getById(id: string) {
 
-
-  console.log("oop")
   try {
     const loan= await Loan.aggregate([
       {
@@ -761,7 +759,6 @@ async function getByIdGuarantor(id: string) {
   // }
        ]);
 
-       console.log(loan[0])
 
       return loan[0]
   } catch {

@@ -10,7 +10,6 @@ module.exports = apiHandler({
 });
 
 async function getByNic(req:Request,{ params: { nic } }: any) {
-    console.log(nic)
     return await guarantorRepo.getByNic(nic);
 }
 

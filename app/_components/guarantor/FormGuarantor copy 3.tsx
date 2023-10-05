@@ -78,13 +78,11 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
 
     async function onSubmit(data: any ) {
         alertService.clear();
-              console.log(data)
         try {
             // create or update user based on user prop
             let message;
             if (user) {
               
-              console.log("user")
                 
                 data.loan_id=loan._id
                 await userService.create(data);
@@ -94,9 +92,7 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
                 // await userService.update(user._id, data);
                 // message = 'User updated';
             } else {
-              
-              console.log("user n")
-                
+                              
                 data.loan_id=loan._id
                 await userService.create(data);
                  reset()
@@ -115,7 +111,7 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
     return (
         <>
 <h1 className="py-1 px-3  mt-3 block text-base font-semibol sm:text-xl ">{title}</h1>
---{JSON.stringify(formState)}--
+{/* --{JSON.stringify(formState)}-- */}
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1 className='font-bold m-1'>Basic Details</h1>
 

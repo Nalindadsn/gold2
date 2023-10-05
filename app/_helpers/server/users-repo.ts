@@ -84,7 +84,6 @@ async function create(params: any) {
     // validate
 const userExist:any=await User.findOne({ username: params.username })
     if (userExist) {
-        console.log(userExist)
         throw 'Username "' + params.username + '" is already taken';
     }
     const user = new User(params);

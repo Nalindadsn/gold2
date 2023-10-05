@@ -17,9 +17,6 @@ async function getById(req: Request, { params: { id } }: any) {
 
 async function update(req: Request, { params: { id } }: any) {
     const body = await req.json();
-        console.log(body)
-
- 
     await settingsRepo.update(id, body);
 }
 
