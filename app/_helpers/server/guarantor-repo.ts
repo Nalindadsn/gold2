@@ -185,7 +185,7 @@ if(existGuarantor){
     }
     
     loanExist.guarantor.push(data);
-    await userExist.save();
+    await loanExist.save();
 
   
 }
@@ -211,7 +211,7 @@ if(existGuarantor){
 
         
         loanExist.guarantor.push(data);
-        await userExist.save();
+        await loanExist.save();
     
 
     }
