@@ -117,7 +117,9 @@ function Rates() {
         pagination
         selectableRows
       ></DataTable>:<div>
-      
+       <div>
+            <Spinner />
+          </div>
     </div>
     
     }
