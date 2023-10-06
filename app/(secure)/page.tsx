@@ -199,7 +199,7 @@ function Page() {
                 {summary?.customers}
               </span>
               <span className="inline-block text-xl text-gray-500 font-semibold">
-                ({summary?.user_progress_value}%)
+                ({(summary?.user_progress_value).toFixed(2)}%)
               </span>
               <span className="block text-gray-500"> customers</span>
             </div>
