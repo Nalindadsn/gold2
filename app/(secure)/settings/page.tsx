@@ -87,13 +87,16 @@ function Settings() {
     
         <div className="invalid-feedback"></div>
       </div>
-      {settings?<DataTable
+      {settings?
+      <DataTable
         columns={column}
         data={records?records:settings}
         pagination
         selectableRows
       ></DataTable>:<div>
-      
+        <div>
+            <Spinner />
+          </div>
     </div>
     
     }
