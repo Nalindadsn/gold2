@@ -90,19 +90,33 @@ function useLoanService(): ILoanService {
       await fetch.post("/api/loans", loan);
     },
     update: async (id, params) => {
-      loanStore.setState({ loan: undefined });
-      try {
+      const paramsData:any=params
+      paramsData.payable_in_hand=(paramsData).toString()
+console.log(paramsData)
+       loanStore.setState({ loan: undefined });
 
+      // try {
+      await fetch.put(`/api/loans/${id}`, paramsData);
 
-        await fetch.put(`/api/loans/${id}`, params);
-
-        if (id === currentLoan?.id) {
-          loanStore.setState({ currentLoan: { ...currentLoan, ...params } });
-        }
-        loanStore.setState({ loan: await fetch.get(`/api/loans/${id}`) });
-      } catch (error: any) {
-        alertService.error(error);
+      // update current user if the user updated their own record
+      if (id === currentLoan?.id) {
+          loanStore.setState({ currentLoan: { ...currentLoan, ...paramsData } })
       }
+      loanStore.setState({ loan: await fetch.get(`/api/loans/${id}`) });
+
+            // } catch (error: any) {
+      //   alertService.error(error);
+      // }
+
+      // try {
+      //   await fetch.put(`/api/loans/${id}`, params);
+      //   if (id === currentLoan?.id) {
+      //     loanStore.setState({ currentLoan: { ...currentLoan, ...params } });
+      //   }
+      //   loanStore.setState({ loan: await fetch.get(`/api/loans/${id}`) });
+      // } catch (error: any) {
+      //   alertService.error(error);
+      // }
     },
     updateItem: async (id, params) => {
       // console.log(params)

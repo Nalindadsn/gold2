@@ -310,6 +310,8 @@ async function create(params: any) {
 }
 
 async function update(id: string, params: any) {
+  
+  
   const loan = await Loan.findById(id);
   // validate
   if (!loan) throw "Loan not found";
