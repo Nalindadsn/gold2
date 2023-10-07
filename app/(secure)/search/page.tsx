@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Spinner } from "_components";
 import { useLoanService } from "_services";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 export default Edit;
 function Edit() {
   const router = useRouter();
@@ -84,7 +85,7 @@ function Edit() {
                               <header className="flex flex-col md:flex-row w-full leading-tight pb-0 p-2 md:p-4">
                                 <h1 className="text-lg">
                                   <div className=" text-black text-sm ml-2">
-                                    Order ID : {i?._id}
+                                    Order ID :<Link href={`/loans/edit/${i?._id}`}>{i?._id}</Link> 
                                   </div>
                                   <div className=" text-black text-sm ml-2">
                                     Form Number : {i?.form_number}
@@ -133,7 +134,7 @@ function Edit() {
                             <header className="flex flex-col md:flex-row w-full leading-tight pb-0 p-2 md:p-4">
                               <h1 className="text-lg">
                                 <div className=" text-black text-sm ml-2">
-                                  Order ID : {i?._id}
+                                  Order ID : <Link href={`/loans/edit/${i?._id}`}>{i?._id}</Link> 
                                 </div>
                                 <div className=" text-black text-sm ml-2">
                                   Form Number : {i?.form_number}
