@@ -651,7 +651,7 @@ function AddEdit({
                       CREATED BY
                     </label>
                     <span className="mr-4  md:block">:</span>
-                    <div className="flex-1">{loan?.officer[0]?.fullName}</div>
+                    <div className="flex-1">{loan?.officer.length>0?loan?.officer[0]?.fullName:""}</div>
                   </div>
                 ) : (
                   <div className="mb-2 md:mb-1 md:flex items-center">
@@ -1307,10 +1307,21 @@ function AddEdit({
                 {/* {JSON.stringify(loan?.guarantors)} */}
                 {guarantorList.length > 0 ? "" : "No Guarantors Found"}
               </div>
+              {}
+{JSON.stringify(guarantorList)}
+              {/* {'user_id' in guarantorList[0]?"1":"0"} */}
+{/* {JSON.stringify(guarantorList?.length>0? 'user_id' in guarantorList[0]?"1":"0" :"0")} */}
+
+
+
 
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
+                {guarantorList.length>0?<>
                 
-                { guarantorList.map((i: any) => (
+                {
+                  
+                
+                guarantorList.map((i: any) => (
                   <div key={i?._id}>
                     {loan ? (
                       <div>
@@ -1380,6 +1391,8 @@ function AddEdit({
                     )}
                   </div>
                 ))}
+                
+                </>:""}
               </div>
 
               <>

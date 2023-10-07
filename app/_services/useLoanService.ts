@@ -95,7 +95,7 @@ function useLoanService(): ILoanService {
 console.log(paramsData)
        loanStore.setState({ loan: undefined });
 
-      // try {
+      try {
       await fetch.put(`/api/loans/${id}`, paramsData);
 
       // update current user if the user updated their own record
@@ -104,9 +104,9 @@ console.log(paramsData)
       }
       loanStore.setState({ loan: await fetch.get(`/api/loans/${id}`) });
 
-            // } catch (error: any) {
-      //   alertService.error(error);
-      // }
+            } catch (error: any) {
+        alertService.error(error);
+      }
 
       // try {
       //   await fetch.put(`/api/loans/${id}`, params);
