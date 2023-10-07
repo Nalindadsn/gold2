@@ -15,6 +15,17 @@ function Page() {
   const userService = useUserService();
   const user: any = userService.currentUser;
 
+  const formatDate = (dateString: any) => {
+    const options: any = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   useEffect(() => {
     userService.getCurrent();
   }, []);
@@ -263,11 +274,12 @@ function Page() {
                   />
                 </svg>
               </div>
-              <div>
-                <span className="block text-xl font-bold">{i.form_number}</span>
-                <span className="block text-gray-500">
-                  LKR {i.expected_price_old}
+              <div className="text-sm text-gray-600">
+                <span className="block text-sm  font-bold">{i.form_number}</span>
+                <span className="block text-gray-500 text-sm">
+                  LKR {parseFloat(i.expected_price_old).toFixed(2)}
                 </span>
+                {formatDate(i.createdAt)}
               </div>
             </div>
           ))}
