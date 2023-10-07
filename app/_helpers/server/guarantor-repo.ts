@@ -160,6 +160,7 @@ async function create(params: any) {
     //  console.log(userExist)
     if(loanExist){
     const userExist:any=await User.findOne({ nic: params.nic });
+    console.log(userExist)
     if(userExist){
 
         const existGuarantor = loanExist.guarantor.find((x:any) => x.user_id == (userExist._id).toString());
@@ -183,6 +184,7 @@ if(existGuarantor){
         user_id:undefined,
         relationship:params.relationship,
     }
+    data.user_id=(userExist._id).toString()
     
     loanExist.guarantor.push(data);
     await loanExist.save();

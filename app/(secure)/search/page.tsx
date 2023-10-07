@@ -54,9 +54,7 @@ function Edit() {
             <div className="w-full p-1 text-right">
               {loan?.users.length>0?<>{loan?.users[0]?.role}<br/>
               {formatDate(loan?.users[0]?.createdAt)}</>:"loading..."}
-              
-              
-              </div>
+                            </div>
           </div>
         </div>
         <div className="container  p-0">

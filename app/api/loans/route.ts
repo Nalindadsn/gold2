@@ -14,7 +14,6 @@ async function getAll() {
 
 async function create(req: Request) {
     const cd= await usersRepo.getCurrent();
-
     const body = await req.json();
     body.officer_id=cd._id
 
@@ -49,8 +48,6 @@ create.schema = joi.object({
     mortgage_interest_rate_month: joi.string().allow('').optional(),
     mortgage_interest_rate_year: joi.string().allow('').optional(),
     mortgage_invoice_number: joi.string().allow('').optional(),
-
-
 
     status: joi.string(),
     no_of_month: joi.string(),

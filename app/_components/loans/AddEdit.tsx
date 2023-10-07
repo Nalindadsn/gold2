@@ -1308,14 +1308,16 @@ function AddEdit({
                 {guarantorList.length > 0 ? "" : "No Guarantors Found"}
               </div>
               {}
-{JSON.stringify(guarantorList)}
+{/* {JSON.stringify(guarantorList)} */}
               {/* {'user_id' in guarantorList[0]?"1":"0"} */}
-{/* {JSON.stringify(guarantorList?.length>0? 'user_id' in guarantorList[0]?"1":"0" :"0")} */}
 
 
 
 
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
+{guarantorList?.length>0? ('user_id' in guarantorList[0]) ?<>
+
+
                 {guarantorList.length>0?<>
                 
                 {
@@ -1393,6 +1395,9 @@ function AddEdit({
                 ))}
                 
                 </>:""}
+
+
+</>:"" :""}
               </div>
 
               <>
