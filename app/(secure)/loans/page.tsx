@@ -88,6 +88,9 @@ function Loans() {
     }
 
           </NavDropdown>
+          {row.isDeleting ? (<><span>Deleting </span><span className="spinner-border spinner-border-sm"></span></>
+              
+            ) : ""}
 {/*         
         <a
             href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}
