@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { db } from "./db";
 import mongoose from "mongoose";
 
+import { headers } from 'next/headers';
 
 const Loan = db.Loan;
 const User = db.User;
@@ -141,6 +142,14 @@ const coordinators= await User.find({role:"COORDINATOR"}).countDocuments();
 return {totalSales:totalSales,totalSales2:totalSales2,customers:users,admins:admins,loans:loans,customer_list:customerList,loan_list:loanList,user_progress:user_progress,user_progress_value:up,coordinators:coordinators}
 }
 async function getAll() {
+  
+  const currentUserId:any = headers().get('userId');
+  console.log(currentUserId)
+  const user= await User.findById(currentUserId);
+
+
+if (user.role=="ADMIN") {
+  
   return await Loan.aggregate([
     
     {
@@ -180,6 +189,58 @@ async function getAll() {
  }
 }
   ]);
+}else{
+
+  return await Loan.aggregate([
+    {
+      "$match": {
+        "officer_id": new mongoose.Types.ObjectId(currentUserId)
+      }
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "user_id",
+        foreignField: "_id",
+        as: "customer",
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "officer_id",
+        foreignField: "_id",
+        as: "officer",
+      },
+    },
+    
+  {
+    $lookup: {
+      from: "users",
+      localField: "guarantor.user_id",
+      foreignField: "_id",
+      as: "guarantor"
+    }
+  },
+    {
+      $addFields: {
+        id: "$_id",
+      },
+    },
+    
+{
+ $sort: {
+   id: -1
+ }
+}
+  ]);
+}
+
+
+
+
+
+
 }
 
 async function getByIdGuarantor(id: string) {
