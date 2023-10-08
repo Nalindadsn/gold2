@@ -12,16 +12,12 @@ import { useCallback, useEffect, useState } from "react";
 
 import axios from "axios";
 
-import TaskTable from "./tables/TaskTable";
-import EditTaskForm from "./forms/EditTaskForm";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
-import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 export { AddEditView };
 
 function AddEditView({
-  title,
   loan,
   user,
   rate,
@@ -49,7 +45,6 @@ function AddEditView({
     mode: "onChange",
   });
   const watchNoOfMonth = watch("no_of_month");
-  const watchloan_amount = watch("loan_amount");
   const watchExpectedPriceOld = watch("expected_price_old");
   const { errors } = formState;
 
@@ -163,9 +158,7 @@ function AddEditView({
     return val.toFixed(2);
   };
   // expected_price
-  const [addGuarantorSec, setAddGuarantorSec] = useState(false);
-  const [expected_price, setExpected_price_old] = useState("0");
-  const [no_of_month, setNo_of_month] = useState("0");
+  
   const [reviews, setReviews] = useState([]);
   const [guarantorList, setGuarantor] = useState([]);
   const arr = reviews ? reviews : [];
@@ -184,61 +177,17 @@ function AddEditView({
     );
   }, 0);
 
-  const old_mkt_price = (loan?.estimated_price_old / total_pounds).toFixed(2);
-  const old_cmp_price = (loan?.loan_price_old / total_pounds).toFixed(2);
-  const old_exp_price = (loan?.expected_price_old / total_pounds).toFixed(2);
-  const basic_estimate = (130000 * total_pounds).toFixed(2);
-  const basic_estimate_final = loan?.expected_price_old;
-  //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
-
+  
   const [name, setItmName] = useState("");
   const [karat, setKarat] = useState("");
   const [net_weight, setNet_weight] = useState("");
   const [total_weight, setTotal_weight] = useState("");
-  const [pound, setPound] = useState("0");
   const [status, setStatus] = useState("NOT ISSUE");
 
   const [loading, setLoading] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
   // --------------------------------------------------------
   // --------------------------------------------------------
-  const submitHandlerDel = async (e: any, b: any) => {
-    setLoading(true);
-    try {
-      await loanService.deleteItem(e, b);
-      fetchReviews();
 
-      let message;
-      message = "Item Deleted ";
-
-      alertService.error(message, true);
-
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-
-      // toast.success(err);
-    }
-  };
-  const submitHandlerDelUser = async (e: any, b: any) => {
-    setLoading(true);
-    try {
-      await guarantorService.delete(e, b);
-
-      let message;
-      message = "Guarantor Removed";
-
-      alertService.error(message, true);
-      fetchGuarantor();
-
-      setLoading(false);
-      // router.push("/loans");
-    } catch (err) {
-      setLoading(false);
-
-      // toast.success(err);
-    }
-  };
   const fetchReviews = useCallback(async () => {
     try {
       if (loan) {
@@ -304,41 +253,8 @@ function AddEditView({
   };
 
   const [tasks, setTasks] = useState(tasksData);
-  const [editing, setEditing] = useState(false);
-  const [currentTask, setCurrentTask] = useState(initialFormState);
 
-  const addTask = (task: any) => {
-    task.pound = task.net_weight / 8;
-    task.per_pound = parseFloat(
-      actual_karat((task?.net_weight / task?.total_weight) * 100).value
-    ).toFixed(2);
-    task.id = tasks.length + 1;
-    setTasks([...tasks, task]);
-  };
 
-  const deleteTask = (id: any) => {
-    setEditing(false);
-    setTasks(tasks.filter((task) => task.id !== id));
-  };
-
-  const editRow = (task: any) => {
-    task.pound = task.net_weight / 8;
-    // setPound(task.net_weight / 8);
-    setEditing(true);
-    setCurrentTask(task);
-  };
-
-  const updateTask = (id: any, updatedTask: any) => {
-    setEditing(false);
-
-    updatedTask.pound = updatedTask.net_weight / 8;
-    updatedTask.per_pound = parseFloat(
-      actual_karat((updatedTask.net_weight / updatedTask.total_weight) * 100)
-        .value
-    ).toFixed(2);
-
-    setTasks(tasks.map((task) => (task.id === id ? updatedTask : task)));
-  };
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
     return (
