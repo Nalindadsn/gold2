@@ -17,7 +17,6 @@ function Layout({ children }: { children: React.ReactNode }) {
         <div>
 
 <Sidebar/>
-{/* <Sidebarmain /> */}
         <div className=" md:ml-64">
                 <NavB />
            <div className="  bg-white   mt-2">
