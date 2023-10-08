@@ -31,7 +31,7 @@ function EditView(props: any) {
     return loan
         ?(<>
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
-        <AddEditView title="EDIT LOAN DETAILS" loan={loan}  rate={rate}/>
+        <AddEditView title="VIEW LOAN DETAILS" loan={loan}  rate={rate}/>
         
         </> )
         : 

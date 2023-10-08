@@ -561,7 +561,7 @@ function AddEditView({
     <>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold mb-6 pb-2 tracking-wider uppercase">
-          -{loan ? "UPDATE " : "NEW"} Order
+          -{loan ? "VIEW " : "NEW"} Order
         </h2>
         <div>
           <div className="relative mr-4 inline-block">
