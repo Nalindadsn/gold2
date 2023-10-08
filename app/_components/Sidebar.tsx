@@ -121,20 +121,20 @@ function Sidebar() {
                  <li  className="m-0  border-0 border-1 border-t">
                     <div  className="flex items-center  px-3 text-gray-200     dark:hover:bg-gray-700 group">
                       
-                       <svg className="flex-shrink-0 w-5 h-5 text-gray-100 transition duration-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                       <svg className="flex-shrink-0 w-3 h-3 text-gray-500 transition duration-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                           <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                        </svg>
                        
-                       <span className="flex-1 ml-3 whitespace-nowrap text-white ">Users</span>
+                       <span className="flex-1 ml-3 whitespace-nowrap text-gray-500 text-sm ">Users</span>
                     </div>
                  </li>
                  <li  className="ml-2 mt-0">
-                    <a href="/admins" className="flex items-center  px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700 group">
+                    <a href="/admins" className="flex items-center  py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700 group">
                        -<span className="flex-1 ml-3 whitespace-nowrap ">Admin List</span>
                     </a>
                  </li>
                  <li  className="ml-2 mt-0">
-                    <a href="/coordinators" className="flex items-center px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                    <a href="/coordinators" className="flex items-center py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
                        -
                        <span className="flex-1 ml-3 whitespace-nowrap ">Coordinators List</span>
                     </a>
@@ -147,13 +147,13 @@ function Sidebar() {
                  <li  className="m-0">
                     <a href="/gold-rates" className="flex items-center py-2 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700 group">
                       
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                             </svg>
                        <span className="flex-1 ml-3 whitespace-nowrap ">Gold Rate</span>
                     </a>
                  </li>
-                 <li  className="m-0">
+                 <li  className="m-0 mt-3">
                  <Button variant="danger" onClick={logout} className='w-full text-center bg-red-600 p-2 text-gray-100 rounded-lg  hover:bg-red-700 dark:hover:bg-gray-700 group rounded-0'>
                     
                        {loggingOut ? (
@@ -261,22 +261,30 @@ function Sidebar() {
                 
                  {user?.role=="ADMIN"?<>
                  
-                 
-                 <li>
-                    <a href="/admins" className="flex items-center py-2 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
-                       <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                 <li className='group-hover:text-gray-900 dark:group-hover:text-white'>
+
+                 <li  className="m-0  border-0 border-1 border-t">
+                    <div  className="flex items-center  px-3 text-gray-200     dark:hover:bg-gray-700 group">
+                      
+                       <svg className="flex-shrink-0 w-3 h-3 text-gray-500 transition duration-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                           <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                        </svg>
-                       <span className="flex-1 ml-3 whitespace-nowrap ">Admin List</span>
+                       
+                       <span className="flex-1 ml-3 whitespace-nowrap text-gray-500 text-sm ">Users</span>
+                    </div>
+                 </li>
+                 <li  className="ml-2 mt-0">
+                    <a href="/admins" className="flex items-center  py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700 group">
+                       -<span className="flex-1 ml-3 whitespace-nowrap ">Admin List</span>
                     </a>
                  </li>
-                 <li>
-                    <a href="/coordinators" className="flex items-center py-2 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
-                       <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                          <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-                       </svg>
+                 <li  className="ml-2 mt-0">
+                    <a href="/coordinators" className="flex items-center py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                       -
                        <span className="flex-1 ml-3 whitespace-nowrap ">Coordinators List</span>
                     </a>
+                 </li>
+
                  </li>
                  
                  </>:""}
@@ -284,14 +292,14 @@ function Sidebar() {
                  <li  className="m-0">
                     <a href="/gold-rates" className="flex items-center py-2 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700 group">
                       
-                    <svg className="h-5 w-5 text-gra" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                             </svg>
                        <span className="flex-1 ml-3 whitespace-nowrap ">Gold Rate</span>
                     </a>
                  </li>
                  
-                 <li>
+                 <li className='mt-3'>
                  <Button variant="danger" onClick={logout} className='w-full text-center bg-red-600 p-2 text-gray-100 rounded-lg  hover:bg-red-700 dark:hover:bg-gray-700 group rounded-0'>
                     
                        {loggingOut ? (
