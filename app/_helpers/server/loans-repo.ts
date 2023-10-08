@@ -148,10 +148,9 @@ async function getAll() {
   const user= await User.findById(currentUserId);
 
 
-if (user.role=="ADMIN") {
+if (user.role=="ADMIN" && user.role=="COORDINATOR" ) {
   
   return await Loan.aggregate([
-    
     {
       $lookup: {
         from: "users",
