@@ -54,7 +54,7 @@ function Sidebar() {
                                         className="form-input rounded-md bg-gray-700 text-sm text-gray-300 pl-10 py-1.5 ml-5 border-transparent border-none outline-none focus:ring-0 focus:text-white transition-all duration-300 ease-in-out focus:w-60 w-48"
                                         placeholder="Search..." />
                                     <span
-                                        className="absolute left-44 bottom-2 text-gray-400 transition-all duration-300 ease-in-out group-focus-within:left-8">
+                                        className="absolute h-4 w-4 left-44 bottom-2 text-gray-400 transition-all duration-300 ease-in-out group-focus-within:left-8">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -225,17 +225,17 @@ function Sidebar() {
          
   <aside id="logo-sidebar" aria-label="Sidebar">
            <div className="h-full  pb-4 overflow-y-auto   bg-gray-800 text-blue-100">
-              <ul className="space-y-2 font-medium">
+              <ul className="space-y-2 font-medium  overflow-hidden">
                
                  <li>        <form method='GET' action={`/search`}>
-                                <div className="relative group ">
+                                <div className="relative group overflow-hidden">
                                     <input type="text"
                                     name="nic"
                                     onChange={(e)=>setSearch(e.target.value)}
                                         className="form-input rounded-md bg-gray-700 text-sm text-gray-300 pl-10 py-1.5 ml-5 border-transparent border-none outline-none focus:ring-0 focus:text-white transition-all duration-300 ease-in-out focus:w-60 w-48"
                                         placeholder="Search..." />
                                     <span
-                                        className="absolute left-44 bottom-2 text-gray-400 transition-all duration-300 ease-in-out group-focus-within:left-8">
+                                        className="h-4 w-4 absolute left-44 bottom-2 text-gray-400 transition-all duration-300 ease-in-out group-focus-within:left-8">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -304,7 +304,7 @@ function Sidebar() {
                 
                  {user?.role=="ADMIN"?<>
                  
-                 <li className='group-hover:text-gray-900 dark:group-hover:text-white'>
+                 <div className='group-hover:text-gray-900 dark:group-hover:text-white'>
 
                  <li  className="m-0  border-0 border-1 border-t">
                     <div  className="flex items-center  px-3 text-gray-300     dark:hover:bg-gray-700 group">
@@ -341,7 +341,7 @@ function Sidebar() {
                     </a>
                  </li>
 
-                 </li>
+                 </div>
                  
                  </>:""}
                  
