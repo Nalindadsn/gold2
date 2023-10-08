@@ -245,7 +245,7 @@ function Sidebar() {
                                     <input type="text"
                                     name="nic"
                                     onChange={(e)=>setSearch(e.target.value)}
-                                        className="form-input rounded-md bg-gray-700 text-sm text-gray-300 pl-10 py-1.5 ml-5 "
+                                        className=" "
                                         placeholder="Search..." />
                                     {/* <span
                                         className="h-4 w-4 absolute left-44 bottom-2 text-gray-400 transition-all duration-300 ease-in-out group-focus-within:left-8">
