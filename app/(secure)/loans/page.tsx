@@ -7,6 +7,15 @@ import DataTable from "react-data-table-component";
 import { useLoanService, useUserService } from "_services";
 // import { FaUserCircle} from 'react-icons/fa';
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
+
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  NavDropdown,
+  
+} from "react-bootstrap";
 export default Loans;
 
 function Loans() {
@@ -50,7 +59,25 @@ function Loans() {
       selector: (row: any) => (
         <>
         
-        
+        <NavDropdown title="Action" id="basic-nav-dropdown">
+            <NavDropdown.Item  href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}>
+            Backend Report
+            </NavDropdown.Item>
+
+
+            {user?.role=="ADMIN"?<>
+
+            <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>
+            <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
+            </>:<>
+            { row.status=="SUCCESS" || row.status=="REJECTED"?             <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
+:            <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>
+}
+            </>
+    }
+
+          </NavDropdown>
+{/*         
         <a
             href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}
             className="btn btn-sm btn-success me-1  focus:bg-yellow-500 whitespace-nowrap my-1"
@@ -82,7 +109,7 @@ function Loans() {
           className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 mb-1"
         >
           Edit
-        </Link>}
+        </Link>} */}
 <br/>
 
 
