@@ -69,6 +69,7 @@ function Loans() {
 
             <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>
             <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
+            <NavDropdown.Divider />
             <NavDropdown.Item  
             onClick={() => loanService.delete(row.id)} 
             disabled={row.isDeleting}>
