@@ -130,13 +130,20 @@ function Sidebar() {
                  </li>
                  <li  className="ml-2 mt-0">
                     <a href="/admins" className="flex items-center  py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700 group">
-                       -<span className="flex-1 ml-3 whitespace-nowrap ">Admin List</span>
+                       -<span className="flex-1 ml-3 whitespace-nowrap ">Admins</span>
                     </a>
                  </li>
                  <li  className="ml-2 mt-0">
                     <a href="/coordinators" className="flex items-center py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
                        -
-                       <span className="flex-1 ml-3 whitespace-nowrap ">Coordinators List</span>
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Coordinators </span>
+                    </a>
+                 </li>
+                 
+                 <li  className="ml-2 mt-0">
+                    <a href="/front" className="flex items-center py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                       -
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Front Officers </span>
                     </a>
                  </li>
 
@@ -275,13 +282,19 @@ function Sidebar() {
                  </li>
                  <li  className="ml-2 mt-0">
                     <a href="/admins" className="flex items-center  py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800  dark:hover:bg-gray-700 group">
-                       -<span className="flex-1 ml-3 whitespace-nowrap ">Admin List</span>
+                       -<span className="flex-1 ml-3 whitespace-nowrap ">Admins</span>
                     </a>
                  </li>
                  <li  className="ml-2 mt-0">
                     <a href="/coordinators" className="flex items-center py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
                        -
-                       <span className="flex-1 ml-3 whitespace-nowrap ">Coordinators List</span>
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Coordinators </span>
+                    </a>
+                 </li>
+                 <li  className="ml-2 mt-0">
+                    <a href="/front" className="flex items-center py-1 px-3 text-gray-200   hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                       -
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Front Officers </span>
                     </a>
                  </li>
 
