@@ -10,6 +10,8 @@ export const usersRepo = {
     getAll,
     getAllAdmin,
     getAllCoordinators,
+    getAllFrontOfficers,
+    getAllAccountant,
     getAllCustomers,
     getById,
     getCurrent,
@@ -56,6 +58,12 @@ async function getAllAdmin() {
 
 async function getAllCoordinators() {
     return await User.find({role:"COORDINATOR"}).sort({_id:-1});
+}
+async function getAllFrontOfficers() {
+    return await User.find({role:"FRONT-OFFICER"}).sort({_id:-1});
+}
+async function getAllAccountant() {
+    return await User.find({role:"ACCOUNTANT"}).sort({_id:-1});
 }
 
 async function getAllCustomers() {
