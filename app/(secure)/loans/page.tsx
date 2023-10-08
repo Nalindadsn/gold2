@@ -57,22 +57,38 @@ function Loans() {
           >
             Backend Report
           </a>
-          {user?.role=="ADMIN"?
+          {user?.role=="ADMIN"?<>
 <Link
           href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}
           className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 mb-1"
         >
           Edit
-        </Link> : row.status=="SUCCESS" || row.status=="REJECTED"? <Link
+        </Link>
+        
+        
+        <Link
+          href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}
+          className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 mb-1"
+        >
+          View
+        </Link></>
+        :
+        
+        
+        
+        row.status=="SUCCESS" || row.status=="REJECTED"? <Link
+          href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}
+          className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 mb-1"
+        >
+         View
+        </Link>
+        
+        
+        :<Link
           href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}
           className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 mb-1"
         >
           Edit
-        </Link>:<Link
-          href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}
-          className="btn btn-sm btn-warning me-1  focus:bg-yellow-500 mb-1"
-        >
-          Edit.
         </Link>}
 <br/>
 
