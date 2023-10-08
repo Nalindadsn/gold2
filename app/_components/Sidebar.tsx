@@ -95,7 +95,7 @@ function Sidebar() {
 
 
        
-                 <li className='group-hover:text-gray-900 dark:group-hover:text-white'>
+                 <div className='group-hover:text-gray-900 dark:group-hover:text-white'>
 
                  <li  className="m-0  border-0 border-1 border-t">
                     <div  className="flex items-center  px-3 text-gray-300     dark:hover:bg-gray-700 group">
@@ -106,9 +106,8 @@ function Sidebar() {
                        
                        <span className="flex-1 ml-3 whitespace-nowrap text-gray-500 text-sm ">Loans</span>
                     </div>
+                 
                  </li>
-
-
                  <li  className="ml-2 mt-0">
                     <a href="/loans" className="flex items-center py-2 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
                       
@@ -118,7 +117,7 @@ function Sidebar() {
                        <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
                     </a>
                  </li>
-                 </li>
+                 </div>
 
                  <li  className="m-0">
                     <a href="/settings" className="flex items-center py-2 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
@@ -133,7 +132,7 @@ function Sidebar() {
                 
                  {user?.role=="ADMIN"?<>
                  
-                 <li className='group-hover:text-gray-900 dark:group-hover:text-white'>
+                 <div className='group-hover:text-gray-900 dark:group-hover:text-white'>
 
                  <li  className="m-0  border-0 border-1 border-t">
                     <div  className="flex items-center  px-3 text-gray-300     dark:hover:bg-gray-700 group">
@@ -156,7 +155,6 @@ function Sidebar() {
                        <span className="flex-1 ml-3 whitespace-nowrap ">Coordinators </span>
                     </a>
                  </li>
-                 
                  <li  className="ml-2 mt-0">
                     <a href="/front" className="flex items-center py-1 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
                        -
@@ -171,7 +169,7 @@ function Sidebar() {
                     </a>
                  </li>
 
-                 </li>
+                 </div>
                  
                  </>:""}
                  
