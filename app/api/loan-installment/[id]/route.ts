@@ -19,7 +19,7 @@ async function update(req: Request, { params: { id } }: any) {
         fines:body.fines,
     }
     
-    await loansRepo.updateItem(id, data);
+    await loansRepo.updateItemInstallment(id, data);
     
 }
 async function getById(req: Request, { params: { id } }: any) {   

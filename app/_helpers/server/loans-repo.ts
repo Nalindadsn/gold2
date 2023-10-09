@@ -16,7 +16,7 @@ export const loansRepo = {
   getById,getByIdGuarantor,
   create,
   update,
-  updateItem,
+  updateItem,updateItemCharges,updateItemInstallment,
   deleteItem,
   delete: _delete,
   _deleteItem: _deleteItem,
@@ -491,26 +491,58 @@ async function update(id: string, params: any) {
   Object.assign(loan, params);
   await loan.save();
 }
+// 
 async function updateItem(id: string, params: any) {
 
-//  console.log(params)
-    const loanD= await loansRepo.getById(id);
-    const data:any={
-        name:params.name,
-        karat:params.karat,
-        net_weight: params.net_weight,
-        total_weight: params.total_weight,
-        pound: params.pound,
-        per_pound: params.per_pound,
-        status: params?.status || "ok", 
-    }
-
-    await Loan.findOneAndUpdate(
-      { _id: id },
-      { $push: { items: data } },
-      { new: true }
-    );
-}
+  //  console.log(params)
+      const loanD= await loansRepo.getById(id);
+      const data:any={
+          name:params.name,
+          karat:params.karat,
+          net_weight: params.net_weight,
+          total_weight: params.total_weight,
+          pound: params.pound,
+          per_pound: params.per_pound,
+          status: params?.status || "ok", 
+      }
+  
+      await Loan.findOneAndUpdate(
+        { _id: id },
+        { $push: { items: data } },
+        { new: true }
+      );
+  }
+  async function updateItemInstallment(id: string, params: any) {
+  
+  //  console.log(params)
+      const loanD= await loansRepo.getById(id);
+      const data:any={
+          in_date:params.in_date,
+          amount:params.amount,
+          fines:params.fines,
+      }
+  
+      await Loan.findOneAndUpdate(
+        { _id: id },
+        { $push: { items: data } },
+        { new: true }
+      );
+  }
+  async function updateItemCharges(id: string, params: any) {
+  
+  //  console.log(params)
+      const loanD= await loansRepo.getById(id);
+      const data:any={
+          type:params.type,
+          amount:params.amount,
+      }
+  
+      await Loan.findOneAndUpdate(
+        { _id: id },
+        { $push: { items: data } },
+        { new: true }
+      );
+  }
 async function deleteItem(id: string, params: any) {
 
 
