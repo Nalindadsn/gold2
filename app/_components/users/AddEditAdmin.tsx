@@ -202,6 +202,9 @@ function AddEditAdmin({
                 <>
                   <option value="ADMIN">ADMIN</option>
                   <option value="COORDINATOR">COORDINATOR</option>
+                  
+      <option value="FRONT">FRONT OFFICER</option>
+      <option value="ACCOUNTANT">ACCOUNTANT</option>
                 </>
               ) : (
                 ""

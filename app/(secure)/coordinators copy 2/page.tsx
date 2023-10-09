@@ -7,12 +7,9 @@ import { Spinner } from "_components";
 import { useUserService } from "_services";
 import { useRouter } from 'next/navigation';
 
-
-
 export default Users;
 
 function Users() {
-
   const router = useRouter();
   const userService = useUserService();
   const users:any = userService.users;  
@@ -67,7 +64,6 @@ function Users() {
               <button
                 onClick={() =>{ userService.delete(row.id);
                     setRecords(null)
-                
                 }
                 }
                 className="btn btn-sm btn-danger btn-delete-user focus:bg-red-700"

@@ -62,6 +62,12 @@ function useUserService(): IUserService {
         getAllCoordinators: async () => {
             userStore.setState({ users: await fetch.get('/api/coordinators') });
         },
+        getAllFrontOfficers: async () => {
+            userStore.setState({ users: await fetch.get('/api/front-officers') });
+        },
+        getAllAccountants: async () => {
+            userStore.setState({ users: await fetch.get('/api/accountants') });
+        },
         getById: async (id) => {
             userStore.setState({ user: undefined });
             try {
@@ -138,6 +144,8 @@ interface IUserService extends IUserStore {
     getAll: () => Promise<void>,
     getAllAdmins: () => Promise<void>,
     getAllCoordinators: () => Promise<void>,
+    getAllFrontOfficers: () => Promise<void>,
+    getAllAccountants: () => Promise<void>,
     getById: (id: string) => Promise<void>,
     getCurrent: () => Promise<void>,
     create: (user: IUser) => Promise<void>,
