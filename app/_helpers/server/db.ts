@@ -125,6 +125,8 @@ function loanModel() {
       installments:[
 {
         in_date:{type:String},
+        
+        amount:{type:String},
         fines:{type:String}
         
 }
