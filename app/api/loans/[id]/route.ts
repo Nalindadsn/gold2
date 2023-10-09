@@ -49,7 +49,8 @@ update.schema = joi.object({
     last_installment: joi.string().allow('').optional(),
     status: joi.string(),
     no_of_month: joi.string().allow('').optional(),
-    
+    no_of_month_expected: joi.string().allow('').optional(),
+
     form_number: joi.string(),
     items: joi.array(),
 });

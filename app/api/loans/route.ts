@@ -48,6 +48,7 @@ create.schema = joi.object({
     mortgage_interest_rate_month: joi.string().allow('').optional(),
     mortgage_interest_rate_year: joi.string().allow('').optional(),
     mortgage_invoice_number: joi.string().allow('').optional(),
+    no_of_month_expected: joi.string().allow('').optional(),
 
     status: joi.string(),
     no_of_month: joi.string(),
