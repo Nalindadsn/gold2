@@ -4,6 +4,9 @@
 .app-container {
     min-height: 350px;
 }
+.rdt_TableBody{
+min-height: 400px;
+}
 #cell-1-6516e006852903c6c93abcd5 > div > div{
     white-space: nowrap;
     width:200px
