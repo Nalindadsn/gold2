@@ -197,13 +197,6 @@ function Sidebar() {
                     </a>
                  </li>
 
-                 <li  className="ml-2 mt-0">
-                    <a href="/accountants" className="flex items-center py-1 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
-                       -
-                       <span className="flex-1 ml-3 whitespace-nowrap ">Accountant </span>
-                    </a>
-                 </li>
-
                  </div>
                  
                  </>:""}
@@ -378,6 +371,32 @@ function Sidebar() {
                        <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
                     </a>
                  </li>
+                 
+                 {user?.role=="ACCOUNTANT"?<><li>
+                    <a href="/accounts" className="flex items-center py-2 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                       {/* <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                          <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                       </svg> */}
+                       <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Accounts</span>
+                       <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
+                    </a>
+                 </li></>:""}
+                 
+                 {user?.role=="ACCOUNTANT"?<><li>
+                    <a href="/accounts" className="flex items-center py-2 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                       {/* <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                          <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                       </svg> */}
+                       <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Accounts</span>
+                       <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
+                    </a>
+                 </li></>:""}
                 
                  {user?.role=="ADMIN"?<>
                  
@@ -408,13 +427,6 @@ function Sidebar() {
                     <a href="/front-officers" className="flex items-center py-1 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
                        -
                        <span className="flex-1 ml-3 whitespace-nowrap ">Front Officers </span>
-                    </a>
-                 </li>
-                 
-                 <li  className="ml-2 mt-0">
-                    <a href="/accountants" className="flex items-center py-1 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
-                       -
-                       <span className="flex-1 ml-3 whitespace-nowrap ">Accountant </span>
                     </a>
                  </li>
 
