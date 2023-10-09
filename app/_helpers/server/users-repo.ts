@@ -29,6 +29,10 @@ async function authenticate({ username, password }: { username: string, password
     role:"ADMIN"
 }, {
     role:"COORDINATOR"
+}, {
+    role:"FRONT-OFFICER"
+}, {
+    role:"ACCOUNTANT"
 }]
 }
         )

@@ -97,6 +97,16 @@ function Sidebar() {
        
                  <div className='group-hover:text-gray-900 dark:group-hover:text-white'>
 
+                 <li  className="m-0  border-0 border-1 border-t">
+                    <div  className="flex items-center  px-3 text-gray-300     dark:hover:bg-gray-700 group">
+                      
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-3 h-3 text-gray-500" >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+          </svg>
+                       
+                       <span className="flex-1 ml-3 whitespace-nowrap text-gray-500 text-sm ">Loans</span>
+                    </div>
+                 </li>
                  
                  <li  className="ml-2 mt-0">
                     <a href="/loans" className="flex items-center py-2 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
