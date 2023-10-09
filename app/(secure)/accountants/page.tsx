@@ -93,11 +93,7 @@ function Users() {
     setRecords(newData);
     
   }
-
-  
-
   useEffect(() => {
-    
     userService.getAllAccountants();
   }, [users]);
 

@@ -3,10 +3,9 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAlertService, useLoanService } from "_services";
-import { Spinner } from "_components/Spinner";
-export { View };
+export { Account };
 
-function View({ title, loan }: { title: string; loan?: any }) {
+function Account({ title, loan }: { title: string; loan?: any }) {
   const router = useRouter();
   const alertService = useAlertService();
   const loanService = useLoanService();

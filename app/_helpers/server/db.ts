@@ -108,7 +108,7 @@ function loanModel() {
       loan_rate:{type: String },
       loan_amount:{type: String },
       payable_in_hand:{type: String },
-
+      cheque_number:{type:String},
       extra_payment: { type: String },
       items:[
 {
@@ -119,6 +119,20 @@ function loanModel() {
         pound:{type:String},
         per_pound:{type:String},
         status:{type:String,default:"NOT ISSUE"}
+        
+}
+      ],
+      installments:[
+{
+        in_date:{type:String},
+        fines:{type:String}
+        
+}
+      ],
+      other_charges:[
+{
+        type:{type:String},
+        amount:{type:String}
         
 }
       ],
