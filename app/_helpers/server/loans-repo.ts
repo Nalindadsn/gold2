@@ -11,6 +11,7 @@ const User = db.User;
 
 export const loansRepo = {
   getAll,
+  getByStatus,
   getSummary,
   getById,getByIdGuarantor,
   create,
@@ -194,6 +195,114 @@ if (user.role=="ADMIN" && user.role=="COORDINATOR" ) {
     {
       "$match": {
         "officer_id": new mongoose.Types.ObjectId(currentUserId)
+      }
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "user_id",
+        foreignField: "_id",
+        as: "customer",
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "officer_id",
+        foreignField: "_id",
+        as: "officer",
+      },
+    },
+    
+  {
+    $lookup: {
+      from: "users",
+      localField: "guarantor.user_id",
+      foreignField: "_id",
+      as: "guarantor"
+    }
+  },
+    {
+      $addFields: {
+        id: "$_id",
+      },
+    },
+    
+{
+ $sort: {
+   id: -1
+ }
+}
+  ]);
+}
+
+
+
+
+
+
+}
+async function getByStatus(status:any) {
+  const statusD:any=status.toString()
+  console.log(statusD)
+  const currentUserId:any = headers().get('userId');
+  // console.log(currentUserId)
+  const user= await User.findById(currentUserId);
+
+
+if (user.role=="ADMIN" && user.role=="COORDINATOR" ) {
+  
+  return await Loan.aggregate([
+    
+    {
+      $match: {
+        "status":status
+      }
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "user_id",
+        foreignField: "_id",
+        as: "customer",
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "officer_id",
+        foreignField: "_id",
+        as: "officer",
+      },
+    },
+    
+  {
+    $lookup: {
+      from: "users",
+      localField: "guarantor.user_id",
+      foreignField: "_id",
+      as: "guarantor"
+    }
+  },
+    {
+      $addFields: {
+        id: "$_id",
+      },
+    },
+    
+{
+ $sort: {
+   id: -1
+ }
+}
+  ]);
+}else{
+
+  return await Loan.aggregate([
+    {
+      "$match": {
+        "officer_id": new mongoose.Types.ObjectId(currentUserId),
+        "status":status
       }
     },
     {

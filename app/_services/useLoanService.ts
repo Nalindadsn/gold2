@@ -59,6 +59,9 @@ function useLoanService(): ILoanService {
     getAll: async () => {
       loanStore.setState({ loans: await fetch.get("/api/loans") });
     },
+    getByStatus: async (status:any) => {
+      loanStore.setState({ loans: await fetch.get(`/api/loans/status?status=${status}`) });
+    },
     getSummary: async () => {
       loanStore.setState({ summary: await fetch.get("/api/summary") });
 
@@ -197,6 +200,7 @@ interface ILoanService extends ILoanStore {
   logout: () => Promise<void>;
   register: (loan: ILoan) => Promise<void>;
   getAll: () => Promise<void>;
+  getByStatus: (status:any) => Promise<void>;
   getSummary: () => Promise<void>;
   getById: (id: string) => Promise<void>;
   getByNic: (id: string) => Promise<void>;
