@@ -179,7 +179,7 @@ function Loans() {
   return (
     <>
       <h1 className="text-2xl font-bold  pt-2 tracking-wider uppercase  ">
-        - Loans
+        - Loans Rejected
       </h1>
 {/* {JSON.stringify(loans)} */}
       <div>
