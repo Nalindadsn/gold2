@@ -63,10 +63,10 @@ function useUserService(): IUserService {
             userStore.setState({ users: await fetch.get('/api/coordinators') });
         },
         getAllFrontOfficers: async () => {
-            userStore.setState({ users: await fetch.get('/api/front-officers') });
+            userStore.setState({ users: await fetch.get('/api/front-officer') });
         },
         getAllAccountants: async () => {
-            userStore.setState({ users: await fetch.get('/api/accountants') });
+            userStore.setState({ users: await fetch.get('/api/accountant') });
         },
         getById: async (id) => {
             userStore.setState({ user: undefined });
