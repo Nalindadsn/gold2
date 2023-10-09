@@ -13,8 +13,8 @@ import { AddEdit as AddEditGuarantor } from "_components/guarantor";
 
 import axios from "axios";
 
-import TaskTable from "./tables/TaskTable";
-import EditTaskForm from "./forms/EditTaskForm";
+import TaskTable from "../tables/TaskTable";
+import EditTaskForm from "../forms/EditTaskForm";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
 import Button from "react-bootstrap/Button";
