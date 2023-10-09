@@ -115,7 +115,6 @@ function Sidebar() {
                        <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
                     </a>
                  </li>
-                 
                  <li  className="ml-2 mt-0">
                     <a href="/loans/pending" className="flex items-center py-2 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
                        -
