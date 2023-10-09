@@ -18,7 +18,7 @@ async function update(req: Request, { params: { id } }: any) {
         amount:body.amount,
     }
     
-    await loansRepo.updateItem(id, data);
+    await loansRepo.updateItemCharges(id, data);
     
 }
 async function getById(req: Request, { params: { id } }: any) {   
