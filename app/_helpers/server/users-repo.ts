@@ -23,7 +23,7 @@ export const usersRepo = {
 async function authenticate({ username, password }: { username: string, password: string }) {
     
     const user = await User.findOne(
-        {username: username,
+        {username: username,status: "ACTIVE",
 
 "$or": [{
     role:"ADMIN"

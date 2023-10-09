@@ -127,6 +127,9 @@ function AddEdit({
     no_of_month: register("no_of_month", {
       required: "Month is required",
     }),
+    no_of_month_expected: register("no_of_month_expected", {
+      required: "Month is required",
+    }),
     form_number: register("form_number", {
       required: "Form number is required",
     }),
@@ -759,7 +762,7 @@ function AddEdit({
                   {errors.form_number?.message?.toString()}
                 </div>
               </div>
-            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
+            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-3 p-1 shadow-md mt-3 border">
  <div className="p-2">
                   <label className="form-label ml-2 ">
                     {" "}
@@ -777,6 +780,27 @@ function AddEdit({
                     {errors.requested_loan?.message?.toString()}
                   </div>
                 </div>
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    {" "}
+                    Month (Requested){" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.no_of_month_expected}
+                    type="no_of_month_expected"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.no_of_month_expected ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.no_of_month_expected?.message?.toString()}
+                  </div>
+                </div>
+
+
+
+                
                 <div className="p-2">
                   <label className="form-label ml-2 ">Status</label>
 
