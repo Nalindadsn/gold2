@@ -129,6 +129,25 @@ console.log(paramsData)
       } catch (error: any) {
         alertService.error(error);
       }
+    },
+    updateItemInstallment: async (id, params) => {
+      // console.log(params)
+            try {
+        await fetch.put(`/api/loan-installment/${id}`, params);        
+        // loanStore.setState({ loan: await fetch.get(`/api/loan-item/${id}`) });
+      } catch (error: any) {
+        alertService.error(error);
+      }
+    }
+    ,
+    updateItemCharges: async (id, params) => {
+      // console.log(params)
+            try {
+        await fetch.put(`/api/loan-other-charges/${id}`, params);        
+        // loanStore.setState({ loan: await fetch.get(`/api/loan-item/${id}`) });
+      } catch (error: any) {
+        alertService.error(error);
+      }
     }
     ,
     delete: async (id) => {
@@ -208,6 +227,8 @@ interface ILoanService extends ILoanStore {
   create: (loan: ILoan) => Promise<void>;
   update: (id: string, params: Partial<ILoan>) => Promise<void>;
   updateItem: (id: string, params: Partial<ILoanItem>) => Promise<void>;
+  updateItemInstallment: (id: string, params: Partial<ILoanItem>) => Promise<void>;
+  updateItemCharges: (id: string, params: Partial<ILoanItem>) => Promise<void>;
   delete: (id: string) => Promise<void>;
   deleteItem: (id: string, params: Partial<ILoanItem>) => Promise<void>;
 }
