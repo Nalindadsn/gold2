@@ -524,7 +524,7 @@ async function updateItem(id: string, params: any) {
   
       await Loan.findOneAndUpdate(
         { _id: id },
-        { $push: { items: data } },
+        { $push: { installments: data } },
         { new: true }
       );
   }

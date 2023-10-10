@@ -1452,7 +1452,7 @@ function AddEdit({
 						installed Date
 					  </label>
 					  <input
-						type="text"
+						type="date"
 						onChange={(e) => setIn_date(e.target.value)}
 						value={in_date}
 						name="in_date"

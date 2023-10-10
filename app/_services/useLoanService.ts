@@ -140,6 +140,7 @@ console.log(paramsData)
       }
     }
     ,
+    
     updateItemCharges: async (id, params) => {
       // console.log(params)
             try {
