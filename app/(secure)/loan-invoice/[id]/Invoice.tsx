@@ -277,7 +277,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
             <>
             <View style={{ width:'100%', flexDirection :'row'}} >
                 <View  style={[styles.tbody, styles.tbody2]}>
-                    <Text >Basic (with company rate)</Text>   
+                    <Text >Basic Amount (with company rate)</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat(rate?.cmp_rate).toFixed(2)}</Text>   
@@ -291,7 +291,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
             </View>
             <View style={{ width:'100%', flexDirection :'row'}} >
                 <View  style={[styles.tbody, styles.tbody2]}>
-                    <Text >Basic</Text>   
+                    <Text >Basic Amount (with market price)</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{(parseFloat(loan?.expected_price_old)/total_pounds).toFixed(2)}
