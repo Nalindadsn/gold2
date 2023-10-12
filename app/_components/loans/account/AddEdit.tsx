@@ -17,7 +17,6 @@ import TaskTable from "../tables/TaskTable";
 import EditTaskForm from "../forms/EditTaskForm";
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
-import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 export { AddEdit };
 
@@ -551,10 +550,10 @@ function AddEdit({
         amount: amount,
       };
       await loanService.updateItemInstallment(loan?.id, data);
-      fetchReviews();
+      fetchInstallments();
 
       let message;
-      message = "Installment Added ";
+      message = "Installment Added";
 
       alertService.success(message, true);
       setLoading(false);
@@ -747,11 +746,11 @@ function AddEdit({
       {/* {reviews.length > 0 || tasks.length > 0 ? ( */}
       <>
         <div className="shadow-sm border">
-          <form
+          {/* <form
             onSubmit={handleSubmit(onSubmit)}
             className="bg-white p-2 "
             // style={{ marginLeft: "5%", marginRight: "5%" }}
-          >
+          > */}
             <div className="">
             <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                 <div className="w-full hidden md:block"></div>
@@ -1550,7 +1549,7 @@ function AddEdit({
 
             <div className="grid grid-cols-1 md:grid-cols-2"></div>
             
-          </form>
+          {/* </form> */}
         </div>
 
 		
