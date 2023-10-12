@@ -1568,29 +1568,7 @@ function AddEdit({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2"></div>
-            <div className="my-3">
-              <button
-                type="submit"
-                disabled={formState.isSubmitting}
-                className="btn btn-primary me-2 bg-blue-700"
-              >
-                {formState.isSubmitting && (
-                  <span className="spinner-border spinner-border-sm me-1"></span>
-                )}
-                Save
-              </button>
-              <button
-                onClick={() => reset()}
-                type="button"
-                disabled={formState.isSubmitting}
-                className="btn btn-secondary bg-gray-900"
-              >
-                Reset
-              </button>
-              <Link href="/loans" className="btn btn-link">
-                Cancel
-              </Link>
-            </div>
+            
           </form>
         </div>
 
@@ -1601,17 +1579,7 @@ function AddEdit({
                 <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl w-full">
                   GUARANTOR DETAILS
                 </h1>
-                {loan ? (
-                  <Button
-                    variant="primary"
-                    onClick={handleShow}
-                    className="bg-blue-500 ml-2 btn-sm  whitespace-nowrap"
-                  >
-                    + New Guarantor
-                  </Button>
-                ) : (
-                  ""
-                )}
+                
               </div>
 
               <div className="text-center bg-white shadow-md">
@@ -1655,28 +1623,7 @@ function AddEdit({
                                   </div>
                                 </div>
                               </Link>
-                              <button
-                                onClick={() =>
-                                  submitHandlerDelUser(loan?.id, {
-                                    name: i?._id,
-                                  })
-                                }
-                                // onClick={() => {
-
-                                //   loanService.deleteItem(loan?.id, {name:i?._id});
-                                //   fetchReviews();
-                                // }  }
-                                className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
-                                style={{ width: "60px" }}
-                                //  disabled={true}
-                                // disabled={isDeleting}
-                              >
-                                {isDeleting ? (
-                                  <span className="spinner-border spinner-border-sm"></span>
-                                ) : (
-                                  <span>Delete</span>
-                                )}
-                              </button>
+                              
                             </div>
                           </div>
                           <div className=" md:mb-1 md:flex items-center">
