@@ -965,6 +965,375 @@ function AddEdit({
 			  ))}
 			</div>
 </div>
+
+<div className=" border-gray-800 border-1 shadow-sm mb-3 mt-3">
+              
+              <div className="p-2">
+                <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+                  <div className="px-1 w-full">
+                    <label className="form-label ml-2 ">
+                      Expected Price <span className="text-red-500">*</span>
+                      {payment_values(
+                        parseFloat(watchExpectedPriceOld),
+                        parseFloat(status),
+                        parseFloat(watchNoOfMonth)
+                      )}{" "}
+                    </label>
+
+                    {/* <input
+                      {...fields.expected_price_old}
+                      type="text"
+                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                        errors.expected_price_old ? "is-invalid" : ""
+                      }`}
+                      // onBlur={()=>()}
+                      //  onChange={(e) => setExpected_price_old(e.target.value)}
+                    /> */}
+                    <input
+                      {...fields.expected_price_old}
+                      type="expected_price_old"
+                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                        errors.expected_price_old ? "is-invalid" : ""
+                      }`}
+
+                      //  onChange={(e) => setExpected_price_old(e.target.value)}
+                    />
+                    <div className="invalid-feedback">
+                      {errors.expected_price_old?.message?.toString()}
+                    </div>
+                  </div>
+                  <div className="px-1 ">
+                    <div>
+                     
+                     
+                      {/* {
+                      
+                      ((payment_values_amount(
+                      parseFloat(watchExpectedPriceOld),
+                      parseFloat(status),
+                      parseFloat(watchNoOfMonth)
+                    )) >0)?"":""
+                    
+                    } */}
+                    {
+                      parseFloat(watchExpectedPriceOld) <= max_price
+                        ? ""
+                        : <><br/></>
+                    }
+
+
+                      <label className="form-label  ">
+                        No of Month
+                        <span className="text-red-500">{" *"} </span>
+                        <br />
+                      </label>
+
+                      {loan ? (
+                        <>
+                          <br />
+                          Monthly Instalment :
+                          {loan.expected_price_old <= max_price
+                            ? installment(
+                                parseFloat(loan.no_of_month),
+                                parseFloat(loan.expected_price_old)
+                              )
+                            : installment(
+                                parseFloat(loan.no_of_month),
+                                parseFloat(max_price)
+                              )}{" "}
+                          - SAVED
+                        </>
+                      ) : (
+                        <>
+                          <br />
+                          Monthly Instalment :
+                          {expected_price <= max_price
+                            ? installment(
+                                parseFloat(watchNoOfMonth),
+                                parseFloat(expected_price)
+                              )
+                            : installment(
+                                parseFloat(watchNoOfMonth),
+                                parseFloat(max_price)
+                              )}
+                        </>
+                      )}
+
+                      <select
+                        {...fields.no_of_month}
+                        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                          errors.no_of_month ? "is-invalid" : ""
+                        }`}
+                      >
+                        <option value="">-SELECT MONTH-</option>
+                        <option value="60">60</option>
+                        <option value="48">48</option>
+                        <option value="36">36</option>
+                        <option value="24">24</option>
+                        <option value="18">18</option>
+                        <option value="12">12</option>
+                        <option value="6">6</option>
+                      </select>
+
+                      <div className="invalid-feedback">
+                        {errors.no_of_month?.message?.toString()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="invalid-feedback">
+                  {errors.expected_price_old?.message?.toString()}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3">
+                <div className="p-2 ml-1">
+                  <label className="form-label ml-2 ">
+                    Loan Amount <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.loan_amount}
+                    type="text"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.loan_amount ? "is-invalid" : ""
+                    }`}
+                    value={
+                      parseFloat(watchExpectedPriceOld) <= max_price
+                        ? parseFloat(watchExpectedPriceOld).toFixed(2)
+                        : max_price.toFixed(2)
+                    }
+                  />
+                  <div className="invalid-feedback">
+                    {errors.loan_amount?.message?.toString()}
+                  </div>
+                </div>
+                <div className="p-2 ml-1">
+                  <label className="form-label ml-2 ">
+                    Payable in Hand <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.payable_in_hand}
+                    type="text"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.payable_in_hand ? "is-invalid" : ""
+                    }`}
+                    value={payment_values_amount(
+                      parseFloat(watchExpectedPriceOld),
+                      parseFloat(status),
+                      parseFloat(watchNoOfMonth)
+                    )}
+                  />
+                  {/* {(watchExpectedPriceOld - max_price).toFixed(2)}
+                {payment_values_amount(
+                    parseFloat(watchExpectedPriceOld),
+                    parseFloat(status),
+                    parseFloat(watchNoOfMonth)
+                  )} */}
+                  <div className="invalid-feedback">
+                    {errors.payable_in_hand?.message?.toString()}
+                  </div>
+                </div>
+                <div className="p-2 ml-1">
+                  <label className="form-label ml-2 ">
+                    Monthly Installment <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.monthly_installment}
+                    type="text"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.monthly_installment ? "is-invalid" : ""
+                    }`}
+                    value={installmentV(
+                      watchExpectedPriceOld,
+                      max_price,
+                      watchNoOfMonth
+                    )}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.monthly_installment?.message?.toString()}
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    First Installment Date{" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.first_installment}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.first_installment ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.first_installment?.message?.toString()}
+                  </div>
+                </div>
+
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    Last Installment Date{" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.last_installment}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.last_installment ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.last_installment?.message?.toString()}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+			{loan ? (
+          <>
+		  <form
+			onSubmit={submitHandler}
+			className=" p-2 shadow-sm bg-gray-800 text-white border mt-5"
+			style={{ overflow: "hidden" }}
+		  >
+			<div className="flex flex-wrap -mx-3 ">
+			  <div className="w-full md:w-full px-3 mb-2 mt-2">
+				<h3>LOAN INSTALLMENTS</h3>
+				<div>
+				  <div className="flex  flex-col md:flex-row -mx-1 py-2 ">
+					<div className="px-1  text-right">
+					  <label className="text-left w-full ml-2 text-sm">
+						installed Date
+					  </label>
+					  <input
+						type="date"
+						onChange={(e) => setIn_date(e.target.value)}
+						value={in_date}
+						name="in_date"
+						className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+						placeholder="Description"
+						required
+					  />
+					</div>
+					<div className="px-1  text-right">
+					  <label className="text-left w-full ml-2 text-sm">
+						Fines
+					  </label>
+					  <input
+						type="text"
+						onChange={(e) => setFines(e.target.value)}
+						value={fines}
+						name="fines"
+						className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+						placeholder="Fines"
+						required
+					  />
+					</div>
+
+					<div className="px-1  text-right">
+					  <label className="text-left w-full ml-2 text-sm">
+						Amount
+					  </label>
+					  <input
+						type="text"
+						onChange={(e) => setAmount(e.target.value)}
+						value={amount}
+						name="amount"
+						className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+						placeholder="Amount"
+						required
+					  />
+					</div>
+					<div className="px-1 pt-1  text-right">
+					  <label className="text-left w-full ml-2 text-sm">
+						&nbsp;
+					  </label>
+
+					  <button
+						className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
+						type="reset"
+					  >
+						RESET
+					  </button>
+					</div>
+				  </div>
+				  <div className="border-gray-800 border-b border-b-1 pb-2">
+					{" "}
+					<button
+					  type="submit"
+					  disabled={loading}
+					  className="btn btn-primary me-2 mt-1 bg-blue-700"
+					>
+					  {loading && (
+						<span className="spinner-border spinner-border-sm me-1"></span>
+					  )}
+					  ADD ITEMS
+					</button>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div className="bg-white p-2 text-gray-800 ">
+			{installments.map((i: any) => (
+				<div className="border-1 border-b-1" key={n++}>
+					{i?.amount}|{i?.fines}|{i?.in_date}
+				</div>
+ ))}
+
+			</div>
+		  </form>
+          </>
+        ) : (
+          <>
+            <div className="container bg-white shadow-sm">
+              <div className="flex-row">
+                <div className="flex-large">
+                  <div>
+                    <h2 className="text-xl font-bold ml-2">
+                      {editing ? "Edit Item" : "ADD ITEM"}
+                    </h2>
+                    <EditTaskForm
+                      editing={editing}
+                      setEditing={setEditing}
+                      currentTask={currentTask}
+                      setCurrentTask={setCurrentTask}
+                      updateTask={updateTask}
+                      addTask={addTask}
+                      tasks={tasks}
+                      rate={rate}
+                    />
+                  </div>
+                </div>
+                <div className="flex-large">
+                  <TaskTable
+                    tasks={tasks}
+                    rate={rate}
+                    editRow={editRow}
+                    deleteTask={deleteTask}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+
+
+
+
+
+
+
+
+
+
 <h3 className="text-xl font-bold border-t-2 pl-2 mt-3 pt-2">
                 MORTGAGE DETAILS
               </h3>
@@ -1197,232 +1566,6 @@ function AddEdit({
                 </div>
               </div>
             </div>
-            <div className=" border-gray-800 border-1 shadow-sm mb-3 mt-3">
-              
-              <div className="p-2">
-                <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-                  <div className="px-1 w-full">
-                    <label className="form-label ml-2 ">
-                      Expected Price <span className="text-red-500">*</span>
-                      {payment_values(
-                        parseFloat(watchExpectedPriceOld),
-                        parseFloat(status),
-                        parseFloat(watchNoOfMonth)
-                      )}{" "}
-                    </label>
-
-                    {/* <input
-                      {...fields.expected_price_old}
-                      type="text"
-                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                        errors.expected_price_old ? "is-invalid" : ""
-                      }`}
-                      // onBlur={()=>()}
-                      //  onChange={(e) => setExpected_price_old(e.target.value)}
-                    /> */}
-                    <input
-                      {...fields.expected_price_old}
-                      type="expected_price_old"
-                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                        errors.expected_price_old ? "is-invalid" : ""
-                      }`}
-
-                      //  onChange={(e) => setExpected_price_old(e.target.value)}
-                    />
-                    <div className="invalid-feedback">
-                      {errors.expected_price_old?.message?.toString()}
-                    </div>
-                  </div>
-                  <div className="px-1 ">
-                    <div>
-                     
-                     
-                      {/* {
-                      
-                      ((payment_values_amount(
-                      parseFloat(watchExpectedPriceOld),
-                      parseFloat(status),
-                      parseFloat(watchNoOfMonth)
-                    )) >0)?"":""
-                    
-                    } */}
-                    {
-                      parseFloat(watchExpectedPriceOld) <= max_price
-                        ? ""
-                        : <><br/></>
-                    }
-
-
-                      <label className="form-label  ">
-                        No of Month
-                        <span className="text-red-500">{" *"} </span>
-                        <br />
-                      </label>
-
-                      {loan ? (
-                        <>
-                          <br />
-                          Monthly Instalment :
-                          {loan.expected_price_old <= max_price
-                            ? installment(
-                                parseFloat(loan.no_of_month),
-                                parseFloat(loan.expected_price_old)
-                              )
-                            : installment(
-                                parseFloat(loan.no_of_month),
-                                parseFloat(max_price)
-                              )}{" "}
-                          - SAVED
-                        </>
-                      ) : (
-                        <>
-                          <br />
-                          Monthly Instalment :
-                          {expected_price <= max_price
-                            ? installment(
-                                parseFloat(watchNoOfMonth),
-                                parseFloat(expected_price)
-                              )
-                            : installment(
-                                parseFloat(watchNoOfMonth),
-                                parseFloat(max_price)
-                              )}
-                        </>
-                      )}
-
-                      <select
-                        {...fields.no_of_month}
-                        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                          errors.no_of_month ? "is-invalid" : ""
-                        }`}
-                      >
-                        <option value="">-SELECT MONTH-</option>
-                        <option value="60">60</option>
-                        <option value="48">48</option>
-                        <option value="36">36</option>
-                        <option value="24">24</option>
-                        <option value="18">18</option>
-                        <option value="12">12</option>
-                        <option value="6">6</option>
-                      </select>
-
-                      <div className="invalid-feedback">
-                        {errors.no_of_month?.message?.toString()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="invalid-feedback">
-                  {errors.expected_price_old?.message?.toString()}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3">
-                <div className="p-2 ml-1">
-                  <label className="form-label ml-2 ">
-                    Loan Amount <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.loan_amount}
-                    type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.loan_amount ? "is-invalid" : ""
-                    }`}
-                    value={
-                      parseFloat(watchExpectedPriceOld) <= max_price
-                        ? parseFloat(watchExpectedPriceOld).toFixed(2)
-                        : max_price.toFixed(2)
-                    }
-                  />
-                  <div className="invalid-feedback">
-                    {errors.loan_amount?.message?.toString()}
-                  </div>
-                </div>
-                <div className="p-2 ml-1">
-                  <label className="form-label ml-2 ">
-                    Payable in Hand <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.payable_in_hand}
-                    type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.payable_in_hand ? "is-invalid" : ""
-                    }`}
-                    value={payment_values_amount(
-                      parseFloat(watchExpectedPriceOld),
-                      parseFloat(status),
-                      parseFloat(watchNoOfMonth)
-                    )}
-                  />
-                  {/* {(watchExpectedPriceOld - max_price).toFixed(2)}
-                {payment_values_amount(
-                    parseFloat(watchExpectedPriceOld),
-                    parseFloat(status),
-                    parseFloat(watchNoOfMonth)
-                  )} */}
-                  <div className="invalid-feedback">
-                    {errors.payable_in_hand?.message?.toString()}
-                  </div>
-                </div>
-                <div className="p-2 ml-1">
-                  <label className="form-label ml-2 ">
-                    Monthly Installment <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.monthly_installment}
-                    type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.monthly_installment ? "is-invalid" : ""
-                    }`}
-                    value={installmentV(
-                      watchExpectedPriceOld,
-                      max_price,
-                      watchNoOfMonth
-                    )}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.monthly_installment?.message?.toString()}
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    First Installment Date{" "}
-                    <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.first_installment}
-                    type="date"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.first_installment ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.first_installment?.message?.toString()}
-                  </div>
-                </div>
-
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    Last Installment Date{" "}
-                    <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.last_installment}
-                    type="date"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.last_installment ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.last_installment?.message?.toString()}
-                  </div>
-                </div>
-
-              </div>
-            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2"></div>
             <div className="my-3">
@@ -1449,7 +1592,10 @@ function AddEdit({
               </Link>
             </div>
           </form>
-          {loan && (
+        </div>
+
+		
+		{loan && (
             <>
               <div className="flex  mt-3 pt-2 border-t">
                 <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl w-full">
@@ -1577,135 +1723,6 @@ function AddEdit({
               </>
             </>
           )}
-        </div>
-
-        {loan ? (
-          <>
-		  <form
-			onSubmit={submitHandler}
-			className=" p-2 shadow-sm bg-gray-800 text-white border mt-5"
-			style={{ overflow: "hidden" }}
-		  >
-			<div className="flex flex-wrap -mx-3 ">
-			  <div className="w-full md:w-full px-3 mb-2 mt-2">
-				
-				<div>
-				  <div className="flex  flex-col md:flex-row -mx-1 py-2 ">
-					<div className="px-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						installed Date
-					  </label>
-					  <input
-						type="date"
-						onChange={(e) => setIn_date(e.target.value)}
-						value={in_date}
-						name="in_date"
-						className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-						placeholder="Description"
-						required
-					  />
-					</div>
-					<div className="px-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						Fines
-					  </label>
-					  <input
-						type="text"
-						onChange={(e) => setFines(e.target.value)}
-						value={fines}
-						name="fines"
-						className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-						placeholder="Fines"
-						required
-					  />
-					</div>
-
-					<div className="px-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						Amount
-					  </label>
-					  <input
-						type="text"
-						onChange={(e) => setAmount(e.target.value)}
-						value={amount}
-						name="amount"
-						className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-						placeholder="Amount"
-						required
-					  />
-					</div>
-					<div className="px-1 pt-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						&nbsp;
-					  </label>
-
-					  <button
-						className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
-						type="reset"
-					  >
-						RESET
-					  </button>
-					</div>
-				  </div>
-				  <div className="border-gray-800 border-b border-b-1 pb-2">
-					{" "}
-					<button
-					  type="submit"
-					  disabled={loading}
-					  className="btn btn-primary me-2 mt-1 bg-blue-700"
-					>
-					  {loading && (
-						<span className="spinner-border spinner-border-sm me-1"></span>
-					  )}
-					  ADD ITEMS
-					</button>
-				  </div>
-				</div>
-			  </div>
-			</div>
-			<div className="bg-white p-2 text-gray-800 ">
-			{installments.map((i: any) => (
-				<div key={n++}>
-					{i?.amount}{i?.fines}{i?.in_date}
-				</div>
- ))}
-
-			</div>
-		  </form>
-          </>
-        ) : (
-          <>
-            <div className="container bg-white shadow-sm">
-              <div className="flex-row">
-                <div className="flex-large">
-                  <div>
-                    <h2 className="text-xl font-bold ml-2">
-                      {editing ? "Edit Item" : "ADD ITEM"}
-                    </h2>
-                    <EditTaskForm
-                      editing={editing}
-                      setEditing={setEditing}
-                      currentTask={currentTask}
-                      setCurrentTask={setCurrentTask}
-                      updateTask={updateTask}
-                      addTask={addTask}
-                      tasks={tasks}
-                      rate={rate}
-                    />
-                  </div>
-                </div>
-                <div className="flex-large">
-                  <TaskTable
-                    tasks={tasks}
-                    rate={rate}
-                    editRow={editRow}
-                    deleteTask={deleteTask}
-                  />
-                </div>
-              </div>
-            </div>
-          </>
-        )}
       </>
       {/* // ) : (
       //   ""
