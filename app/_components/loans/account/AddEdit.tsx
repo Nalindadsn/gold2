@@ -171,6 +171,7 @@ function AddEdit({
   const [expected_price, setExpected_price_old] = useState("0");
   const [no_of_month, setNo_of_month] = useState("0");
   const [reviews, setReviews] = useState([]);
+  const [installments, setInstallments] = useState([]);
   const [guarantorList, setGuarantor] = useState([]);
   const arr = reviews ? reviews : [];
 
@@ -255,6 +256,18 @@ function AddEdit({
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
   }, []);
+  const fetchInstallments = useCallback(async () => {
+    try {
+      if (loan) {
+        const { data } = await axios.get(`/api/loans/${loan?.id}`);
+        setInstallments(data.installments);
+      } else {
+        setInstallments([]);
+      }
+    } catch (err) {
+      //enqueueSnackbar(getError(err), { variant: 'error' });
+    }
+  }, []);
   const fetchGuarantor = useCallback(async () => {
     try {
       if (loan) {
@@ -273,7 +286,8 @@ function AddEdit({
     // async () => {
     fetchReviews();
     fetchGuarantor();
-  }, [fetchReviews, fetchGuarantor]);
+    fetchInstallments();
+  }, [fetchReviews, fetchGuarantor,fetchInstallments]);
 
   const formatDate = (dateString: any) => {
     const options: any = {
@@ -820,7 +834,137 @@ function AddEdit({
                 </div>
 
 </div>
+<div className="p-2 shadow-sm bg-gray-800 text-white border mt-5">
+	 <h2>ITEMS</h2>
+<div className="bg-white p-2 ">
+			  {reviews.map((i: any) => (
+				<div key={n++}>
+				  <div className="bg-gray-800 text-sm">
+					<span>
+					  <span className="font-bold text-white ml-2">
+						{i?.name}
+					  </span>{" "}
+					  &nbsp;
+					  <span className="  text-orange-300 rounded-sm px-2 mr-3">
+						Karat : {i?.karat}
+					  </span>
+					  <span
+						className={`${
+						  (i?.net_weight / i?.total_weight) * 100 == 100
+							? " text-orange-300"
+							: " text-red-500 "
+						}  rounded-sm px-2 mr-3`}
+					  >
+						Actual :{" "}
+						{
+						  actual_karat(
+							(i?.net_weight / i?.total_weight) * 100
+						  ).karat
+						}
+					  </span>
+					  {i?.status == "NOT ISSUE" ? (
+						<span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
+						  {i?.status}
+						</span>
+					  ) : (
+						<span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
+						  {i?.status}
+						</span>
+					  )}
+					</span>
+				  </div>
+				  <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
+					<div className="flex-2 px-1 w-full">
+					  <div className="ml-2 text-sm">
+						<div>
+						  <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
+							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+							  TOTAL WEIGHT - {i?.total_weight}
+							</div>
+							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+							  NET WEIGHT - {i?.net_weight}
+							</div>
+							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+							  POUNDS - {i?.pound}
+							</div>
+						  </div>
+						  <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t">
+							<span
+							  className={`text-gray-800 px-2 ${
+								(i?.net_weight / i?.total_weight) * 100 == 100
+								  ? "  border-1 border-orange-600"
+								  : "  border-1 border-red-500 "
+							  }`}
+							>
+							  GOLD PERCENTAGE -{" "}
+							  {parseFloat(
+								(
+								  (i?.net_weight / i?.total_weight) *
+								  100
+								).toString()
+							  ).toFixed(2)}
+							  %
+							</span>
+							<span
+							  className={`md:ml-1 ${
+								(i?.net_weight / i?.total_weight) * 100 == 100
+								  ? " bg-orange-300"
+								  : " bg-red-500 text-white"
+							  }   px-2 md:mr-3`}
+							>
+							  Amount per pound :{" "}
+							  {
+								actual_karat(
+								  (i?.net_weight / i?.total_weight) * 100
+								).value
+							  }
+							</span>
 
+							<span
+							  className={`md:ml-1 ${
+								(i?.net_weight / i?.total_weight) * 100 == 100
+								  ? " bg-orange-300"
+								  : " bg-red-500 text-white"
+							  }   px-2 md:mr-3`}
+							>
+							  Amount :{" "}
+							  {(
+								actual_karat(
+								  (i?.net_weight / i?.total_weight) * 100
+								).value * i?.pound
+							  ).toFixed(2)}
+							</span>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					<div className="px-1 text-right">
+					  <button
+						onClick={() =>
+						  submitHandlerDel(loan?.id, { name: i?._id })
+						}
+						// onClick={() => {
+
+						//   loanService.deleteItem(loan?.id, {name:i?._id});
+						//   fetchReviews();
+						// }  }
+						className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
+						style={{ width: "60px" }}
+						//  disabled={true}
+						// disabled={isDeleting}
+					  >
+						{isDeleting ? (
+						  <span className="spinner-border spinner-border-sm"></span>
+						) : (
+						  <span>Delete</span>
+						)}
+					  </button>
+					</div>
+				  </div>
+				</div>
+			  ))}
+			</div>
+</div>
 <h3 className="text-xl font-bold border-t-2 pl-2 mt-3 pt-2">
                 MORTGAGE DETAILS
               </h3>
@@ -1519,134 +1663,13 @@ function AddEdit({
 				</div>
 			  </div>
 			</div>
-
-			<div className="bg-white p-2 ">
-			  {reviews.map((i: any) => (
+			<div className="bg-white p-2 text-gray-800 ">
+			{installments.map((i: any) => (
 				<div key={n++}>
-				  <div className="bg-gray-800 text-sm">
-					<span>
-					  <span className="font-bold text-white ml-2">
-						{i?.name}
-					  </span>{" "}
-					  &nbsp;
-					  <span className="  text-orange-300 rounded-sm px-2 mr-3">
-						Karat : {i?.karat}
-					  </span>
-					  <span
-						className={`${
-						  (i?.net_weight / i?.total_weight) * 100 == 100
-							? " text-orange-300"
-							: " text-red-500 "
-						}  rounded-sm px-2 mr-3`}
-					  >
-						Actual :{" "}
-						{
-						  actual_karat(
-							(i?.net_weight / i?.total_weight) * 100
-						  ).karat
-						}
-					  </span>
-					  {i?.status == "NOT ISSUE" ? (
-						<span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
-						  {i?.status}
-						</span>
-					  ) : (
-						<span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
-						  {i?.status}
-						</span>
-					  )}
-					</span>
-				  </div>
-				  <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
-					<div className="flex-2 px-1 w-full">
-					  <div className="ml-2 text-sm">
-						<div>
-						  <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
-							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-							  TOTAL WEIGHT - {i?.total_weight}
-							</div>
-							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-							  NET WEIGHT - {i?.net_weight}
-							</div>
-							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-							  POUNDS - {i?.pound}
-							</div>
-						  </div>
-						  <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t">
-							<span
-							  className={`text-gray-800 px-2 ${
-								(i?.net_weight / i?.total_weight) * 100 == 100
-								  ? "  border-1 border-orange-600"
-								  : "  border-1 border-red-500 "
-							  }`}
-							>
-							  GOLD PERCENTAGE -{" "}
-							  {parseFloat(
-								(
-								  (i?.net_weight / i?.total_weight) *
-								  100
-								).toString()
-							  ).toFixed(2)}
-							  %
-							</span>
-							<span
-							  className={`md:ml-1 ${
-								(i?.net_weight / i?.total_weight) * 100 == 100
-								  ? " bg-orange-300"
-								  : " bg-red-500 text-white"
-							  }   px-2 md:mr-3`}
-							>
-							  Amount per pound :{" "}
-							  {
-								actual_karat(
-								  (i?.net_weight / i?.total_weight) * 100
-								).value
-							  }
-							</span>
-
-							<span
-							  className={`md:ml-1 ${
-								(i?.net_weight / i?.total_weight) * 100 == 100
-								  ? " bg-orange-300"
-								  : " bg-red-500 text-white"
-							  }   px-2 md:mr-3`}
-							>
-							  Amount :{" "}
-							  {(
-								actual_karat(
-								  (i?.net_weight / i?.total_weight) * 100
-								).value * i?.pound
-							  ).toFixed(2)}
-							</span>
-						  </div>
-						</div>
-					  </div>
-					</div>
-					<div className="px-1 text-right">
-					  <button
-						onClick={() =>
-						  submitHandlerDel(loan?.id, { name: i?._id })
-						}
-						// onClick={() => {
-
-						//   loanService.deleteItem(loan?.id, {name:i?._id});
-						//   fetchReviews();
-						// }  }
-						className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
-						style={{ width: "60px" }}
-						//  disabled={true}
-						// disabled={isDeleting}
-					  >
-						{isDeleting ? (
-						  <span className="spinner-border spinner-border-sm"></span>
-						) : (
-						  <span>Delete</span>
-						)}
-					  </button>
-					</div>
-				  </div>
+					{i?.in_date}
 				</div>
-			  ))}
+ ))}
+
 			</div>
 		  </form>
           </>

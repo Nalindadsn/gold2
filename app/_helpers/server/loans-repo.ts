@@ -529,7 +529,6 @@ async function updateItem(id: string, params: any) {
       );
   }
   async function updateItemCharges(id: string, params: any) {
-  
   //  console.log(params)
       const loanD= await loansRepo.getById(id);
       const data:any={
