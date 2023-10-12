@@ -1666,7 +1666,7 @@ function AddEdit({
 			<div className="bg-white p-2 text-gray-800 ">
 			{installments.map((i: any) => (
 				<div key={n++}>
-					{i?.in_date}
+					{i?.amount}{i?.fines}{i?.in_date}
 				</div>
  ))}
 
