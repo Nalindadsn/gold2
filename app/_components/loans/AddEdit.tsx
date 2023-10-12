@@ -654,7 +654,7 @@ function AddEdit({
                       CREATED BY
                     </label>
                     <span className="mr-4  md:block">:</span>
-                    <div className="flex-1">{loan?.officer.length>0?loan?.officer[0]?.fullName:""}</div>
+                    <div className="flex-1">{loan?.officer?.length>0?loan?.officer[0]?.fullName:""}</div>
                   </div>
                 ) : (
                   <div className="mb-2 md:mb-1 md:flex items-center">
@@ -677,7 +677,7 @@ function AddEdit({
           <div className="bg-white p-2 m-1 shadow-sm border">
             <div className=" flex items-center justify-between leading-none  ">
               <Link
-                href={`/users/edit/${loan ? loan?.customer[0]?._id : user?.id}`}
+                href={`/users/edit/${loan ? loan?.customer?.length>0? loan?.customer[0]?._id:"null" : user?.id}`}
                 className="flex items-center no-underline  text-black"
               >
                 <FaUserCircle className="float-left  text-5xl" />
@@ -685,7 +685,7 @@ function AddEdit({
                 <div className="text-xl -mt-3">
                   <div className="text-gray-800 mt-1 font-bold">
                     <span>
-                    {loan ? loan?.customer[0]?.fullName : user?.fullName} 
+                    {loan ? loan?.customer?.length>0? loan?.customer[0]?.fullName :"": user?.fullName} 
                     </span>
                   </div>
                   
@@ -694,8 +694,8 @@ function AddEdit({
             </div>
             <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">
               CUSTOMER{" "}
-              <div className="float-right">NIC : {loan ? loan?.customer[0]?.nic : user?.nic}
-              <a href={`/search?nic=${loan ? loan?.customer[0]?.nic : user?.nic}`} className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm ">FIND</a>
+              <div className="float-right">NIC : {loan ? loan?.customer?.length>0? loan?.customer[0]?.nic :"": user?.nic}
+              <a href={`/search?nic=${loan ? loan?.customer>0? loan?.customer[0]?.nic:"" : user?.nic}`} className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm ">FIND</a>
               </div>
             </div>
           </div>
@@ -1811,7 +1811,7 @@ function AddEdit({
       <div
         className={`fixed left-0 bottom-0 h-1 ${
           loan
-            ? loan.items.length > 0
+            ? loan?.items?.length > 0
               ? "bg-yellow-500"
               : "bg-red-600"
             : tasks.length > 0

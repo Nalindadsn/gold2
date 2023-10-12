@@ -267,6 +267,8 @@ function AddEdit({
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
   }, []);
+  var sortedArray:any = installments.sort((a:any,b:any) => Date.parse(new Date(a.in_date)) - Date.parse(new Date(b.in_date)));
+
   const fetchGuarantor = useCallback(async () => {
     try {
       if (loan) {

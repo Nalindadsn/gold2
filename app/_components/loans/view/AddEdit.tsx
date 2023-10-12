@@ -100,21 +100,21 @@ function View({ title, loan }: { title: string; loan?: any }) {
 			<div className="w-2/4">
 				<div className="mb-2 md:mb-1 md:flex items-center">
 					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Invoice No.</label>
-					<span className="mr-4 inline-block hidden md:block">:</span>
+					<span className="mr-4 inline-block  md:block">:</span>
 					<div className="flex-1">
 					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="text" placeholder="eg. #INV-100001" x-model="invoiceNumber" />
 					</div>
 				</div>
 				<div className="mb-2 md:mb-1 md:flex items-center">
 					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Invoice Date</label>
-					<span className="mr-4 inline-block hidden md:block">:</span>
+					<span className="mr-4 inline-block  md:block">:</span>
 					<div className="flex-1">
 					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 js-datepicker" type="text" id="datepicker1" placeholder="eg. 17 Feb, 2020" x-model="invoiceDate"  />
 					</div>
 				</div>
 				<div className="mb-2 md:mb-1 md:flex items-center">
 					<label className="w-32 text-gray-800 block font-bold text-sm uppercase tracking-wide">Due date</label>
-					<span className="mr-4 inline-block hidden md:block">:</span>
+					<span className="mr-4 inline-block  md:block">:</span>
 					<div className="flex-1">
 					<input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-48 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 js-datepicker-2" id="datepicker2" type="text" placeholder="eg. 17 Mar, 2020" x-model="invoiceDueDate"/>
 					</div>
@@ -124,7 +124,7 @@ function View({ title, loan }: { title: string; loan?: any }) {
 				<div className="w-32 h-32 mb-1 border rounded-lg overflow-hidden relative bg-gray-100">
 					<img id="image" className="object-cover w-full h-32" src="https://placehold.co/300x300/e2e8f0/e2e8f0" />
 					
-					<div className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer flex items-center justify-center" >
+					<div className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer  items-center justify-center" >
 						{/* <button type="button" style={{backgroundColor: "rgba(255, 255, 255, 0.65")}} className="hover:bg-gray-100 text-gray-700 font-semibold py-2 px-4 text-sm border border-gray-300 rounded-lg shadow-sm">
 							<svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-camera" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round" >
 								<rect x="0" y="0" width="24" height="24" stroke="none"></rect>
@@ -132,7 +132,7 @@ function View({ title, loan }: { title: string; loan?: any }) {
 								<circle cx="12" cy="13" r="3" />
 							</svg>							  
 						</button> */}
-            <button className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer flex items-center justify-center"></button>
+            <button className="absolute top-0 left-0 right-0 bottom-0 w-full block cursor-pointer  items-center justify-center"></button>
 					</div>
 				</div>
 				<input name="photo" id="fileInput" accept="image/*" className="hidden" type="file" />
