@@ -939,26 +939,7 @@ function AddEdit({
 					  </div>
 					</div>
 					<div className="px-1 text-right">
-					  <button
-						onClick={() =>
-						  submitHandlerDel(loan?.id, { name: i?._id })
-						}
-						// onClick={() => {
-
-						//   loanService.deleteItem(loan?.id, {name:i?._id});
-						//   fetchReviews();
-						// }  }
-						className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
-						style={{ width: "60px" }}
-						//  disabled={true}
-						// disabled={isDeleting}
-					  >
-						{isDeleting ? (
-						  <span className="spinner-border spinner-border-sm"></span>
-						) : (
-						  <span>Delete</span>
-						)}
-					  </button>
+					  
 					</div>
 				  </div>
 				</div>
