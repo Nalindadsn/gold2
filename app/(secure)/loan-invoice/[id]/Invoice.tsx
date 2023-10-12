@@ -277,7 +277,7 @@ import { textAlign } from 'html2canvas/dist/types/css/property-descriptors/text-
             <>
             <View style={{ width:'100%', flexDirection :'row'}} >
                 <View  style={[styles.tbody, styles.tbody2]}>
-                    <Text >Basic</Text>   
+                    <Text >Basic (with company rate)</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat(rate?.cmp_rate).toFixed(2)}</Text>   
