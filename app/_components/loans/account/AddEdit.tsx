@@ -1282,7 +1282,7 @@ function AddEdit({
                   </div>
                   <div className="bg-white p-2 text-gray-800 ">
                     {arr2.reverse().map((i: any) => (
-                        <div className="bg-white p-2 ">
+                        <div className="bg-white p-2 " key={i?._id}>
                           <div>
                             <div className="bg-gray-800 text-sm">
                               <span>
