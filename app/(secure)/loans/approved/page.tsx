@@ -25,7 +25,7 @@ function Loans() {
   const userService = useUserService();
   const user:any = userService.currentUser;
   useEffect(() => {
-    loanService.getByStatus("SUCCESS");
+    loanService.getByStatus("APPROVED");
     
     userService.getCurrent();
   }, []);
@@ -81,7 +81,7 @@ function Loans() {
 
             </NavDropdown.Item>
             </>:<>
-            { row.status=="SUCCESS" || row.status=="REJECTED"?             <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
+            { row.status=="APPROVED" || row.status=="REJECTED"?             <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
 :            <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>
 }
             </>
@@ -112,7 +112,7 @@ function Loans() {
           View
         </Link></>
         :
-        row.status=="SUCCESS" || row.status=="REJECTED"? <Link
+        row.status=="APPROVED" || row.status=="REJECTED"? <Link
           href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}
           className="btn btn-sm btn-primary me-1  focus:bg-yellow-500 mb-1"
         >
