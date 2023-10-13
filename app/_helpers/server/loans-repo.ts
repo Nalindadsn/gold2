@@ -27,6 +27,13 @@ async function getSummary() {
   const loans= await Loan.aggregate([
     
     {
+      "$match": {
+        "status": { 
+          "$in": ['APPROVED','COMPLETED'] 
+        
+      }}
+    },
+    {
       $lookup: {
         from: "users",
         localField: "user_id",
@@ -58,7 +65,14 @@ async function getSummary() {
     },
   ]);
   const totalSales:any= await Loan.aggregate([ 
-
+    
+    {
+      "$match": {
+        "status": { 
+          "$in": ['APPROVED','COMPLETED'] 
+        
+      }}
+    },
     {
     $group: {
       _id: { $dateToString: { format: '%Y-%m', date: '$createdAt' } },
@@ -81,6 +95,13 @@ $project: {
 ]);
 const totalSales2:any= await Loan.aggregate([ 
 
+  {
+    "$match": {
+      "status": { 
+        "$in": ['APPROVED','COMPLETED'] 
+      
+    }}
+  },
   {
   $group: {
     _id: { $dateToString: { format: '%Y-%m', date: '$createdAt' } },
@@ -296,6 +317,7 @@ if (user.role=="ADMIN" || user.role=="COORDINATOR" ) {
 }
   ]);
 }else{
+  // 138 THUMMULLA 154
 
   return await Loan.aggregate([
     {
