@@ -15,7 +15,9 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
   const userData: any = userService.user;
   
     const [username, setUsername] = useState("");
-
+    const dataRelationship:any= loan?.guarantor.find((o:any) => o.user_id === user._id)
+user.relationship=dataRelationship.relationship
+    
     // get functions to build form with useForm() hook    
     const { register:register2, handleSubmit:handleSubmit2, reset:reset2, formState:{ errors:errors2 } } = useForm({ defaultValues: user });
 
@@ -153,7 +155,6 @@ setValue("fullName", n++, {
           alertService.error(error);
       }
   }
-
     return (
         <>
 {/* <h1 className="py-1 px-3  mt-3 block text-base font-semibold text-white bg-gray-900 sm:text-xl ">{title}</h1>
@@ -196,7 +197,6 @@ setValue("fullName", n++, {
 </form> */}
 
 {userData?(<>
-
         <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
             <h1 className='font-bold m-1'>Basic Details</h1>
 

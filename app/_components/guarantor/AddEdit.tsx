@@ -188,6 +188,7 @@ setValue("fullName", n++, {
 {userData?
  userData?.users.length>0 ? 
 (<>
+
 {/* <FormGuarantor title='a'  user={userData?.users[0]} /> */}
 <FormGuarantor title="ADD GUARANTOR" loan={loan}  user={userData?.users[0]}  />
         {/* <form onSubmit={handleSubmit(onSubmit)} className=' bg-white p-2'>
