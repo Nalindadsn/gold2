@@ -695,7 +695,7 @@ function AddEdit({
             <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">
               CUSTOMER{" "}
               <div className="float-right">NIC : {loan ? loan?.customer?.length>0? loan?.customer[0]?.nic :"": user?.nic}
-              <a href={`/search?nic=${loan ? loan?.customer>0? loan?.customer[0]?.nic:"" : user?.nic}`} className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm ">FIND</a>
+              <a href={`/search?nic=${loan ? loan?.customer?.length>0? loan?.customer[0]?.nic :"": user?.nic}`} className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm ">FIND</a>
               </div>
             </div>
           </div>
