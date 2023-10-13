@@ -598,7 +598,7 @@ function AddEditShareLink({
               <div
                 className={`bg-white mb-2 m-1 p-3 shadow-sm border-t-4 
                 ${loan?.status == "PENDING" ? "border-yellow-500" : ""}
-                ${loan?.status == "SUCCESS" ? "border-green-500" : ""}
+                ${loan?.status == "APPROVED" ? "border-green-500" : ""}
                 ${loan?.status == "REJECTED" ? "border-red-600" : ""}
                 ${loan?.status == "PROCESSING" ? "border-blue-500" : ""}
                 ${loan?.status == "PROSPECTED" ? "border-gray-900" : ""}
@@ -784,7 +784,7 @@ function AddEditShareLink({
                     <option value="">-select option</option>
                     <option className="PENDING">PENDING</option>
                     <option className="PROCESSING">PROCESSING</option>
-                    <option className="SUCCESS">SUCCESS</option>
+                    <option className="APPROVED">APPROVED</option>
                     <option className="REJECTED">REJECTED</option>
                   </select>
 
@@ -894,7 +894,7 @@ function AddEditShareLink({
                   <option value="">-select option</option>
                   <option className="PENDING">PENDING</option>
                   <option className="PROCESSING">PROCESSING</option>
-                  <option className="SUCCESS">SUCCESS</option>
+                  <option className="APPROVED">APPROVED</option>
                   <option className="REJECTED">REJECTED</option>
                 </select>
 

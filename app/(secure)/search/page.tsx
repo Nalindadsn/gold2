@@ -107,7 +107,7 @@ function Edit() {
                                   <div
                                     className={`font-bold 
                 ${i?.status == "PENDING" ? "text-yellow-500" : ""}
-                ${i?.status == "SUCCESS" ? "text-green-500" : ""}
+                ${i?.status == "APPROVED" ? "text-green-500" : ""}
                 ${i?.status == "REJECTED" ? "text-red-600" : ""}
                 ${i?.status == "PROCESSING" ? "text-blue-500" : ""}
                 ${i?.status == "PROSPECTED" ? "text-gray-900" : ""}
@@ -156,7 +156,7 @@ function Edit() {
                                 <div
                                   className={`font-bold 
                 ${i?.status == "PENDING" ? "text-yellow-500" : ""}
-                ${i?.status == "SUCCESS" ? "text-green-500" : ""}
+                ${i?.status == "APPROVED" ? "text-green-500" : ""}
                 ${i?.status == "REJECTED" ? "text-red-600" : ""}
                 ${i?.status == "PROCESSING" ? "text-blue-500" : ""}
                 ${i?.status == "PROSPECTED" ? "text-gray-900" : ""}
