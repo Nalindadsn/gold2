@@ -196,7 +196,7 @@ function AddEdit({
   //Math.round(loan.expected_price_old / 1000) * 1000 + 1000;
 
   const [in_date, setIn_date] = useState("");
-  const [fines, setFines] = useState("");
+  const [fines, setFines] = useState("0");
   const [net_weight, setNet_weight] = useState("");
   const [amount, setAmount] = useState("");
   const [pound, setPound] = useState("0");
@@ -268,7 +268,7 @@ function AddEdit({
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
   }, []);
-//   var sortedArray:any = installments.sort((a:any,b:any) => Date.parse(new Date(a.in_date)) - Date.parse(new Date(b.in_date)));
+  //   var sortedArray:any = installments.sort((a:any,b:any) => Date.parse(new Date(a.in_date)) - Date.parse(new Date(b.in_date)));
 
   const fetchGuarantor = useCallback(async () => {
     try {
@@ -289,7 +289,7 @@ function AddEdit({
     fetchReviews();
     fetchGuarantor();
     fetchInstallments();
-  }, [fetchReviews, fetchGuarantor,fetchInstallments]);
+  }, [fetchReviews, fetchGuarantor, fetchInstallments]);
 
   const formatDate = (dateString: any) => {
     const options: any = {
@@ -459,7 +459,6 @@ function AddEdit({
       .toString();
 
     const dataV: any = data;
-    
 
     if (loan) {
     } else {
@@ -479,7 +478,7 @@ function AddEdit({
       let message;
       if (loan) {
         await loanService.update(loan?.id, dataV);
-      
+
         message = "Loan updated";
       } else {
         await loanService.create(dataV);
@@ -542,7 +541,7 @@ function AddEdit({
       return { karat: "", value: 0 };
     }
   };
-//   const gPr = (parseFloat(net_weight) / parseFloat(total_weight)) * 100;
+  //   const gPr = (parseFloat(net_weight) / parseFloat(total_weight)) * 100;
   const submitHandler = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -573,6 +572,26 @@ function AddEdit({
       // toast.success(err);
     }
   };
+  const sortedInstallmentsArr:any=installments.sort(function compare(a:any, b:any) {
+    var dateA:any = new Date(a.in_date);
+    var dateB:any = new Date(b.in_date);
+    return dateA - dateB;
+  });
+
+  let amountV: any = 0;
+  let amountF: any = 0;
+  let amountT: any = 0;
+  let arr2: any = sortedInstallmentsArr.map((obj: any) => {
+    amountV += parseFloat(obj.amount);
+    amountF += parseFloat(obj.fines);
+    amountT += parseFloat(obj.amount)+parseFloat(obj.fines);
+    return Object.assign({}, obj, {
+      amountV: amountV,
+      amountF: amountF,
+      amountT: amountT,
+    });
+  });
+
   return (
     <>
       <div className="flex justify-between">
@@ -666,7 +685,11 @@ function AddEdit({
                       CREATED BY
                     </label>
                     <span className="mr-4  md:block">:</span>
-                    <div className="flex-1">{loan?.officer.length>0?loan?.officer[0]?.fullName:""}</div>
+                    <div className="flex-1">
+                      {loan?.officer.length > 0
+                        ? loan?.officer[0]?.fullName
+                        : ""}
+                    </div>
                   </div>
                 ) : (
                   <div className="mb-2 md:mb-1 md:flex items-center">
@@ -697,17 +720,24 @@ function AddEdit({
                 <div className="text-xl -mt-3">
                   <div className="text-gray-800 mt-1 font-bold">
                     <span>
-                    {loan ? loan?.customer[0]?.fullName : user?.fullName} 
+                      {loan ? loan?.customer[0]?.fullName : user?.fullName}
                     </span>
                   </div>
-                  
                 </div>
               </Link>
             </div>
             <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">
               CUSTOMER{" "}
-              <div className="float-right">NIC : {loan ? loan?.customer[0]?.nic : user?.nic}
-              <a href={`/search?nic=${loan ? loan?.customer[0]?.nic : user?.nic}`} className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm ">FIND</a>
+              <div className="float-right">
+                NIC : {loan ? loan?.customer[0]?.nic : user?.nic}
+                <a
+                  href={`/search?nic=${
+                    loan ? loan?.customer[0]?.nic : user?.nic
+                  }`}
+                  className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm "
+                >
+                  FIND
+                </a>
               </div>
             </div>
           </div>
@@ -754,203 +784,195 @@ function AddEdit({
             className="bg-white p-2 "
             // style={{ marginLeft: "5%", marginRight: "5%" }}
           > */}
-            <div className="">
+          <div className="">
             <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-                <div className="w-full hidden md:block"></div>
-                <div
-                  className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
-                  style={{ whiteSpace: "nowrap" }}
-                >
-                  <label className="form-label mt-2">Form Number</label>
-                  <input
-                    {...fields.form_number}
-                    type="form_number"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.form_number ? "is-invalid" : ""
-                    }`}
-                  />
-                </div>
+              <div className="w-full hidden md:block"></div>
+              <div
+                className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                <label className="form-label mt-2">Form Number</label>
+                <input
+                  {...fields.form_number}
+                  type="form_number"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.form_number ? "is-invalid" : ""
+                  }`}
+                />
+              </div>
+              <div className="invalid-feedback">
+                {errors.form_number?.message?.toString()}
+              </div>
+            </div>
+            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-3 p-1 shadow-md mt-3 border">
+              <div className="p-2">
+                <label className="form-label ml-2 ">
+                  {" "}
+                  Loan Amount (Requested){" "}
+                  <span className="text-red-500">*</span>
+                </label>
+                <input
+                  {...fields.requested_loan}
+                  type="requested_loan"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.requested_loan ? "is-invalid" : ""
+                  }`}
+                />
                 <div className="invalid-feedback">
-                  {errors.form_number?.message?.toString()}
+                  {errors.requested_loan?.message?.toString()}
                 </div>
               </div>
-            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-3 p-1 shadow-md mt-3 border">
- <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    {" "}
-                    Loan Amount (Requested){" "}
-                    <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.requested_loan}
-                    type="requested_loan"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.requested_loan ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.requested_loan?.message?.toString()}
-                  </div>
+              <div className="p-2">
+                <label className="form-label ml-2 ">
+                  {" "}
+                  Month (Requested) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  {...fields.no_of_month_expected}
+                  type="no_of_month_expected"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.no_of_month_expected ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.no_of_month_expected?.message?.toString()}
                 </div>
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    {" "}
-                    Month (Requested){" "}
-                    <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.no_of_month_expected}
-                    type="no_of_month_expected"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.no_of_month_expected ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.no_of_month_expected?.message?.toString()}
-                  </div>
+              </div>
+
+              <div className="p-2">
+                <label className="form-label ml-2 ">Status</label>
+
+                <select
+                  {...fields.status}
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.status ? "is-invalid" : ""
+                  }`}
+                >
+                  <option value="">-select option</option>
+                  <option className="PENDING">PENDING</option>
+                  <option className="PROCESSING">PROCESSING</option>
+                  <option className="APPROVED">APPROVED</option>
+                  <option className="REJECTED">REJECTED</option>
+                  <option className="COMPLETED">COMPLETED</option>
+                </select>
+
+                <div className="invalid-feedback">
+                  {errors.status?.message?.toString()}
                 </div>
+              </div>
+            </div>
+            <div className="p-2 shadow-sm bg-gray-800 text-white border mt-5">
+              <h2>ITEMS</h2>
+              <div className="bg-white p-2 ">
+                {reviews.map((i: any) => (
+                  <div key={n++}>
+                    <div className="bg-gray-800 text-sm">
+                      <span>
+                        <span className="font-bold text-white ml-2">
+                          {i?.name}
+                        </span>{" "}
+                        &nbsp;
+                        <span className="  text-orange-300 rounded-sm px-2 mr-3">
+                          Karat : {i?.karat}
+                        </span>
+                        <span
+                          className={`${
+                            (i?.net_weight / i?.total_weight) * 100 == 100
+                              ? " text-orange-300"
+                              : " text-red-500 "
+                          }  rounded-sm px-2 mr-3`}
+                        >
+                          Actual :{" "}
+                          {
+                            actual_karat(
+                              (i?.net_weight / i?.total_weight) * 100
+                            ).karat
+                          }
+                        </span>
+                        {i?.status == "NOT ISSUE" ? (
+                          <span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
+                            {i?.status}
+                          </span>
+                        ) : (
+                          <span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
+                            {i?.status}
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                    <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
+                      <div className="flex-2 px-1 w-full">
+                        <div className="ml-2 text-sm">
+                          <div>
+                            <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
+                              <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                                TOTAL WEIGHT - {i?.total_weight}
+                              </div>
+                              <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                                NET WEIGHT - {i?.net_weight}
+                              </div>
+                              <div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
+                                POUNDS - {i?.pound}
+                              </div>
+                            </div>
+                            <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t">
+                              <span
+                                className={`text-gray-800 px-2 ${
+                                  (i?.net_weight / i?.total_weight) * 100 == 100
+                                    ? "  border-1 border-orange-600"
+                                    : "  border-1 border-red-500 "
+                                }`}
+                              >
+                                GOLD PERCENTAGE -{" "}
+                                {parseFloat(
+                                  (
+                                    (i?.net_weight / i?.total_weight) *
+                                    100
+                                  ).toString()
+                                ).toFixed(2)}
+                                %
+                              </span>
+                              <span
+                                className={`md:ml-1 ${
+                                  (i?.net_weight / i?.total_weight) * 100 == 100
+                                    ? " bg-orange-300"
+                                    : " bg-red-500 text-white"
+                                }   px-2 md:mr-3`}
+                              >
+                                Amount per pound :{" "}
+                                {
+                                  actual_karat(
+                                    (i?.net_weight / i?.total_weight) * 100
+                                  ).value
+                                }
+                              </span>
 
-
-
-                
-                <div className="p-2">
-                  <label className="form-label ml-2 ">Status</label>
-
-                  <select
-                    {...fields.status}
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.status ? "is-invalid" : ""
-                    }`}
-                  >
-                    <option value="">-select option</option>
-                    <option className="PENDING">PENDING</option>
-                    <option className="PROCESSING">PROCESSING</option>
-                    <option className="APPROVED">APPROVED</option>
-                    <option className="REJECTED">REJECTED</option>
-                    <option className="COMPLETED">COMPLETED</option>
-                  </select>
-
-                  <div className="invalid-feedback">
-                    {errors.status?.message?.toString()}
+                              <span
+                                className={`md:ml-1 ${
+                                  (i?.net_weight / i?.total_weight) * 100 == 100
+                                    ? " bg-orange-300"
+                                    : " bg-red-500 text-white"
+                                }   px-2 md:mr-3`}
+                              >
+                                Amount :{" "}
+                                {(
+                                  actual_karat(
+                                    (i?.net_weight / i?.total_weight) * 100
+                                  ).value * i?.pound
+                                ).toFixed(2)}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="px-1 text-right"></div>
+                    </div>
                   </div>
-                </div>
+                ))}
+              </div>
+            </div>
 
-</div>
-<div className="p-2 shadow-sm bg-gray-800 text-white border mt-5">
-	 <h2>ITEMS</h2>
-<div className="bg-white p-2 ">
-			  {reviews.map((i: any) => (
-				<div key={n++}>
-				  <div className="bg-gray-800 text-sm">
-					<span>
-					  <span className="font-bold text-white ml-2">
-						{i?.name}
-					  </span>{" "}
-					  &nbsp;
-					  <span className="  text-orange-300 rounded-sm px-2 mr-3">
-						Karat : {i?.karat}
-					  </span>
-					  <span
-						className={`${
-						  (i?.net_weight / i?.total_weight) * 100 == 100
-							? " text-orange-300"
-							: " text-red-500 "
-						}  rounded-sm px-2 mr-3`}
-					  >
-						Actual :{" "}
-						{
-						  actual_karat(
-							(i?.net_weight / i?.total_weight) * 100
-						  ).karat
-						}
-					  </span>
-					  {i?.status == "NOT ISSUE" ? (
-						<span className="bg-green-700 text-blue-100 py-0 px-2  text-sm ">
-						  {i?.status}
-						</span>
-					  ) : (
-						<span className="bg-red-600 text-blue-100 py-0 px-2  text-sm ">
-						  {i?.status}
-						</span>
-					  )}
-					</span>
-				  </div>
-				  <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
-					<div className="flex-2 px-1 w-full">
-					  <div className="ml-2 text-sm">
-						<div>
-						  <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0">
-							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-							  TOTAL WEIGHT - {i?.total_weight}
-							</div>
-							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-							  NET WEIGHT - {i?.net_weight}
-							</div>
-							<div className="bg-white text-gray-800 px-1 text-xs rounded-sm  mr-1 mb-1 md:mb-0 ">
-							  POUNDS - {i?.pound}
-							</div>
-						  </div>
-						  <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t">
-							<span
-							  className={`text-gray-800 px-2 ${
-								(i?.net_weight / i?.total_weight) * 100 == 100
-								  ? "  border-1 border-orange-600"
-								  : "  border-1 border-red-500 "
-							  }`}
-							>
-							  GOLD PERCENTAGE -{" "}
-							  {parseFloat(
-								(
-								  (i?.net_weight / i?.total_weight) *
-								  100
-								).toString()
-							  ).toFixed(2)}
-							  %
-							</span>
-							<span
-							  className={`md:ml-1 ${
-								(i?.net_weight / i?.total_weight) * 100 == 100
-								  ? " bg-orange-300"
-								  : " bg-red-500 text-white"
-							  }   px-2 md:mr-3`}
-							>
-							  Amount per pound :{" "}
-							  {
-								actual_karat(
-								  (i?.net_weight / i?.total_weight) * 100
-								).value
-							  }
-							</span>
-
-							<span
-							  className={`md:ml-1 ${
-								(i?.net_weight / i?.total_weight) * 100 == 100
-								  ? " bg-orange-300"
-								  : " bg-red-500 text-white"
-							  }   px-2 md:mr-3`}
-							>
-							  Amount :{" "}
-							  {(
-								actual_karat(
-								  (i?.net_weight / i?.total_weight) * 100
-								).value * i?.pound
-							  ).toFixed(2)}
-							</span>
-						  </div>
-						</div>
-					  </div>
-					</div>
-					<div className="px-1 text-right">
-					  
-					</div>
-				  </div>
-				</div>
-			  ))}
-			</div>
-</div>
-
-<div className=" border-gray-800 border-1 shadow-sm mb-3 mt-3">
-              
+            <div className=" border-gray-800 border-1 shadow-sm mb-3 mt-3">
               <div className="p-2">
                 <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                   <div className="px-1 w-full">
@@ -987,8 +1009,6 @@ function AddEdit({
                   </div>
                   <div className="px-1 ">
                     <div>
-                     
-                     
                       {/* {
                       
                       ((payment_values_amount(
@@ -998,12 +1018,13 @@ function AddEdit({
                     )) >0)?"":""
                     
                     } */}
-                    {
-                      parseFloat(watchExpectedPriceOld) <= max_price
-                        ? ""
-                        : <><br/></>
-                    }
-
+                      {parseFloat(watchExpectedPriceOld) <= max_price ? (
+                        ""
+                      ) : (
+                        <>
+                          <br />
+                        </>
+                      )}
 
                       <label className="form-label  ">
                         No of Month
@@ -1172,258 +1193,282 @@ function AddEdit({
                     {errors.last_installment?.message?.toString()}
                   </div>
                 </div>
-
               </div>
             </div>
 
-
-
-
-			{loan ? (
-          <>
-		  <form
-			onSubmit={submitHandler}
-			className=" p-2 shadow-sm bg-gray-800 text-white border mt-5"
-			style={{ overflow: "hidden" }}
-		  >
-			<div className="flex flex-wrap -mx-3 ">
-			  <div className="w-full md:w-full px-3 mb-2 mt-2">
-				<h3>LOAN INSTALLMENTS</h3>
-				<div>
-				  <div className="flex  flex-col md:flex-row -mx-1 py-2 ">
-					<div className="px-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						installed Date
-					  </label>
-					  <input
-						type="date"
-						onChange={(e) => setIn_date(e.target.value)}
-						value={in_date}
-						name="in_date"
-						className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-						placeholder="Description"
-						required
-					  />
-					</div>
-					<div className="px-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						Fines
-					  </label>
-					  <input
-						type="text"
-						onChange={(e) => setFines(e.target.value)}
-						value={fines}
-						name="fines"
-						className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-						placeholder="Fines"
-						required
-					  />
-					</div>
-
-					<div className="px-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						Amount
-					  </label>
-					  <input
-						type="text"
-						onChange={(e) => setAmount(e.target.value)}
-						value={amount}
-						name="amount"
-						className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
-						placeholder="Amount"
-						required
-					  />
-					</div>
-					<div className="px-1 pt-1  text-right">
-					  <label className="text-left w-full ml-2 text-sm">
-						&nbsp;
-					  </label>
-
-					  <button
-						className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
-						type="reset"
-					  >
-						RESET
-					  </button>
-					</div>
-				  </div>
-				  <div className="border-gray-800 border-b border-b-1 pb-2">
-					{" "}
-					<button
-					  type="submit"
-					  disabled={loading}
-					  className="btn btn-primary me-2 mt-1 bg-blue-700"
-					>
-					  {loading && (
-						<span className="spinner-border spinner-border-sm me-1"></span>
-					  )}
-					  ADD ITEMS
-					</button>
-				  </div>
-				</div>
-			  </div>
-			</div>
-			<div className="bg-white p-2 text-gray-800 ">
-			{installments.map((i: any) => (
-				<div className="border-1 border-b-1" key={n++}>
-					{i?.amount}|{i?.fines}|{i?.in_date}
-          <button
-                          onClick={() =>
-                            submitHandlerInstallment(loan?.id, { name: i?._id })
-                          }
-                          // onClick={() => {
-
-                          //   loanService.deleteItem(loan?.id, {name:i?._id});
-                          //   fetchReviews();
-                          // }  }
-                          className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
-                          style={{ width: "60px" }}
-                          //  disabled={true}
-                          // disabled={isDeleting}
-                        >
-                          {isDeleting ? (
-                            <span className="spinner-border spinner-border-sm"></span>
-                          ) : (
-                            <span>Delete</span>
-                          )}
-                        </button>
-				</div>
- ))}
-
-			</div>
-		  </form>
-          </>
-        ) : (
-          <>
-            <div className="container bg-white shadow-sm">
-              <div className="flex-row">
-                <div className="flex-large">
-                  <div>
-                    <h2 className="text-xl font-bold ml-2">
-                      {editing ? "Edit Item" : "ADD ITEM"}
-                    </h2>
-                    <EditTaskForm
-                      editing={editing}
-                      setEditing={setEditing}
-                      currentTask={currentTask}
-                      setCurrentTask={setCurrentTask}
-                      updateTask={updateTask}
-                      addTask={addTask}
-                      tasks={tasks}
-                      rate={rate}
-                    />
-                  </div>
-                </div>
-                <div className="flex-large">
-                  <TaskTable
-                    tasks={tasks}
-                    rate={rate}
-                    editRow={editRow}
-                    deleteTask={deleteTask}
-                  />
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-
-
-
-
-
-
-
-
-
-
-
-<h3 className="text-xl font-bold border-t-2 pl-2 mt-3 pt-2">
-                MORTGAGE DETAILS
-              </h3>
-              
-              <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
-                <div className="w-full hidden md:block"></div>
-                <div
-                  className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
-                  style={{ whiteSpace: "nowrap" }}
+            {loan ? (
+              <>
+                <form
+                  onSubmit={submitHandler}
+                  className=" p-2 shadow-sm bg-gray-800 text-white border mt-5"
+                  style={{ overflow: "hidden" }}
                 >
-                  <label className="form-label ml-2 mt-2">Invoice Number</label>
-                  <input
-                    {...fields.mortgage_invoice_number}
-                    type="mortgage_invoice_number"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgage_invoice_number ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.mortgage_invoice_number?.message?.toString()}
+                  <div className="flex flex-wrap -mx-3 ">
+                    <div className="w-full md:w-full px-3 mb-2 mt-2">
+                      <h3>LOAN INSTALLMENTS</h3>
+                      <div>
+                        <div className="flex  flex-col md:flex-row -mx-1 py-2 ">
+                          <div className="px-1  text-right">
+                            <label className="text-left w-full ml-2 text-sm">
+                              installed Date
+                            </label>
+                            <input
+                              type="date"
+                              onChange={(e) => setIn_date(e.target.value)}
+                              value={in_date}
+                              name="in_date"
+                              className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                              placeholder="Description"
+                              required
+                            />
+                          </div>
+                          <div className="px-1  text-right">
+                            <label className="text-left w-full ml-2 text-sm">
+                              Amount
+                            </label>
+                            <input
+                              type="text"
+                              onChange={(e) => setAmount(e.target.value)}
+                              value={amount}
+                              name="amount"
+                              className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                              placeholder="Amount"
+                              required
+                            />
+                          </div>
+                          <div className="px-1  text-right">
+                            <label className="text-left w-full ml-2 text-sm">
+                              Fines
+                            </label>
+                            <input
+                              type="text"
+                              onChange={(e) => setFines(e.target.value)}
+                              value={fines}
+                              name="fines"
+                              className=" w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0"
+                              placeholder="Fines"
+                              required
+                            />
+                          </div>
+
+                          <div className="px-1 pt-1  text-right">
+                            <label className="text-left w-full ml-2 text-sm">
+                              &nbsp;
+                            </label>
+
+                            <button
+                              className="text-red-500 hover:text-red-600 text-sm font-semibold mt-1"
+                              type="reset"
+                            >
+                              RESET
+                            </button>
+                          </div>
+                        </div>
+                        <div className="border-gray-800 border-b border-b-1 pb-2">
+                          {" "}
+                          <button
+                            type="submit"
+                            disabled={loading}
+                            className="btn btn-primary me-2 mt-1 bg-blue-700"
+                          >
+                            {loading && (
+                              <span className="spinner-border spinner-border-sm me-1"></span>
+                            )}
+                            ADD ITEMS
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <div className="bg-white p-2 text-gray-800 ">
+                    {arr2.reverse().map((i: any) => (
+                        <div className="bg-white p-2 ">
+                          <div>
+                            <div className="bg-gray-800 text-sm">
+                              <span>
+                                <span className="font-bold text-white ml-2">
+                                  {formatDate2(i?.in_date) }
+                                </span>{" "}
+                                
+                              </span>
+                            </div>
+                            <div className="flex w-full flex-col md:flex-row  p-1 border-b    shadow-sm  mb-1 border-1 border-gray-800">
+                              <div className="flex-2 px-1 w-full">
+                                <div className="ml-2 text-sm">
+                                  <div>
+                                    <div className="flex w-full flex-col md:flex-row -mx-1 pt-2 border-b md:border-b-0 border-t">
+                                      <span className="text-gray-800 px-2   border-1 border-blue-600">
+                                        Installment - LKR {parseFloat(i?.amount).toFixed(2)}
+                                      </span>
+                                      <span className="md:ml-1  bg-red-500   px-2 md:mr-3 text-white">
+                                        Fines : LKR {parseFloat(i?.fines).toFixed(2)}
+                                      </span>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="px-1 text-right flex">
+                                <div className="whitespace-nowrap">Total fines : LKR {i?.amountF}
+                                <br/>Total Installments : LKR {i?.amountV}
+                                <br/>Total Payments : LKR {i?.amountT}
+                                
+                                
+                                
+                                </div>
+                                <button
+                        
+                        onClick={() =>
+                          submitHandlerInstallment(loan?.id, {
+                            name: i?._id,
+                          })
+                        }
+                        // onClick={() => {
+
+                        //   loanService.deleteItem(loan?.id, {name:i?._id});
+                        //   fetchReviews();
+                        // }  }
+                        className="text-red-500 text-sm ml-3  btn-delete-loan mr-2 mt-1"
+                        style={{ width: "60px" }}
+                        //  disabled={true}
+                        // disabled={isDeleting}
+                      >
+                        {isDeleting ? (
+                          <span className="spinner-border spinner-border-sm"></span>
+                        ) : (
+                          <span>Delete</span>
+                        )}
+                      </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                    ))}
+                  </div>
+                </form>
+              </>
+            ) : (
+              <>
+                <div className="container bg-white shadow-sm">
+                  <div className="flex-row">
+                    <div className="flex-large">
+                      <div>
+                        <h2 className="text-xl font-bold ml-2">
+                          {editing ? "Edit Item" : "ADD ITEM"}
+                        </h2>
+                        <EditTaskForm
+                          editing={editing}
+                          setEditing={setEditing}
+                          currentTask={currentTask}
+                          setCurrentTask={setCurrentTask}
+                          updateTask={updateTask}
+                          addTask={addTask}
+                          tasks={tasks}
+                          rate={rate}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-large">
+                      <TaskTable
+                        tasks={tasks}
+                        rate={rate}
+                        editRow={editRow}
+                        deleteTask={deleteTask}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            <h3 className="text-xl font-bold border-t-2 pl-2 mt-3 pt-2">
+              MORTGAGE DETAILS
+            </h3>
+
+            <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+              <div className="w-full hidden md:block"></div>
+              <div
+                className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                <label className="form-label ml-2 mt-2">Invoice Number</label>
+                <input
+                  {...fields.mortgage_invoice_number}
+                  type="mortgage_invoice_number"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_invoice_number ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_invoice_number?.message?.toString()}
                 </div>
               </div>
-              <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 -md mt-3 ">
+            </div>
+            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 -md mt-3 ">
               <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    Mortgager <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.mortgage_cmp}
-                    type="mortgage_cmp"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgage_cmp ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.mortgage_cmp?.message?.toString()}
-                  </div>
+                <label className="form-label ml-2 ">
+                  Mortgager <span className="text-red-500">*</span>
+                </label>
+                <input
+                  {...fields.mortgage_cmp}
+                  type="mortgage_cmp"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_cmp ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_cmp?.message?.toString()}
                 </div>
+              </div>
 
-                <div className="p-2 ml-1">
-                  <label className="form-label ml-2 ">
-                    Estimated Price <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.estimated_price_old}
-                    type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.estimated_price_old ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.estimated_price_old?.message?.toString()}
-                  </div>
+              <div className="p-2 ml-1">
+                <label className="form-label ml-2 ">
+                  Estimated Price <span className="text-red-500">*</span>
+                </label>
+                <input
+                  {...fields.estimated_price_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.estimated_price_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.estimated_price_old?.message?.toString()}
                 </div>
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    Loan Price <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.loan_price_old}
-                    type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.loan_price_old ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.loan_price_old?.message?.toString()}
-                  </div>
+              </div>
+              <div className="p-2">
+                <label className="form-label ml-2 ">
+                  Loan Price <span className="text-red-500">*</span>
+                </label>
+                <input
+                  {...fields.loan_price_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.loan_price_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.loan_price_old?.message?.toString()}
                 </div>
+              </div>
 
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    Interest Amount <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.interest_old}
-                    type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.interest_old ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.interest_old?.message?.toString()}
-                  </div>
+              <div className="p-2">
+                <label className="form-label ml-2 ">
+                  Interest Amount <span className="text-red-500">*</span>
+                </label>
+                <input
+                  {...fields.interest_old}
+                  type="text"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.interest_old ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.interest_old?.message?.toString()}
                 </div>
-                {/* <div className="p-2">
+              </div>
+              {/* <div className="p-2">
                 <label className="form-label ml-2 ">Status</label>
 
                 <select
@@ -1444,232 +1489,230 @@ function AddEdit({
                   {errors.status?.message?.toString()}
                 </div>
               </div> */}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2  border-t">
+              <div className="p-2">
+                <label className="form-label ml-2 ">Branch</label>
+                <input
+                  {...fields.mortgage_branch}
+                  type="mortgage_branch"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgage_branch ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgage_branch?.message?.toString()}
+                </div>
               </div>
 
+              <div className="p-2">
+                <label className="form-label ml-2 ">Mortgager Name</label>
+                <input
+                  {...fields.mortgager_name}
+                  type="mortgager_name"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgager_name ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgager_name?.message?.toString()}
+                </div>
+              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2  border-t">
-               
-
+              <div className="p-2">
+                <label className="form-label ml-2 ">Contact </label>
+                <input
+                  {...fields.mortgager_phone}
+                  type="mortgager_phone"
+                  className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    errors.mortgager_phone ? "is-invalid" : ""
+                  }`}
+                />
+                <div className="invalid-feedback">
+                  {errors.mortgager_phone?.message?.toString()}
+                </div>
+              </div>
+              <div></div>
+              <div className="grid grid-cols-1 md:grid-cols-2 border-b">
                 <div className="p-2">
-                  <label className="form-label ml-2 ">Branch</label>
+                  <label className="form-label ml-2 ">
+                    Interest Rate % (Monthly)
+                  </label>
                   <input
-                    {...fields.mortgage_branch}
-                    type="mortgage_branch"
+                    {...fields.mortgage_interest_rate_month}
+                    type="mortgage_interest_rate_month"
                     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgage_branch ? "is-invalid" : ""
+                      errors.mortgage_interest_rate_month ? "is-invalid" : ""
                     }`}
                   />
                   <div className="invalid-feedback">
-                    {errors.mortgage_branch?.message?.toString()}
+                    {errors.mortgage_interest_rate_month?.message?.toString()}
                   </div>
                 </div>
 
                 <div className="p-2">
-                  <label className="form-label ml-2 ">Mortgager Name</label>
-                  <input
-                    {...fields.mortgager_name}
-                    type="mortgager_name"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgager_name ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.mortgager_name?.message?.toString()}
-                  </div>
-                </div>
-
-                <div className="p-2">
-                  <label className="form-label ml-2 ">Contact </label>
-                  <input
-                    {...fields.mortgager_phone}
-                    type="mortgager_phone"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgager_phone ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.mortgager_phone?.message?.toString()}
-                  </div>
-                </div>
-                <div></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 border-b">
-                  <div className="p-2">
-                    <label className="form-label ml-2 ">
-                      Interest Rate % (Monthly)
-                    </label>
-                    <input
-                      {...fields.mortgage_interest_rate_month}
-                      type="mortgage_interest_rate_month"
-                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                        errors.mortgage_interest_rate_month ? "is-invalid" : ""
-                      }`}
-                    />
-                    <div className="invalid-feedback">
-                      {errors.mortgage_interest_rate_month?.message?.toString()}
-                    </div>
-                  </div>
-
-                  <div className="p-2">
-                    {/* <div className="group w-72 md:w-80 lg:w-96">
+                  {/* <div className="group w-72 md:w-80 lg:w-96">
       <label htmlFor="5" className="inline-block w-full text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">Outline icon inline suffix</label>
       <div className="relative flex items-center">
         <input id="5" type="text" className="peer relative h-10 w-full rounded-md bg-gray-50 pl-4 pr-10 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:ring-2 focus:ring-blue-400 focus:drop-shadow-lg" />
         <span className="material-symbols-outlined absolute right-2 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">mail</span>
       </div>
     </div> */}
-                    <div className="relative">
-                      <label className="form-label ml-2 ">
-                        Interest Rate % (Yearly)
-                      </label>
-                      <div className=" ">
-                        <input
-                          {...fields.mortgage_interest_rate_year}
-                          type="mortgage_interest_rate_year"
-                          className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                            errors.mortgage_interest_rate_year
-                              ? "is-invalid"
-                              : ""
-                          }`}
-                        />
-                        <div className="invalid-feedback">
-                          {errors.mortgage_interest_rate_year?.message?.toString()}
-                        </div>
+                  <div className="relative">
+                    <label className="form-label ml-2 ">
+                      Interest Rate % (Yearly)
+                    </label>
+                    <div className=" ">
+                      <input
+                        {...fields.mortgage_interest_rate_year}
+                        type="mortgage_interest_rate_year"
+                        className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                          errors.mortgage_interest_rate_year ? "is-invalid" : ""
+                        }`}
+                      />
+                      <div className="invalid-feedback">
+                        {errors.mortgage_interest_rate_year?.message?.toString()}
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 border-b">
-                  <div className="p-2">
-                    <label className="form-label ml-2 ">Loan Start Date</label>
-                    <input
-                      {...fields.mortgage_start_date}
-                      type="date"
-                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                        errors.mortgage_start_date ? "is-invalid" : ""
-                      }`}
-                    />
-                    <div className="invalid-feedback">
-                      {errors.mortgage_start_date?.message?.toString()}
-                    </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 border-b">
+                <div className="p-2">
+                  <label className="form-label ml-2 ">Loan Start Date</label>
+                  <input
+                    {...fields.mortgage_start_date}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.mortgage_start_date ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.mortgage_start_date?.message?.toString()}
                   </div>
+                </div>
 
-                  <div className="p-2">
-                    <label className="form-label ml-2 ">Loan End Date</label>
-                    <input
-                      {...fields.mortgage_end_date}
-                      type="date"
-                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                        errors.mortgage_end_date ? "is-invalid" : ""
-                      }`}
-                    />
-                    <div className="invalid-feedback">
-                      {errors.mortgage_end_date?.message?.toString()}
-                    </div>
+                <div className="p-2">
+                  <label className="form-label ml-2 ">Loan End Date</label>
+                  <input
+                    {...fields.mortgage_end_date}
+                    type="date"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.mortgage_end_date ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.mortgage_end_date?.message?.toString()}
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2"></div>
-            
+          <div className="grid grid-cols-1 md:grid-cols-2"></div>
+
           {/* </form> */}
         </div>
 
-		
-		{loan && (
-            <>
-              <div className="flex  mt-3 pt-2 border-t">
-                <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl w-full">
-                  GUARANTOR DETAILS
-                </h1>
-                
-              </div>
+        {loan && (
+          <>
+            <div className="flex  mt-3 pt-2 border-t">
+              <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl w-full">
+                GUARANTOR DETAILS
+              </h1>
+            </div>
 
-              <div className="text-center bg-white shadow-md">
-                {/* {JSON.stringify(loan?.guarantors)} */}
-                {guarantorList.length > 0 ? "" : "No Guarantors Found"}
-              </div>
-              {}
-{/* {JSON.stringify(guarantorList)} */}
-              {/* {'user_id' in guarantorList[0]?"1":"0"} */}
+            <div className="text-center bg-white shadow-md">
+              {/* {JSON.stringify(loan?.guarantors)} */}
+              {guarantorList.length > 0 ? "" : "No Guarantors Found"}
+            </div>
+            {}
+            {/* {JSON.stringify(guarantorList)} */}
+            {/* {'user_id' in guarantorList[0]?"1":"0"} */}
 
-
-
-
-              <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
-{guarantorList?.length>0? ('user_id' in guarantorList[0]) ?<>
-
-
-                {guarantorList.length>0?<>
-                
-                {
-                  
-                
-                guarantorList.map((i: any) => (
-                  <div key={i?._id}>
-                    {loan ? (
-                      <div>
-                        <div
-                          className={`bg-white mb-2 m-1 p-3  border-1 shadow-md`}
-                        >
-                          <div className="bg-white ">
-                            <div className=" flex items-center justify-between leading-none  ">
-                              <Link
-                                className="flex items-center no-underline  text-black"
-                                href={`/users/edit/${i?._id}?id=${loan._id}`}
-                              >
-                                {/* {i.guarantor._id} */}
-                                <FaUserCircle className="float-left  text-5xl" />
-                                <div className="text-xl -mt-3">
-                                  <div className="text-gray-800 mt-1 p-1 font-bold">
-                                    <span>{i?.user?.fullName + " "}</span>
+            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
+              {guarantorList?.length > 0 ? (
+                "user_id" in guarantorList[0] ? (
+                  <>
+                    {guarantorList.length > 0 ? (
+                      <>
+                        {guarantorList.map((i: any) => (
+                          <div key={i?._id}>
+                            {loan ? (
+                              <div>
+                                <div
+                                  className={`bg-white mb-2 m-1 p-3  border-1 shadow-md`}
+                                >
+                                  <div className="bg-white ">
+                                    <div className=" flex items-center justify-between leading-none  ">
+                                      <Link
+                                        className="flex items-center no-underline  text-black"
+                                        href={`/users/edit/${i?._id}?id=${loan._id}`}
+                                      >
+                                        {/* {i.guarantor._id} */}
+                                        <FaUserCircle className="float-left  text-5xl" />
+                                        <div className="text-xl -mt-3">
+                                          <div className="text-gray-800 mt-1 p-1 font-bold">
+                                            <span>
+                                              {i?.user?.fullName + " "}
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </Link>
+                                    </div>
+                                  </div>
+                                  <div className=" md:mb-1 md:flex items-center">
+                                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                                      NIC
+                                    </label>
+                                    <span className="mr-4 inline-block  md:block">
+                                      :
+                                    </span>
+                                    <div className="flex-1">{i?.user?.nic}</div>
+                                  </div>
+                                  <div className="mb-2 md:mb-1 md:flex items-center">
+                                    <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
+                                      Relationship
+                                    </label>
+                                    <span className="mr-4 inline-block  md:block">
+                                      :
+                                    </span>
+                                    <div className="flex-1">
+                                      {i?.relationship}
+                                    </div>
                                   </div>
                                 </div>
-                              </Link>
-                              
-                            </div>
+                              </div>
+                            ) : (
+                              <></>
+                            )}
                           </div>
-                          <div className=" md:mb-1 md:flex items-center">
-                            <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                              NIC
-                            </label>
-                            <span className="mr-4 inline-block  md:block">
-                              :
-                            </span>
-                            <div className="flex-1">{i?.user?.nic}</div>
-                          </div>
-                          <div className="mb-2 md:mb-1 md:flex items-center">
-                            <label className=" text-gray-800 block font-bold text-sm uppercase tracking-wide">
-                              Relationship
-                            </label>
-                            <span className="mr-4 inline-block  md:block">
-                              :
-                            </span>
-                            <div className="flex-1">{i?.relationship}</div>
-                          </div>
-                        </div>
-                      </div>
+                        ))}
+                      </>
                     ) : (
-                      <></>
+                      ""
                     )}
-                  </div>
-                ))}
-                </>:""}
-</>:"" :""}
-              </div>
-              <>
-                <Offcanvas show={show} onHide={handleClose}>
-                  <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Guarantors </Offcanvas.Title>
-                  </Offcanvas.Header>
-                  <Offcanvas.Body>
-                    <AddEditGuarantor title="ADD GUARANTOR" loan={loan} />
-                  </Offcanvas.Body>
-                </Offcanvas>
-              </>
+                  </>
+                ) : (
+                  ""
+                )
+              ) : (
+                ""
+              )}
+            </div>
+            <>
+              <Offcanvas show={show} onHide={handleClose}>
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title>Guarantors </Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  <AddEditGuarantor title="ADD GUARANTOR" loan={loan} />
+                </Offcanvas.Body>
+              </Offcanvas>
             </>
-          )}
-
+          </>
+        )}
       </>
       {/* // ) : (
       //   ""
