@@ -176,6 +176,14 @@ console.log(paramsData)
     deleteItem: async (id, params) => {
       const response = await fetch.put(`/api/loan-item-del/${id}?id=${params}`,params);
     },
+    // deleteInstallment: async (id, params) => {
+      
+    //   const response = await fetch.put(`/api/loan-installment-del/${id}?id=${params}`,params);
+    // },
+    
+    deleteInstallment: async (id, params) => {
+      const response = await fetch.delete(`/api/loan-installment-del/${id}?id=${params}`,params);
+    },
   };
 }
 
@@ -232,4 +240,5 @@ interface ILoanService extends ILoanStore {
   updateItemCharges: (id: string, params: Partial<ILoanItem>) => Promise<void>;
   delete: (id: string) => Promise<void>;
   deleteItem: (id: string, params: Partial<ILoanItem>) => Promise<void>;
+  deleteInstallment:(id: string, params: Partial<ILoanItem>) => Promise<void>;
 }

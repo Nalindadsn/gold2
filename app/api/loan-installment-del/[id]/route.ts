@@ -9,19 +9,19 @@ module.exports = apiHandler({
     GET: getById,
     PUT: update,
     POST: addItem,
-    DELETE: _deleteItem
+    DELETE: _deleteInstallment
 });
 async function update(req: Request, { params: { id } }: any) {
+    
     const body = await req.json();
         const data:any={
         in_date:body.in_date,
-        amount:body.amount,
         fines:body.fines,
+        amount: body.amount
     }
-    
-    await loansRepo.updateItemInstallment(id, data);
-    
+    await loansRepo.deleteInstallment(id, data);
 }
+
 async function getById(req: Request, { params: { id } }: any) {   
     return await loansRepo.getById(id);
 }
@@ -75,8 +75,10 @@ updateItem.schema = joi.object({
     per_pound: joi.string().allow(''),
 });
 
-async function _deleteItem(req: Request, { params: { id } }: any) {
-    await loansRepo._deleteItem(id,id);
+async function _deleteInstallment(req: Request, { params: { id } }: any) {
+    // await loansRepo.deleteInstallment(id,id);
+    const body = await req.json();
+    await loansRepo.deleteInstallment(id,body);
 
     // auto logout if deleted self
     // if (id === req.headers.get('loanId')) {

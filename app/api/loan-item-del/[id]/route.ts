@@ -22,22 +22,7 @@ async function update(req: Request, { params: { id } }: any) {
         status: body?.status || "ok", 
     }
     await loansRepo.deleteItem(id, data);
-    // const body = await req.json();
-    // console.log(body)
-    // console.log("api user")
-    
-    // const loan= await loansRepo.getById(id);
-    // const data:any={
-    //     name:body.itmName,
-    //     karat:body.karat,
-    //     net_weight: body.net_weight,
-    //     total_weight: body.total_weight,
-    //     pound: body.pound,
-    //     status: body?.status || "ok", 
-    // }
 
-    // loan.items.push(data);
-    // return await loan.save();
 }
 async function getById(req: Request, { params: { id } }: any) {   
     return await loansRepo.getById(id);

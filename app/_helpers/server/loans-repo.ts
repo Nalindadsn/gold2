@@ -16,7 +16,7 @@ export const loansRepo = {
   getById,getByIdGuarantor,
   create,
   update,
-  updateItem,updateItemCharges,updateItemInstallment,
+  updateItem,updateItemCharges,updateItemInstallment,deleteInstallment,
   deleteItem,
   delete: _delete,
   _deleteItem: _deleteItem,
@@ -359,7 +359,6 @@ async function getByIdGuarantor(id: string) {
           "_id": new mongoose.Types.ObjectId(id)
         }
       },
-
   {
     $unwind: {
       path: "$guarantor",
@@ -542,15 +541,26 @@ async function updateItem(id: string, params: any) {
         { new: true }
       );
   }
-async function deleteItem(id: string, params: any) {
+  async function deleteItem(id: string, params: any) {
+  
+  
+  
+      await Loan.findOneAndUpdate(
+        { _id: id },
+        { $pull: { items: { _id: params.name  } } },
+        { new: true }
+      );
+  
+  }
+async function deleteInstallment(id: string, params: any) {
 
 
 
-    await Loan.findOneAndUpdate(
-      { _id: id },
-      { $pull: { items: { _id: params.name  } } },
-      { new: true }
-    );
+await Loan.findOneAndUpdate(
+  { _id:new mongoose.Types.ObjectId(id)   },
+  { $pull: { installments: { _id:new mongoose.Types.ObjectId(params.name)   } } },
+  { new: true }
+);
 
 }
 

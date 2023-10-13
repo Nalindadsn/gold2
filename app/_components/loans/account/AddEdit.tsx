@@ -206,25 +206,26 @@ function AddEdit({
   const [isDeleting, setIsDeleting] = useState(false);
   // --------------------------------------------------------
   // --------------------------------------------------------
-  const submitHandlerDel = async (e: any, b: any) => {
+  const submitHandlerInstallment = async (e: any, b: any) => {
     setLoading(true);
     try {
-      await loanService.deleteItem(e, b);
-      fetchReviews();
+      await loanService.deleteInstallment(e, b);
 
       let message;
-      message = "Item Deleted ";
+      message = "Installment Removed";
 
       alertService.error(message, true);
+      fetchInstallments();
 
       setLoading(false);
+      // router.push("/loans");
     } catch (err) {
       setLoading(false);
 
       // toast.success(err);
     }
   };
-  const submitHandlerDelUser = async (e: any, b: any) => {
+  const submitHandlerInstallmentUser = async (e: any, b: any) => {
     setLoading(true);
     try {
       await guarantorService.delete(e, b);
@@ -267,7 +268,7 @@ function AddEdit({
       //enqueueSnackbar(getError(err), { variant: 'error' });
     }
   }, []);
-  var sortedArray:any = installments.sort((a:any,b:any) => Date.parse(new Date(a.in_date)) - Date.parse(new Date(b.in_date)));
+//   var sortedArray:any = installments.sort((a:any,b:any) => Date.parse(new Date(a.in_date)) - Date.parse(new Date(b.in_date)));
 
   const fetchGuarantor = useCallback(async () => {
     try {
@@ -1266,6 +1267,26 @@ function AddEdit({
 			{installments.map((i: any) => (
 				<div className="border-1 border-b-1" key={n++}>
 					{i?.amount}|{i?.fines}|{i?.in_date}
+          <button
+                          onClick={() =>
+                            submitHandlerInstallment(loan?.id, { name: i?._id })
+                          }
+                          // onClick={() => {
+
+                          //   loanService.deleteItem(loan?.id, {name:i?._id});
+                          //   fetchReviews();
+                          // }  }
+                          className="btn btn-sm btn-danger btn-delete-loan mr-2 mt-1"
+                          style={{ width: "60px" }}
+                          //  disabled={true}
+                          // disabled={isDeleting}
+                        >
+                          {isDeleting ? (
+                            <span className="spinner-border spinner-border-sm"></span>
+                          ) : (
+                            <span>Delete</span>
+                          )}
+                        </button>
 				</div>
  ))}
 
@@ -1633,17 +1654,13 @@ function AddEdit({
                     )}
                   </div>
                 ))}
-                
                 </>:""}
-
-
 </>:"" :""}
               </div>
-
               <>
                 <Offcanvas show={show} onHide={handleClose}>
                   <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Guarantors</Offcanvas.Title>
+                    <Offcanvas.Title>Guarantors </Offcanvas.Title>
                   </Offcanvas.Header>
                   <Offcanvas.Body>
                     <AddEditGuarantor title="ADD GUARANTOR" loan={loan} />
@@ -1652,6 +1669,7 @@ function AddEdit({
               </>
             </>
           )}
+
       </>
       {/* // ) : (
       //   ""
