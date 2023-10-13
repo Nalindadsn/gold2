@@ -250,10 +250,9 @@ async function getByStatus(status:any) {
   const user= await User.findById(currentUserId);
 
 
-if (user.role=="ADMIN" && user.role=="COORDINATOR" ) {
+if (user.role=="ADMIN" || user.role=="COORDINATOR" ) {
   
   return await Loan.aggregate([
-    
     {
       $match: {
         "status":status
