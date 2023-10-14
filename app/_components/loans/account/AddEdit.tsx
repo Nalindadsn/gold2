@@ -572,7 +572,7 @@ function AddEdit({
       // toast.success(err);
     }
   };
-  const sortedInstallmentsArr:any=installments.sort(function compare(a:any, b:any) {
+  const sortedInstallmentsArr:any=installments?.sort(function compare(a:any, b:any) {
     var dateA:any = new Date(a.in_date);
     var dateB:any = new Date(b.in_date);
     return dateA - dateB;
@@ -581,7 +581,7 @@ function AddEdit({
   let amountV: any = 0;
   let amountF: any = 0;
   let amountT: any = 0;
-  let arr2: any = sortedInstallmentsArr.map((obj: any) => {
+  let arr2: any = sortedInstallmentsArr?.map((obj: any) => {
     amountV += parseFloat(obj.amount);
     amountF += parseFloat(obj.fines);
     amountT += parseFloat(obj.amount)+parseFloat(obj.fines);
@@ -1281,7 +1281,7 @@ function AddEdit({
                     </div>
                   </div>
                   <div className="bg-white p-2 text-gray-800 ">
-                    {arr2.reverse().map((i: any) => (
+                    {arr2?.reverse().map((i: any) => (
                         <div className="bg-white p-2 " key={i?._id}>
                           <div>
                             <div className="bg-gray-800 text-sm">
