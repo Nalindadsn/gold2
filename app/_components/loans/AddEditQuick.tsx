@@ -19,9 +19,9 @@ import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-export { AddEdit };
+export { AddEditQuick };
 
-function AddEdit({
+function AddEditQuick({
   title,
   loan,
   user,
@@ -108,9 +108,7 @@ function AddEdit({
     mortgager_phone: register("mortgager_phone", {}),
     mortgage_interest_rate_month: register("mortgage_interest_rate_month", {}),
     mortgage_interest_rate_year: register("mortgage_interest_rate_year", {}),
-    mortgage_invoice_number: register("mortgage_invoice_number",  {
-      required: "Invoice Number is required",
-    }),
+    mortgage_invoice_number: register("mortgage_invoice_number", {}),
     requested_loan: register("requested_loan", {
       required: "Mortgager estimate is required",
     }),
