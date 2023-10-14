@@ -64,7 +64,9 @@ function Loans() {
             Backend Report
             </NavDropdown.Item>
 
-
+            {(user?.role=="ADMIN" || user?.role=="ACCOUNTANT") && (row.status=="APPROVED" || row.status=="COMPLETED" ||  row.status=="PROCESSING" ||  row.status=="REJECTED" )?<>
+            <NavDropdown.Item  href={`/loans/account/edit/${row.id}?id=${row?.customer[0]?._id}`}>Installments</NavDropdown.Item>
+</>:<></>}
             {user?.role=="ADMIN"?<>
 
             <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>
