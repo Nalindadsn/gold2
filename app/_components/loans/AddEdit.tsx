@@ -109,7 +109,7 @@ function AddEdit({
     mortgage_interest_rate_month: register("mortgage_interest_rate_month", {}),
     mortgage_interest_rate_year: register("mortgage_interest_rate_year", {}),
     mortgage_invoice_number: register("mortgage_invoice_number",  {
-      required: "Invoice Number is required",
+     
     }),
     requested_loan: register("requested_loan", {
       required: "Mortgager estimate is required",
@@ -759,9 +759,9 @@ function AddEdit({
                       errors.form_number ? "is-invalid" : ""
                     }`}
                   />
-                </div>
                 <div className="invalid-feedback">
                   {errors.form_number?.message?.toString()}
+                </div>
                 </div>
               </div>
             <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-3 p-1 shadow-md mt-3 border">
