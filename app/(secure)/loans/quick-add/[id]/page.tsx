@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { AddEdit } from '_components/loans';
+import { AddEditQuick } from '_components/loans';
 import { AddEdit as AddUser } from '_components/users';
 import { Spinner } from '_components';
 import { useLoanService, useRateService, useUserService } from '_services';
@@ -32,7 +32,7 @@ function Edit(props:any) {
     return user
         ?<>
         {/* <AddUser title='Add Customer' user={user}/> */}
-        <AddEdit title="ADD LOAN" loan={loan}  user={user} rate={rate}/>
+        <AddEditQuick title="ADD LOAN" loan={loan}  user={user} rate={rate}/>
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
         </> 
         : <Spinner />;
