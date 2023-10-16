@@ -207,6 +207,12 @@ function Sidebar() {
                     </a>
                  </li>
 
+                 <li  className="ml-2 mt-0">
+                    <a href="/accountants" className="flex items-center py-1 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                       -
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Accountant </span>
+                    </a>
+                 </li>
                  </div>
                  
                  </>:""}
@@ -423,6 +429,12 @@ function Sidebar() {
                     <a href="/front-officers" className="flex items-center py-1 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
                        -
                        <span className="flex-1 ml-3 whitespace-nowrap ">Front Officers </span>
+                    </a>
+                 </li>
+                 <li  className="ml-2 mt-0">
+                    <a href="/accountants" className="flex items-center py-1 px-3 text-gray-300   hover:bg-gray-300 hover:text-gray-800 dark:hover:bg-gray-700 group">
+                       -
+                       <span className="flex-1 ml-3 whitespace-nowrap ">Accountant </span>
                     </a>
                  </li>
 
