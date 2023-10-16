@@ -16,7 +16,7 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
   
     const [username, setUsername] = useState("");
     const dataRelationship:any= loan?.guarantor.find((o:any) => o.user_id === user._id)
-user.relationship=dataRelationship.relationship
+user.relationship=dataRelationship?.relationship
     
     // get functions to build form with useForm() hook    
     const { register:register2, handleSubmit:handleSubmit2, reset:reset2, formState:{ errors:errors2 } } = useForm({ defaultValues: user });
