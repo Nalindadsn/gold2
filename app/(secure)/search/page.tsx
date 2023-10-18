@@ -54,13 +54,13 @@ function Edit() {
             <div className="w-full p-1">
               {/* {loan?.users[0]?.fullName}'s Loans */}
 
-
+{/* 4074 */}
               
               {loan?.users ? (
                 (loan?.users).length > 0 ? (
                   <div className="m-2">
                     <div>Full Name : {loan?.users[0]?.fullName}</div>
-                    <div>NIC : {loan?.users[0]?.nic}</div>{" "}
+                    <div>NIC : {loan?.users[0]?.nic} <a href={`/loans/add/${loan?.users[0]?._id}`} className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm ">ADD NEW LOAN</a></div>{" "}
                     {/* <div>NIC : { loan?.users[0]?.nic}</div> */}
                   </div>
                 ) : (
