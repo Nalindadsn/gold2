@@ -66,8 +66,9 @@ return str
 
   
         const total_mx = arr.reduce(function (acc: any, obj: any) {
+            const fValue:any=parseFloat(obj.pound).toFixed(4)
             return (
-              acc + ((parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(parseFloat(obj.pound) ? parseFloat(obj.pound) : 0))
+              acc + ((parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(fValue ? fValue : 0))
             );
           }, 0);
 
