@@ -89,8 +89,7 @@ function loanModel() {
       no_of_month: { type: String },
       no_of_month_expected: { type: String },
       
-      form_number: { type: String ,
-        unique: true},
+      form_number: { type: String },
 
       mortgage_cmp: { type: String },
       mortgage_branch: { type: String },
