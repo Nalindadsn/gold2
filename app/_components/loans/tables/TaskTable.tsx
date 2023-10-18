@@ -2,42 +2,94 @@ import React from "react";
 let n=1;
 
 
-const actual_karat=(gold_percentage:any,rate:any):any=>{
-	let finalGrades = ["24","22","21","20","19","18","17","16","15","14","13","12"];
+const roundThousand=(cmp_rate:any,cp:any)=>{
 
-if(rate?.cmp_rate){
-	if(gold_percentage >= 109.09){
-    return {karat:"24",value:((rate.cmp_rate/22)*24).toFixed(2)}
-	} else if(gold_percentage >= 100 && gold_percentage < 109.09) {
-    return {karat:"22",value:((rate.cmp_rate/22)*22).toFixed(2)}
-	}else if(gold_percentage >= 95.45 && gold_percentage < 100) {
-    return {karat:"21",value:((rate.cmp_rate/22)*21).toFixed(2)}
-	} else if(gold_percentage >= 90.91 && gold_percentage < 95.45) {
-    return {karat:"20",value:((rate.cmp_rate/22)*20).toFixed(2)}
-	} else if(gold_percentage >= 86.36 && gold_percentage < 90.91) {
-    return {karat:"19",value:((rate.cmp_rate/22)*19).toFixed(2)}
-	} else if(gold_percentage >= 81.82 && gold_percentage < 86.36) {
-    return {karat:"18",value:((rate.cmp_rate/22)*18).toFixed(2)}
-	} else if(gold_percentage >= 77.27 && gold_percentage < 81.82) {
-    return {karat:"17",value:((rate.cmp_rate/22)*17).toFixed(2)}
-	} else if(gold_percentage >= 72.73 && gold_percentage < 77.27) {
-    return {karat:"16",value:((rate.cmp_rate/22)*16).toFixed(2)}
-	} else if(gold_percentage >= 68.18 && gold_percentage < 72.73) {
-    return {karat:"15",value:((rate.cmp_rate/22)*15).toFixed(2)}
-	} else if(gold_percentage >= 63.64 && gold_percentage < 68.18) {
-    return {karat:"14",value:((rate.cmp_rate/22)*14).toFixed(2)}
-	} else if(gold_percentage >= 59.09 && gold_percentage < 63.64) {
-    return {karat:"13",value:((rate.cmp_rate/22)*13).toFixed(2)}
-	} else if(gold_percentage >= 54.55 && gold_percentage < 59.09) {
-    return {karat:"12",value:((rate.cmp_rate/22)*12).toFixed(2)}
-	} else {
-    return {karat:"Less than 12 karat",value:0}
-	}
-}else{
-  return {karat:"",value:0}
-}
+  var str:any=(((cmp_rate/22)*cp).toFixed(0)).toString()
+  if (str.length>3) {
+      
+  str = str.slice(0, -3)+"000";
+  }
+  str = parseInt(str);
+  return str
+  }
+  
+              const actual_karat=(gold_percentage:any,rate:any):any=>{
+             if(rate?.cmp_rate){
+               if(gold_percentage >= 109.09){
+                 return {karat:"24",value:  roundThousand(rate.cmp_rate,24)}
+               } else if(gold_percentage >= 100 && gold_percentage < 109.09) {
+                 return {karat:"22",value:roundThousand(rate.cmp_rate,22)}
+               }else if(gold_percentage >= 95.45 && gold_percentage < 100) {
+                 return {karat:"21",value:roundThousand(rate.cmp_rate,21)}
+               } else if(gold_percentage >= 90.91 && gold_percentage < 95.45) {
+                 return {karat:"20",value:roundThousand(rate.cmp_rate,20)}
+               } else if(gold_percentage >= 86.36 && gold_percentage < 90.91) {
+                 return {karat:"19",value:roundThousand(rate.cmp_rate,19)}
+               } else if(gold_percentage >= 81.82 && gold_percentage < 86.36) {
+                 return {karat:"18",value:roundThousand(rate.cmp_rate,18)}
+               } else if(gold_percentage >= 77.27 && gold_percentage < 81.82) {
+                 return {karat:"17",value:roundThousand(rate.cmp_rate,17)}
+               } else if(gold_percentage >= 72.73 && gold_percentage < 77.27) {
+                 return {karat:"16",value:roundThousand(rate.cmp_rate,16)}
+               } else if(gold_percentage >= 68.18 && gold_percentage < 72.73) {
+                 return {karat:"15",value:roundThousand(rate.cmp_rate,15)}
+               } else if(gold_percentage >= 63.64 && gold_percentage < 68.18) {
+                 return {karat:"14",value:roundThousand(rate.cmp_rate,14)}
+               } else if(gold_percentage >= 59.09 && gold_percentage < 63.64) {
+                 return {karat:"13",value:roundThousand(rate.cmp_rate,13)}
+               } else if(gold_percentage >= 54.55 && gold_percentage < 59.09) {
+                 return {karat:"12",value:roundThousand(rate.cmp_rate,12)}
+               } else {
+                 return {karat:"Less than 12 karat",value:0}
+               }
+             }else{
+               return {karat:"",value:0}
+             }
+             
+             }
+    //  const amountValue=(receipt:any)=>{
+    //   const pound:any=parseFloat(receipt.pound).toFixed(4)
+    //  return actual_karat(receipt?.net_weight/receipt?.total_weight*100).value*pound
+  
+    //  }
 
-}
+
+// const actual_karat=(gold_percentage:any,rate:any):any=>{
+// 	let finalGrades = ["24","22","21","20","19","18","17","16","15","14","13","12"];
+
+// if(rate?.cmp_rate){
+// 	if(gold_percentage >= 109.09){
+//     return {karat:"24",value:((rate.cmp_rate/22)*24).toFixed(0)}
+// 	} else if(gold_percentage >= 100 && gold_percentage < 109.09) {
+//     return {karat:"22",value:((rate.cmp_rate/22)*22).toFixed(0)}
+// 	}else if(gold_percentage >= 95.45 && gold_percentage < 100) {
+//     return {karat:"21",value:((rate.cmp_rate/22)*21).toFixed(0)}
+// 	} else if(gold_percentage >= 90.91 && gold_percentage < 95.45) {
+//     return {karat:"20",value:((rate.cmp_rate/22)*20).toFixed(0)}
+// 	} else if(gold_percentage >= 86.36 && gold_percentage < 90.91) {
+//     return {karat:"19",value:((rate.cmp_rate/22)*19).toFixed(0)}
+// 	} else if(gold_percentage >= 81.82 && gold_percentage < 86.36) {
+//     return {karat:"18",value:((rate.cmp_rate/22)*18).toFixed(0)}
+// 	} else if(gold_percentage >= 77.27 && gold_percentage < 81.82) {
+//     return {karat:"17",value:((rate.cmp_rate/22)*17).toFixed(0)}
+// 	} else if(gold_percentage >= 72.73 && gold_percentage < 77.27) {
+//     return {karat:"16",value:((rate.cmp_rate/22)*16).toFixed(0)}
+// 	} else if(gold_percentage >= 68.18 && gold_percentage < 72.73) {
+//     return {karat:"15",value:((rate.cmp_rate/22)*15).toFixed(0)}
+// 	} else if(gold_percentage >= 63.64 && gold_percentage < 68.18) {
+//     return {karat:"14",value:((rate.cmp_rate/22)*14).toFixed(0)}
+// 	} else if(gold_percentage >= 59.09 && gold_percentage < 63.64) {
+//     return {karat:"13",value:((rate.cmp_rate/22)*13).toFixed(0)}
+// 	} else if(gold_percentage >= 54.55 && gold_percentage < 59.09) {
+//     return {karat:"12",value:((rate.cmp_rate/22)*12).toFixed(0)}
+// 	} else {
+//     return {karat:"Less than 12 karat",value:0}
+// 	}
+// }else{
+//   return {karat:"",value:0}
+// }
+
+// }
 // const gPr =(parseFloat(task?.net_weight)/parseFloat(task?.total_weight))*100;
 
 const TaskTable = (props:any) => (
