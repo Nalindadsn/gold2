@@ -141,7 +141,6 @@ function AddEdit({
     switch (n) {
       case 60:
         var val = (value * 250) / 100 / 60;
-
         break;
       case 48:
         var val = (220 * value) / 100 / 48;
@@ -161,7 +160,6 @@ function AddEdit({
       case 6:
         var val = (115 * value) / 100 / 6;
         break;
-
       default:
         var val = 0;
         break;

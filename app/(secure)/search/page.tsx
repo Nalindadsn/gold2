@@ -157,8 +157,8 @@ function Edit() {
                         ))}
                       </h3>
                     </div>
-                    <div className="p-1  md:w-full border mt-1 m-0">
-                      <h3 className="bg-gray-800 text-white font-bold p-1 whitespace-nowrap">
+                    <div className="p-1 bg-red-800  md:w-full border border-1 border-red-800 mt-1 m-0">
+                      <h3 className="bg-red-800 text-white font-bold p-1 whitespace-nowrap">
                         Related Loans
                       </h3>
                       {loan?.users?.length>0? loan?.users[0]?.my_guarantors.map((i: any) => (
