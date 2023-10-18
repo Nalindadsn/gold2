@@ -27,6 +27,25 @@ function Edit() {
     if (!nic) return;
     loanService.getByNic(nic);
   }, [nic]);
+  const total_loan_amount=(arr:any)=>{
+    const total_pounds = arr?.reduce(function (acc: any, obj: any) {
+      return (
+        acc + parseFloat(obj.amount)
+      );
+    }, 0);
+  
+    return total_pounds;
+  }
+  const total_loan_fines=(arr:any)=>{
+    const total_pounds = arr?.reduce(function (acc: any, obj: any) {
+      return (
+        acc + parseFloat(obj.fines)
+      );
+    }, 0);
+  
+    return total_pounds;
+  }
+ 
   return loan ? (
     <>
       <div>
@@ -97,6 +116,19 @@ function Edit() {
                                 <p className="ml-2 text-sm  text-gray-600">
                                   Creditor : {i?.customer[0]?.fullName}
                                   <br />
+                                  No of installments : {i?.installments?.length}
+                                  <br />
+                                  Amount : {total_loan_amount(i?.installments)}
+
+
+                                  <br />
+                                  Fines : {total_loan_fines(i?.installments)}
+                                  <br />
+                                  Amount + Fines : {parseFloat(total_loan_amount(i?.installments)+total_loan_fines(i?.installments)).toFixed(2)}
+
+
+                                  {/* total_loan_amount */}
+                                  <br />
                                   Loan LKR{" "}
                                   {parseFloat(i?.loan_amount).toFixed(
                                     2
@@ -145,6 +177,36 @@ function Edit() {
                             <footer className="md:flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
                               <p className="ml-2 text-sm  text-gray-600">
                                 Creditor : {i?.customer[0]?.fullName}
+
+
+
+
+
+
+
+                                <br />
+
+                                No of installments : {i?.installments?.length}
+                                  <br />
+                                  Amount : {total_loan_amount(i?.installments)}
+
+
+                                  <br />
+                                  Fines : {total_loan_fines(i?.installments)}
+                                  <br />
+                                  Amount + Fines : {parseFloat(total_loan_amount(i?.installments)+total_loan_fines(i?.installments)).toFixed(2)}
+
+
+
+
+
+
+
+
+
+
+
+
                                 <br />
                                 Loan LKR {parseFloat(i?.loan_amount).toFixed(
                                   2
