@@ -177,35 +177,16 @@ function Edit() {
                             <footer className="md:flex items-center justify-between leading-tight pb-0 p-2 md:p-4">
                               <p className="ml-2 text-sm  text-gray-600">
                                 Creditor : {i?.customer[0]?.fullName}
-
-
-
-
-
-
-
                                 <br />
 
                                 No of installments : {i?.installments?.length}
                                   <br />
                                   Amount : {total_loan_amount(i?.installments)}
 
-
                                   <br />
                                   Fines : {total_loan_fines(i?.installments)}
                                   <br />
                                   Amount + Fines : {parseFloat(total_loan_amount(i?.installments)+total_loan_fines(i?.installments)).toFixed(2)}
-
-
-
-
-
-
-
-
-
-
-
 
                                 <br />
                                 Loan LKR {parseFloat(i?.loan_amount).toFixed(
