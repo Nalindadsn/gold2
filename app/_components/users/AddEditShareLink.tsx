@@ -127,7 +127,7 @@ function AddEdit({
       if (loan_id) {
         router.push(`/loans/edit/${loan_id}`);
       } else {
-        router.push(`/users`);
+        router.push(`/find/public`);
       }
       alertService.success(message, true);
     } catch (error: any) {
