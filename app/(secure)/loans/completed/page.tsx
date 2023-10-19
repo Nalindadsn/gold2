@@ -59,11 +59,10 @@ function Loans() {
       selector: (row: any) => (
         <>
         
-        <NavDropdown title="Action" id="basic-nav-dropdown" style={{zIndex:"1000 !important"}}>
+        <NavDropdown title="Action" id="basic-nav-dropdown">
             <NavDropdown.Item  href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}>
             Backend Report
             </NavDropdown.Item>
-
             {(user?.role=="ADMIN" || user?.role=="ACCOUNTANT") && (row.status=="APPROVED" || row.status=="COMPLETED" ||  row.status=="PROCESSING" ||  row.status=="REJECTED" )?<>
             <NavDropdown.Item  href={`/loans/account/edit/${row.id}?id=${row?.customer[0]?._id}`}>Installments</NavDropdown.Item>
 </>:<></>}

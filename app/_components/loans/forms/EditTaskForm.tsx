@@ -137,7 +137,18 @@ if(name=="total_weight"){
   return (
     <>
     
-    <div className="flex flex-col md:flex-row  border-b bg-gray-800 text-white">
+
+      <form className="bg-gray-800"
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (!task.name || !task.karat) return;
+          props.editing ? ( props.updateTask(task.id, task)) : props.addTask(task);
+          resetAddTask();
+        }}>
+     
+
+
+     <div className="flex flex-col md:flex-row  border-b bg-gray-800 text-white">
             <div className="px-1">
              
             </div>
@@ -161,36 +172,28 @@ if(name=="total_weight"){
                 <div className="px-1  text-right m-1 border-1">
                <span className=" whitespace-nowrap">Amount per pound </span> <br/> 
                <div className="bg-gray-800 text-white px-2">
-                {actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100).value}
+                {props.editing ? actual_karat((parseFloat(task.net_weight)/parseFloat(task.total_weight))*100).value:  actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100).value}
                 </div>
                 </div>
                 <div className="px-1  text-right m-1 border-1">
                 Issuable  <br/>
                 <div className="bg-gray-800 text-white px-2">
-                  {((actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100).value)*(parseFloat(net_weight) / 8)).toFixed(2)}
+                  {props.editing ?((actual_karat((parseFloat(task.net_weight)/parseFloat(task.total_weight))*100).value)*(parseFloat(task.net_weight) / 8)).toFixed(2):((actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100).value)*(parseFloat(net_weight) / 8)).toFixed(2)}
                   </div> 
                 </div>
                     <div className="text-right whitespace-nowrap border mt-1">
                     <span className={net_weight==total_weight?"bg-gray-800 text-white px-2":"bg-red-500 text-white px-2"}>Actual Karat :  
                     {/* <span className="bg-gray-800 text-white px-2">Actual Karat :   */}
-                      {(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} 
+                      {props.editing ?(actual_karat((parseFloat(task.net_weight)/parseFloat(task.total_weight))*100)).karat:(actual_karat((parseFloat(net_weight)/parseFloat(total_weight))*100)).karat} 
                     </span>
                       
                       
                       <br/>
                       Karat Percentage :
-                       {((parseFloat(net_weight)/parseFloat(total_weight))*100).toFixed(2)}%
+                       {props.editing ?((parseFloat(task.net_weight)/parseFloat(task.total_weight))*100).toFixed(2):((parseFloat(net_weight)/parseFloat(total_weight))*100).toFixed(2)}%
                     </div>
                     </div>
 
-      <form className="bg-gray-800"
-        onSubmit={(event) => {
-          event.preventDefault();
-          if (!task.name || !task.karat) return;
-          props.editing ? props.updateTask(task.id, task) : props.addTask(task);
-          resetAddTask();
-        }}>
-     
         <div className="flex flex-wrap -mx-3 " key={task.id}>
           <div className="w-full md:w-full px-3 mb-2 mt-2 mr-2">
             <div>
@@ -254,7 +257,7 @@ if(name=="total_weight"){
                     placeholder="Pounds"
                     type="text"
                     name="pound"
-                    value={poundV}
+                    value={task.net_weight/8}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -275,7 +278,7 @@ if(name=="total_weight"){
                 </div>
                 
               </div>
-              <div className="border-b border-b-1 border-gray-800"><button className="btn btn-primary me-2 mt-1 bg-blue-700">{props.editing ? "Update task" : "ADD ITEM"}</button>
+              <div className="border-b border-b-1 border-gray-800"><button className={`btn  me-2 mt-1 ${props.editing ? "btn-warning " : "btn-primary "} `}>{props.editing ? "Update task" : "ADD ITEM"}</button>
         {props.editing && (
           <button onClick={resetAddTask} className="button muted-button">
             Cancel
