@@ -1,15 +1,16 @@
 "use client"
+import { Spinner } from '_components';
+import { AddEditShareLink } from '_components/loans/AddEditShareLink';
+import { useRateService } from '_services';
 import React, { useEffect, useState } from 'react'
-export { AddEditShareLink };
 
-function AddEditShareLink() {
+function AddEditS() {
   const [nic, setNic] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [userData, setUserData] = useState<{email: string, age: number} | null>(null);
   const [keys, setKeys] = useState<string[]>([]);
   const [length, setLength] = useState<number>(0);
   function handleSave() {
-    
     if (typeof window !== "undefined" && window.localStorage) {
       localStorage.setItem("nic", "Anisha");
       localStorage.setItem("userId", "12345");
@@ -65,6 +66,16 @@ function AddEditShareLink() {
       setLength(localStorage.length);
     }
   }, []);
+
+
+  
+  const rateService = useRateService();
+  const rate = rateService.rate;
+
+
+  useEffect(() => {
+      rateService.getSelected()
+  }, []);
   return (
     <div>
       
@@ -80,7 +91,10 @@ function AddEditShareLink() {
   <p>Total Items in Local Storage: {length}</p>
 </div>
 
+return rate?<AddEditShareLink title="ADD LOAN DETAILS" rate={rate}/>:
+    <Spinner />;
     </div>
   )
 }
 
+export default AddEditS
