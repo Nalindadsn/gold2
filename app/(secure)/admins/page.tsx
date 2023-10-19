@@ -109,7 +109,7 @@ function Users() {
       <div className="p-1 flex w-full clear-both flex-col md:flex-row -mx-1 py-2  mb-1">
         <h1 className="w-full text-2xl font-bold ">- ADMINS</h1>
         <Link
-          href="/admins/add"
+          href="/admins/add?type=admins"
           className="text-right btn btn-primary"
           style={{ whiteSpace: "nowrap" }}
         >
