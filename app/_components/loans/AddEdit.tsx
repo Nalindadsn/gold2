@@ -345,15 +345,17 @@ function AddEdit({
   };
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
+    
+    const fValue:any=parseFloat(obj.pound).toFixed(8)
     return (
       acc +
       (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *
-        (parseFloat(obj.pound) ? parseFloat(obj.pound) : 0)
+        (fValue ? fValue : 0)
     );
   }, 0);
 
   const total_mx = arr.reduce(function (acc: any, obj: any) {
-    const fValue:any=parseFloat(obj.pound).toFixed(4)
+    const fValue:any=parseFloat(obj.pound).toFixed(8)
 
     return (
       acc +
@@ -535,12 +537,13 @@ function AddEdit({
     e.preventDefault();
     setLoading(true);
     try {
+      const pValue:any=parseFloat(net_weight) / 8;
       const data: any = {
         name: name,
         karat: karat,
         net_weight: net_weight,
         total_weight: total_weight,
-        pound: parseFloat(net_weight) / 8,
+        pound: parseFloat(pValue).toFixed(8),
         per_pound: actual_karat(gPr).value,
         status: status ? status : "NOT ISSUE",
       };

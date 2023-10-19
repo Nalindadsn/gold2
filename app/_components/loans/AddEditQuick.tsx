@@ -353,7 +353,7 @@ function AddEditQuick({
   }, 0);
 
   const total_mx = arr.reduce(function (acc: any, obj: any) {
-    const fValue:any=parseFloat(obj.pound).toFixed(4)
+    const fValue:any=parseFloat(obj.pound).toFixed(8)
 
     return (
       acc +
