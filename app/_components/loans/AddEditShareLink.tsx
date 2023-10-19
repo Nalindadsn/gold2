@@ -108,7 +108,9 @@ function AddEditShareLink({
     mortgager_phone: register("mortgager_phone", {}),
     mortgage_interest_rate_month: register("mortgage_interest_rate_month", {}),
     mortgage_interest_rate_year: register("mortgage_interest_rate_year", {}),
-    mortgage_invoice_number: register("mortgage_invoice_number", {}),
+    mortgage_invoice_number: register("mortgage_invoice_number",  {
+     
+    }),
     requested_loan: register("requested_loan", {
       required: "Mortgager estimate is required",
     }),
@@ -127,6 +129,9 @@ function AddEditShareLink({
     no_of_month: register("no_of_month", {
       required: "Month is required",
     }),
+    no_of_month_expected: register("no_of_month_expected", {
+      required: "Month is required",
+    }),
     form_number: register("form_number", {
       required: "Form number is required",
     }),
@@ -136,7 +141,6 @@ function AddEditShareLink({
     switch (n) {
       case 60:
         var val = (value * 250) / 100 / 60;
-
         break;
       case 48:
         var val = (220 * value) / 100 / 48;
@@ -156,7 +160,6 @@ function AddEditShareLink({
       case 6:
         var val = (115 * value) / 100 / 6;
         break;
-
       default:
         var val = 0;
         break;
@@ -342,10 +345,12 @@ function AddEditShareLink({
   };
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
+    
+    const fValue:any=parseFloat(obj.pound).toFixed(8)
     return (
       acc +
       (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *
-        (parseFloat(obj.pound) ? parseFloat(obj.pound) : 0)
+        (fValue ? fValue : 0)
     );
   }, 0);
 
@@ -355,7 +360,7 @@ function AddEditShareLink({
     return (
       acc +
       (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *
-      (fValue ? fValue : 0)
+        (fValue ? fValue : 0)
     );
   }, 0);
 
@@ -462,6 +467,7 @@ function AddEditShareLink({
       let message;
       if (loan) {
         await loanService.update(loan?.id, dataV);
+      
         message = "Loan updated";
       } else {
         await loanService.create(dataV);
@@ -476,7 +482,6 @@ function AddEditShareLink({
       alertService.error(error);
     }
   }
-
   const roundThousand=(cmp_rate:any,cp:any)=>{
 
     var str:any=(((cmp_rate/22)*cp).toFixed(0)).toString()
@@ -532,12 +537,13 @@ function AddEditShareLink({
     e.preventDefault();
     setLoading(true);
     try {
+      const pValue:any=parseFloat(net_weight) / 8;
       const data: any = {
         name: name,
         karat: karat,
         net_weight: net_weight,
         total_weight: total_weight,
-        pound: parseFloat(net_weight) / 8,
+        pound: parseFloat(pValue).toFixed(8),
         per_pound: actual_karat(gPr).value,
         status: status ? status : "NOT ISSUE",
       };
@@ -606,7 +612,7 @@ function AddEditShareLink({
                 ${loan?.status == "APPROVED" ? "border-green-500" : ""}
                 ${loan?.status == "REJECTED" ? "border-red-600" : ""}
                 ${loan?.status == "PROCESSING" ? "border-blue-500" : ""}
-                ${loan?.status == "PROSPECTED" ? "border-gray-900" : ""}
+                ${loan?.status == "COMPLETED" ? "border-gray-900" : ""}
                 `}
               >
                 <div className="mb-2 md:mb-1 md:flex items-center">
@@ -655,7 +661,7 @@ function AddEditShareLink({
                       CREATED BY
                     </label>
                     <span className="mr-4  md:block">:</span>
-                    <div className="flex-1">{loan?.officer[0]?.fullName}</div>
+                    <div className="flex-1">{loan?.officer?.length>0?loan?.officer[0]?.fullName:""}</div>
                   </div>
                 ) : (
                   <div className="mb-2 md:mb-1 md:flex items-center">
@@ -678,7 +684,7 @@ function AddEditShareLink({
           <div className="bg-white p-2 m-1 shadow-sm border">
             <div className=" flex items-center justify-between leading-none  ">
               <Link
-                href={`/users/edit/${loan ? loan?.customer[0]?._id : user?.id}`}
+                href={`/users/edit/${loan ? loan?.customer?.length>0? loan?.customer[0]?._id:"null" : user?.id}`}
                 className="flex items-center no-underline  text-black"
               >
                 <FaUserCircle className="float-left  text-5xl" />
@@ -686,14 +692,18 @@ function AddEditShareLink({
                 <div className="text-xl -mt-3">
                   <div className="text-gray-800 mt-1 font-bold">
                     <span>
-                      {loan ? loan?.customer[0]?.fullName : user?.fullName}
+                    {loan ? loan?.customer?.length>0? loan?.customer[0]?.fullName :"": user?.fullName} 
                     </span>
                   </div>
+                  
                 </div>
               </Link>
             </div>
             <div className="mt-1 text-gray-800 block  text-sm uppercase tracking-wide">
               CUSTOMER{" "}
+              <div className="float-right">NIC : {loan ? loan?.customer?.length>0? loan?.customer[0]?.nic :"": user?.nic}
+              <a href={`/search?nic=${loan ? loan?.customer?.length>0? loan?.customer[0]?.nic :"": user?.nic}`} className="bg-blue-500 hover:bg-blue-800 focus:blue-800 px-2 text-white ml-2 text-sm ">FIND</a>
+              </div>
             </div>
           </div>
 
@@ -754,12 +764,12 @@ function AddEditShareLink({
                       errors.form_number ? "is-invalid" : ""
                     }`}
                   />
-                </div>
                 <div className="invalid-feedback">
                   {errors.form_number?.message?.toString()}
                 </div>
+                </div>
               </div>
-            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 shadow-md mt-3 border">
+            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-3 p-1 shadow-md mt-3 border">
  <div className="p-2">
                   <label className="form-label ml-2 ">
                     {" "}
@@ -778,6 +788,27 @@ function AddEditShareLink({
                   </div>
                 </div>
                 <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    {" "}
+                    Month (Requested){" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.no_of_month_expected}
+                    type="no_of_month_expected"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.no_of_month_expected ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.no_of_month_expected?.message?.toString()}
+                  </div>
+                </div>
+
+
+
+                
+                <div className="p-2">
                   <label className="form-label ml-2 ">Status</label>
 
                   <select
@@ -791,6 +822,7 @@ function AddEditShareLink({
                     <option className="PROCESSING">PROCESSING</option>
                     <option className="APPROVED">APPROVED</option>
                     <option className="REJECTED">REJECTED</option>
+                    <option className="COMPLETED">COMPLETED</option>
                   </select>
 
                   <div className="invalid-feedback">
@@ -1307,10 +1339,23 @@ function AddEditShareLink({
                 {/* {JSON.stringify(loan?.guarantors)} */}
                 {guarantorList.length > 0 ? "" : "No Guarantors Found"}
               </div>
+              {}
+{/* {JSON.stringify(guarantorList)} */}
+              {/* {'user_id' in guarantorList[0]?"1":"0"} */}
+
+
+
 
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 ">
+{guarantorList?.length>0? ('user_id' in guarantorList[0]) ?<>
+
+
+                {guarantorList.length>0?<>
                 
-                { guarantorList.map((i: any) => (
+                {
+                  
+                
+                guarantorList.map((i: any) => (
                   <div key={i?._id}>
                     {loan ? (
                       <div>
@@ -1380,6 +1425,11 @@ function AddEditShareLink({
                     )}
                   </div>
                 ))}
+                
+                </>:""}
+
+
+</>:"" :""}
               </div>
 
               <>
@@ -1768,7 +1818,7 @@ function AddEditShareLink({
       <div
         className={`fixed left-0 bottom-0 h-1 ${
           loan
-            ? loan.items.length > 0
+            ? loan?.items?.length > 0
               ? "bg-yellow-500"
               : "bg-red-600"
             : tasks.length > 0

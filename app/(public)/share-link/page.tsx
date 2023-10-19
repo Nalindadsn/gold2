@@ -1,13 +1,15 @@
 "use client"
 import React, { useEffect, useState } from 'react'
+export { AddEditShareLink };
 
-function Page() {
+function AddEditShareLink() {
   const [nic, setNic] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [userData, setUserData] = useState<{email: string, age: number} | null>(null);
   const [keys, setKeys] = useState<string[]>([]);
   const [length, setLength] = useState<number>(0);
   function handleSave() {
+    
     if (typeof window !== "undefined" && window.localStorage) {
       localStorage.setItem("nic", "Anisha");
       localStorage.setItem("userId", "12345");
@@ -82,4 +84,3 @@ function Page() {
   )
 }
 
-export default Page
