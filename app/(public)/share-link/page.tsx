@@ -76,7 +76,7 @@ function AddEditS() {
   useEffect(() => {
       rateService.getSelected()
   }, []);
-  return (
+  return rate? (
     <div>
       
 
@@ -91,10 +91,10 @@ function AddEditS() {
   <p>Total Items in Local Storage: {length}</p>
 </div>
 
-return rate?<AddEditShareLink title="ADD LOAN DETAILS" rate={rate}/>:
-    <Spinner />;
+<AddEditShareLink title="ADD LOAN DETAILS" rate={rate}/>
+    
     </div>
-  )
+  ):<Spinner />
 }
 
 export default AddEditS
