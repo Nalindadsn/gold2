@@ -53,7 +53,7 @@ return str
            
            }
    const amountValue=(receipt:any)=>{
-    const pound:any=parseFloat(receipt.pound).toFixed(4)
+    const pound:any=parseFloat(receipt.pound).toFixed(8)
    return actual_karat(receipt?.net_weight/receipt?.total_weight*100).value*pound
 
    }
@@ -223,7 +223,7 @@ return str
                     <Text>{(loan?.estimated_price_old/total_pounds).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(4)}</Text>   
+                    <Text>{total_pounds.toFixed(8)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                 <Text>{parseFloat(loan?.estimated_price_old).toFixed(2)}</Text>   
@@ -237,7 +237,7 @@ return str
                     <Text>{(loan?.loan_price_old/total_pounds).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(4)}</Text>   
+                    <Text>{total_pounds.toFixed(8)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                 <Text>{parseFloat(loan?.loan_price_old).toFixed(2)}</Text>   
@@ -251,7 +251,7 @@ return str
                     <Text>{(loan?.requested_loan/total_pounds).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(4)}</Text>   
+                    <Text>{total_pounds.toFixed(8)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat(loan?.requested_loan).toFixed(2)}</Text>   
@@ -272,7 +272,7 @@ return str
                     <Text>{parseFloat(i?.gold_rate).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{parseFloat(total_pounds).toFixed(4)}</Text>   
+                    <Text>{parseFloat(total_pounds).toFixed(8)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{(i?.gold_rate*total_pounds).toFixed(2)}</Text>   
@@ -294,7 +294,7 @@ return str
                     <Text>{parseFloat(rate?.cmp_rate).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(4)}</Text>   
+                    <Text>{total_pounds.toFixed(8)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat((total_pounds*rate?.cmp_rate).toString()).toFixed(2)}</Text>   
@@ -309,7 +309,7 @@ return str
                  </Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(4)}</Text>   
+                    <Text>{total_pounds.toFixed(8)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat(loan?.expected_price_old).toFixed(2)}</Text>   
@@ -331,13 +331,13 @@ return str
             <Text></Text>   
         </View>
         <View style={styles.theader3}>
-            <Text>{itm_total_net.toFixed(4)}</Text>   
+            <Text>{itm_total_net.toFixed(8)}</Text>   
         </View>
         <View style={styles.theader3}>
-            <Text>{itm_total_weight.toFixed(4)} </Text>   
+            <Text>{itm_total_weight.toFixed(8)} </Text>   
         </View>
         <View style={styles.theader3}>
-            <Text>{total_pounds.toFixed(4)} </Text>   
+            <Text>{total_pounds.toFixed(8)} </Text>   
         </View>
         <View style={styles.theader}>
             <Text> </Text>   
@@ -366,13 +366,13 @@ return str
                          <Text >ACTUAL : {(actual_karat(receipt?.net_weight/receipt?.total_weight*100)).karat}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
-                         <Text >{parseFloat(receipt.total_weight).toFixed(4)}</Text>   
+                         <Text >{parseFloat(receipt.total_weight).toFixed(8)}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
-                         <Text >{parseFloat(receipt.net_weight).toFixed(4)}</Text>   
+                         <Text >{parseFloat(receipt.net_weight).toFixed(8)}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
-                         <Text >{parseFloat(receipt.pound).toFixed(4)}</Text>   
+                         <Text >{parseFloat(receipt.pound).toFixed(8)}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
                          <Text >{receipt.status}</Text>   
