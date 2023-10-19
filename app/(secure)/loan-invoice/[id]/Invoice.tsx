@@ -64,6 +64,22 @@ return str
         const arr =loan?  loan?.items : [];
 
 
+const getFloat=(f:any)=>{
+    var n = f;
+var str = n.toString();
+var decimalOnly = 0;
+
+if( str.indexOf('.') != -1 ){ //check if has decimal
+    var decimalOnly = parseFloat(Math.abs(n).toString().split('.')[1]);
+}
+return decimalOnly
+
+}
+
+        const mxLenPound:any=Math.max(...Object.values(loan?.items).flat().map((o:any) => (getFloat(o.pound)).toString().length))
+        
+        const mxLenNetWeight:any=Math.max(...Object.values(loan?.items).flat().map((o:any) => (getFloat(o.net_weight)).toString().length))
+        const mxLenTotalWeight:any=Math.max(...Object.values(loan?.items).flat().map((o:any) => (getFloat(o.total_weight)).toString().length))
   
         const total_mx = arr.reduce(function (acc: any, obj: any) {
             const fValue:any=parseFloat(obj.pound).toFixed(8)
@@ -90,7 +106,6 @@ return str
 
         const company_rates= rates
 
-     
 
           const styles = StyleSheet.create({
             page: {fontSize: 11,paddingTop: 20,paddingLeft: 40,paddingRight: 40,lineHeight: 1.5,flexDirection: 'column' },
@@ -366,13 +381,13 @@ return str
                          <Text >ACTUAL : {(actual_karat(receipt?.net_weight/receipt?.total_weight*100)).karat}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
-                         <Text >{parseFloat(receipt.total_weight).toFixed(8)}</Text>   
+                         <Text >{parseFloat(receipt.total_weight).toFixed(mxLenTotalWeight)} </Text>   
                      </View>
                      <View style={[styles.tbody]}>
-                         <Text >{parseFloat(receipt.net_weight).toFixed(8)}</Text>   
+                         <Text >{parseFloat(receipt.net_weight).toFixed(mxLenNetWeight)}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
-                         <Text >{parseFloat(receipt.pound).toFixed(8)}</Text>   
+                         <Text >{parseFloat(receipt.pound).toFixed(mxLenPound)}</Text>   
                      </View>
                      <View style={[styles.tbody]}>
                          <Text >{receipt.status}</Text>   
@@ -399,6 +414,7 @@ return str
                     <InvoiceTitle  />
                     <Address/>
                     {/* <UserAddress/> */}
+                    {/* <Text>{mxLen}</Text> */}
                     <View style={{marginTop:"20px"}}><Text>Items</Text></View>
                     <TableHead/>
                     <TableBody/>
