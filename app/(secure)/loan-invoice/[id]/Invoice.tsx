@@ -399,10 +399,6 @@ return str
                     <InvoiceTitle  />
                     <Address/>
                     {/* <UserAddress/> */}
-                    <Text>
-                        {total_mx}
-                        {JSON.stringify(arr)}
-                    </Text>
                     <View style={{marginTop:"20px"}}><Text>Items</Text></View>
                     <TableHead/>
                     <TableBody/>
