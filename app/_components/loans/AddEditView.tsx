@@ -265,7 +265,7 @@ function AddEditView({
   }, 0);
 
   const total_mx = arr.reduce(function (acc: any, obj: any) {
-    const fValue:any=parseFloat(obj.pound).toFixed(8)
+    const fValue:any=parseFloat(obj.pound)
 
     return (
       acc +

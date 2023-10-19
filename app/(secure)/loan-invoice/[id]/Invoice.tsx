@@ -53,7 +53,7 @@ return str
            
            }
    const amountValue=(receipt:any)=>{
-    const pound:any=parseFloat(receipt.pound).toFixed(8)
+    const pound:any=parseFloat(receipt.pound)
    return actual_karat(receipt?.net_weight/receipt?.total_weight*100).value*pound
 
    }
@@ -82,7 +82,7 @@ return decimalOnly
         const mxLenTotalWeight:any=Math.max(...Object.values(loan?.items).flat().map((o:any) => (getFloat(o.total_weight)).toString().length))
   
         const total_mx = arr.reduce(function (acc: any, obj: any) {
-            const fValue:any=parseFloat(obj.pound).toFixed(8)
+            const fValue:any=parseFloat(obj.pound)
             return (
               acc + ((parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *(fValue ? fValue : 0))
             );
@@ -238,7 +238,7 @@ return decimalOnly
                     <Text>{(loan?.estimated_price_old/total_pounds).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(8)}</Text>   
+                    <Text>{total_pounds}</Text>   
                 </View>
                 <View style={styles.tbody}>
                 <Text>{parseFloat(loan?.estimated_price_old).toFixed(2)}</Text>   
@@ -252,7 +252,7 @@ return decimalOnly
                     <Text>{(loan?.loan_price_old/total_pounds).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(8)}</Text>   
+                    <Text>{total_pounds}</Text>   
                 </View>
                 <View style={styles.tbody}>
                 <Text>{parseFloat(loan?.loan_price_old).toFixed(2)}</Text>   
@@ -266,7 +266,7 @@ return decimalOnly
                     <Text>{(loan?.requested_loan/total_pounds).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(8)}</Text>   
+                    <Text>{total_pounds}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat(loan?.requested_loan).toFixed(2)}</Text>   
@@ -287,7 +287,7 @@ return decimalOnly
                     <Text>{parseFloat(i?.gold_rate).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{parseFloat(total_pounds).toFixed(8)}</Text>   
+                    <Text>{parseFloat(total_pounds)}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{(i?.gold_rate*total_pounds).toFixed(2)}</Text>   
@@ -309,7 +309,7 @@ return decimalOnly
                     <Text>{parseFloat(rate?.cmp_rate).toFixed(2)}</Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(8)}</Text>   
+                    <Text>{total_pounds}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat((total_pounds*rate?.cmp_rate).toString()).toFixed(2)}</Text>   
@@ -324,7 +324,7 @@ return decimalOnly
                  </Text>   
                 </View>
                 <View style={styles.tbody}>
-                    <Text>{total_pounds.toFixed(8)}</Text>   
+                    <Text>{total_pounds}</Text>   
                 </View>
                 <View style={styles.tbody}>
                     <Text>{parseFloat(loan?.expected_price_old).toFixed(2)}</Text>   
@@ -346,13 +346,13 @@ return decimalOnly
             <Text></Text>   
         </View>
         <View style={styles.theader3}>
-            <Text>{itm_total_net.toFixed(8)}</Text>   
+            <Text>{itm_total_net}</Text>   
         </View>
         <View style={styles.theader3}>
-            <Text>{itm_total_weight.toFixed(8)} </Text>   
+            <Text>{itm_total_weight} </Text>   
         </View>
         <View style={styles.theader3}>
-            <Text>{total_pounds.toFixed(8)} </Text>   
+            <Text>{total_pounds} </Text>   
         </View>
         <View style={styles.theader}>
             <Text> </Text>   

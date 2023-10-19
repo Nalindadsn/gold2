@@ -346,7 +346,7 @@ function AddEditShareLink({
 
   const total_pounds_add = tasks.reduce(function (acc: any, obj: any) {
     
-    const fValue:any=parseFloat(obj.pound).toFixed(8)
+    const fValue:any=parseFloat(obj.pound)
     return (
       acc +
       (parseFloat(obj.per_pound) ? parseFloat(obj.per_pound) : 0) *
@@ -355,7 +355,7 @@ function AddEditShareLink({
   }, 0);
 
   const total_mx = arr.reduce(function (acc: any, obj: any) {
-    const fValue:any=parseFloat(obj.pound).toFixed(8)
+    const fValue:any=parseFloat(obj.pound)
 
     return (
       acc +
@@ -543,7 +543,7 @@ function AddEditShareLink({
         karat: karat,
         net_weight: net_weight,
         total_weight: total_weight,
-        pound: parseFloat(pValue).toFixed(8),
+        pound: parseFloat(pValue),
         per_pound: actual_karat(gPr).value,
         status: status ? status : "NOT ISSUE",
       };
