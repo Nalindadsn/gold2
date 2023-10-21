@@ -170,7 +170,7 @@ async function getAll() {
   const user= await User.findById(currentUserId);
 
 
-if (user.role=="ADMIN" || user.role=="COORDINATOR" ) {
+if (user.role=="ADMIN" || user.role=="COORDINATOR" || user.role=="ACCOUNTANT" || user.role=="FRONT-OFFICER" ) {
   
   return await Loan.aggregate([
     {
