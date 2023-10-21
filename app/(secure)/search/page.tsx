@@ -119,14 +119,10 @@ function Edit() {
                                   No of installments : {i?.installments?.length}
                                   <br />
                                   Amount : {total_loan_amount(i?.installments)}
-
-
                                   <br />
                                   Fines : {total_loan_fines(i?.installments)}
                                   <br />
                                   Amount + Fines : {parseFloat(total_loan_amount(i?.installments)+total_loan_fines(i?.installments)).toFixed(2)}
-
-
                                   {/* total_loan_amount */}
                                   <br />
                                   Loan LKR{" "}
