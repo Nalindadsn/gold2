@@ -72,9 +72,10 @@ function Loans() {
             {(user?.role=="ADMIN" || user?.role=="ACCOUNTANT") && (row.status=="APPROVED" || row.status=="COMPLETED" ||  row.status=="PROCESSING" ||  row.status=="REJECTED" )?<>
             <NavDropdown.Item  href={`/loans/account/edit/${row.id}?id=${row?.customer[0]?._id}`}>Installments</NavDropdown.Item>
 </>:<></>}
-            {user?.role=="ADMIN"?<>
+{user?.role=="ADMIN" || user?.role=="COORDINATOR"   ?
+            <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>:""}
+            {user?.role=="ADMIN" ?<>
 
-            <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>
             <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item  
