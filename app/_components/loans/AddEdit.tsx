@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import {addMonths} from 'date-fns';
+
 import {
   useAlertService,
   useGuarantorService,
@@ -21,6 +23,7 @@ import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { AnyAaaaRecord } from "dns";
 export { AddEdit };
 
 function AddEdit({
@@ -54,6 +57,26 @@ function AddEdit({
   const watchNoOfMonth = watch("no_of_month");
   const watchloan_amount = watch("loan_amount");
   const watchExpectedPriceOld = watch("expected_price_old");
+  const watchFirst_installment = watch("first_installment");
+
+  
+const date = new Date(watchFirst_installment);
+
+const formatDate2 = (dateString: any) => {
+  const options: any = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
+
+const myDateV = addMonths(date, watchNoOfMonth);
+const myDate=formatDate2(myDateV)
+
+
+
+
   const { errors } = formState;
 
   const fields = {
@@ -288,14 +311,6 @@ function AddEdit({
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-  const formatDate2 = (dateString: any) => {
-    const options: any = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
     };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
@@ -573,6 +588,31 @@ function AddEdit({
       // toast.success(err);
     }
   };
+
+
+  function CommaFormatted(amount:any) {
+    var delimiter = ","; // replace comma if desired
+    var a = amount.split('.',2)
+    var d = a[1];
+    var i = parseInt(a[0]);
+    if(isNaN(i)) { return ''; }
+    var minus = '';
+    if(i < 0) { minus = '-'; }
+    i = Math.abs(i);
+    var n = new String(i);
+    var a:any = [];
+    while(n.length > 3) {
+      var nn = n.substr(n.length-3);
+      a.unshift(nn);
+      n = n.substr(0,n.length-3);
+    }
+    if(n.length > 0) { a.unshift(n); }
+    n = a.join(delimiter);
+    if(d.length < 1) { amount = n; }
+    else { amount = n + '.' + d; }
+    amount = minus + amount;
+    return amount;
+  }
   return (
     <>
       <div className="flex justify-between">
@@ -1443,16 +1483,7 @@ function AddEdit({
                         parseFloat(watchNoOfMonth)
                       )}{" "}
                     </label>
-
-                    {/* <input
-                      {...fields.expected_price_old}
-                      type="text"
-                      className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                        errors.expected_price_old ? "is-invalid" : ""
-                      }`}
-                      // onBlur={()=>()}
-                      //  onChange={(e) => setExpected_price_old(e.target.value)}
-                    /> */}
+                    <div>
                     <input
                       {...fields.expected_price_old}
                       type="expected_price_old"
@@ -1461,9 +1492,11 @@ function AddEdit({
                       }`}
 
                       //  onChange={(e) => setExpected_price_old(e.target.value)}
+
                     />
                     <div className="invalid-feedback">
                       {errors.expected_price_old?.message?.toString()}
+                    </div>
                     </div>
                   </div>
                   <div className="px-1 ">
@@ -1636,6 +1669,7 @@ function AddEdit({
                   <div className="invalid-feedback">
                     {errors.first_installment?.message?.toString()}
                   </div>
+                  
                 </div>
 
                 <div className="p-2">
@@ -1644,11 +1678,12 @@ function AddEdit({
                     <span className="text-red-500">*</span>
                   </label>
                   <input
-                    {...fields.last_installment}
-                    type="date"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    // {...fields.last_installment}
+                    type="text"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.last_installment ? "is-invalid" : ""
                     }`}
+                    value={myDate}
                   />
                   <div className="invalid-feedback">
                     {errors.last_installment?.message?.toString()}
