@@ -1104,7 +1104,7 @@ function AddEdit({
                   <input
                     {...fields.loan_amount}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border bg-gray-400 border-[#e0e0e0] m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.loan_amount ? "is-invalid" : ""
                     }`}
                     value={
@@ -1112,6 +1112,7 @@ function AddEdit({
                         ? parseFloat(watchExpectedPriceOld).toFixed(2)
                         : max_price.toFixed(2)
                     }
+                    disabled
                   />
                   <div className="invalid-feedback">
                     {errors.loan_amount?.message?.toString()}
