@@ -7,7 +7,9 @@ import {
   useAlertService,
   useGuarantorService,
   useLoanService,
+  useUserService
 } from "_services";
+
 import { useCallback, useEffect, useState } from "react";
 import { AddEdit as AddEditGuarantor } from "_components/guarantor";
 
@@ -274,6 +276,13 @@ function AddEdit({
     fetchReviews();
     fetchGuarantor();
   }, [fetchReviews, fetchGuarantor]);
+
+
+  useEffect(() => {
+    
+    userService.getCurrent();
+  }, []);
+
 
   const formatDate = (dateString: any) => {
     const options: any = {
@@ -1554,7 +1563,7 @@ function AddEdit({
                   <input
                     {...fields.loan_amount}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.loan_amount ? "is-invalid" : ""
                     }`}
                     value={
@@ -1574,7 +1583,7 @@ function AddEdit({
                   <input
                     {...fields.payable_in_hand}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.payable_in_hand ? "is-invalid" : ""
                     }`}
                     value={payment_values_amount(
@@ -1600,7 +1609,7 @@ function AddEdit({
                   <input
                     {...fields.monthly_installment}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.monthly_installment ? "is-invalid" : ""
                     }`}
                     value={installmentV(
@@ -1614,6 +1623,9 @@ function AddEdit({
                   </div>
                 </div>
               </div>
+              {user?.role=="ADMIN" || user?.role=="COORDINATOR" ?<>
+              
+              
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-2">
                   <label className="form-label ml-2 ">
@@ -1650,6 +1662,7 @@ function AddEdit({
                 </div>
 
               </div>
+              </>:""}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2"></div>
