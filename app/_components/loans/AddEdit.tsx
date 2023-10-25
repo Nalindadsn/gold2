@@ -622,6 +622,8 @@ const myDate=formatDate2(myDateV)
         <div>
           <div className="relative mr-4 inline-block">
             <div className="text-gray-500 cursor-pointer w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center">
+            {loan ? (<>
+            
               <a href={`/loan-invoice/${loan?.id}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -641,6 +643,9 @@ const myDate=formatDate2(myDateV)
                   <rect x="7" y="13" width="10" height="8" rx="2" />
                 </svg>
               </a>
+            
+            </>):""}
+              
             </div>
           </div>
 
@@ -1171,7 +1176,7 @@ const myDate=formatDate2(myDateV)
                 </div>
                 </div>
               </div>
-            <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-3 p-1 shadow-md mt-3 border">
+            <div className="grid grid-cols-1 space-x-1 bg-blue-50 border-1 border-blue-300 md:grid-cols-3 p-1 shadow-md mt-3 border mb-2">
  <div className="p-2">
                   <label className="form-label ml-2 ">
                     {" "}
@@ -1235,7 +1240,7 @@ const myDate=formatDate2(myDateV)
                 </div>
 
 </div>
-<div className="bg-yellow-50 border-1 border-red-300">
+<div className="bg-yellow-50 border-1 border-yellow-300">
 
 <h3 className="text-xl font-bold  pl-2 mt-3 pt-2">
                 MORTGAGE DETAILS
