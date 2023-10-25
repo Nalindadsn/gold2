@@ -362,7 +362,7 @@ function AddEdit({
           </div>
 
         </div>
-        
+        <div>test</div>
         <h1 className="font-bold mt-2 border px-3 bg-gray-100">Mailing address</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2 border">
         <div className="p-2">
@@ -452,7 +452,7 @@ function AddEdit({
             </div>
           </div>
         </div>
-        <h1 className="font-bold m-1">Other</h1>
+        {/* <h1 className="font-bold m-1">Other</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2">
           <div className="p-2">
@@ -487,7 +487,7 @@ function AddEdit({
           </div>
 
 
-        </div>
+        </div> */}
 
         <div className="p-2">
 
