@@ -1231,21 +1231,23 @@ function AddEdit({
                   </div>
                 </div>
 
-                <div className="p-2 ml-1">
-                  <label className="form-label ml-2 ">
-                    Estimated Price <span className="text-red-500">*</span>
-                  </label>
+
+                <div className="p-2">
+                  <label className="form-label ml-2 ">Branch</label>
                   <input
-                    {...fields.estimated_price_old}
-                    type="text"
+                    {...fields.mortgage_branch}
+                    type="mortgage_branch"
                     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.estimated_price_old ? "is-invalid" : ""
+                      errors.mortgage_branch ? "is-invalid" : ""
                     }`}
                   />
                   <div className="invalid-feedback">
-                    {errors.estimated_price_old?.message?.toString()}
+                    {errors.mortgage_branch?.message?.toString()}
                   </div>
                 </div>
+
+
+
                 <div className="p-2">
                   <label className="form-label ml-2 ">
                     Loan Price <span className="text-red-500">*</span>
@@ -1303,21 +1305,21 @@ function AddEdit({
 
               <div className="grid grid-cols-1 md:grid-cols-2  border-t">
                
-
-                <div className="p-2">
-                  <label className="form-label ml-2 ">Branch</label>
+              <div className="p-2 ml-1">
+                  <label className="form-label ml-2 ">
+                    Estimated Price <span className="text-red-500">*</span>
+                  </label>
                   <input
-                    {...fields.mortgage_branch}
-                    type="mortgage_branch"
+                    {...fields.estimated_price_old}
+                    type="text"
                     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.mortgage_branch ? "is-invalid" : ""
+                      errors.estimated_price_old ? "is-invalid" : ""
                     }`}
                   />
                   <div className="invalid-feedback">
-                    {errors.mortgage_branch?.message?.toString()}
+                    {errors.estimated_price_old?.message?.toString()}
                   </div>
                 </div>
-
                 <div className="p-2">
                   <label className="form-label ml-2 ">Mortgager Name</label>
                   <input
