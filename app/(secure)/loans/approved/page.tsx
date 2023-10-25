@@ -159,8 +159,8 @@ function Loans() {
         sortable: true,
       },
       {
-        name: "Expected Price",
-        selector: (row: any) => row.expected_price_old,
+        name: "Loan Amount",
+        selector: (row: any) => row.loan_amount,
         sortable: true,
       },
     {

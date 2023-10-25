@@ -982,7 +982,7 @@ function AddEdit({
                 <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                   <div className="px-1 w-full">
                     <label className="form-label ml-2 ">
-                      Expected Price <span className="text-red-500">*</span>
+                      Expected Amount <span className="text-red-500">*</span>
                       {payment_values(
                         parseFloat(watchExpectedPriceOld),
                         parseFloat(status),

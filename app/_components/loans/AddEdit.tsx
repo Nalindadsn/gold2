@@ -819,8 +819,9 @@ function AddEdit({
                   >
                     <option value="">-select option</option>
                     {/* <option className="PENDING">PENDING</option> */}
+
                     <option className="PROCESSING">PROCESSING</option>
-                    <option className="APPROVED">APPROVED</option>
+                    <option className="APPROVED">PROCEED</option>
                     <option className="REJECTED">REJECTED</option>
                     <option className="COMPLETED">COMPLETED</option>
                   </select>
