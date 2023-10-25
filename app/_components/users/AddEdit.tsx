@@ -280,7 +280,7 @@ function AddEdit({
         </div>
 
         <h1 className="font-bold mt-1 bg-gray-800 text-white text-2xl p-2">Residential Details</h1>
-        <h1 className="font-bold px-3 bg-gray-100">Permanent Address</h1>
+        <h1 className="font-bold px-3 bg-gray-100">Address in National Identity Card</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2 border">
         <div className="p-2">
             <label className="form-label">Line One</label>
@@ -363,7 +363,7 @@ function AddEdit({
 
         </div>
         
-        <h1 className="font-bold mt-2 border px-3 bg-gray-100">Temporally Address</h1>
+        <h1 className="font-bold mt-2 border px-3 bg-gray-100">Mailing address</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2 border">
         <div className="p-2">
             <label className="form-label">Line One</label>
