@@ -278,6 +278,7 @@ function AddEdit({
   }, [fetchReviews, fetchGuarantor]);
 
 
+  const userService = useUserService();
   useEffect(() => {
     
     userService.getCurrent();
@@ -577,6 +578,7 @@ function AddEdit({
       // toast.success(err);
     }
   };
+  
   return (
     <>
       <div className="flex justify-between">
