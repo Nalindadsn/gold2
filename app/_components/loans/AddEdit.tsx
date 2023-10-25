@@ -1235,11 +1235,11 @@ const myDate=formatDate2(myDateV)
                 </div>
 
 </div>
+<div className="bg-yellow-50 border-1 border-red-300">
 
-<h3 className="text-xl font-bold border-t-2 pl-2 mt-3 pt-2">
+<h3 className="text-xl font-bold  pl-2 mt-3 pt-2">
                 MORTGAGE DETAILS
               </h3>
-              
               <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
                 <div className="w-full hidden md:block"></div>
                 <div
@@ -1259,7 +1259,7 @@ const myDate=formatDate2(myDateV)
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 -md mt-3 ">
+              <div className="grid grid-cols-1 space-x-1  md:grid-cols-2 p-1 -md mt-3 ">
               <div className="p-2">
                   <label className="form-label ml-2 ">
                     Plowing Center <span className="text-red-500">*</span>
@@ -1346,7 +1346,6 @@ const myDate=formatDate2(myDateV)
                 </div>
               </div> */}
               </div>
-
 
               <div className="grid grid-cols-1 md:grid-cols-2  border-t">
                
@@ -1469,8 +1468,11 @@ const myDate=formatDate2(myDateV)
                   </div>
                 </div>
               </div>
+</div>
+              
+
             </div>
-            <div className=" border-gray-800 border-1 shadow-sm mb-3 mt-3">
+            <div className="  border-1 shadow-sm mb-3 mt-3  border-green-300 bg-green-50">
               
               <div className="p-2">
                 <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
