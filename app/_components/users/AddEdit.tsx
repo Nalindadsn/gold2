@@ -283,7 +283,7 @@ function AddEdit({
         <h1 className="font-bold px-3 bg-gray-100">Address in National Identity Card</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2 border">
         <div className="p-2">
-            <label className="form-label">Line One</label>
+            <label className="form-label">Address Line 1</label>
             <input
               {...fields.line_one_fixed}
               type="text"
@@ -296,7 +296,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">Line Two</label>
+            <label className="form-label">Address Line 2</label>
             <input
               {...fields.line_two_fixed}
               type="text"
@@ -309,7 +309,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">Line Three</label>
+            <label className="form-label">Address Line 3</label>
             <input
               {...fields.line_three_fixed}
               type="text"
@@ -322,7 +322,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">Postal Code</label>
+            <label className="form-label">City (Postal)</label>
             <input
               {...fields.zip_fixed}
               type="text"
@@ -366,7 +366,7 @@ function AddEdit({
         <h1 className="font-bold mt-2 border px-3 bg-gray-100">Mailing address</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2 border">
         <div className="p-2">
-            <label className="form-label">Line One</label>
+            <label className="form-label">Address Line 1</label>
             <input
               {...fields.line_one_tmp}
               type="text"
@@ -380,7 +380,7 @@ function AddEdit({
           </div>
 
           <div className="p-2">
-            <label className="form-label">Line Two</label>
+            <label className="form-label">Address Line 2</label>
             <input
               {...fields.line_two_tmp}
               type="text"
@@ -395,7 +395,7 @@ function AddEdit({
 
           
           <div className="p-2">
-            <label className="form-label">Line Three</label>
+            <label className="form-label">Address Line 3</label>
             <input
               {...fields.line_three_tmp}
               type="text"
@@ -409,7 +409,7 @@ function AddEdit({
           </div>
           
           <div className="p-2">
-            <label className="form-label">Postal Code </label>
+            <label className="form-label">City (Postal) </label>
             <input
               {...fields.zip_tmp}
               type="text"
