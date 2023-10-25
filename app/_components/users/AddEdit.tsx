@@ -56,7 +56,7 @@ function AddEdit({
 
     username: register("username", {}),
 
-    line_one_fixed: register("line_one_fixed", {}),
+    line_one_fixed: register("line_one_fixed", { required: "Address Line 1 is required" }),
     line_two_fixed: register("line_two_fixed", {}),
     line_three_fixed: register("line_three_fixed", {}),
     zip_fixed: register("zip_fixed", {}),
@@ -64,7 +64,7 @@ function AddEdit({
     district_fixed: register("district_fixed", {}),
 
     
-    line_one_tmp: register("line_one_tmp", {}),
+    line_one_tmp: register("line_one_tmp", { required: "Address Line 1 is required" }),
     line_two_tmp: register("line_two_tmp", {}),
     line_three_tmp: register("line_three_tmp", {}),
     zip_tmp: register("zip_tmp", {}),
