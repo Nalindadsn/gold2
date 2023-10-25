@@ -15,7 +15,7 @@ function FormGuarantor({ title, user,loan }: { title: string, user?: any,loan?:a
   const userData: any = userService.user;
   
     const [username, setUsername] = useState("");
-    const dataRelationship:any= loan?.guarantor.find((o:any) => o.user_id === user._id)
+    const dataRelationship:any= loan?.guarantor.find((o:any) => o?.user_id === user?._id)
     if(user){
 user.relationship=dataRelationship?.relationship
 
