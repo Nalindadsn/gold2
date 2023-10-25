@@ -118,11 +118,11 @@ function AddEdit({
     }),
 
     first_installment: register("first_installment", {
-      required: "First_installment is required",
+      // required: "First_installment is required",
     }),
 
     last_installment: register("last_installment", {
-      required: "Last installment date is required",
+      // required: "Last installment date is required",
     }),
 
     status: register("status", {
@@ -1222,7 +1222,7 @@ function AddEdit({
               <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 -md mt-3 ">
               <div className="p-2">
                   <label className="form-label ml-2 ">
-                    Mortgager <span className="text-red-500">*</span>
+                    Plowing Center <span className="text-red-500">*</span>
                   </label>
                   <input
                     {...fields.mortgage_cmp}
