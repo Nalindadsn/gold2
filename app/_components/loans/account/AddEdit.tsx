@@ -1414,7 +1414,7 @@ function AddEdit({
             <div className="grid grid-cols-1 space-x-1 bg-white md:grid-cols-2 p-1 -md mt-3 ">
               <div className="p-2">
                 <label className="form-label ml-2 ">
-                  Mortgager <span className="text-red-500">*</span>
+                Pawning Center <span className="text-red-500">*</span>
                 </label>
                 <input
                   {...fields.mortgage_cmp}
