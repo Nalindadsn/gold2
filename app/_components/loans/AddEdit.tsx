@@ -278,12 +278,7 @@ function AddEdit({
   }, [fetchReviews, fetchGuarantor]);
 
 
-  const userService = useUserService();
-  useEffect(() => {
-    
-    userService.getCurrent();
-  }, []);
-
+ 
 
   const formatDate = (dateString: any) => {
     const options: any = {
@@ -578,7 +573,6 @@ function AddEdit({
       // toast.success(err);
     }
   };
-  
   return (
     <>
       <div className="flex justify-between">
@@ -1625,9 +1619,8 @@ function AddEdit({
                   </div>
                 </div>
               </div>
-              {user?.role=="ADMIN" || user?.role=="COORDINATOR" ?<>
-              
-              
+            -  {JSON.stringify(user)}-
+            {user?.role=="ADMIN" || user?.role=="COORDINATOR"?<>
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-2">
                   <label className="form-label ml-2 ">
@@ -1663,8 +1656,7 @@ function AddEdit({
                   </div>
                 </div>
 
-              </div>
-              </>:""}
+              </div></>:""}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2"></div>

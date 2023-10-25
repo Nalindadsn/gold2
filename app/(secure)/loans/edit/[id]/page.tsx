@@ -27,11 +27,16 @@ function Edit(props: any) {
         loanService.getById(props.params.id)
         rateService.getSelected()
     }, [router]);
-
+    const userService = useUserService();
+    const user:any = userService.currentUser;
+    useEffect(() => {
+      
+      userService.getCurrent();
+    }, []);
     return loan
         ?(<>
         {/* <AddEditItem title="Edit Loan" loan={loan} /> */}
-        <AddEdit title="EDIT LOAN DETAILS" loan={loan}  rate={rate}/>
+        <AddEdit title="EDIT LOAN DETAILS" loan={loan}  rate={rate} user={user}/>
         
         </> )
         : 
