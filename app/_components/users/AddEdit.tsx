@@ -107,8 +107,8 @@ function AddEdit({
         minLength: (v) => v.length == 10,
       },
     }),
-    role: register("role", { required: "role is required" }),
-    status: register("status", { required: "status is required" }),
+    role: register("role", {}),
+    status: register("status", {  }),
 
   };
   async function onSubmit(data: any) {
