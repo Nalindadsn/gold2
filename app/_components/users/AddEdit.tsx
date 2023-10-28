@@ -207,7 +207,7 @@ function AddEdit({
           </div>
 
           <div className="p-2">
-            <label className="form-label">phone</label>
+            <label className="form-label">Phone</label>
             <input
               {...fields.phone}
               type="text"
@@ -218,7 +218,7 @@ function AddEdit({
             </div>
           </div>
           <div className="p-2">
-            <label className="form-label">whatsapp</label>
+            <label className="form-label">Whatsapp</label>
             <input
               {...fields.whatsapp}
               type="text"
