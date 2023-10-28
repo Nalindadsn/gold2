@@ -80,7 +80,9 @@ function AddEdit({
     name_of_office: register("name_of_office", {
       required: "Office is required",
     }),
-    income: register("income", { required: "Income is required" }),
+    income: register("income", { 
+      required: "Income is required"
+     }),
     phone: register("phone", {
       required: "Mobile Number is required",
       pattern: {
@@ -272,7 +274,7 @@ function AddEdit({
           </div>
 
           <div className="p-2">
-            <label className="form-label">income</label>
+            <label className="form-label">Average Monthly Income</label>
             <input
               {...fields.income}
               type="text"
