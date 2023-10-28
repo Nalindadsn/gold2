@@ -1,63 +1,34 @@
 "use client"
-import {useForm} from "react-hook-form";
-
+import React, { useState } from "react";
+ 
 function App() {
-    const {register, handleSubmit} = useForm();
-
-    function onSubmitButton(data:any) {
-        console.log(data)
-    }
-
-    return (
-        <>
-            <h1>Order weather</h1>
-            <form onSubmit={handleSubmit(onSubmitButton)}>
-                <input
-                    {...register("fullName")}
-                    type="text"
-                    placeholder="Name and surname"
-                    id="name"
-                />
-                <input
-                    {...register("city")}
-                    type="text"
-                    placeholder="City"
-                    id="city"
-                />
-                <p>I would like to:</p>
-                <label htmlFor="field-rain">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="rain"
-                        id="field-rain"
-                    />
-                    Rain
-                </label>
-                <label htmlFor="field-wind">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="wind"
-                        id="field-wind"
-                    />
-                    Lots of wind
-                </label>
-                <label htmlFor="field-sun">
-                    <input
-                        {...register("weather")}
-                        type="radio"
-                        value="sun"
-                        id="field-sun"
-                    />
-                    Sunny
-                </label>
-                <button type="submit">
-                    Send
-                </button>
-            </form>
-        </>
-    );
+  const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
+ 
+  return (
+    <div className="App">
+      <h3><a href="https://cluemediator.com">Clue Mediator</a></h3>
+      {inputList.map((x, i) => {
+        return (
+          <div className="box">
+            <input
+              name="firstName"
+              value={x.firstName}
+            />
+            <input
+              className="ml10"
+              name="lastName"
+              value={x.lastName}
+            />
+            <div className="btn-box">
+              {inputList.length !== 1 && <button className="mr10">Remove</button>}
+              {inputList.length - 1 === i && <button>Add</button>}
+            </div>
+          </div>
+        );
+      })}
+      <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+    </div>
+  );
 }
-
+ 
 export default App;
