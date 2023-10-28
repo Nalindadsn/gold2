@@ -402,7 +402,7 @@ const myDate=formatDate2(myDateV)
           <>
             <br />
             <span className="">
-              <span className="mx-1 bg-green-500 rounded-full text-white py-0 px-2  text-sm whitespace-nowrap">
+              <span className="mx-1 border bg-green-500 rounded-full text-white py-0 px-2  text-sm whitespace-nowrap">
                 LKR {max_price.toFixed(2)}
               </span>{" "}
               is Our Maximum Amount.
@@ -1168,7 +1168,7 @@ const myDate=formatDate2(myDateV)
                     {...fields.form_number}
                     type="form_number"
                     // style={{border:" solid #000"}}
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md  border-2 border-blue-500 bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.form_number ? "is-invalid" : ""
                     }`}
                   />
@@ -1489,7 +1489,7 @@ const myDate=formatDate2(myDateV)
             <div className="  border-1 shadow-sm mb-3 mt-3 text-white border-green-500 bg-green-500">
               
               <div className="p-2">
-                <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
+                <div className="  -mx-1 pt-2 border-b md:border-b-0">
                   <div className="px-1 w-full">
                     <label className="form-label ml-2 ">
                       Expected Price <span className="text-red-500">*</span>
@@ -1517,24 +1517,11 @@ const myDate=formatDate2(myDateV)
                   </div>
                   <div className="px-1 ">
                     <div>
-                     
-                     
-                      {/* {
-                      
-                      ((payment_values_amount(
-                      parseFloat(watchExpectedPriceOld),
-                      parseFloat(status),
-                      parseFloat(watchNoOfMonth)
-                    )) >0)?"":""
-                    
-                    } */}
-                    {
+                    {/* {
                       parseFloat(watchExpectedPriceOld) <= max_price
                         ? ""
                         : <><br/></>
-                    }
-
-
+                    } */}
                       <label className="form-label  ">
                         No of Month
                         <span className="text-red-500">{" *"} </span>

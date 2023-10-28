@@ -63,3 +63,9 @@ td{
     90%  {opacity: 1;}
     100% {opacity: 0;}
 }
+.invalid-feedback{
+    background-color: #ff4255;
+    color: #fff;
+    padding: 5px;
+    margin: 3px;
+}
