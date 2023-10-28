@@ -313,7 +313,7 @@ function AddEdit({
               {errors.line_two_fixed?.message?.toString()}
             </div>
           </div>
-          <div className="p-2">
+          {/* <div className="p-2">
             <label className="form-label">Address Line 3</label>
             <input
               {...fields.line_three_fixed}
@@ -325,7 +325,7 @@ function AddEdit({
             <div className="invalid-feedback">
               {errors.line_three_fixed?.message?.toString()}
             </div>
-          </div>
+          </div> */}
           <div className="p-2">
             <label className="form-label">City (Postal)</label>
             <input
@@ -399,7 +399,7 @@ function AddEdit({
           </div>
 
           
-          <div className="p-2">
+          {/* <div className="p-2">
             <label className="form-label">Address Line 3</label>
             <input
               {...fields.line_three_tmp}
@@ -411,7 +411,7 @@ function AddEdit({
             <div className="invalid-feedback">
               {errors.line_three_tmp?.message?.toString()}
             </div>
-          </div>
+          </div> */}
           
           <div className="p-2">
             <label className="form-label">City (Postal) </label>
