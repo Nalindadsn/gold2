@@ -37,7 +37,8 @@ const formatDate = (dateString: any) => {
   const column: any = [
     {
       name: "ID",
-      selector: (row: any) => (<><span  style={{ whiteSpace: "nowrap",marginBottom:"5px" }}>ID : {row.id}</span> 
+      selector: (row: any) => (<>
+      {/* <span  style={{ whiteSpace: "nowrap",marginBottom:"5px" }}>ID : {row.id}</span>  */}
         <div style={{ whiteSpace: "nowrap",marginBottom:"5px" }} className="">
                 <Link
                   href={`/loans/add/${row.id}`}
