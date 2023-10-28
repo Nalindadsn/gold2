@@ -75,7 +75,7 @@ function AddEdit({
 
     occupation: register("occupation", { required: "Occupation is required" }),
     nature_of_emp: register("nature_of_emp", {
-      required: "Nature of Emp is required",
+      // required: "Nature of Emp is required",
     }),
     name_of_office: register("name_of_office", {
       required: "Office is required",
@@ -95,6 +95,11 @@ function AddEdit({
       required: "NIC is required",
       validate: {
         minLength: (v) => v.length == 10 || v.length == 12,
+      },
+      
+      pattern: {
+        value: /^[0-9]+$/,
+        message: "Please enter a number",
       },
     }),
     whatsapp: register("whatsapp", {
@@ -238,7 +243,7 @@ function AddEdit({
               {errors.occupation?.message?.toString()}
             </div>
           </div>
-
+{/* 
           <div className="p-2">
             <label className="form-label">Company Type</label>
             <input
@@ -251,7 +256,7 @@ function AddEdit({
             <div className="invalid-feedback">
               {errors.nature_of_emp?.message?.toString()}
             </div>
-          </div>
+          </div> */}
           <div className="p-2">
             <label className="form-label">Work Place</label>
             <input
