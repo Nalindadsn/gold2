@@ -1185,12 +1185,23 @@ const myDate=formatDate2(myDateV)
                     Loan Amount (Requested){" "}
                     <span className="text-red-500">*</span>
                   </label>
-                  <input
+                  <select
                     {...fields.requested_loan}
-                    type="requested_loan"
                     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.requested_loan ? "is-invalid" : ""
-                    }`}
+                    }`}>
+                      
+                      <option value="">-SELECT MONTH-</option>
+                        <option value="60">60</option>
+                        <option value="48">48</option>
+                        <option value="36">36</option>
+                        <option value="24">24</option>
+                        <option value="18">18</option>
+                        <option value="12">12</option>
+                        <option value="6">6</option>
+
+                  </select>
+                  <input
                   />
                   <div className="invalid-feedback">
                     {errors.requested_loan?.message?.toString()}
