@@ -1177,7 +1177,7 @@ const myDate=formatDate2(myDateV)
                 </div>
                 </div>
               </div>
-            <div className="grid grid-cols-1 space-x-1 bg-blue-50 border-1 border-blue-300 md:grid-cols-3 p-1 shadow-md mt-3 border mb-3">
+            <div className="grid grid-cols-1 space-x-1 bg-blue-50 border-1 border-blue-500 md:grid-cols-3 p-1 shadow-md mt-3 border mb-3">
  <div className="p-2">
                   <label className="form-label ml-2 ">
                     {" "}
