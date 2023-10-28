@@ -1290,7 +1290,7 @@ const myDate=formatDate2(myDateV)
               <div className="grid grid-cols-1 space-x-1  md:grid-cols-2 p-1 -md mt-3 ">
               <div className="p-2">
                   <label className="form-label ml-2 ">
-                    Plowing Center <span className="text-red-500">*</span>
+                    Pawning Center <span className="text-red-500">*</span>
                   </label>
                   <input
                     {...fields.mortgage_cmp}
