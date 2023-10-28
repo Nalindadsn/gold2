@@ -1163,7 +1163,7 @@ const myDate=formatDate2(myDateV)
                   className="px-2 flex w-full  -mx-1 pt-2 border-b md:border-b-0"
                   style={{ whiteSpace: "nowrap" }}
                 >
-                  <label className="form-label mt-2">Form Number</label>
+                  <label className="form-label mt-2 text-blue-500 font-bold">Form Number</label>
                   <input
                     {...fields.form_number}
                     type="form_number"
