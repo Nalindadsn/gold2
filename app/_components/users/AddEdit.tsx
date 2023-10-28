@@ -182,7 +182,7 @@ function AddEdit({
           </div>
 
           <div className="p-2">
-            <label className="form-label">nic</label>
+            <label className="form-label">NIC</label>
             <input
               {...fields.nic}
               type="text"
