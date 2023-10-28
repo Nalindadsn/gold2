@@ -1249,7 +1249,7 @@ const myDate=formatDate2(myDateV)
                 </div>
 
 </div>
-<div className="bg-yellow-300 border-1 border-yellow-300">
+<div className="bg-yellow-400 text-white border-1 border-yellow-300">
 
 <h3 className="text-xl font-bold  pl-2 mt-3 pt-2">
                 MORTGAGE DETAILS
@@ -1486,7 +1486,7 @@ const myDate=formatDate2(myDateV)
               
 
             </div>
-            <div className="  border-1 shadow-sm mb-3 mt-3 text-white border-green-500 bg-green-50">
+            <div className="  border-1 shadow-sm mb-3 mt-3 text-white border-green-500 bg-green-500">
               
               <div className="p-2">
                 <div className="flex w-full  -mx-1 pt-2 border-b md:border-b-0">
