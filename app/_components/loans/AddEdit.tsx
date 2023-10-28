@@ -1218,7 +1218,7 @@ const myDate=formatDate2(myDateV)
                 
                 <div className="p-2">
                   <label className="form-label ml-2 ">Status</label>
-{JSON.stringify(user)}
+{/* {JSON.stringify(user)} */}
                   <select
                     {...fields.status}
                     className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
@@ -1227,12 +1227,19 @@ const myDate=formatDate2(myDateV)
                   >
                     <option value="">-select option</option>
                     {/* <option className="PENDING">PENDING</option> */}
+{user?.role=="ADMIN" || user?.role=="COORDINATOR"  ?(<>
 
-                    <option className="PROCESSING">PROCESSING</option>
+  <option className="PROCESSING">PROCESSING</option>
                     <option className="PROCEED">PROCEED</option>
 
                     <option className="REJECTED">REJECTED</option>
                     <option className="COMPLETED">COMPLETED</option>
+</>):(<>
+
+  <option className="PROCESSING">PROCESSING</option>
+                    <option className="PROCEED">PROCEED</option>
+
+</>)}
                   </select>
 
                   <div className="invalid-feedback">
