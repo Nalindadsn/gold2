@@ -1,9 +1,8 @@
 "use client"
 import React from "react";
-import "chart.js/auto";
+  import "chart.js/auto";
 
 import { Line } from "react-chartjs-2";
-
 
 export default function Chart(data:any) {
   
