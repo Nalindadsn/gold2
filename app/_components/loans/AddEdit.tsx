@@ -1609,7 +1609,7 @@ const myDate=formatDate2(myDateV)
                   <input
                     {...fields.loan_amount}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-50 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.loan_amount ? "is-invalid" : ""
                     }`}
                     value={
@@ -1629,7 +1629,7 @@ const myDate=formatDate2(myDateV)
                   <input
                     {...fields.payable_in_hand}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-50 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.payable_in_hand ? "is-invalid" : ""
                     }`}
                     value={payment_values_amount(
@@ -1655,7 +1655,7 @@ const myDate=formatDate2(myDateV)
                   <input
                     {...fields.monthly_installment}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-50 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.monthly_installment ? "is-invalid" : ""
                     }`}
                     value={installmentV(
@@ -1697,7 +1697,7 @@ const myDate=formatDate2(myDateV)
                   <input
                     // {...fields.last_installment}
                     type="text"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-50 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-gray-200 m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
                       errors.last_installment ? "is-invalid" : ""
                     }`}
                     value={myDate}
