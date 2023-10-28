@@ -1734,7 +1734,7 @@ const myDate=formatDate2(myDateV)
           {loan && (
             <>
               <div className="flex  mt-3 pt-2 border-t">
-                <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl w-full">
+                <h1 className="py-1 px-3 block text-base font-semibold  sm:text-xl ">
                   GUARANTOR DETAILS
                 </h1>
                 {loan ? (
