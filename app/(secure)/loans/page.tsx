@@ -8,14 +8,7 @@ import { useLoanService, useUserService } from "_services";
 // import { FaUserCircle} from 'react-icons/fa';
 import { FaUserCircle } from "@react-icons/all-files/fa/FaUserCircle";
 
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  NavDropdown,
-  
-} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 export default Loans;
 
 function Loans() {
@@ -23,10 +16,10 @@ function Loans() {
   const loans: any = loanService.loans;
 
   const userService = useUserService();
-  const user:any = userService.currentUser;
+  const user: any = userService.currentUser;
   useEffect(() => {
     loanService.getAll();
-    
+
     userService.getCurrent();
   }, []);
   const formatDate = (dateString: any) => {
@@ -47,59 +40,99 @@ function Loans() {
       selector: (row: any) => row.id,
       sortable: true,
     },
-    
+
     {
-        name: "Form No",
-        selector: (row: any) => row.form_number,
-        sortable: true,
-      },
-    
-      {
-          name: "Status",
-          selector: (row: any) => row.status,
-          sortable: true,
-        },
-      
+      name: "Form No",
+      selector: (row: any) => row.form_number,
+      sortable: true,
+    },
+
+    {
+      name: "Status",
+      selector: (row: any) => row.status,
+      sortable: true,
+    },
+
     {
       name: "action",
       selector: (row: any) => (
         <>
-        
-        <NavDropdown title="Action" id="basic-nav-dropdown">
-            <NavDropdown.Item  href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}>
-            Backend Report
+          <NavDropdown title="Action" id="basic-nav-dropdown">
+            <NavDropdown.Item
+              href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}
+            >
+              Backend Report
             </NavDropdown.Item>
-            {(user?.role=="ADMIN" || user?.role=="ACCOUNTANT") && (row.status=="APPROVED" || row.status=="COMPLETED" ||  row.status=="PROCESSING" ||  row.status=="REJECTED" )?<>
-            <NavDropdown.Item  href={`/loans/account/edit/${row.id}?id=${row?.customer[0]?._id}`}>Installments</NavDropdown.Item>
-</>:<></>}
-{user?.role=="ADMIN" || user?.role=="COORDINATOR"   ?
-            <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>:""}
-            {user?.role=="ADMIN" ?<>
-
-            <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item  
-            onClick={() => loanService.delete(row.id)} 
-            disabled={row.isDeleting}>
-              {row.isDeleting ? (
-              <span className="spinner-border spinner-border-sm"></span>
+            {(user?.role == "ADMIN" || user?.role == "ACCOUNTANT") &&
+            (row.status == "PROCEED" ||
+              row.status == "COMPLETED" ||
+              row.status == "PROCESSING" ||
+              row.status == "REJECTED") ? (
+              <>
+                <NavDropdown.Item
+                  href={`/loans/account/edit/${row.id}?id=${row?.customer[0]?._id}`}
+                >
+                  Installments
+                </NavDropdown.Item>
+              </>
             ) : (
-              <span>Delete</span>
+              <></>
             )}
-
-            </NavDropdown.Item>
-            </>:<>
-            { row.status=="APPROVED" || row.status=="REJECTED"?             <NavDropdown.Item  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}>View</NavDropdown.Item>
-:            <NavDropdown.Item  href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}>Edit</NavDropdown.Item>
-}
-            </>
-    }
-
+            {user?.role == "ADMIN" || user?.role == "COORDINATOR" ? (
+              <NavDropdown.Item
+                href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}
+              >
+                Edit
+              </NavDropdown.Item>
+            ) : (
+              ""
+            )}
+            {user?.role == "ADMIN" ? (
+              <>
+                <NavDropdown.Item
+                  href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}
+                >
+                  View
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  onClick={() => loanService.delete(row.id)}
+                  disabled={row.isDeleting}
+                >
+                  {row.isDeleting ? (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  ) : (
+                    <span>Delete</span>
+                  )}
+                </NavDropdown.Item>
+              </>
+            ) : (
+              <>
+                {row.status == "PROCEED" || row.status == "REJECTED" ? (
+                  <NavDropdown.Item
+                    href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}
+                  >
+                    View
+                  </NavDropdown.Item>
+                ) : (
+                  <NavDropdown.Item
+                    href={`/loans/edit/${row.id}?id=${row?.customer[0]?._id}`}
+                  >
+                    Edit
+                  </NavDropdown.Item>
+                )}
+              </>
+            )}
           </NavDropdown>
-          {row.isDeleting ? (<><span>Deleting </span><span className="spinner-border spinner-border-sm"></span></>
-              
-            ) : ""}
-{/*         
+          {row.isDeleting ? (
+            <>
+              <span>Deleting </span>
+              <span className="spinner-border spinner-border-sm"></span>
+            </>
+          ) : (
+            ""
+          )}
+          {/*         
         <a
             href={`/loan-invoice/${row.id}?id=${row?.customer[0]?._id}`}
             className="btn btn-sm btn-success me-1  focus:bg-yellow-500 whitespace-nowrap my-1"
@@ -120,7 +153,7 @@ function Loans() {
           View
         </Link></>
         :
-        row.status=="APPROVED" || row.status=="REJECTED"? <Link
+        row.status=="PROCEED" || row.status=="REJECTED"? <Link
           href={`/loans/view/${row.id}?id=${row?.customer[0]?._id}`}
           className="btn btn-sm btn-primary me-1  focus:bg-yellow-500 mb-1"
         >
@@ -132,9 +165,9 @@ function Loans() {
         >
           Edit
         </Link>} */}
-<br/>
+          <br />
 
-{/* 
+          {/* 
           {user?.role=="ADMIN"?
 
           <button
@@ -152,34 +185,41 @@ function Loans() {
           :""} */}
         </>
       ),
-
     },
 
-      {
-        name: "Name",
-        selector: (row: any) =><><FaUserCircle className="float-left mr-2 text-xl" />{row?.customer[0]?.fullName}</> ,
-        sortable: true,
-      },
-      {
-        name: "NIC",
-        selector: (row: any) =><>{row?.customer[0]?.nic}</> ,
-        sortable: true,
-      },
-      {
-        name: "Loan Amount",
-        selector: (row: any) => row.loan_amount,
-        sortable: true,
-      },
+    {
+      name: "Name",
+      selector: (row: any) => (
+        <>
+          <FaUserCircle className="float-left mr-2 text-xl" />
+          {row?.customer[0]?.fullName}
+        </>
+      ),
+      sortable: true,
+    },
+    {
+      name: "NIC",
+      selector: (row: any) => <>{row?.customer[0]?.nic}</>,
+      sortable: true,
+    },
+    {
+      name: "Loan Amount",
+      selector: (row: any) => row.loan_amount,
+      sortable: true,
+    },
     {
       name: "Created At",
-      selector: (row: any) => row.createdAt+" by " +row?.officer[0]?.fullName,
+      selector: (row: any) =>
+        row.createdAt + " by " + row?.officer[0]?.fullName,
       sortable: true,
     },
   ];
   const [records, setRecords] = useState(null);
   const handleFilter = (event: any) => {
     const newData = loans?.filter((row: any) =>
-      row?.customer[0]?.nic.toLowerCase().includes(event.target.value.toLowerCase())
+      row?.customer[0]?.nic
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
     );
     setRecords(newData);
   };
@@ -189,7 +229,7 @@ function Loans() {
       <h1 className="text-2xl font-bold  pt-2 tracking-wider uppercase  ">
         - Loans
       </h1>
-{/* {JSON.stringify(loans)} */}
+      {/* {JSON.stringify(loans)} */}
       <div>
         <div>
           <div>{/* <TableBody /> */}</div>
@@ -204,95 +244,99 @@ function Loans() {
         >
           <label className="form-label mt-2">NIC</label>
           <input
-           type="text" onChange={handleFilter}
+            type="text"
+            onChange={handleFilter}
             className="w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md "
             name="form_number"
           />
         </div>
         <div className="invalid-feedback"></div>
       </div>
-{loans?<DataTable
-        columns={column}
-        data={records ? records : loans}
-        pagination
-        selectableRows
-      ></DataTable>:<div>
-      <div>
-      <div className="flex items-center p-8 bg-white shadow ">
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+      {loans ? (
+        <DataTable
+          columns={column}
+          data={records ? records : loans}
+          pagination
+          selectableRows
+        ></DataTable>
+      ) : (
+        <div>
+          <div>
+            <div className="flex items-center p-8 bg-white shadow ">
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow ">
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow ">
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow ">
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+              <div className="flex flex-col gap-2 w-9/12">
+                <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+                <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
+              </div>
+            </div>
           </div>
         </div>
-      <div className="flex items-center p-8 bg-white shadow ">
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-        </div>
-      <div className="flex items-center p-8 bg-white shadow ">
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-        </div>
-      <div className="flex items-center p-8 bg-white shadow ">
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-          <div className="flex flex-col gap-2 w-9/12">
-            <span className="w-11/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-            <span className="w-9/12 bg-gray-300 h-2 rounded-full animate-pulse"></span>
-          </div>
-        </div>
-      </div>
-    </div>}
-      
+      )}
     </>
   );
 
@@ -312,8 +356,7 @@ function Loans() {
             <br />
             <div className="bg-white shadow-sm p-1">
               <FaUserCircle className="float-left mr-2 text-5xl" />{" "}
-              {loan?.customer[0]?.fullName}{" "}
-              {loan?.customer[0]?.gender}
+              {loan?.customer[0]?.fullName} {loan?.customer[0]?.gender}
               <br />
               {loan?.customer[0]?.nic}
             </div>
@@ -362,12 +405,12 @@ function Loans() {
           <div>
             <Spinner />
             <div className="row">
-    <div className="skeleton"></div>
-    <div className="skeleton"></div>
-    <div className="skeleton"></div>
-    <div className="skeleton"></div>
-    <div className="skeleton"></div>
-  </div>
+              <div className="skeleton"></div>
+              <div className="skeleton"></div>
+              <div className="skeleton"></div>
+              <div className="skeleton"></div>
+              <div className="skeleton"></div>
+            </div>
           </div>
         </div>
       );

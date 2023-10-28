@@ -29,7 +29,7 @@ async function getSummary() {
     {
       "$match": {
         "status": { 
-          "$in": ['APPROVED','COMPLETED'] 
+          "$in": ['PROCEED','COMPLETED'] 
         
       }}
     },
@@ -69,7 +69,7 @@ async function getSummary() {
     {
       "$match": {
         "status": { 
-          "$in": ['APPROVED','COMPLETED'] 
+          "$in": ['PROCEED','COMPLETED'] 
         
       }}
     },
@@ -98,7 +98,7 @@ const totalSales2:any= await Loan.aggregate([
   {
     "$match": {
       "status": { 
-        "$in": ['APPROVED','COMPLETED'] 
+        "$in": ['PROCEED','COMPLETED'] 
       
     }}
   },
