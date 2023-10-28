@@ -92,9 +92,11 @@ const myDate=formatDate2(myDateV)
     }),
     loan_amount: register("loan_amount", {
       required: "Loan amount required",
+      disabled:true
     }),
     payable_in_hand: register("payable_in_hand", {
       required: "required",
+      disabled:true
     }),
     loan_price_old: register("loan_price_old", {
       required: "Loan amount is required",
@@ -122,6 +124,7 @@ const myDate=formatDate2(myDateV)
 
     monthly_installment: register("monthly_installment", {
       required: "This Field is required",
+      disabled:true
     }),
 
     mortgager_name: register("mortgager_name", {}),
@@ -146,6 +149,7 @@ const myDate=formatDate2(myDateV)
 
     last_installment: register("last_installment", {
       // required: "Last installment date is required",
+      disabled:true
     }),
 
     status: register("status", {
