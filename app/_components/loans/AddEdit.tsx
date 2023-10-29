@@ -1182,87 +1182,6 @@ const myDate=formatDate2(myDateV)
                 </div>
               </div>
               
-            <div className="grid grid-cols-1 space-x-1 text-white bg-blue-500 border-1 border-blue-500 md:grid-cols-3 p-1 shadow-md mt-3 border mb-3">
- <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    {" "}
-                    Loan Amount (Requested){" "}
-                    <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    {...fields.requested_loan}
-                    type="requested_loan"
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.requested_loan ? "is-invalid" : ""
-                    }`}
-                  />
-                  <div className="invalid-feedback">
-                    {errors.requested_loan?.message?.toString()}
-                  </div>
-                </div>
-                <div className="p-2">
-                  <label className="form-label ml-2 ">
-                    {" "}
-                    Month (Requested){" "}
-                    <span className="text-red-500">*</span>
-                  </label>
-                  
-                  <select
-                    {...fields.no_of_month_expected}
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.no_of_month_expected ? "is-invalid" : ""
-                    }`}>
-                    
-                      
-                  <option value="">-SELECT MONTH-</option>
-                        <option value="60">60</option>
-                        <option value="48">48</option>
-                        <option value="36">36</option>
-                        <option value="24">24</option>
-                        <option value="18">18</option>
-                        <option value="12">12</option>
-                        <option value="6">6</option>
-                  </select>
-                  <div className="invalid-feedback">
-                    {errors.no_of_month_expected?.message?.toString()}
-                  </div>
-                </div>
-
-
-
-                
-                <div className="p-2">
-                  <label className="form-label ml-2 ">Status</label>
-{/* {JSON.stringify(user)} */}
-                  <select
-                    {...fields.status}
-                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
-                      errors.status ? "is-invalid" : ""
-                    }`}
-                  >
-                    <option value="">-select option</option>
-                    {/* <option className="PENDING">PENDING</option> */}
-{user?.role=="ADMIN" || user?.role=="COORDINATOR"  ?(<>
-
-  <option className="PROCESSING">PROCESSING</option>
-                    <option className="PROCEED">PROCEED</option>
-
-                    <option className="REJECTED">REJECTED</option>
-                    <option className="COMPLETED">COMPLETED</option>
-</>):(<>
-
-  <option className="PROCESSING">PROCESSING</option>
-                    <option className="PROCEED">PROCEED</option>
-
-</>)}
-                  </select>
-
-                  <div className="invalid-feedback">
-                    {errors.status?.message?.toString()}
-                  </div>
-                </div>
-
-</div>
 <div className="bg-yellow-400 text-white border-1 border-yellow-300">
 
 <h3 className="text-xl font-bold  pl-2 mt-3 pt-2">
@@ -1497,7 +1416,88 @@ const myDate=formatDate2(myDateV)
                 </div>
               </div>
 </div>
-              
+         
+            <div className="grid grid-cols-1 space-x-1 text-white bg-blue-500 border-1 border-blue-500 md:grid-cols-3 p-1 shadow-md mt-3 border mb-3">
+ <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    {" "}
+                    Loan Amount (Requested){" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    {...fields.requested_loan}
+                    type="requested_loan"
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.requested_loan ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.requested_loan?.message?.toString()}
+                  </div>
+                </div>
+                <div className="p-2">
+                  <label className="form-label ml-2 ">
+                    {" "}
+                    Month (Requested){" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  
+                  <select
+                    {...fields.no_of_month_expected}
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.no_of_month_expected ? "is-invalid" : ""
+                    }`}>
+                    
+                      
+                  <option value="">-SELECT MONTH-</option>
+                        <option value="60">60</option>
+                        <option value="48">48</option>
+                        <option value="36">36</option>
+                        <option value="24">24</option>
+                        <option value="18">18</option>
+                        <option value="12">12</option>
+                        <option value="6">6</option>
+                  </select>
+                  <div className="invalid-feedback">
+                    {errors.no_of_month_expected?.message?.toString()}
+                  </div>
+                </div>
+
+
+
+                
+                <div className="p-2">
+                  <label className="form-label ml-2 ">Status</label>
+{/* {JSON.stringify(user)} */}
+                  <select
+                    {...fields.status}
+                    className={`w-full rounded-md border border-[#e0e0e0] bg-white m-1 py-1  px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md mt-0 ${
+                      errors.status ? "is-invalid" : ""
+                    }`}
+                  >
+                    <option value="">-select option</option>
+                    {/* <option className="PENDING">PENDING</option> */}
+{user?.role=="ADMIN" || user?.role=="COORDINATOR"  ?(<>
+
+  <option className="PROCESSING">PROCESSING</option>
+                    <option className="PROCEED">PROCEED</option>
+
+                    <option className="REJECTED">REJECTED</option>
+                    <option className="COMPLETED">COMPLETED</option>
+</>):(<>
+
+  <option className="PROCESSING">PROCESSING</option>
+                    <option className="PROCEED">PROCEED</option>
+
+</>)}
+                  </select>
+
+                  <div className="invalid-feedback">
+                    {errors.status?.message?.toString()}
+                  </div>
+                </div>
+
+</div>     
 
             </div>
             <div className="  border-1 shadow-sm mb-3 mt-3 text-white border-green-500 bg-green-500">
