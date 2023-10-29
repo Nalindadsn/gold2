@@ -35,7 +35,9 @@ async function create(req: Request) {
     }
     body.address_fixed=data
     body.address_tmp=data2
-    await usersRepo.create(body);
+    const r=await usersRepo.create(body);
+    console.log(r)
+    return r
 }
 
 create.schema = joi.object({

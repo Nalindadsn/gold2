@@ -99,10 +99,10 @@ function AddEdit({
         minLength: (v) => v.length == 10 || v.length == 12,
       },
       
-      pattern: {
-        value: /^[0-9]+$/,
-        message: "Please enter a number",
-      },
+      // pattern: {
+      //   value: /^[0-9]+$/,
+      //   message: "Please enter a number",
+      // },
     }),
     whatsapp: register("whatsapp", {
       required: "Mobile Number is required",

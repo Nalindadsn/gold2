@@ -84,7 +84,10 @@ function useUserService(): IUserService {
         create: async (user) => {
 
             user.username=!user.username ?user.nic:user.username
-            await fetch.post('/api/users', user);
+            const d=await fetch.post('/api/users', user);
+            console.log("-----")
+            console.log(d)
+            console.log("----")
 
         },
         update: async (id, params) => {
