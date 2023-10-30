@@ -412,7 +412,7 @@ async function sameAs(data: any) {
               checked?<input
               // {...fields.line_one_tmp}
               
-               {...register('line_one_tmp',{disabled:checked?true:false ,required:true})}
+               {...register('line_one_tmp',{required:true})}
               
               type="text"
               className={`form-control ${
@@ -421,7 +421,7 @@ async function sameAs(data: any) {
             />:<input
             // {...fields.line_one_tmp}{}
             
-            {...register('line_one_tmp',{disabled:checked?true:false ,required:false})}
+            {...register('line_one_tmp',{required:false})}
             
             type="text"
             className={`form-control ${
