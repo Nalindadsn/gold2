@@ -413,11 +413,14 @@ async function sameAs(data: any) {
               // {...fields.line_one_tmp}
               
                {...register('line_one_tmp',{required:true})}
-              
               type="text"
               className={`form-control ${
                 errors.line_one_tmp ? "is-invalid" : ""
               }`}
+              //  readOnly
+              //  {checked?"":""}
+              
+              readOnly={checked?true:false}
             />:<input
             // {...fields.line_one_tmp}{}
             
@@ -443,6 +446,8 @@ async function sameAs(data: any) {
               className={`form-control ${
                 errors.line_two_tmp ? "is-invalid" : ""
               }`}
+              
+              readOnly={checked?true:false}
             />
             <div className="invalid-feedback">
               {errors.line_two_tmp?.message?.toString()}
@@ -474,6 +479,8 @@ async function sameAs(data: any) {
               className={`form-control ${
                 errors.zip_tmp ? "is-invalid" : ""
               }`}
+              
+              readOnly={checked?true:false}
             />
             <div className="invalid-feedback">
               {errors.zip_tmp?.message?.toString()}
@@ -491,6 +498,8 @@ async function sameAs(data: any) {
               className={`form-control ${
                 errors.ds_office_tmp ? "is-invalid" : ""
               }`}
+              
+              readOnly={checked?true:false}
             />
             <div className="invalid-feedback">
               {errors.ds_office_tmp?.message?.toString()}
@@ -506,6 +515,8 @@ async function sameAs(data: any) {
               className={`form-control ${
                 errors.district_tmp ? "is-invalid" : ""
               }`}
+              
+              readOnly={checked?true:false}
             />
             <div className="invalid-feedback">
               {errors.district_tmp?.message?.toString()}
