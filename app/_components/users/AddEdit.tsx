@@ -41,10 +41,13 @@ function AddEdit({
   uData.district_tmp=user?.address_tmp?.district
   }
 
-  const { register, handleSubmit, reset, formState } = useForm({
+  const { register, handleSubmit, reset,setValue, formState } = useForm({
     defaultValues: user,
     mode:'onChange'
 });
+const sameAs=()=>{
+  alert("same as")
+}
   const { errors } = formState;
 //   const watchFullName = watch("fullName", false); // you can supply default value as second argument
 
@@ -369,7 +372,8 @@ function AddEdit({
           </div>
 
         </div>
-        <div>test</div>
+        <div><button 
+            onClick={() => sameAs()}>Same as </button></div>
         <h1 className="font-bold mt-2 border px-3 bg-gray-100">Mailing address</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2 border">
         <div className="p-2">

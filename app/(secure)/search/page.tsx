@@ -153,7 +153,7 @@ function Edit() {
                         ))}
                       </h3>
                     </div>
-                    <div className="p-1 bg-red-800  md:w-full border border-1 border-red-800 mt-1 m-0">
+                    {/* <div className="p-1 bg-red-800  md:w-full border border-1 border-red-800 mt-1 m-0">
                       <h3 className="bg-red-800 text-white font-bold p-1 whitespace-nowrap">
                         Related Loans
                       </h3>
@@ -211,7 +211,7 @@ function Edit() {
                           </article>
                         </div>
                       )):""}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </>

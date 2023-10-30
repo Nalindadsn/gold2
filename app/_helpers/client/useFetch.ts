@@ -25,11 +25,12 @@ function useFetch() {
         }
     }
 
-    // helper functions
-
+    
     async function handleResponse(response: any) {
-        const isJson = response.headers?.get('content-type')?.includes('application/json');
-        const data = isJson ? await response.json() : null;
+        // console.log(response)
+        // const isJson = response.headers?.get('content-type')?.includes('application/json');
+        // const data = isJson ? await response.json() : null ;
+        const data =  await response.json() ;
 
         // check for error response
         if (!response.ok) {

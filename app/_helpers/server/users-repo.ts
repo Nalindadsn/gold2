@@ -103,7 +103,9 @@ const userExist:any=await User.findOne({ username: params.username })
     if (params.password) {
         user.hash = bcrypt.hashSync(params.password, 10);
     }
-    await user.save();
+   const v= await user.save();
+   console.log(v)
+    return v
 }
 
 async function update(id: string, params: any) {

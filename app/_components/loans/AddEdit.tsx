@@ -679,7 +679,9 @@ function AddEdit({
                         {loan?.status}
                       </span>
                     ) : (
-                      <></>
+                      <span className="mx-1 bg-gray-500 rounded-full text-white py-0 px-2  text-sm ">
+                        {loan?.status}
+                      </span>
                     )}
                     Status
                   </label>
