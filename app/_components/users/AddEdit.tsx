@@ -140,27 +140,29 @@ async function sameAs(data: any) {
 
   };
   async function onSubmit(data: any) {
+
     alertService.clear();
-    try {
-      // create or update user based on user prop
-      let message;
-      if (user) {
-        await userService.update(user.id, data);
-        message = "User updated";
-      } else {
-        await userService.create(data);
-        message = "User added";
-      }
-      // redirect to user list with success message
-      if (loan_id) {
-        router.push(`/loans/edit/${loan_id}`);
-      } else {
-        router.push(`/users`);
-      }
-      alertService.success(message, true);
-    } catch (error: any) {
-      alertService.error(error);
-    }
+    alert(JSON.stringify(data))
+    // try {
+    //   // create or update user based on user prop
+    //   let message;
+    //   if (user) {
+    //     await userService.update(user.id, data);
+    //     message = "User updated";
+    //   } else {
+    //     await userService.create(data);
+    //     message = "User added";
+    //   }
+    //   // redirect to user list with success message
+    //   if (loan_id) {
+    //     router.push(`/loans/edit/${loan_id}`);
+    //   } else {
+    //     router.push(`/users`);
+    //   }
+    //   alertService.success(message, true);
+    // } catch (error: any) {
+    //   alertService.error(error);
+    // }
   }
   const [isSelected, setIsSelected] = useState(false);
 
@@ -393,7 +395,7 @@ async function sameAs(data: any) {
         </div>
         <div>
         {checked?<Button 
-             onClick={handleSubmit(sameAs)}  className="mt-2">Update</Button>:<Button 
+             onClick={handleSubmit(sameAs)}  color="warning"  className="mt-2">Edit Mailing Address</Button>:<Button 
              onClick={handleSubmit(sameAs)}  color="primary"  className="mt-2">Same as address in NIC</Button>}
       
           {/* <button >{checked?"Update ":"Same as address in NIC"} </button>
@@ -408,9 +410,9 @@ async function sameAs(data: any) {
            
             {
               checked?<input
-              // {...fields.line_one_tmp}{}
+              // {...fields.line_one_tmp}
               
-              {...register('line_one_tmp',{disabled:checked?true:false ,required:true})}
+               {...register('line_one_tmp',{disabled:checked?true:false ,required:true})}
               
               type="text"
               className={`form-control ${
@@ -436,7 +438,7 @@ async function sameAs(data: any) {
             <label className="form-label">Address Line 2</label>
             <input
               // {...fields.line_two_tmp}
-              {...register('line_two_tmp',{disabled:checked?true:false})}
+              {...register('line_two_tmp')}
               type="text"
               className={`form-control ${
                 errors.line_two_tmp ? "is-invalid" : ""
@@ -465,9 +467,9 @@ async function sameAs(data: any) {
           <div className="p-2">
             <label className="form-label">City (Postal) </label>
             <input
-              // {...fields.zip_tmp}
+              {...fields.zip_tmp}
               
-              {...register('zip_tmp',{disabled:checked?true:false})}
+              // {...register('zip_tmp')}
               type="text"
               className={`form-control ${
                 errors.zip_tmp ? "is-invalid" : ""
@@ -484,7 +486,7 @@ async function sameAs(data: any) {
             <label className="form-label">Divisional Secretary</label>
             <input
               
-              {...register('ds_office_tmp',{disabled:checked?true:false})}
+              {...register('ds_office_tmp')}
               type="text"
               className={`form-control ${
                 errors.ds_office_tmp ? "is-invalid" : ""
@@ -498,7 +500,7 @@ async function sameAs(data: any) {
           <div className="p-2">
             <label className="form-label">District</label>
             <input
-              {...register('district_tmp',{disabled:checked?true:false})}
+              {...register('district_tmp')}
 
               type="text"
               className={`form-control ${
