@@ -414,7 +414,7 @@ async function sameAs(data: any) {
               
                {...register('line_one_tmp',{required:true})}
               type="text"
-              className={`form-control ${
+              className={`form-control  ${checked?"bg-gray-200 focus:bg-gray-200":""} ${
                 errors.line_one_tmp ? "is-invalid" : ""
               }`}
               //  readOnly
@@ -443,7 +443,7 @@ async function sameAs(data: any) {
               // {...fields.line_two_tmp}
               {...register('line_two_tmp')}
               type="text"
-              className={`form-control ${
+              className={`form-control  ${checked?"bg-gray-200 focus:bg-gray-200":""} ${
                 errors.line_two_tmp ? "is-invalid" : ""
               }`}
               
@@ -476,7 +476,7 @@ async function sameAs(data: any) {
               
               // {...register('zip_tmp')}
               type="text"
-              className={`form-control ${
+              className={`form-control  ${checked?"bg-gray-200 focus:bg-gray-200":""} ${
                 errors.zip_tmp ? "is-invalid" : ""
               }`}
               
@@ -495,7 +495,7 @@ async function sameAs(data: any) {
               
               {...register('ds_office_tmp')}
               type="text"
-              className={`form-control ${
+              className={`form-control  ${checked?"bg-gray-200 focus:bg-gray-200":""} ${
                 errors.ds_office_tmp ? "is-invalid" : ""
               }`}
               
@@ -512,7 +512,7 @@ async function sameAs(data: any) {
               {...register('district_tmp')}
 
               type="text"
-              className={`form-control ${
+              className={`form-control ${checked?"bg-gray-200 focus:bg-gray-200":""} ${
                 errors.district_tmp ? "is-invalid" : ""
               }`}
               
