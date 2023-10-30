@@ -6,6 +6,8 @@ import { useAlertService, useUserService } from "_services";
 export { AddEdit };
 import { useState } from "react";
 import App from "_components/select";
+import {Checkbox, Switch,Button} from "@nextui-org/react";
+// import {PlusIcon} from './PlusIcon.jsx';
 
 function AddEdit({
   title,
@@ -45,8 +47,24 @@ function AddEdit({
     defaultValues: user,
     mode:'onChange'
 });
-const sameAs=()=>{
-  alert("same as")
+const [checked, setChecked] = useState(false);
+
+async function sameAs(data: any) {
+  // setValue()
+  checked?setChecked(false):setChecked(true)
+  // alert(checked?"a":)
+  if(!checked){
+
+  setValue("line_one_tmp", data.line_one_fixed);
+  setValue("line_two_tmp", data.line_two_fixed);
+  setValue("zip_tmp", data.zip_fixed);
+  setValue("ds_office_tmp", data.ds_office_fixed);
+  setValue("district_tmp", data.district_fixed);
+
+  }else{
+
+  }
+  //  alert(JSON.stringify(data))
 }
   const { errors } = formState;
 //   const watchFullName = watch("fullName", false); // you can supply default value as second argument
@@ -67,7 +85,7 @@ const sameAs=()=>{
     district_fixed: register("district_fixed", {}),
 
     
-    line_one_tmp: register("line_one_tmp", { required: "Address Line 1 is required" }),
+    line_one_tmp: register("line_one_tmp", {}),
     line_two_tmp: register("line_two_tmp", {}),
     line_three_tmp: register("line_three_tmp", {}),
     zip_tmp: register("zip_tmp", {}),
@@ -144,6 +162,7 @@ const sameAs=()=>{
       alertService.error(error);
     }
   }
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <>
@@ -372,19 +391,42 @@ const sameAs=()=>{
           </div>
 
         </div>
-        <div><button 
-            onClick={() => sameAs()}>Same as </button></div>
+        <div>
+        {checked?<Button 
+             onClick={handleSubmit(sameAs)}  className="mt-2">Update</Button>:<Button 
+             onClick={handleSubmit(sameAs)}  color="primary"  className="mt-2">Same as address in NIC</Button>}
+      
+          {/* <button >{checked?"Update ":"Same as address in NIC"} </button>
+             
+              */}
+            
+             </div>
         <h1 className="font-bold mt-2 border px-3 bg-gray-100">Mailing address</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 border-b-2 pb-2 border">
         <div className="p-2">
             <label className="form-label">Address Line 1</label>
-            <input
-              {...fields.line_one_tmp}
+           
+            {
+              checked?<input
+              // {...fields.line_one_tmp}{}
+              
+              {...register('line_one_tmp',{disabled:checked?true:false ,required:true})}
+              
               type="text"
               className={`form-control ${
                 errors.line_one_tmp ? "is-invalid" : ""
               }`}
-            />
+            />:<input
+            // {...fields.line_one_tmp}{}
+            
+            {...register('line_one_tmp',{disabled:checked?true:false ,required:false})}
+            
+            type="text"
+            className={`form-control ${
+              errors.line_one_tmp ? "is-invalid" : ""
+            }`}
+          />
+            }
             <div className="invalid-feedback">
               {errors.line_one_tmp?.message?.toString()}
             </div>
@@ -393,7 +435,8 @@ const sameAs=()=>{
           <div className="p-2">
             <label className="form-label">Address Line 2</label>
             <input
-              {...fields.line_two_tmp}
+              // {...fields.line_two_tmp}
+              {...register('line_two_tmp',{disabled:checked?true:false})}
               type="text"
               className={`form-control ${
                 errors.line_two_tmp ? "is-invalid" : ""
@@ -422,7 +465,9 @@ const sameAs=()=>{
           <div className="p-2">
             <label className="form-label">City (Postal) </label>
             <input
-              {...fields.zip_tmp}
+              // {...fields.zip_tmp}
+              
+              {...register('zip_tmp',{disabled:checked?true:false})}
               type="text"
               className={`form-control ${
                 errors.zip_tmp ? "is-invalid" : ""
@@ -438,7 +483,8 @@ const sameAs=()=>{
           <div className="p-2">
             <label className="form-label">Divisional Secretary</label>
             <input
-              {...fields.ds_office_tmp}
+              
+              {...register('ds_office_tmp',{disabled:checked?true:false})}
               type="text"
               className={`form-control ${
                 errors.ds_office_tmp ? "is-invalid" : ""
@@ -452,7 +498,8 @@ const sameAs=()=>{
           <div className="p-2">
             <label className="form-label">District</label>
             <input
-              {...fields.district_tmp}
+              {...register('district_tmp',{disabled:checked?true:false})}
+
               type="text"
               className={`form-control ${
                 errors.district_tmp ? "is-invalid" : ""
