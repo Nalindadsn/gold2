@@ -433,6 +433,11 @@ function AddEdit({
         per_pound: obj.per_pound,
       };
     });
+    // alert(JSON.stringify(rate))
+
+    data.cmp_rate=rate.cmp_rate
+    data.mkt_price=rate.mkt
+    
 
     data.loan_amount = (
       parseFloat(watchExpectedPriceOld) <= max_price

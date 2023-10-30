@@ -80,6 +80,8 @@ function userModel() {
 function loanModel() {
   const schema = new Schema(
     {
+      cmp_rate: { type: String },
+      mkt_price: { type: String },
       estimated_price_old: { type: String },
       loan_price_old: { type: String },
       interest_old: { type: String },
