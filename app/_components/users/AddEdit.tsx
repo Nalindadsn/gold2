@@ -142,27 +142,27 @@ async function sameAs(data: any) {
   async function onSubmit(data: any) {
 
     alertService.clear();
-    alert(JSON.stringify(data))
-    // try {
-    //   // create or update user based on user prop
-    //   let message;
-    //   if (user) {
-    //     await userService.update(user.id, data);
-    //     message = "User updated";
-    //   } else {
-    //     await userService.create(data);
-    //     message = "User added";
-    //   }
-    //   // redirect to user list with success message
-    //   if (loan_id) {
-    //     router.push(`/loans/edit/${loan_id}`);
-    //   } else {
-    //     router.push(`/users`);
-    //   }
-    //   alertService.success(message, true);
-    // } catch (error: any) {
-    //   alertService.error(error);
-    // }
+    // alert(JSON.stringify(data))
+    try {
+      // create or update user based on user prop
+      let message;
+      if (user) {
+        await userService.update(user.id, data);
+        message = "User updated";
+      } else {
+        await userService.create(data);
+        message = "User added";
+      }
+      // redirect to user list with success message
+      if (loan_id) {
+        router.push(`/loans/edit/${loan_id}`);
+      } else {
+        router.push(`/users`);
+      }
+      alertService.success(message, true);
+    } catch (error: any) {
+      alertService.error(error);
+    }
   }
   const [isSelected, setIsSelected] = useState(false);
 
