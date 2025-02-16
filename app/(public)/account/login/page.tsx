@@ -37,6 +37,8 @@ function Login() {
         </div>
         <div className="p-5 bg-white md:flex-1">
           <h3 className="my-4 text-2xl font-semibold text-gray-700">Account Login</h3>
+            username:Admin1<br/>
+            password:123456
           <form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-5">
             <div className="flex flex-col space-y-1">
               <label htmlFor="email" className="text-sm font-semibold text-gray-500">Username</label>
